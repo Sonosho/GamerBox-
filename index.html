@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="referrer" content="no-referrer" />
-  <title>Геймерский уголок v0.3</title>
+  <title>Геймерский уголок v0.4</title>
 
   <!-- Иконка веб-приложения: Пиксельный геймпад -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%230a0d16' d='M0 0h32v32H0z'/%3E%3Cpath fill='%237c3aed' d='M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z'/%3E%3Cpath fill='%239333ea' d='M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z'/%3E%3Cpath fill='%23f43f5e' d='M21 15h2v2h-2z'/%3E%3Cpath fill='%2310b981' d='M25 15h2v2h-2z'/%3E%3Cpath fill='%23fbbf24' d='M23 13h2v2h-2z'/%3E%3Cpath fill='%2306b6d4' d='M23 17h2v2h-2z'/%3E%3Cpath fill='%23cbd5e1' d='M13 17h2v1h-2zm4 0h2v1h-2z'/%3E%3C/svg%3E" />
@@ -13,14 +13,13 @@
   <style>
     :root {
       --bg-dark: #0a0d16;
-      --card-bg: rgba(18, 25, 41, 0.9);
+      --card-bg: rgba(18, 25, 41, 0.92);
       --card-border: rgba(56, 189, 248, 0.18);
       --card-border-hover: rgba(168, 85, 247, 0.65);
       --accent-purple: #a855f7;
       --accent-cyan: #38bdf8;
       --accent-green: #10b981;
       --accent-amber: #f59e0b;
-      --accent-gold: #fbbf24;
       --text: #f1f5f9;
       --text-muted: #94a3b8;
     }
@@ -43,12 +42,11 @@
       flex-direction: column;
     }
 
-    /* Шапка сайта с переливающимся неоном */
     header {
       background: rgba(12, 17, 28, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: 12px 16px;
+      padding: 10px 16px;
       border-bottom: 1px solid rgba(56, 189, 248, 0.22);
       position: sticky;
       top: 0;
@@ -62,19 +60,19 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: 0.5px;
       text-decoration: none;
     }
 
-    /* Слегка заметный переливающийся неон для букв баннера */
+    /* Переливающийся неон */
     .brand-title {
       background: linear-gradient(135deg, #f1f5f9 0%, #c084fc 35%, #38bdf8 68%, #f1f5f9 100%);
       background-size: 260% auto;
@@ -85,59 +83,63 @@
     }
 
     @keyframes neonGlowShimmer {
-      0% {
-        background-position: 0% 50%;
-        filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
-      }
-      50% {
-        background-position: 100% 50%;
-        filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45));
-      }
-      100% {
-        background-position: 0% 50%;
-        filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.35));
-      }
+      0% { background-position: 0% 50%; filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3)); }
+      50% { background-position: 100% 50%; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45)); }
+      100% { background-position: 0% 50%; filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.35)); }
     }
 
     .pixel-pad-icon {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       image-rendering: pixelated;
       filter: drop-shadow(0 0 8px rgba(168,85,247,0.7));
-      transition: transform 0.25s;
     }
-    .brand:hover .pixel-pad-icon { transform: scale(1.1) rotate(-6deg); }
 
-    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .header-actions { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+    /* Переключатель режимов PC / Phone */
+    .mode-switch-box {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 20px;
+      padding: 2px;
+      margin-right: 4px;
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-btn.active {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: #041221;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
     .btn {
-      padding: 8px 14px;
-      border-radius: 9px;
+      padding: 7px 12px;
+      border-radius: 8px;
       border: 1px solid transparent;
       cursor: pointer;
       font-weight: 600;
-      font-size: 0.88rem;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      gap: 5px;
       user-select: none;
     }
     .btn-primary { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: #fff; }
-    .btn-primary:hover, .btn-primary:active { box-shadow: 0 0 16px rgba(139, 92, 246, 0.6); transform: translateY(-2px); }
-    .btn-advisor {
-      background: linear-gradient(135deg, #f59e0b, #ec4899);
-      color: #fff;
-      font-weight: 700;
-    }
-    .btn-advisor:hover { box-shadow: 0 0 16px rgba(236, 72, 153, 0.7); transform: translateY(-2px); }
-    .btn-secondary {
-      background: rgba(30, 41, 59, 0.8);
-      color: var(--text);
-      border-color: rgba(148, 163, 184, 0.25);
-    }
-    .btn-secondary:hover { background: rgba(51, 65, 85, 0.95); border-color: var(--accent-cyan); }
+    .btn-advisor { background: linear-gradient(135deg, #f59e0b, #ec4899); color: #fff; font-weight: 700; }
+    .btn-secondary { background: rgba(30, 41, 59, 0.8); color: var(--text); border-color: rgba(148, 163, 184, 0.25); }
     .btn-danger { background: #ef4444; color: #fff; }
     .btn-key {
       background: linear-gradient(135deg, #f59e0b, #d97706);
@@ -146,40 +148,39 @@
       box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
     }
 
-    .container { max-width: 1240px; margin: 16px auto; padding: 0 14px; flex-grow: 1; }
+    .container { max-width: 1240px; margin: 14px auto; padding: 0 12px; flex-grow: 1; }
 
     /* Панель фильтров */
     .controls-wrapper {
       background: rgba(18, 25, 41, 0.82);
       border: 1px solid var(--card-border);
       backdrop-filter: blur(12px);
-      border-radius: 14px;
-      padding: 12px;
-      margin-bottom: 18px;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      gap: 8px;
     }
     .controls-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     .scroll-filters {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       overflow-x: auto;
       white-space: nowrap;
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       flex-grow: 1;
     }
     .scroll-filters::-webkit-scrollbar { display: none; }
     .filter-label {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       font-weight: 700;
       text-transform: uppercase;
@@ -191,48 +192,40 @@
       background: rgba(15, 23, 42, 0.75);
       border: 1px solid rgba(148, 163, 184, 0.2);
       color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 20px;
+      padding: 5px 11px;
+      border-radius: 18px;
       cursor: pointer;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       flex-shrink: 0;
       transition: all 0.2s;
     }
-    .filter-btn:hover { color: #fff; border-color: rgba(56, 189, 248, 0.4); }
     .filter-btn.active {
       background: linear-gradient(135deg, #0ea5e9, #38bdf8);
       color: #031326;
       font-weight: 700;
       border-color: transparent;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
     .filter-btn-platform.active {
       background: linear-gradient(135deg, #a855f7, #c084fc);
       color: #1a052b;
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
     }
 
     .search-input {
       background: rgba(11, 16, 28, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.25);
       color: #fff;
-      padding: 8px 14px;
-      border-radius: 9px;
-      width: 240px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      width: 220px;
       outline: none;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-    .search-input:focus {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+      font-size: 0.88rem;
     }
 
-    /* Сетка игр */
+    /* СЕТКА ИГР — ПРОПОРЦИОНАЛЬНЫЕ ОБЛОЖКИ БЕЗ РАСТЯГИВАНИЯ */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
     }
     .game-card {
       background: var(--card-bg);
@@ -240,30 +233,33 @@
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       position: relative;
       display: flex;
       flex-direction: column;
       box-shadow: 0 8px 24px rgba(0,0,0,0.45);
     }
     .game-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       border-color: var(--card-border-hover);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.65), 0 0 16px rgba(168, 85, 247, 0.35);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.65), 0 0 16px rgba(168, 85, 247, 0.35);
     }
+
+    /* Защита от растягивания картинки: пропорциональный контейнер 16/10 */
     .card-cover-wrap {
       position: relative;
       width: 100%;
-      height: 290px;
-      background: #090d16;
+      aspect-ratio: 16 / 10;
+      background: #090e17;
       overflow: hidden;
     }
     .card-cover {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
     .game-card:hover .card-cover { transform: scale(1.04); }
 
@@ -279,9 +275,9 @@
       z-index: 2;
     }
     .badge {
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 6px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       box-shadow: 0 4px 10px rgba(0,0,0,0.7);
@@ -305,9 +301,9 @@
       background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(168, 85, 247, 0.4);
       color: #d8b4fe;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      padding: 3px 7px;
+      padding: 2px 6px;
       border-radius: 4px;
     }
 
@@ -315,9 +311,9 @@
       background: rgba(15, 23, 42, 0.88);
       border: 1px solid rgba(245, 158, 11, 0.6);
       color: #fbbf24;
-      padding: 4px 9px;
+      padding: 3px 8px;
       border-radius: 6px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
@@ -325,46 +321,41 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .card-key-btn:hover {
-      background: #f59e0b;
-      color: #0b0f19;
-      transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.8);
-    }
+    .card-key-btn:hover { background: #f59e0b; color: #0b0f19; }
 
     .card-body {
-      padding: 12px;
+      padding: 10px 12px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
     }
     .card-title {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #fff;
       line-height: 1.3;
     }
 
-    .checklist-progress { margin-top: 4px; }
+    .checklist-progress { margin-top: 3px; }
     .progress-text {
       display: flex;
       justify-content: space-between;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
     .progress-bar-bg {
-      height: 5px;
+      height: 4px;
       background: rgba(255,255,255,0.08);
-      border-radius: 3px;
+      border-radius: 2px;
       overflow: hidden;
     }
     .progress-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, #10b981, #06b6d4);
-      transition: width 0.3s ease;
+      transition: width 0.3s;
     }
 
     /* Модальные окна */
@@ -375,32 +366,32 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 14px;
+      padding: 12px;
       z-index: 200;
       backdrop-filter: blur(8px);
     }
     .modal-content {
       background: #111827;
       border: 1px solid #1f2d47;
-      border-radius: 16px;
-      max-width: 760px;
+      border-radius: 14px;
+      max-width: 740px;
       width: 100%;
       max-height: 92vh;
       overflow-y: auto;
-      padding: 22px;
+      padding: 18px;
       position: relative;
       box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.15);
     }
     .modal-close {
       position: absolute;
-      top: 14px; right: 14px;
+      top: 12px; right: 12px;
       background: #1f293d;
       border: 1px solid rgba(255,255,255,0.1);
       color: #fff;
-      width: 32px; height: 32px;
+      width: 30px; height: 30px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -410,163 +401,145 @@
     .modal-close:hover { background: #ef4444; }
 
     /* =================================================================
-       ДИЗАЙН НАСТОЯЩЕЙ КНИГИ / ТАКТИЧЕСКОГО БЛОКНОТА ДЛЯ ЗАМЕТОК 
+       ДИЗАЙН КНИГИ / ТАКТИЧЕСКОГО БЛОКНОТА 
        ================================================================= */
     .book-wrapper {
       background: #181524;
       border: 2px solid #3b2d56;
-      border-radius: 14px;
+      border-radius: 12px;
       box-shadow: 
         -10px 0 25px rgba(0,0,0,0.8),
         10px 10px 30px rgba(0,0,0,0.6),
         inset 0 0 15px rgba(0,0,0,0.7);
       position: relative;
-      padding: 18px 18px 18px 36px;
-      margin-top: 12px;
+      padding: 14px 14px 14px 32px;
+      margin-top: 10px;
       overflow: hidden;
     }
-
-    /* Кожаный корешок блокнота слева с прострочкой и пружинными кольцами */
     .book-spine {
       position: absolute;
       top: 0; bottom: 0; left: 0;
-      width: 26px;
+      width: 22px;
       background: linear-gradient(90deg, #2a1f42 0%, #150f22 100%);
       border-right: 2px dashed rgba(168, 85, 247, 0.35);
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      padding: 20px 0;
+      padding: 16px 0;
     }
     .book-ring {
-      width: 14px;
-      height: 7px;
+      width: 12px;
+      height: 6px;
       background: linear-gradient(180deg, #94a3b8 0%, #334155 100%);
-      border-radius: 4px;
+      border-radius: 3px;
       box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.8);
     }
-
-    /* Шелковая закладка-ленточка сверху */
     .book-bookmark-ribbon {
       position: absolute;
-      top: 0; right: 40px;
-      width: 18px;
-      height: 38px;
+      top: 0; right: 35px;
+      width: 16px;
+      height: 34px;
       background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
       z-index: 5;
     }
-
-    /* Страница книги: тактическая бумага с полями и разлиновкой */
     .book-page {
       background: #0f1523;
       background-image: 
         repeating-linear-gradient(transparent, transparent 27px, rgba(56, 189, 248, 0.08) 28px),
-        linear-gradient(90deg, transparent 40px, rgba(244, 63, 94, 0.25) 41px, transparent 42px);
+        linear-gradient(90deg, transparent 34px, rgba(244, 63, 94, 0.25) 35px, transparent 36px);
       border-radius: 8px;
-      padding: 14px 16px 14px 48px;
+      padding: 12px 14px 12px 42px;
       box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
       border: 1px solid rgba(255,255,255,0.05);
     }
-
     .book-page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       flex-wrap: wrap;
       gap: 6px;
     }
     .book-page-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #38bdf8;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
-    .book-save-indicator {
-      font-size: 0.78rem;
-      color: #10b981;
-      font-weight: 600;
-    }
-
+    .book-save-indicator { font-size: 0.75rem; color: #10b981; font-weight: 600; }
     .book-textarea {
       width: 100%;
-      min-height: 200px;
+      min-height: 180px;
       background: transparent;
       border: none;
       color: #f1f5f9;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       line-height: 28px;
       outline: none;
       resize: vertical;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: inherit;
     }
-
     .book-toolbar {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 8px;
       border-top: 1px dashed rgba(255,255,255,0.1);
-      padding-top: 10px;
+      padding-top: 8px;
     }
     .book-tool-btn {
       background: rgba(30, 41, 59, 0.7);
       border: 1px solid rgba(148, 163, 184, 0.25);
       color: var(--text-muted);
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 3px 8px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
     }
     .book-tool-btn:hover { color: #fff; background: rgba(56, 189, 248, 0.25); border-color: #38bdf8; }
 
-    /* ГАЛЕРЕЯ ПРИКРЕПЛЕННЫХ СКРИНШОТОВ И КАРТ В БЛОКНОТЕ */
+    /* Скриншоты и карты */
     .screenshots-gallery-title {
-      margin-top: 16px;
-      font-size: 0.9rem;
+      margin-top: 14px;
+      font-size: 0.85rem;
       color: #fbbf24;
       font-weight: 700;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
     .screenshots-grid {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       overflow-x: auto;
-      padding: 10px 4px 8px 4px;
-      margin-top: 6px;
+      padding: 8px 4px 6px 4px;
+      margin-top: 4px;
     }
     .screenshot-polaroid {
       background: #1e293b;
       border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 6px;
-      width: 130px;
+      border-radius: 6px;
+      padding: 5px;
+      width: 120px;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
       position: relative;
       cursor: pointer;
-      transition: transform 0.2s;
     }
-    .screenshot-polaroid:hover { transform: scale(1.04) rotate(1deg); }
     .screenshot-img {
       width: 100%;
-      height: 90px;
+      height: 80px;
       object-fit: cover;
-      border-radius: 5px;
+      border-radius: 4px;
       display: block;
       background: #090e17;
     }
     .screenshot-caption {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 3px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -579,15 +552,14 @@
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 20px; height: 20px;
-      font-size: 0.75rem;
+      width: 18px; height: 18px;
+      font-size: 0.7rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Модалка просмотра скриншота на весь экран */
     .image-zoom-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -602,36 +574,34 @@
       max-width: 95vw;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      border-radius: 6px;
     }
 
-    /* Поля ввода и редактор */
-    .form-group { margin-bottom: 12px; }
-    .form-group label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+    /* Поля формы */
+    .form-group { margin-bottom: 10px; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
     .form-control {
       width: 100%;
       background: #090e17;
       border: 1px solid #222f44;
       color: #fff;
-      padding: 9px 12px;
-      border-radius: 8px;
+      padding: 8px 10px;
+      border-radius: 7px;
       outline: none;
-      font-size: 0.92rem;
-      transition: border-color 0.2s;
+      font-size: 0.88rem;
     }
     .form-control:focus { border-color: var(--accent-cyan); }
-    textarea.form-control { resize: vertical; min-height: 80px; }
+    textarea.form-control { resize: vertical; min-height: 75px; }
 
     .search-candidates-list {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      margin-top: 8px;
-      padding-bottom: 6px;
+      margin-top: 6px;
+      padding-bottom: 4px;
     }
     .candidate-card {
-      width: 85px;
+      width: 80px;
       flex-shrink: 0;
       cursor: pointer;
       border: 1px solid #222f44;
@@ -639,11 +609,9 @@
       overflow: hidden;
       background: #090e17;
       text-align: center;
-      transition: 0.2s;
     }
-    .candidate-card:hover { border-color: var(--accent-cyan); transform: scale(1.05); }
-    .candidate-img { width: 100%; height: 100px; object-fit: cover; display: block; }
-    .candidate-title { font-size: 0.68rem; padding: 4px 2px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .candidate-img { width: 100%; height: 90px; object-fit: cover; display: block; }
+    .candidate-title { font-size: 0.65rem; padding: 3px 2px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     .cover-thumb-preview {
       width: 55px;
@@ -652,6 +620,7 @@
       border-radius: 6px;
       background: #090e17;
       border: 1px solid #222f44;
+      flex-shrink: 0;
     }
 
     /* Чеклист */
@@ -659,50 +628,44 @@
       background: #0a0f1a;
       border: 1px solid #1e293b;
       border-radius: 10px;
-      padding: 12px;
-      margin-top: 14px;
+      padding: 10px;
+      margin-top: 12px;
     }
-    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .checklist-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 7px 10px;
+      gap: 8px;
+      padding: 6px 8px;
       background: rgba(18, 25, 41, 0.6);
-      border-radius: 6px;
-      margin-bottom: 6px;
+      border-radius: 5px;
+      margin-bottom: 5px;
       border: 1px solid rgba(255,255,255,0.04);
     }
-    .checklist-item.done span {
-      text-decoration: line-through;
-      color: var(--text-muted);
-    }
-    .checklist-item input[type="checkbox"] {
-      width: 18px; height: 18px; accent-color: var(--accent-green); cursor: pointer;
-    }
+    .checklist-item.done span { text-decoration: line-through; color: var(--text-muted); }
+    .checklist-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent-green); cursor: pointer; }
     .checklist-del-btn {
       margin-left: auto;
       background: none;
       border: none;
       color: #ef4444;
       cursor: pointer;
-      font-size: 1.1rem;
-      opacity: 0.7;
+      font-size: 1rem;
     }
 
     /* Секреты */
     .secret-item-card {
       background: #0a0f1a;
       border: 1px solid #243550;
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 12px;
-      line-height: 1.5;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      line-height: 1.45;
     }
     .secret-item-card h4 {
       color: #fbbf24;
-      margin-bottom: 6px;
-      font-size: 0.98rem;
+      margin-bottom: 5px;
+      font-size: 0.92rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -711,112 +674,129 @@
       background: #1e293b;
       border: 1px solid #334155;
       color: var(--text-muted);
-      font-size: 0.75rem;
-      padding: 3px 8px;
-      border-radius: 5px;
+      font-size: 0.72rem;
+      padding: 3px 7px;
+      border-radius: 4px;
       cursor: pointer;
     }
-    .copy-to-notes-btn:hover { background: #38bdf8; color: #041221; }
 
     /* Советник */
     .advisor-filter-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 8px;
       background: #0c121e;
       border: 1px solid #1f2c42;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 14px;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 12px;
     }
     .advisor-result-card {
       background: #0e1524;
       border: 1px solid #243550;
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 12px;
+      padding: 14px;
       display: flex;
-      gap: 16px;
+      gap: 14px;
       align-items: flex-start;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
     .advisor-cover {
-      width: 150px;
-      height: 220px;
+      width: 140px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 8px;
       background: #090e17;
       border: 1px solid #2a3d5e;
       flex-shrink: 0;
     }
-    .advisor-details { flex-grow: 1; display: flex; flex-direction: column; gap: 7px; }
-    .advisor-title { font-size: 1.35rem; font-weight: 800; color: #fff; }
-    .advisor-badge-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .advisor-details { flex-grow: 1; display: flex; flex-direction: column; gap: 6px; }
+    .advisor-title { font-size: 1.25rem; font-weight: 800; color: #fff; }
+    .advisor-badge-row { display: flex; gap: 5px; flex-wrap: wrap; }
     .advisor-hook {
       background: rgba(168, 85, 247, 0.12);
       border-left: 3px solid var(--accent-purple);
-      padding: 7px 10px;
+      padding: 6px 9px;
       border-radius: 4px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #e2e8f0;
       line-height: 1.4;
     }
 
-    /* Подвал сайта с версией 0.3 */
     footer.app-footer {
       border-top: 1px solid rgba(56, 189, 248, 0.15);
       background: rgba(10, 14, 23, 0.9);
-      padding: 14px 20px;
+      padding: 12px 16px;
       margin-top: auto;
       text-align: center;
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     .version-tag {
       background: rgba(56, 189, 248, 0.15);
       color: #38bdf8;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-size: 0.72rem;
       font-weight: 700;
       border: 1px solid rgba(56, 189, 248, 0.3);
     }
 
-    /* Мобильная адаптация */
+    /* =================================================================
+       СПЕЦИАЛЬНЫЙ РЕЖИМ ДЛЯ ТЕЛЕФОНА (АКТИВИРУЕТСЯ КНОПКОЙ ИЛИ НА ЭКРАНАХ < 768px)
+       ================================================================= */
+    body.view-mode-phone .container { padding: 0 8px; margin-top: 8px; }
+    body.view-mode-phone .games-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 9px !important;
+    }
+    /* Идеальные пропорции обложки на телефоне: никогда не растягивается */
+    body.view-mode-phone .card-cover-wrap {
+      aspect-ratio: 16 / 11 !important;
+      height: auto !important;
+    }
+    body.view-mode-phone .card-cover {
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+    body.view-mode-phone .card-body { padding: 8px !important; }
+    body.view-mode-phone .card-title { font-size: 0.85rem !important; }
+    body.view-mode-phone .badge { font-size: 0.62rem !important; padding: 2px 5px !important; }
+    body.view-mode-phone .card-key-btn { font-size: 0.68rem !important; padding: 2px 6px !important; }
+
+    body.view-mode-phone .modal-content { padding: 14px !important; border-radius: 12px !important; max-height: 96vh !important; }
+    body.view-mode-phone .book-wrapper { padding: 12px 8px 12px 24px !important; }
+    body.view-mode-phone .book-spine { width: 16px !important; }
+    body.view-mode-phone .book-ring { width: 9px !important; height: 5px !important; }
+    body.view-mode-phone .book-page { padding: 10px 8px 10px 24px !important; }
+    body.view-mode-phone .book-page-title { font-size: 0.82rem !important; }
+    body.view-mode-phone .book-textarea { font-size: 0.9rem !important; min-height: 160px !important; }
+
+    body.view-mode-phone .advisor-result-card { flex-direction: column !important; align-items: center !important; text-align: center !important; }
+    body.view-mode-phone .advisor-cover { width: 130px !important; height: 180px !important; }
+
+    /* РЕЖИМ ПК (ШИРОКИЙ ЭКРАН) */
+    body.view-mode-pc .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+      gap: 18px !important;
+    }
+    body.view-mode-pc .card-cover-wrap {
+      aspect-ratio: 16 / 10 !important;
+    }
+
     @media (max-width: 650px) {
-      header { padding: 10px 12px; }
-      .brand { font-size: 1.15rem; }
-      .header-actions { width: 100%; justify-content: space-between; }
-      .btn { padding: 7px 11px; font-size: 0.82rem; }
-      .container { padding: 0 10px; margin-top: 10px; }
-
-      .controls-row { flex-direction: column; align-items: stretch; gap: 8px; }
+      .header-content { flex-direction: column; align-items: stretch; }
+      .header-actions { justify-content: space-between; }
+      .controls-row { flex-direction: column; align-items: stretch; }
       .search-input { width: 100%; }
-
-      .games-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      .card-cover-wrap { height: 180px; }
-      .card-body { padding: 8px; }
-      .card-title { font-size: 0.88rem; }
-      .badge { font-size: 0.65rem; padding: 2px 6px; }
-
-      .modal-content { padding: 16px; border-radius: 14px; max-height: 95vh; }
-      .book-wrapper { padding: 14px 10px 14px 26px; }
-      .book-spine { width: 18px; }
-      .book-page { padding: 12px 10px 12px 28px; }
-      .book-page-title { font-size: 0.85rem; }
-
-      .advisor-result-card { flex-direction: column; align-items: center; text-align: center; }
-      .advisor-cover { width: 140px; height: 190px; }
     }
   </style>
 </head>
-<body>
+<body class="view-mode-phone">
 
   <header>
     <div class="header-content">
@@ -833,8 +813,15 @@
         </svg>
         <span class="brand-title">Геймерский уголок</span>
       </a>
+
       <div class="header-actions">
-        <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит под настроение и жанр">🎯 Подбор игры</button>
+        <!-- Переключатель режима PC / Phone -->
+        <div class="mode-switch-box" title="Переключить вид: ПК или телефон">
+          <button class="mode-btn" id="btnModePc" onclick="setViewMode('pc')">🖥️ ПК</button>
+          <button class="mode-btn active" id="btnModePhone" onclick="setViewMode('phone')">📱 Телефон</button>
+        </div>
+
+        <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит">🎯 Советник</button>
         <button class="btn btn-primary" onclick="openAddModal()">➕ Игра</button>
         <button class="btn btn-secondary" title="Резервная копия базы" onclick="exportData()">💾</button>
         <button class="btn btn-secondary" title="Загрузить резервную копию" onclick="document.getElementById('importFile').click()">📥</button>
@@ -875,15 +862,15 @@
     <div class="games-grid" id="gamesGrid"></div>
   </div>
 
-  <!-- ОКНО: НАСТОЯЩИЙ СТИЛИЗОВАННЫЙ БЛОКНОТ-КНИГА ДЛЯ ЗАМЕТОК И КАРТ -->
+  <!-- ОКНО: СТИЛИЗОВАННЫЙ БЛОКНОТ-КНИГА -->
   <div class="modal-overlay" id="notebookModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('notebookModal')">&times;</button>
 
-      <div style="display: flex; gap: 14px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 12px;">
-        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" style="width: 60px; height: 85px;" />
+      <div style="display: flex; gap: 12px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 10px;">
+        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" style="width: 55px; height: 75px;" />
         <div style="flex-grow: 1;">
-          <h2 id="nbTitle" style="color: #fff; font-size: 1.3rem; margin-bottom: 4px;"></h2>
+          <h2 id="nbTitle" style="color: #fff; font-size: 1.2rem; margin-bottom: 4px;"></h2>
           <div style="display: flex; gap: 6px; flex-wrap: wrap;">
             <span id="nbBadge" class="badge"></span>
             <span id="nbPlatformBadge" class="badge platform-badge"></span>
@@ -917,11 +904,11 @@
             <button class="book-tool-btn" onclick="insertNotebookText('🔑 Код: ')">Код</button>
             <button class="book-tool-btn" onclick="insertNotebookText('📍 Тайник: ')">Тайник</button>
             <button class="book-tool-btn" onclick="insertNotebookText('⚔️ Билд: ')">Билд</button>
-            <button class="book-tool-btn" onclick="document.getElementById('nbScreenshotInput').click()">📷 Прикрепить карту/фото</button>
+            <button class="book-tool-btn" onclick="document.getElementById('nbScreenshotInput').click()">📷 Фото/Карта</button>
             <input type="file" id="nbScreenshotInput" style="display:none" accept="image/*" onchange="handleScreenshotUpload(event)" />
           </div>
 
-          <!-- Галерея прикрепленных карт и скриншотов -->
+          <!-- Галерея прикрепленных скриншотов -->
           <div id="nbScreenshotsSection" style="display:none;">
             <div class="screenshots-gallery-title">
               <span>🗺️ Карты и скриншоты:</span>
@@ -931,18 +918,18 @@
         </div>
       </div>
 
-      <!-- Чеклист внутри блокнота -->
+      <!-- Чеклист -->
       <div class="checklist-box" id="nbChecklistBox">
         <div class="checklist-header">
-          <h4 style="color:#10b981; font-size:0.9rem;">🎯 Чеклист целей:</h4>
-          <span id="nbChecklistRatio" style="font-size:0.8rem; color:#38bdf8; font-weight:700;"></span>
+          <h4 style="color:#10b981; font-size:0.88rem;">🎯 Чеклист целей:</h4>
+          <span id="nbChecklistRatio" style="font-size:0.75rem; color:#38bdf8; font-weight:700;"></span>
         </div>
         <div id="nbChecklistItems"></div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; flex-wrap: wrap; gap: 8px;">
-        <p id="nbDesc" style="color: var(--text-muted); font-size: 0.85rem; max-width: 450px;"></p>
-        <div style="display: flex; gap: 8px; margin-left: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 8px;">
+        <p id="nbDesc" style="color: var(--text-muted); font-size: 0.82rem; max-width: 450px;"></p>
+        <div style="display: flex; gap: 6px; margin-left: auto;">
           <button class="btn btn-secondary" id="nbEditBtn">⚙️ Настройки</button>
           <button class="btn btn-primary" onclick="closeModal('notebookModal')">Закрыть</button>
         </div>
@@ -950,21 +937,21 @@
     </div>
   </div>
 
-  <!-- ОКНО ПРОСМОТРА СКРИНШОТА НА ВЕСЬ ЭКРАН -->
+  <!-- ЗУМ СКРИНШОТА -->
   <div class="image-zoom-overlay" id="imageZoomModal" onclick="this.style.display='none'">
     <img id="imageZoomImg" class="image-zoom-img" src="" alt="Скриншот" />
   </div>
 
-  <!-- ОКНО: КЛЮЧИК К СЕКРЕТАМ (АВТОМАТИЧЕСКАЯ БАЗА СЕКРЕТОВ И ГАЙДОВ) -->
+  <!-- ОКНО: СЕКРЕТЫ -->
   <div class="modal-overlay" id="secretsModal">
     <div class="modal-content" style="max-width: 720px;">
       <button class="modal-close" onclick="closeModal('secretsModal')">&times;</button>
 
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px; border-bottom: 1px solid #233550; padding-bottom: 10px;">
-        <span style="font-size: 1.6rem;">🔑</span>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid #233550; padding-bottom: 8px;">
+        <span style="font-size: 1.5rem;">🔑</span>
         <div>
-          <h3 style="color:#fbbf24; font-size: 1.25rem;" id="secretsGameTitle">Секреты и подсказки</h3>
-          <p style="color:var(--text-muted); font-size: 0.82rem;">Тайники, пасхалки и советы по прохождению</p>
+          <h3 style="color:#fbbf24; font-size: 1.2rem;" id="secretsGameTitle">Секреты и подсказки</h3>
+          <p style="color:var(--text-muted); font-size: 0.8rem;">Тайники, пасхалки и советы по прохождению</p>
         </div>
       </div>
 
@@ -974,30 +961,29 @@
 
       <div id="secretsListContainer"></div>
 
-      <div style="display: flex; justify-content: space-between; margin-top: 18px;">
+      <div style="display: flex; justify-content: space-between; margin-top: 16px;">
         <button class="btn btn-secondary" onclick="fetchOnlineSecrets()">🌐 Загрузить доп. секреты</button>
         <button class="btn btn-primary" onclick="closeModal('secretsModal')">Закрыть</button>
       </div>
     </div>
   </div>
 
-  <!-- ОКНО: ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ ИГРЫ -->
+  <!-- ОКНО: ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ -->
   <div class="modal-overlay" id="editModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('editModal')">&times;</button>
-      <h3 style="margin-bottom: 14px; color:#fff;" id="modalFormTitle">Добавить игру</h3>
+      <h3 style="margin-bottom: 12px; color:#fff;" id="modalFormTitle">Добавить игру</h3>
 
       <div class="form-group">
-        <label>Название игры (на русском или английском):</label>
+        <label>Название игры:</label>
         <div style="display: flex; gap: 8px;">
           <input type="text" class="form-control" id="gameTitleInput" placeholder="Например: fable, the outer world, дайн лайт..." />
           <button class="btn btn-secondary" id="autoFetchBtn" onclick="fetchGameInfo()">🔍 Найти</button>
         </div>
-        <small style="color:#94a3b8; display:block; margin-top:3px;">Ищет точные названия, русские синопсисы и качественные постеры</small>
         <div id="searchCandidatesArea" class="search-candidates-list" style="display:none;"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
         <div class="form-group">
           <label>Статус:</label>
           <select class="form-control" id="gameStatusSelect">
@@ -1022,7 +1008,7 @@
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
         <div class="form-group">
           <label>Оценка (1-10):</label>
           <select class="form-control" id="gameRatingSelect">
@@ -1049,9 +1035,9 @@
           <button class="btn btn-secondary" type="button" onclick="document.getElementById('coverFileInput').click()" title="Загрузить фото с телефона">📁 Фото</button>
           <input type="file" id="coverFileInput" style="display:none" accept="image/*" onchange="handleFileUpload(event)" />
         </div>
-        <div class="cover-preview-box" style="display:flex; gap:10px; align-items:center; margin-top:8px;">
+        <div style="display:flex; gap:10px; align-items:center; margin-top:6px;">
           <img id="editCoverPreview" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Превью" onerror="handleCoverError(this)" />
-          <span style="font-size: 0.78rem; color: var(--text-muted);">Превью постера</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Превью постера</span>
         </div>
       </div>
 
@@ -1062,19 +1048,19 @@
 
       <div class="checklist-box">
         <div class="checklist-header">
-          <h4 style="color:#10b981; font-size:0.9rem;">🎯 Чеклист целей</h4>
-          <span style="font-size:0.75rem; color:var(--text-muted);">Квесты, секреты</span>
+          <h4 style="color:#10b981; font-size:0.85rem;">🎯 Чеклист целей</h4>
+          <span style="font-size:0.72rem; color:var(--text-muted);">Квесты, секреты</span>
         </div>
         <div id="editChecklistContainer"></div>
-        <div style="display: flex; gap: 6px; margin-top: 8px;">
+        <div style="display: flex; gap: 6px; margin-top: 6px;">
           <input type="text" class="form-control" id="newChecklistInput" placeholder="Добавить цель..." onkeypress="if(event.key==='Enter'){event.preventDefault();addChecklistItem();}" />
           <button class="btn btn-secondary" onclick="addChecklistItem()">+</button>
         </div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; margin-top: 18px;">
+      <div style="display: flex; justify-content: space-between; margin-top: 16px;">
         <button class="btn btn-danger" id="deleteBtn" style="display:none;" onclick="deleteCurrentGame()">Удалить игру</button>
-        <div style="display: flex; gap: 8px; margin-left: auto;">
+        <div style="display: flex; gap: 6px; margin-left: auto;">
           <button class="btn btn-secondary" onclick="closeModal('editModal')">Отмена</button>
           <button class="btn btn-primary" onclick="saveGame()">Сохранить</button>
         </div>
@@ -1082,12 +1068,12 @@
     </div>
   </div>
 
-  <!-- ОКНО: ИГРОВОЙ СОВЕТНИК -->
+  <!-- ОКНО: СОВЕТНИК -->
   <div class="modal-overlay" id="advisorModal">
     <div class="modal-content" style="max-width: 740px;">
       <button class="modal-close" onclick="closeModal('advisorModal')">&times;</button>
-      <h3 style="color:#f59e0b; margin-bottom: 4px; font-size: 1.25rem;">🎯 Игровой компас: Подбор под настроение</h3>
-      <p style="color:var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Каждое нажатие выдает новую игру из выбранного жанра без повторов:</p>
+      <h3 style="color:#f59e0b; margin-bottom: 4px; font-size: 1.2rem;">🎯 Игровой компас: Подбор под настроение</h3>
+      <p style="color:var(--text-muted); font-size: 0.82rem; margin-bottom: 10px;">Каждое нажатие выдает новую игру из выбранного жанра без повторов:</p>
 
       <div class="advisor-filter-bar">
         <div>
@@ -1138,24 +1124,24 @@
             </div>
             <h2 id="advTitle" class="advisor-title"></h2>
             <div id="advHook" class="advisor-hook"></div>
-            <p id="advDesc" style="color:var(--text-muted); font-size:0.88rem; line-height:1.45;"></p>
+            <p id="advDesc" style="color:var(--text-muted); font-size:0.85rem; line-height:1.4;"></p>
           </div>
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-top:14px;">
           <button class="btn btn-secondary" onclick="rollAdvisor()">🎲 Следующая игра</button>
-          <button class="btn btn-primary" id="advAddBtn" onclick="addAdvisorGameToCollection()">➕ В мой список («Буду играть»)</button>
+          <button class="btn btn-primary" id="advAddBtn" onclick="addAdvisorGameToCollection()">➕ В мой список</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ПОДВАЛ С ВЕРСИЕЙ 0.3 -->
+  <!-- ПОДВАЛ С ВЕРСИЕЙ 0.4 -->
   <footer class="app-footer">
     <span>🎮 Геймерский уголок</span>
     <span>•</span>
     <span>Сохранение локально в браузере</span>
-    <span class="version-tag">Версия 0.3</span>
+    <span class="version-tag">Версия 0.4</span>
   </footer>
 
   <script>
@@ -1165,6 +1151,26 @@
       img.onerror = null;
       img.src = DEFAULT_COVER_SVG;
     }
+
+    // УПРАВЛЕНИЕ РЕЖИМАМИ ОТОБРАЖЕНИЯ: PC ИЛИ PHONE
+    let currentViewMode = localStorage.getItem('gamers_corner_view_mode') || (window.innerWidth < 768 ? 'phone' : 'pc');
+
+    function applyViewMode(mode) {
+      currentViewMode = mode;
+      localStorage.setItem('gamers_corner_view_mode', mode);
+      document.body.classList.remove('view-mode-pc', 'view-mode-phone');
+      document.body.classList.add(mode === 'phone' ? 'view-mode-phone' : 'view-mode-pc');
+
+      document.getElementById('btnModePc').classList.toggle('active', mode === 'pc');
+      document.getElementById('btnModePhone').classList.toggle('active', mode === 'phone');
+    }
+
+    function setViewMode(mode) {
+      applyViewMode(mode);
+    }
+
+    // Инициализация режима
+    applyViewMode(currentViewMode);
 
     // База секретов
     const BUILTIN_SECRETS = {
@@ -1176,8 +1182,8 @@
       ],
       'the outer worlds': [
         { title: '🔬 Где найти Научное оружие', text: '1) Уменьшающий луч (Shrink Ray) — в лаборатории Финеаса на Терра-2.\n2) Призматический молот — на станции «Первопроходец» в скрытой комнате над каютами экипажа.\n3) Одурманиватель — на Монархе в лаборатории UDL.' },
-        { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2 — у Сэма колоссальный урон кислотой.' },
-        { title: '🗣️ Прохождение без убийств', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты и убедить боссов сдаться без единого выстрела.' }
+        { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2.' },
+        { title: '🗣️ Прохождение без убийств', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты и убедить боссов сдаться без боя.' }
       ],
       'dying light': [
         { title: '🗡️ Чертеж оружия Корека', text: 'На крыше высотки в Трущобах найдите синий ящик за коробками. Ударьте по нему ногой ровно 76 раз — крышка откроется, и вы получите чертеж с колоссальным уроном.' },
@@ -1220,7 +1226,6 @@
       { title: "Fallout: New Vegas", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Постапокалипсис", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/22380/header.jpg", hook: "🏜️ Пустыня Мохаве, казино Нью-Вегаса, ретро-джаз и полная свобода выбора.", desc: "Лучшая ролевая игра во вселенной Fallout с великолепным сюжетом." }
     ];
 
-    // Начальные игры (всегда сохраняются и не пропадут)
     const INITIAL_DEFAULT_GAMES = [
       {
         id: '1',
@@ -1287,7 +1292,6 @@
       }
     ];
 
-    // Загрузка с гарантированным сохранением
     let storedData = localStorage.getItem('gamers_corner_data');
     let games = [];
     if (storedData) {
@@ -1303,7 +1307,6 @@
       games = INITIAL_DEFAULT_GAMES;
     }
 
-    // Сохраняем надежно
     localStorage.setItem('gamers_corner_data', JSON.stringify(games));
     localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
 
@@ -1398,7 +1401,7 @@
       });
     }
 
-    /* --- ЛОГИКА НАСТОЯЩЕГО БЛОКНОТА-КНИГИ --- */
+    /* --- ЛОГИКА БЛОКНОТА-КНИГИ --- */
     function openNotebook(id) {
       const game = games.find(g => g.id === id);
       if (!game) return;
@@ -1464,7 +1467,6 @@
       autoSaveNotebook();
     }
 
-    // Загрузка скриншота/карты прямо в блокнот
     function handleScreenshotUpload(event) {
       const file = event.target.files[0];
       if (!file || !activeNotebookGameId) return;
@@ -1558,7 +1560,7 @@
           div.className = `checklist-item ${item.done ? 'done' : ''}`;
           div.innerHTML = `
             <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistInNotebook('${game.id}', '${item.id}', this.checked)" />
-            <span style="flex-grow:1; font-size:0.9rem;">${item.text}</span>
+            <span style="flex-grow:1; font-size:0.88rem;">${item.text}</span>
           `;
           container.appendChild(div);
         });
@@ -1610,15 +1612,15 @@
               <span>${sec.title}</span>
               <button class="copy-to-notes-btn" onclick="copySecretToNotes('${game.id}', '${sec.title}', '${sec.text.replace(/'/g, "\\'")}')">📥 В блокнот</button>
             </h4>
-            <p style="color:#cbd5e1; font-size:0.9rem; white-space:pre-line;">${sec.text}</p>
+            <p style="color:#cbd5e1; font-size:0.88rem; white-space:pre-line;">${sec.text}</p>
           `;
           container.appendChild(card);
         });
       } else {
         container.innerHTML = `
-          <div style="text-align:center; padding:20px; color:#94a3b8;">
+          <div style="text-align:center; padding:20px; color:#94a3b8; font-size:0.88rem;">
             Для этой игры пока нет встроенных секретов.<br>
-            Нажмите кнопку ниже, чтобы автоматически подгрузить интересные факты и советы по механике на русском языке!
+            Нажмите кнопку ниже, чтобы автоматически подгрузить данные из энциклопедии на русском языке!
           </div>
         `;
       }
@@ -1647,7 +1649,7 @@
               <span>📖 Особенности геймплея и советы</span>
               <button class="copy-to-notes-btn" onclick="copySecretToNotes(activeNotebookGameId, 'Геймплей', '${paragraphs[0].replace(/'/g, "\\'")}')">📥 В блокнот</button>
             </h4>
-            <p style="color:#cbd5e1; font-size:0.9rem;">${paragraphs.join('\n\n')}</p>
+            <p style="color:#cbd5e1; font-size:0.88rem;">${paragraphs.join('\n\n')}</p>
           `;
           container.appendChild(card);
         } else {
@@ -1817,7 +1819,7 @@
       reader.readAsDataURL(file);
     }
 
-    /* --- СОВЕТНИК ХИТОВ БЕЗ ПОВТОРОВ --- */
+    /* --- СОВЕТНИК ХИТОВ --- */
     function openAdvisorModal() {
       resetAdvisorAndRoll();
       document.getElementById('advisorModal').style.display = 'flex';
@@ -1881,7 +1883,7 @@
         addBtn.textContent = '✅ Уже в вашем списке';
         addBtn.disabled = true;
       } else {
-        addBtn.textContent = '➕ В мой список («Буду играть»)';
+        addBtn.textContent = '➕ В мой список';
         addBtn.disabled = false;
       }
     }
@@ -1920,7 +1922,7 @@
         div.className = `checklist-item ${item.done ? 'done' : ''}`;
         div.innerHTML = `
           <input type="checkbox" ${item.done ? 'checked' : ''} onchange="tempChecklist[${index}].done = this.checked; renderEditChecklist();" />
-          <span style="flex-grow:1; font-size:0.88rem;">${item.text}</span>
+          <span style="flex-grow:1; font-size:0.85rem;">${item.text}</span>
           <button type="button" class="checklist-del-btn" onclick="tempChecklist.splice(${index}, 1); renderEditChecklist();">&times;</button>
         `;
         container.appendChild(div);
@@ -2039,7 +2041,6 @@
       renderGames();
     }
 
-    // Надежное сохранение в localStorage с резервным дубликатом
     function persistData() {
       localStorage.setItem('gamers_corner_data', JSON.stringify(games));
       localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
