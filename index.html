@@ -2,18 +2,24 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="referrer" content="no-referrer" />
-  <title>Геймерский уголок v0.4</title>
+  <title>Геймерский уголок v0.5</title>
 
-  <!-- Иконка веб-приложения: Пиксельный геймпад -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%230a0d16' d='M0 0h32v32H0z'/%3E%3Cpath fill='%237c3aed' d='M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z'/%3E%3Cpath fill='%239333ea' d='M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z'/%3E%3Cpath fill='%23f43f5e' d='M21 15h2v2h-2z'/%3E%3Cpath fill='%2310b981' d='M25 15h2v2h-2z'/%3E%3Cpath fill='%23fbbf24' d='M23 13h2v2h-2z'/%3E%3Cpath fill='%2306b6d4' d='M23 17h2v2h-2z'/%3E%3Cpath fill='%23cbd5e1' d='M13 17h2v1h-2zm4 0h2v1h-2z'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%230a0d16' d='M0 0h32v32H0z'/%3E%3Cpath fill='%237c3aed' d='M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z'/%3E%3Cpath fill='%239333ea' d='M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z'/%3E%3Cpath fill='%23f43f5e' d='M21 15h2v2h-2z'/%3E%3Cpath fill='%2310b981' d='M25 15h2v2h-2z'/%3E%3Cpath fill='%23fbbf24' d='M23 13h2v2h-2z'/%3E%3Cpath fill='%2306b6d4' d='M23 17h2v2h-2z'/%3E%3Cpath fill='%23cbd5e1' d='M13 17h2v1h-2zm4 0h2v1h-2z'/%3E%3C/svg%3E" />
+  <!-- ИКОНКА ДЛЯ ЭКРАНА ДОМОЙ (iOS Safari + Android): Настоящий PNG 192x192 -->
+  <link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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" />
+  <link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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" />
+  <link rel="shortcut icon" href="data:image/png;base64,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" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Геймерский уголок" />
+  <meta name="theme-color" content="#0a0d16" />
+  <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogItCT0LXQudC80LXRgNGB0LrQuNC5INGD0LPQvtC70L7QuiIsCiAgInNob3J0X25hbWUiOiAi0JPQtdC50LzQkdC+0LrRgSIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBhMGQxNiIsCiAgInRoZW1lX2NvbG9yIjogIiMwYTBkMTYiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQVlBQUFCUzNHd0hBQUFIOTBsRVFWUjRuTzNjUDRzZFZSekc4VjgyNnhaUk1JakJJbDBnaFJCSUpiNkFiTzlic05uS2dOZ0pRVUlRd1U0QzZkTGtMZGl2cFVWS1VVaVJTc0VpSUlLZ0ZqRWhGanFiMlh0bjVwd3pjODdNNzgvM0E0TGN2ZGw3N3B6bm1YUHUzTHYzd3VVcjExN0pobDYrZUw3bHcyTmpGdytQTm4zOHc3VWZrTUNqYnpjUGF4ZGlsUUtrUXYvdytPa2F3NEF5SjZmWDkyN3JaMldOTWx4b3VRVWFDajVoeDVTaFVyUXNRcE1DN0FhZjBHT08zVEswS0VMVkFoQjh0TkN5Q0ZVS3NEVDRROHNlL0Z1YWt4cEZXRnlBZnZoem54Q0J4NUE1K1ZsYWdrVUZLQWsvb1VlSmtqd3RLY0dzQXBSc2VRZytsaWpKMXB3aUZCY2c5NnhQOEZGVGJ0WktTMUJVZ0p6d0UzeTBsSk83a2hJYzVONlI4RU9Ec1l6MU0xbnljWnVzQWhCK2FGS3pCRmxib082WERZV2Y0R05MVTVuTTJRb2xWd0RDRDgyR010aGxOV2NWbUN6QTFDOGcvTkJpS291cEVvd1dZTTQ3dklBV3VhOEhrbHNndGo2d1lHb3JOR1d3QU96N1lkR2Mxd1BaN3dPTVBRQ2dTV2xHOXdvd2RmWUhMSnBhQmJKWEFNNytzS0lrcStjS3dOa2ZYbzJ0QWxrckFHZC9XSk9iMmJNQ2NQYUhkME9yUUhJRjRPd1BxM0t5VzNRWkZQRG1RSVR0RCtMWTNRWk5yZ0JzZjJCZEtzTnNnUkFhQlVCb0IzeGRPYUo2K2VMNTZ4Vmc5d1V3KzM5NHNadmxmdGJaQWlFMENvRFFLQUJDb3dBSWpRSWdOQXFBMENnQVFxTUFDSTBDSURRS2dOQW9BRUtqQUFpTkFpQTBDb0RRRHJjZVFDMmZ2di9EMWtNSTUvNlRtMXNQWVRIVEJTRDAyK29mZjZ0bE1Ga0FncTlQTnlmV2ltRHVOUURoMTgzYS9KZ3FnTFdERzVXbGVUSlRBRXNIRlhibXkwUUJyQnhNbkdkaDN0UVh3TUpCeERqdDg2ZTZBTm9QSHZKb25rZTFCZEI4MEZCTzYzeXFMUUN3QnBVRjBIcTJ3RElhNTFWbEFZQzFVQUNFcHE0QUdwZEoxS050ZnRVVkFGZ1RCVUJvRkFDaG1meDdnQ1ZPdjN5eitOOGNmL0ZYZzVGczQrNVhIKzdkZHUvTzR3MUdvZ01yUUNCRDRaKzZQUUlLRUVRcTVGRkxRQUVDeUExM3hCSlFBT2RLUXgydEJCUUFvVkVBaEVZQkVCb0ZRR2dVd0xuU043bWl2U2xHQVFMSURYVzA4SXRRZ0RCUzRZNFlmaEVIbndXYTg5bWUxbyt4NW1lSFBuL2pzNzNidnY3bm04SDczcnZ6dVBpelFBL3VQdGk3N2ZhOTJ3VWoxTTE4QVNJYkNuOTMrMVFKY2cyRnY3dmRTd25ZQWhrMUZ2N2NuNmVNaFQvMzUxWlFBSU55d3oyM0JMbmg5bEFDQ21CTWFhaEw3MThhYXVzbG9BQUlqUUlnTkFxQTBDZ0FRcU1BeG94ZDM2OTEvOUxyKzliZkQ2QUFCdVdHdWpUOG5keFFXdysvQ0FVd0t4WHV1ZUh2cE1MdElmd2lGTUMwc1pCUGhmL0cxVXQ3LzQwWkM3bVg4SXM0K0N4UTZRZlB2SDB4VnNtWmZpenNONjVla3A5Ky9YdndaNTdDUG9RVklJaXBNMzNPejcyaUFBSGtoanRpQ1NpQWM2V2hqbFlDQ29EUTFMMEkvdVAzM3hvL1F0dS9JUHZvNFovSiszeDc4dFpxdjJlTzluT2dCeXNBUWxOWGdMZmZlWGZySWFBaGJmT3JyZ0NvNi9zZmYybDZmK3NvUUFhcmUrSnUzTG1oamhaK0VhVUYwTFpNZXBBSzl4cmgxeml2S2d1QU5zWkNIdkhNMzFGM0diUzFEejc1dWVudnIzVnBzdFVsenNoaEg2SjJCZEM0WEdJK3JmT3B0Z0RBR2loQUptdFhncXlOZHl2cUNuRC95YzJ6LzllNmJLSk1meDc3ODZ1QnVnSUFhNklBQ0UxbEFkZ0crYUY1K3lPaXRBREFXdFFXUU9QWndzcVZGWTNqMURpZklvb0xJUEw2b0xFTnNxbWJONjNoRjFGZUFCSGRCdzlwMnVkUGZRRkU5QjlFRExNd2J5WUtJQ0x5Nk5tdHJZZUFBbGJteTB3QmdCWW9RQ0dOVjFqNnRJOVBHMU1Gc0xLc1JtZHBua3dWQUtndDNGK0UxYUQ1NnNiSDczMjM5UkJNTWJjQ1dGcGVJN0kyUCtZS0FOUkVBV2JRdXMzUU9pN05UQmJBMmpJYmhjVjVNVmtBb0JZS2dORE1Gc0RpY3V1WjFma3dXd0NnQmdvd2s3WXJMdHJHWTRYcEFsaGRkcjJ4UEErbUN3QXNSUUZtMG5iVzB6WWVLOHdYWU8ySmYvVHNsdHF3YlRFMnJjY2lsL2tDck1uS1pGc1pwd1lVSUpPMVVGa2I3MVpjRktEbFpHdmU4cVMwSHJ2VjQ5TG5vZ0N0ZUpoZ0VUL1Bvd1VLTU1KYmFMdzluMXJjRktEV0JGdmU4cVRVZkc1ZWpwR2JBdFRnWlZKVG9qelBIQlRnZjlGQ0VlMzVqbkZWZ0RtVDZubkxrekwzdVhzNlhxNEtVTXJUUkM0UitUaUVMVURrU1I4UzlYaTRLMEJxSWlOdmVWSnlqbzIzWStldUFGTzhUVjRya1k1VG1BSkVtdFFhb2h3dmx3WG9UeDVibnZsMmo1M0g0K2l5QUIyUEU3WUZ6OGZSYlFFOFQ5b1d2QjVQdHdVQWNsQUFoRVlCRUJvRlFHZ1VBS0ZSQUlSR0FSRGFXUUZPVHErZis4SEQ0NmVyRHdab1lUZkwvYXdmWER3OFduczhnQW9YRDQvWUFpRTJDb0RRSmd2QTZ3QllsOHJ3Z2NoL2V5R1IvUmZDZ0RkZHhydk1zd1ZDYU1rQ3NBMkNWVG5aUFNzQTJ5QjR0N3Y5RWNuY0FyRUt3SnJjeko0ckFLc0F2Qm82KzRzVXZBaG1GWUFWSlZuZEt3Q3JBTHdaTy91TEZGNEdaUldBZHFVWkhTekExQ3BBQ2FEVlVEYW56djRpR1NzQUpZQUZVK0dmTWxxQWZtTjRQUUJyK3BtZCtzai81QW93OVE5WkJhREZWQlpUZisrUzNBTHhlZ0NhemRuMzkxMjRmT1hhcTlTZFhyNTRQdm1BL1FjRjFwQ1R3NXdDWkYwR3pYazl3R3FBdGRRS3YwakIrd0NVQUJyVURMOUk1aGFvTDJjN3REc2dZS25jckpWK3lVTnhBVVRPbDBDRUlxQ2RrbXpOK1lhVFdRWG81SzRHSWhRQlpVcnl0T1NyZlJZVlFLU3NCQjNLZ0NGejhyUDBlNjBXRjBDa2JFczBoRUxFdERRbk5iN1VyVW9CT2t1TEFBeHBFZnhPMVFKMEtBSnFhQm44VHBNQ2RIYUxJRUlaTUcxb085enkrMnViRnFBelZJUStTaEZUNnJYZkdsL2N2RW9CK2xKbFFHeHJmMXY1NGFxUEp2dFBrRUxFdHZYWDgvOExsNGdScXJGQjd3Z0FBQUFBU1VWT1JLNUNZSUk9IiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciCiAgICB9CiAgXQp9" />
 
   <style>
     :root {
       --bg-dark: #0a0d16;
-      --card-bg: rgba(18, 25, 41, 0.92);
+      --card-bg: rgba(18, 25, 41, 0.94);
       --card-border: rgba(56, 189, 248, 0.18);
       --card-border-hover: rgba(168, 85, 247, 0.65);
       --accent-purple: #a855f7;
@@ -24,10 +30,24 @@
       --text-muted: #94a3b8;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    /* Защита от горизонтального скролла на всех смартфонах */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      background-color: var(--bg-dark);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
 
     body {
-      background-color: var(--bg-dark);
       background-image: 
         radial-gradient(circle at 14% 18%, rgba(168, 85, 247, 0.22) 0%, transparent 45%),
         radial-gradient(circle at 86% 22%, rgba(56, 189, 248, 0.20) 0%, transparent 45%),
@@ -42,16 +62,18 @@
       flex-direction: column;
     }
 
+    /* Шапка сайта */
     header {
-      background: rgba(12, 17, 28, 0.92);
+      background: rgba(12, 17, 28, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: 10px 16px;
+      padding: 10px 14px;
       border-bottom: 1px solid rgba(56, 189, 248, 0.22);
       position: sticky;
       top: 0;
       z-index: 100;
       box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+      width: 100%;
     }
     .header-content {
       max-width: 1240px;
@@ -61,12 +83,13 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
+      width: 100%;
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.3rem;
+      gap: 8px;
+      font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: 0.5px;
       text-decoration: none;
@@ -89,10 +112,11 @@
     }
 
     .pixel-pad-icon {
-      width: 34px;
-      height: 34px;
-      image-rendering: pixelated;
-      filter: drop-shadow(0 0 8px rgba(168,85,247,0.7));
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(168,85,247,0.5);
+      display: block;
     }
 
     .header-actions { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
@@ -102,17 +126,16 @@
       display: inline-flex;
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 2px;
-      margin-right: 4px;
     }
     .mode-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 5px 10px;
-      border-radius: 16px;
-      font-size: 0.78rem;
+      padding: 5px 9px;
+      border-radius: 14px;
+      font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
@@ -120,67 +143,75 @@
     .mode-btn.active {
       background: linear-gradient(135deg, #38bdf8, #818cf8);
       color: #041221;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
     }
 
     .btn {
-      padding: 7px 12px;
+      padding: 6px 12px;
       border-radius: 8px;
       border: 1px solid transparent;
       cursor: pointer;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 4px;
       user-select: none;
     }
     .btn-primary { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: #fff; }
     .btn-advisor { background: linear-gradient(135deg, #f59e0b, #ec4899); color: #fff; font-weight: 700; }
-    .btn-secondary { background: rgba(30, 41, 59, 0.8); color: var(--text); border-color: rgba(148, 163, 184, 0.25); }
+    .btn-secondary { background: rgba(30, 41, 59, 0.85); color: var(--text); border-color: rgba(148, 163, 184, 0.25); }
     .btn-danger { background: #ef4444; color: #fff; }
     .btn-key {
       background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #fff;
       font-weight: 700;
-      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
     }
 
-    .container { max-width: 1240px; margin: 14px auto; padding: 0 12px; flex-grow: 1; }
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 12px auto;
+      padding: 0 12px;
+      flex-grow: 1;
+    }
 
-    /* Панель фильтров */
+    /* Панель фильтров: не вылезает за экран */
     .controls-wrapper {
       background: rgba(18, 25, 41, 0.82);
       border: 1px solid var(--card-border);
       backdrop-filter: blur(12px);
       border-radius: 12px;
       padding: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      width: 100%;
     }
     .controls-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
+      width: 100%;
     }
     .scroll-filters {
       display: flex;
       gap: 5px;
       overflow-x: auto;
       white-space: nowrap;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      flex-grow: 1;
+      width: 100%;
+      min-width: 0;
     }
     .scroll-filters::-webkit-scrollbar { display: none; }
     .filter-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-weight: 700;
       text-transform: uppercase;
@@ -192,10 +223,10 @@
       background: rgba(15, 23, 42, 0.75);
       border: 1px solid rgba(148, 163, 184, 0.2);
       color: var(--text-muted);
-      padding: 5px 11px;
-      border-radius: 18px;
+      padding: 5px 10px;
+      border-radius: 16px;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       flex-shrink: 0;
       transition: all 0.2s;
     }
@@ -214,43 +245,43 @@
       background: rgba(11, 16, 28, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.25);
       color: #fff;
-      padding: 7px 12px;
+      padding: 8px 12px;
       border-radius: 8px;
-      width: 220px;
       outline: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
+      width: 100%;
     }
 
-    /* СЕТКА ИГР — ПРОПОРЦИОНАЛЬНЫЕ ОБЛОЖКИ БЕЗ РАСТЯГИВАНИЯ */
+    /* СЕТКА ИГР */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
+      gap: 12px;
+      width: 100%;
     }
     .game-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, border-color 0.2s;
       position: relative;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      min-width: 0; /* Предотвращает вытягивание колонки */
     }
     .game-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: var(--card-border-hover);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.65), 0 0 16px rgba(168, 85, 247, 0.35);
     }
 
-    /* Защита от растягивания картинки: пропорциональный контейнер 16/10 */
+    /* ОБЛОЖКА БЕЗ РАСТЯГИВАНИЯ: ЧЕТКИЕ ПРОПОРЦИИ 16 / 10 */
     .card-cover-wrap {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 10;
-      background: #090e17;
+      background: #090d16;
       overflow: hidden;
     }
     .card-cover {
@@ -259,15 +290,13 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      transition: transform 0.3s;
     }
-    .game-card:hover .card-cover { transform: scale(1.04); }
 
     .card-badges {
       position: absolute;
-      top: 8px;
-      left: 8px;
-      right: 8px;
+      top: 6px;
+      left: 6px;
+      right: 6px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -275,21 +304,21 @@
       z-index: 2;
     }
     .badge {
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
-    .status-playing { background: rgba(16, 185, 129, 0.92); color: #fff; }
-    .status-planned { background: rgba(245, 158, 11, 0.92); color: #fff; }
-    .status-paused { background: rgba(244, 63, 94, 0.92); color: #fff; }
-    .status-completed { background: rgba(59, 130, 246, 0.92); color: #fff; }
+    .status-playing { background: rgba(16, 185, 129, 0.94); color: #fff; }
+    .status-planned { background: rgba(245, 158, 11, 0.94); color: #fff; }
+    .status-paused { background: rgba(244, 63, 94, 0.94); color: #fff; }
+    .status-completed { background: rgba(59, 130, 246, 0.94); color: #fff; }
 
     .rating-badge {
       background: rgba(15, 23, 42, 0.92);
@@ -301,48 +330,67 @@
       background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(168, 85, 247, 0.4);
       color: #d8b4fe;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 5px;
       border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 90px;
     }
 
     .card-key-btn {
       background: rgba(15, 23, 42, 0.88);
       border: 1px solid rgba(245, 158, 11, 0.6);
       color: #fbbf24;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.68rem;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       cursor: pointer;
-      transition: all 0.2s;
+      flex-shrink: 0;
     }
     .card-key-btn:hover { background: #f59e0b; color: #0b0f19; }
 
     .card-body {
-      padding: 10px 12px;
+      padding: 8px 10px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 6px;
+      min-width: 0;
     }
     .card-title {
-      font-size: 0.98rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #fff;
-      line-height: 1.3;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
-    .checklist-progress { margin-top: 3px; }
+    .card-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .checklist-progress { margin-top: 2px; }
     .progress-text {
       display: flex;
       justify-content: space-between;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
       margin-bottom: 2px;
     }
@@ -358,15 +406,57 @@
       transition: width 0.3s;
     }
 
+    /* =================================================================
+       РЕЖИМЫ ОТОБРАЖЕНИЯ: PHONE VS PC
+       ================================================================= */
+    /* РЕЖИМ ТЕЛЕФОНА (2 КОЛОНКИ БЕЗ СЪЕЗЖАНИЯ ВПРАВО) */
+    body.mode-phone .container {
+      padding: 0 8px;
+      margin-top: 8px;
+    }
+    body.mode-phone .controls-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
+    body.mode-phone .games-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 8px !important;
+    }
+    body.mode-phone .card-cover-wrap {
+      aspect-ratio: 16 / 10 !important;
+    }
+    body.mode-phone .card-body {
+      padding: 6px 8px !important;
+    }
+    body.mode-phone .card-title {
+      font-size: 0.82rem !important;
+    }
+
+    /* РЕЖИМ ПК (ШИРОКИЙ ЭКРАН) */
+    body.mode-pc .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+      gap: 16px !important;
+    }
+    body.mode-pc .card-cover-wrap {
+      aspect-ratio: 16 / 10 !important;
+    }
+    body.mode-pc .card-title {
+      font-size: 1rem !important;
+    }
+    body.mode-pc .platform-badge {
+      max-width: none !important;
+    }
+
     /* Модальные окна */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(3, 7, 18, 0.88);
+      background: rgba(3, 7, 18, 0.9);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 10px;
       z-index: 200;
       backdrop-filter: blur(8px);
     }
@@ -376,72 +466,63 @@
       border-radius: 14px;
       max-width: 740px;
       width: 100%;
-      max-height: 92vh;
+      max-height: 94vh;
       overflow-y: auto;
-      padding: 18px;
+      padding: 16px;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.15);
     }
     .modal-close {
       position: absolute;
-      top: 12px; right: 12px;
+      top: 10px; right: 10px;
       background: #1f293d;
       border: 1px solid rgba(255,255,255,0.1);
       color: #fff;
-      width: 30px; height: 30px;
+      width: 28px; height: 28px;
       border-radius: 50%;
       cursor: pointer;
       font-size: 1.1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: 0.2s;
       z-index: 10;
     }
-    .modal-close:hover { background: #ef4444; }
 
-    /* =================================================================
-       ДИЗАЙН КНИГИ / ТАКТИЧЕСКОГО БЛОКНОТА 
-       ================================================================= */
+    /* Книга-блокнот */
     .book-wrapper {
       background: #181524;
       border: 2px solid #3b2d56;
       border-radius: 12px;
-      box-shadow: 
-        -10px 0 25px rgba(0,0,0,0.8),
-        10px 10px 30px rgba(0,0,0,0.6),
-        inset 0 0 15px rgba(0,0,0,0.7);
+      box-shadow: -6px 0 20px rgba(0,0,0,0.8), 6px 6px 20px rgba(0,0,0,0.6);
       position: relative;
-      padding: 14px 14px 14px 32px;
-      margin-top: 10px;
+      padding: 12px 10px 12px 26px;
+      margin-top: 8px;
       overflow: hidden;
+      width: 100%;
     }
     .book-spine {
       position: absolute;
       top: 0; bottom: 0; left: 0;
-      width: 22px;
+      width: 18px;
       background: linear-gradient(90deg, #2a1f42 0%, #150f22 100%);
       border-right: 2px dashed rgba(168, 85, 247, 0.35);
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      padding: 16px 0;
+      padding: 12px 0;
     }
     .book-ring {
-      width: 12px;
-      height: 6px;
+      width: 10px;
+      height: 5px;
       background: linear-gradient(180deg, #94a3b8 0%, #334155 100%);
       border-radius: 3px;
-      box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.8);
     }
     .book-bookmark-ribbon {
       position: absolute;
-      top: 0; right: 35px;
-      width: 16px;
-      height: 34px;
+      top: 0; right: 30px;
+      width: 15px;
+      height: 30px;
       background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
       z-index: 5;
     }
@@ -449,36 +530,19 @@
       background: #0f1523;
       background-image: 
         repeating-linear-gradient(transparent, transparent 27px, rgba(56, 189, 248, 0.08) 28px),
-        linear-gradient(90deg, transparent 34px, rgba(244, 63, 94, 0.25) 35px, transparent 36px);
-      border-radius: 8px;
-      padding: 12px 14px 12px 42px;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+        linear-gradient(90deg, transparent 26px, rgba(244, 63, 94, 0.25) 27px, transparent 28px);
+      border-radius: 6px;
+      padding: 10px 10px 10px 32px;
       border: 1px solid rgba(255,255,255,0.05);
+      width: 100%;
     }
-    .book-page-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .book-page-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .book-save-indicator { font-size: 0.75rem; color: #10b981; font-weight: 600; }
     .book-textarea {
       width: 100%;
-      min-height: 180px;
+      min-height: 160px;
       background: transparent;
       border: none;
       color: #f1f5f9;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       line-height: 28px;
       outline: none;
       resize: vertical;
@@ -486,11 +550,11 @@
     }
     .book-toolbar {
       display: flex;
-      gap: 5px;
+      gap: 4px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 6px;
       border-top: 1px dashed rgba(255,255,255,0.1);
-      padding-top: 8px;
+      padding-top: 6px;
     }
     .book-tool-btn {
       background: rgba(30, 41, 59, 0.7);
@@ -501,49 +565,38 @@
       cursor: pointer;
       font-size: 0.75rem;
     }
-    .book-tool-btn:hover { color: #fff; background: rgba(56, 189, 248, 0.25); border-color: #38bdf8; }
 
-    /* Скриншоты и карты */
-    .screenshots-gallery-title {
-      margin-top: 14px;
-      font-size: 0.85rem;
-      color: #fbbf24;
-      font-weight: 700;
-    }
     .screenshots-grid {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       overflow-x: auto;
-      padding: 8px 4px 6px 4px;
-      margin-top: 4px;
+      padding: 6px 2px;
     }
     .screenshot-polaroid {
       background: #1e293b;
       border: 1px solid rgba(255,255,255,0.15);
       border-radius: 6px;
-      padding: 5px;
-      width: 120px;
+      padding: 4px;
+      width: 110px;
       flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
       position: relative;
-      cursor: pointer;
     }
     .screenshot-img {
       width: 100%;
-      height: 80px;
+      height: 75px;
       object-fit: cover;
       border-radius: 4px;
       display: block;
       background: #090e17;
     }
     .screenshot-caption {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       margin-top: 3px;
-      white-space: nowrap;
+      text-align: center;
       overflow: hidden;
       text-overflow: ellipsis;
-      text-align: center;
+      white-space: nowrap;
     }
     .screenshot-delete-btn {
       position: absolute;
@@ -552,23 +605,20 @@
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 18px; height: 18px;
-      font-size: 0.7rem;
+      width: 16px; height: 16px;
+      font-size: 0.68rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .image-zoom-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.94);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 300;
-      padding: 16px;
+      padding: 12px;
     }
     .image-zoom-img {
       max-width: 95vw;
@@ -577,21 +627,20 @@
       border-radius: 6px;
     }
 
-    /* Поля формы */
+    /* Поля ввода */
     .form-group { margin-bottom: 10px; }
-    .form-group label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
+    .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; }
     .form-control {
       width: 100%;
       background: #090e17;
       border: 1px solid #222f44;
       color: #fff;
-      padding: 8px 10px;
-      border-radius: 7px;
+      padding: 7px 10px;
+      border-radius: 6px;
       outline: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
     }
-    .form-control:focus { border-color: var(--accent-cyan); }
-    textarea.form-control { resize: vertical; min-height: 75px; }
+    textarea.form-control { resize: vertical; min-height: 70px; }
 
     .search-candidates-list {
       display: flex;
@@ -601,7 +650,7 @@
       padding-bottom: 4px;
     }
     .candidate-card {
-      width: 80px;
+      width: 75px;
       flex-shrink: 0;
       cursor: pointer;
       border: 1px solid #222f44;
@@ -610,12 +659,12 @@
       background: #090e17;
       text-align: center;
     }
-    .candidate-img { width: 100%; height: 90px; object-fit: cover; display: block; }
-    .candidate-title { font-size: 0.65rem; padding: 3px 2px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .candidate-img { width: 100%; height: 85px; object-fit: cover; display: block; }
+    .candidate-title { font-size: 0.62rem; padding: 2px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     .cover-thumb-preview {
-      width: 55px;
-      height: 75px;
+      width: 50px;
+      height: 70px;
       object-fit: cover;
       border-radius: 6px;
       background: #090e17;
@@ -623,202 +672,114 @@
       flex-shrink: 0;
     }
 
-    /* Чеклист */
     .checklist-box {
       background: #0a0f1a;
       border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 12px;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 10px;
     }
-    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
     .checklist-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 8px;
+      gap: 6px;
+      padding: 5px 6px;
       background: rgba(18, 25, 41, 0.6);
-      border-radius: 5px;
-      margin-bottom: 5px;
-      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 4px;
+      margin-bottom: 4px;
     }
     .checklist-item.done span { text-decoration: line-through; color: var(--text-muted); }
-    .checklist-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent-green); cursor: pointer; }
-    .checklist-del-btn {
-      margin-left: auto;
-      background: none;
-      border: none;
-      color: #ef4444;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+    .checklist-del-btn { margin-left: auto; background: none; border: none; color: #ef4444; cursor: pointer; }
 
-    /* Секреты */
     .secret-item-card {
       background: #0a0f1a;
       border: 1px solid #243550;
       border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 10px;
-      line-height: 1.45;
+      padding: 10px;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
-    .secret-item-card h4 {
-      color: #fbbf24;
-      margin-bottom: 5px;
-      font-size: 0.92rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .secret-item-card h4 { color: #fbbf24; margin-bottom: 4px; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; }
     .copy-to-notes-btn {
       background: #1e293b;
       border: 1px solid #334155;
       color: var(--text-muted);
-      font-size: 0.72rem;
-      padding: 3px 7px;
+      font-size: 0.7rem;
+      padding: 2px 6px;
       border-radius: 4px;
       cursor: pointer;
     }
 
-    /* Советник */
     .advisor-filter-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 6px;
       background: #0c121e;
       border: 1px solid #1f2c42;
-      padding: 10px;
+      padding: 8px;
       border-radius: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .advisor-result-card {
       background: #0e1524;
       border: 1px solid #243550;
-      border-radius: 12px;
-      padding: 14px;
+      border-radius: 10px;
+      padding: 12px;
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: flex-start;
     }
     .advisor-cover {
-      width: 140px;
-      height: 200px;
+      width: 120px;
+      height: 170px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 6px;
       background: #090e17;
       border: 1px solid #2a3d5e;
       flex-shrink: 0;
-    }
-    .advisor-details { flex-grow: 1; display: flex; flex-direction: column; gap: 6px; }
-    .advisor-title { font-size: 1.25rem; font-weight: 800; color: #fff; }
-    .advisor-badge-row { display: flex; gap: 5px; flex-wrap: wrap; }
-    .advisor-hook {
-      background: rgba(168, 85, 247, 0.12);
-      border-left: 3px solid var(--accent-purple);
-      padding: 6px 9px;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      color: #e2e8f0;
-      line-height: 1.4;
     }
 
     footer.app-footer {
       border-top: 1px solid rgba(56, 189, 248, 0.15);
       background: rgba(10, 14, 23, 0.9);
-      padding: 12px 16px;
+      padding: 10px 14px;
       margin-top: auto;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
     .version-tag {
       background: rgba(56, 189, 248, 0.15);
       color: #38bdf8;
-      padding: 2px 7px;
-      border-radius: 10px;
-      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 0.7rem;
       font-weight: 700;
       border: 1px solid rgba(56, 189, 248, 0.3);
     }
-
-    /* =================================================================
-       СПЕЦИАЛЬНЫЙ РЕЖИМ ДЛЯ ТЕЛЕФОНА (АКТИВИРУЕТСЯ КНОПКОЙ ИЛИ НА ЭКРАНАХ < 768px)
-       ================================================================= */
-    body.view-mode-phone .container { padding: 0 8px; margin-top: 8px; }
-    body.view-mode-phone .games-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 9px !important;
-    }
-    /* Идеальные пропорции обложки на телефоне: никогда не растягивается */
-    body.view-mode-phone .card-cover-wrap {
-      aspect-ratio: 16 / 11 !important;
-      height: auto !important;
-    }
-    body.view-mode-phone .card-cover {
-      object-fit: cover !important;
-      object-position: center !important;
-    }
-    body.view-mode-phone .card-body { padding: 8px !important; }
-    body.view-mode-phone .card-title { font-size: 0.85rem !important; }
-    body.view-mode-phone .badge { font-size: 0.62rem !important; padding: 2px 5px !important; }
-    body.view-mode-phone .card-key-btn { font-size: 0.68rem !important; padding: 2px 6px !important; }
-
-    body.view-mode-phone .modal-content { padding: 14px !important; border-radius: 12px !important; max-height: 96vh !important; }
-    body.view-mode-phone .book-wrapper { padding: 12px 8px 12px 24px !important; }
-    body.view-mode-phone .book-spine { width: 16px !important; }
-    body.view-mode-phone .book-ring { width: 9px !important; height: 5px !important; }
-    body.view-mode-phone .book-page { padding: 10px 8px 10px 24px !important; }
-    body.view-mode-phone .book-page-title { font-size: 0.82rem !important; }
-    body.view-mode-phone .book-textarea { font-size: 0.9rem !important; min-height: 160px !important; }
-
-    body.view-mode-phone .advisor-result-card { flex-direction: column !important; align-items: center !important; text-align: center !important; }
-    body.view-mode-phone .advisor-cover { width: 130px !important; height: 180px !important; }
-
-    /* РЕЖИМ ПК (ШИРОКИЙ ЭКРАН) */
-    body.view-mode-pc .games-grid {
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
-      gap: 18px !important;
-    }
-    body.view-mode-pc .card-cover-wrap {
-      aspect-ratio: 16 / 10 !important;
-    }
-
-    @media (max-width: 650px) {
-      .header-content { flex-direction: column; align-items: stretch; }
-      .header-actions { justify-content: space-between; }
-      .controls-row { flex-direction: column; align-items: stretch; }
-      .search-input { width: 100%; }
-    }
   </style>
 </head>
-<body class="view-mode-phone">
+<body class="mode-phone">
 
   <header>
     <div class="header-content">
       <a href="#" class="brand">
-        <!-- Пиксельный геймпад -->
-        <svg class="pixel-pad-icon" viewBox="0 0 32 32" shape-rendering="crispEdges">
-          <path fill="#7c3aed" d="M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z"/>
-          <path fill="#9333ea" d="M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z"/>
-          <path fill="#38bdf8" d="M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z"/>
-          <path fill="#f43f5e" d="M21 15h2v2h-2z"/>
-          <path fill="#10b981" d="M25 15h2v2h-2z"/>
-          <path fill="#fbbf24" d="M23 13h2v2h-2z"/>
-          <path fill="#06b6d4" d="M23 17h2v2h-2z"/>
-        </svg>
+        <!-- Иконка геймпада в шапке -->
+        <img class="pixel-pad-icon" src="data:image/png;base64,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" alt="Логотип" />
         <span class="brand-title">Геймерский уголок</span>
       </a>
 
       <div class="header-actions">
-        <!-- Переключатель режима PC / Phone -->
+        <!-- Переключатель режима: ПК / Телефон -->
         <div class="mode-switch-box" title="Переключить вид: ПК или телефон">
-          <button class="mode-btn" id="btnModePc" onclick="setViewMode('pc')">🖥️ ПК</button>
-          <button class="mode-btn active" id="btnModePhone" onclick="setViewMode('phone')">📱 Телефон</button>
+          <button class="mode-btn" id="btnModePc" onclick="switchViewMode('pc')">🖥️ ПК</button>
+          <button class="mode-btn active" id="btnModePhone" onclick="switchViewMode('phone')">📱 Телефон</button>
         </div>
 
         <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит">🎯 Советник</button>
@@ -832,6 +793,12 @@
 
   <div class="container">
     <div class="controls-wrapper">
+      <!-- Поиск по каталогу -->
+      <div class="controls-row">
+        <input type="text" class="search-input" id="searchBox" placeholder="🔍 Найти игру по названию..." oninput="renderGames()" />
+      </div>
+
+      <!-- Статусы: скролл без съезжания страницы -->
       <div class="controls-row">
         <div class="scroll-filters">
           <span class="filter-label">Статус:</span>
@@ -841,9 +808,9 @@
           <button class="filter-btn" onclick="setStatusFilter('paused', this)">⏸️ На паузе (<span id="count-paused">0</span>)</button>
           <button class="filter-btn" onclick="setStatusFilter('completed', this)">✅ Пройдено (<span id="count-completed">0</span>)</button>
         </div>
-        <input type="text" class="search-input" id="searchBox" placeholder="🔍 Найти игру..." oninput="renderGames()" />
       </div>
 
+      <!-- Платформы: скролл без съезжания страницы -->
       <div class="controls-row">
         <div class="scroll-filters">
           <span class="filter-label">Платформа:</span>
@@ -862,28 +829,26 @@
     <div class="games-grid" id="gamesGrid"></div>
   </div>
 
-  <!-- ОКНО: СТИЛИЗОВАННЫЙ БЛОКНОТ-КНИГА -->
+  <!-- ОКНО: КНИГА-БЛОКНОТ ДЛЯ ЗАМЕТОК -->
   <div class="modal-overlay" id="notebookModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('notebookModal')">&times;</button>
 
-      <div style="display: flex; gap: 12px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 10px;">
-        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" style="width: 55px; height: 75px;" />
-        <div style="flex-grow: 1;">
-          <h2 id="nbTitle" style="color: #fff; font-size: 1.2rem; margin-bottom: 4px;"></h2>
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+      <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 8px;">
+        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
+        <div style="flex-grow: 1; min-width: 0;">
+          <h2 id="nbTitle" style="color: #fff; font-size: 1.15rem; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h2>
+          <div style="display: flex; gap: 4px; flex-wrap: wrap;">
             <span id="nbBadge" class="badge"></span>
             <span id="nbPlatformBadge" class="badge platform-badge"></span>
             <span id="nbRatingBadge" class="badge rating-badge" style="display:none;"></span>
           </div>
         </div>
-        <button class="btn btn-key" id="nbKeyBtn" title="Секреты и прохождение">🔑 Секреты</button>
+        <button class="btn btn-key" id="nbKeyBtn" title="Секреты">🔑 Секреты</button>
       </div>
 
-      <!-- Конструкция книги-блокнота -->
       <div class="book-wrapper">
         <div class="book-spine">
-          <div class="book-ring"></div>
           <div class="book-ring"></div>
           <div class="book-ring"></div>
           <div class="book-ring"></div>
@@ -892,9 +857,9 @@
         <div class="book-bookmark-ribbon"></div>
 
         <div class="book-page">
-          <div class="book-page-header">
-            <div class="book-page-title">📖 Полевой дневник & заметки</div>
-            <div class="book-save-indicator" id="nbSaveStatus">✍️ Сохранено</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span style="font-size:0.85rem; font-weight:700; color:#38bdf8;">📖 Полевой дневник</span>
+            <span id="nbSaveStatus" style="font-size:0.75rem; color:#10b981;">✍️ Сохранено</span>
           </div>
 
           <textarea class="book-textarea" id="nbTextarea" placeholder="Нажмите сюда и пишите заметки... Секреты, коды дверей, тайники, комбинации билда..." oninput="autoSaveNotebook()"></textarea>
@@ -908,29 +873,25 @@
             <input type="file" id="nbScreenshotInput" style="display:none" accept="image/*" onchange="handleScreenshotUpload(event)" />
           </div>
 
-          <!-- Галерея прикрепленных скриншотов -->
-          <div id="nbScreenshotsSection" style="display:none;">
-            <div class="screenshots-gallery-title">
-              <span>🗺️ Карты и скриншоты:</span>
-            </div>
+          <div id="nbScreenshotsSection" style="display:none; margin-top:10px;">
+            <div style="font-size:0.8rem; color:#fbbf24; font-weight:700;">🗺️ Карты и скриншоты:</div>
             <div class="screenshots-grid" id="nbScreenshotsGrid"></div>
           </div>
         </div>
       </div>
 
-      <!-- Чеклист -->
       <div class="checklist-box" id="nbChecklistBox">
         <div class="checklist-header">
-          <h4 style="color:#10b981; font-size:0.88rem;">🎯 Чеклист целей:</h4>
-          <span id="nbChecklistRatio" style="font-size:0.75rem; color:#38bdf8; font-weight:700;"></span>
+          <span style="color:#10b981; font-size:0.82rem; font-weight:700;">🎯 Чеклист целей:</span>
+          <span id="nbChecklistRatio" style="font-size:0.72rem; color:#38bdf8; font-weight:700;"></span>
         </div>
         <div id="nbChecklistItems"></div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 8px;">
-        <p id="nbDesc" style="color: var(--text-muted); font-size: 0.82rem; max-width: 450px;"></p>
-        <div style="display: flex; gap: 6px; margin-left: auto;">
-          <button class="btn btn-secondary" id="nbEditBtn">⚙️ Настройки</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 6px;">
+        <p id="nbDesc" style="color: var(--text-muted); font-size: 0.78rem; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin:0;"></p>
+        <div style="display: flex; gap: 6px; margin-left: auto; flex-shrink:0;">
+          <button class="btn btn-secondary" id="nbEditBtn">⚙️ Инфо</button>
           <button class="btn btn-primary" onclick="closeModal('notebookModal')">Закрыть</button>
         </div>
       </div>
@@ -944,24 +905,24 @@
 
   <!-- ОКНО: СЕКРЕТЫ -->
   <div class="modal-overlay" id="secretsModal">
-    <div class="modal-content" style="max-width: 720px;">
+    <div class="modal-content" style="max-width: 680px;">
       <button class="modal-close" onclick="closeModal('secretsModal')">&times;</button>
 
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid #233550; padding-bottom: 8px;">
-        <span style="font-size: 1.5rem;">🔑</span>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; border-bottom: 1px solid #233550; padding-bottom: 8px;">
+        <span style="font-size: 1.4rem;">🔑</span>
         <div>
-          <h3 style="color:#fbbf24; font-size: 1.2rem;" id="secretsGameTitle">Секреты и подсказки</h3>
-          <p style="color:var(--text-muted); font-size: 0.8rem;">Тайники, пасхалки и советы по прохождению</p>
+          <h3 style="color:#fbbf24; font-size: 1.15rem; margin:0;" id="secretsGameTitle">Секреты и подсказки</h3>
+          <p style="color:var(--text-muted); font-size: 0.75rem; margin:0;">Тайники, пасхалки и советы по прохождению</p>
         </div>
       </div>
 
-      <div id="secretsLoading" style="text-align: center; color: #38bdf8; padding: 20px; display: none;">
-        🔍 Ищем секреты и советы по прохождению на русском языке...
+      <div id="secretsLoading" style="text-align: center; color: #38bdf8; padding: 16px; display: none;">
+        🔍 Ищем секреты и советы на русском языке...
       </div>
 
       <div id="secretsListContainer"></div>
 
-      <div style="display: flex; justify-content: space-between; margin-top: 16px;">
+      <div style="display: flex; justify-content: space-between; margin-top: 14px; gap:6px;">
         <button class="btn btn-secondary" onclick="fetchOnlineSecrets()">🌐 Загрузить доп. секреты</button>
         <button class="btn btn-primary" onclick="closeModal('secretsModal')">Закрыть</button>
       </div>
@@ -972,18 +933,18 @@
   <div class="modal-overlay" id="editModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('editModal')">&times;</button>
-      <h3 style="margin-bottom: 12px; color:#fff;" id="modalFormTitle">Добавить игру</h3>
+      <h3 style="margin-bottom: 10px; color:#fff; font-size:1.15rem;" id="modalFormTitle">Добавить игру</h3>
 
       <div class="form-group">
         <label>Название игры:</label>
-        <div style="display: flex; gap: 8px;">
+        <div style="display: flex; gap: 6px;">
           <input type="text" class="form-control" id="gameTitleInput" placeholder="Например: fable, the outer world, дайн лайт..." />
           <button class="btn btn-secondary" id="autoFetchBtn" onclick="fetchGameInfo()">🔍 Найти</button>
         </div>
         <div id="searchCandidatesArea" class="search-candidates-list" style="display:none;"></div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
         <div class="form-group">
           <label>Статус:</label>
           <select class="form-control" id="gameStatusSelect">
@@ -1008,7 +969,7 @@
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
         <div class="form-group">
           <label>Оценка (1-10):</label>
           <select class="form-control" id="gameRatingSelect">
@@ -1023,21 +984,21 @@
         </div>
 
         <div class="form-group">
-          <label>Дата прохождения:</label>
+          <label>Дата финала:</label>
           <input type="date" class="form-control" id="gameCompletedDateInput" />
         </div>
       </div>
 
       <div class="form-group">
         <label>Обложка игры:</label>
-        <div style="display: flex; gap: 8px;">
+        <div style="display: flex; gap: 6px;">
           <input type="text" class="form-control" id="gameCoverInput" placeholder="URL картинки..." oninput="updateCoverPreview(this.value)" />
-          <button class="btn btn-secondary" type="button" onclick="document.getElementById('coverFileInput').click()" title="Загрузить фото с телефона">📁 Фото</button>
+          <button class="btn btn-secondary" type="button" onclick="document.getElementById('coverFileInput').click()">📁 Фото</button>
           <input type="file" id="coverFileInput" style="display:none" accept="image/*" onchange="handleFileUpload(event)" />
         </div>
-        <div style="display:flex; gap:10px; align-items:center; margin-top:6px;">
+        <div style="display:flex; gap:8px; align-items:center; margin-top:5px;">
           <img id="editCoverPreview" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Превью" onerror="handleCoverError(this)" />
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Превью постера</span>
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Превью постера</span>
         </div>
       </div>
 
@@ -1048,17 +1009,16 @@
 
       <div class="checklist-box">
         <div class="checklist-header">
-          <h4 style="color:#10b981; font-size:0.85rem;">🎯 Чеклист целей</h4>
-          <span style="font-size:0.72rem; color:var(--text-muted);">Квесты, секреты</span>
+          <span style="color:#10b981; font-size:0.8rem; font-weight:700;">🎯 Чеклист целей</span>
         </div>
         <div id="editChecklistContainer"></div>
-        <div style="display: flex; gap: 6px; margin-top: 6px;">
+        <div style="display: flex; gap: 4px; margin-top: 5px;">
           <input type="text" class="form-control" id="newChecklistInput" placeholder="Добавить цель..." onkeypress="if(event.key==='Enter'){event.preventDefault();addChecklistItem();}" />
           <button class="btn btn-secondary" onclick="addChecklistItem()">+</button>
         </div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; margin-top: 16px;">
+      <div style="display: flex; justify-content: space-between; margin-top: 14px; gap:6px;">
         <button class="btn btn-danger" id="deleteBtn" style="display:none;" onclick="deleteCurrentGame()">Удалить игру</button>
         <div style="display: flex; gap: 6px; margin-left: auto;">
           <button class="btn btn-secondary" onclick="closeModal('editModal')">Отмена</button>
@@ -1068,33 +1028,33 @@
     </div>
   </div>
 
-  <!-- ОКНО: СОВЕТНИК -->
+  <!-- ОКНО: СОВЕТНИК ХИТОВ -->
   <div class="modal-overlay" id="advisorModal">
-    <div class="modal-content" style="max-width: 740px;">
+    <div class="modal-content" style="max-width: 700px;">
       <button class="modal-close" onclick="closeModal('advisorModal')">&times;</button>
-      <h3 style="color:#f59e0b; margin-bottom: 4px; font-size: 1.2rem;">🎯 Игровой компас: Подбор под настроение</h3>
-      <p style="color:var(--text-muted); font-size: 0.82rem; margin-bottom: 10px;">Каждое нажатие выдает новую игру из выбранного жанра без повторов:</p>
+      <h3 style="color:#f59e0b; margin-bottom: 2px; font-size: 1.15rem;">🎯 Игровой компас: Хиты под настроение</h3>
+      <p style="color:var(--text-muted); font-size: 0.78rem; margin-bottom: 8px;">Новая игра без повторов:</p>
 
       <div class="advisor-filter-bar">
         <div>
           <label class="filter-label">Источник:</label>
           <select class="form-control" id="advisorSourceSelect" onchange="resetAdvisorAndRoll()">
-            <option value="hits">🌟 Золотая библиотека (50+ хитов)</option>
-            <option value="my">📁 Мой личный список</option>
+            <option value="hits">🌟 База хитов (50+ игр)</option>
+            <option value="my">📁 Мой список</option>
           </select>
         </div>
 
         <div>
           <label class="filter-label">Настроение:</label>
           <select class="form-control" id="advisorMoodSelect" onchange="resetAdvisorAndRoll()">
-            <option value="all">🎲 Любое настроение</option>
-            <option value="zombie">🧟 Зомби, выживание и паркур</option>
-            <option value="action">💥 Адреналин, стрельба и драйв</option>
-            <option value="rpg">🗡️ Глубокий сюжет, RPG и открытый мир</option>
-            <option value="horror">👻 Пощекотать нервы (Хоррор / Триллер)</option>
-            <option value="race">🏎️ Скорость, гонки и автобезумие</option>
-            <option value="retro">👾 Ретро, олдскул и портативки</option>
-            <option value="chill">☕ Почиллить и расслабиться</option>
+            <option value="all">🎲 Любое</option>
+            <option value="zombie">🧟 Зомби / выживание</option>
+            <option value="action">💥 Экшен / драйв</option>
+            <option value="rpg">🗡️ Сюжет / RPG</option>
+            <option value="horror">👻 Хоррор</option>
+            <option value="race">🏎️ Гонки</option>
+            <option value="retro">👾 Ретро</option>
+            <option value="chill">☕ Чилл</option>
           </select>
         </div>
 
@@ -1102,13 +1062,13 @@
           <label class="filter-label">Жанр:</label>
           <select class="form-control" id="advisorGenreSelect" onchange="resetAdvisorAndRoll()">
             <option value="all">Все жанры</option>
-            <option value="survival">Выживание / Зомби</option>
-            <option value="shooter">Шутер / Экшен</option>
-            <option value="rpg">RPG / Ролевая</option>
+            <option value="survival">Выживание</option>
+            <option value="shooter">Шутер</option>
+            <option value="rpg">RPG</option>
             <option value="horror">Хоррор</option>
             <option value="racing">Гонки</option>
             <option value="openworld">Открытый мир</option>
-            <option value="platformer">Платформер / Ретро</option>
+            <option value="platformer">Платформер</option>
           </select>
         </div>
       </div>
@@ -1116,32 +1076,32 @@
       <div id="advisorResultArea">
         <div class="advisor-result-card" id="advisorCard">
           <img id="advCover" class="advisor-cover" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
-          <div class="advisor-details">
-            <div class="advisor-badge-row">
+          <div style="flex-grow:1; display:flex; flex-direction:column; gap:4px; min-width:0;">
+            <div style="display:flex; gap:4px; flex-wrap:wrap;">
               <span id="advPlatform" class="badge platform-badge"></span>
               <span id="advGenre" class="badge" style="background:#0284c7; color:#fff;"></span>
               <span id="advRating" class="badge rating-badge"></span>
             </div>
-            <h2 id="advTitle" class="advisor-title"></h2>
-            <div id="advHook" class="advisor-hook"></div>
-            <p id="advDesc" style="color:var(--text-muted); font-size:0.85rem; line-height:1.4;"></p>
+            <h2 id="advTitle" style="font-size:1.15rem; font-weight:800; color:#fff; margin:2px 0;"></h2>
+            <div id="advHook" class="advisor-hook" style="font-size:0.78rem;"></div>
+            <p id="advDesc" style="color:var(--text-muted); font-size:0.8rem; line-height:1.35; margin:0;"></p>
           </div>
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-top:14px;">
-          <button class="btn btn-secondary" onclick="rollAdvisor()">🎲 Следующая игра</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-top:12px;">
+          <button class="btn btn-secondary" onclick="rollAdvisor()">🎲 Следующая</button>
           <button class="btn btn-primary" id="advAddBtn" onclick="addAdvisorGameToCollection()">➕ В мой список</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ПОДВАЛ С ВЕРСИЕЙ 0.4 -->
+  <!-- ПОДВАЛ С ВЕРСИЕЙ 0.5 -->
   <footer class="app-footer">
     <span>🎮 Геймерский уголок</span>
     <span>•</span>
-    <span>Сохранение локально в браузере</span>
-    <span class="version-tag">Версия 0.4</span>
+    <span>Сохранение в браузере</span>
+    <span class="version-tag">Версия 0.5</span>
   </footer>
 
   <script>
@@ -1152,25 +1112,21 @@
       img.src = DEFAULT_COVER_SVG;
     }
 
-    // УПРАВЛЕНИЕ РЕЖИМАМИ ОТОБРАЖЕНИЯ: PC ИЛИ PHONE
+    // ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМА PC / PHONE
     let currentViewMode = localStorage.getItem('gamers_corner_view_mode') || (window.innerWidth < 768 ? 'phone' : 'pc');
 
-    function applyViewMode(mode) {
+    function switchViewMode(mode) {
       currentViewMode = mode;
       localStorage.setItem('gamers_corner_view_mode', mode);
-      document.body.classList.remove('view-mode-pc', 'view-mode-phone');
-      document.body.classList.add(mode === 'phone' ? 'view-mode-phone' : 'view-mode-pc');
+
+      document.body.classList.remove('mode-pc', 'mode-phone');
+      document.body.classList.add(mode === 'phone' ? 'mode-phone' : 'mode-pc');
 
       document.getElementById('btnModePc').classList.toggle('active', mode === 'pc');
       document.getElementById('btnModePhone').classList.toggle('active', mode === 'phone');
     }
 
-    function setViewMode(mode) {
-      applyViewMode(mode);
-    }
-
-    // Инициализация режима
-    applyViewMode(currentViewMode);
+    switchViewMode(currentViewMode);
 
     // База секретов
     const BUILTIN_SECRETS = {
@@ -1181,7 +1137,9 @@
         { title: '💰 Бесконечное золото через торговлю', text: 'Прокачайте навык Торговли. Скупайте у торговцев изумруды и рубины оптом со скидкой и тут же продавайте им обратно с наценкой!' }
       ],
       'the outer worlds': [
-        { title: '🔬 Где найти Научное оружие', text: '1) Уменьшающий луч (Shrink Ray) — в лаборатории Финеаса на Терра-2.\n2) Призматический молот — на станции «Первопроходец» в скрытой комнате над каютами экипажа.\n3) Одурманиватель — на Монархе в лаборатории UDL.' },
+        { title: '🔬 Где найти Научное оружие', text: '1) Уменьшающий луч (Shrink Ray) — в лаборатории Финеаса на Терра-2.
+2) Призматический молот — на станции «Первопроходец» в скрытой комнате над каютами экипажа.
+3) Одурманиватель — на Монархе в лаборатории UDL.' },
         { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2.' },
         { title: '🗣️ Прохождение без убийств', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты и убедить боссов сдаться без боя.' }
       ],
@@ -1240,7 +1198,8 @@
           { id: '101', text: 'Найти секретный чертеж Корека', done: true },
           { id: '102', text: 'Зачистить карантинную зону в Трущобах', done: true }
         ],
-        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).\n• Чертеж оружия Корека находится на крыше высотки в Трущобах.',
+        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).
+• Чертеж оружия Корека находится на крыше высотки в Трущобах.',
         screenshots: []
       },
       {
@@ -1255,7 +1214,8 @@
         checklist: [
           { id: '201', text: 'Собрать мастерский сет Школы Волка', done: true }
         ],
-        notes: '• В Туссенте обязательно купить улучшение для винодельни Корво Бьянко.\n• Гвинт в Новиграде: турнир в Пассифлоре требует сильную колоду.',
+        notes: '• В Туссенте обязательно купить улучшение для винодельни Корво Бьянко.
+• Гвинт в Новиграде: турнир в Пассифлоре требует сильную колоду.',
         screenshots: []
       },
       {
@@ -1271,7 +1231,8 @@
           { id: '301', text: 'Открыть все Двери Демонов', done: false },
           { id: '302', text: 'Собрать 30 серебряных ключей', done: false }
         ],
-        notes: '• Обязательно выучить заклинание Замедление времени.\n• Прокачать навык торговли для дешевой скупки самоцветов.',
+        notes: '• Обязательно выучить заклинание Замедление времени.
+• Прокачать навык торговли для дешевой скупки самоцветов.',
         screenshots: []
       },
       {
@@ -1287,7 +1248,8 @@
           { id: '401', text: 'Найти Уменьшающий луч у Финеаса', done: true },
           { id: '402', text: 'Починить робота-уборщика Сэма', done: false }
         ],
-        notes: '• Призматический молот лежит над каютами на Первопроходце.\n• Навыки Убеждения и Лжи позволяют пройти без убийств.',
+        notes: '• Призматический молот лежит над каютами на Первопроходце.
+• Навыки Убеждения и Лжи позволяют пройти без убийств.',
         screenshots: []
       }
     ];
@@ -1354,7 +1316,7 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px; font-size:1rem;">Игр в этой категории пока нет.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px; font-size:0.95rem;">Игр в этой категории пока нет.</div>`;
         return;
       }
 
@@ -1388,8 +1350,8 @@
           </div>
           <div class="card-body">
             <div>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span class="badge platform-badge">${game.platform}</span>
+              <div class="card-meta-row" style="margin-bottom:3px;">
+                <span class="badge platform-badge" title="${game.platform}">${game.platform}</span>
                 <button class="card-key-btn" onclick="openSecretsModal('${game.id}', event)">🔑 Секреты</button>
               </div>
               <div class="card-title">${game.title}</div>
@@ -1462,7 +1424,8 @@
       const textarea = document.getElementById('nbTextarea');
       const start = textarea.selectionStart;
       const val = textarea.value;
-      textarea.value = val.substring(0, start) + '\n' + prefix + val.substring(start);
+      textarea.value = val.substring(0, start) + '
+' + prefix + val.substring(start);
       textarea.focus();
       autoSaveNotebook();
     }
@@ -1560,7 +1523,7 @@
           div.className = `checklist-item ${item.done ? 'done' : ''}`;
           div.innerHTML = `
             <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistInNotebook('${game.id}', '${item.id}', this.checked)" />
-            <span style="flex-grow:1; font-size:0.88rem;">${item.text}</span>
+            <span style="flex-grow:1; font-size:0.85rem;">${item.text}</span>
           `;
           container.appendChild(div);
         });
@@ -1610,15 +1573,15 @@
           card.innerHTML = `
             <h4>
               <span>${sec.title}</span>
-              <button class="copy-to-notes-btn" onclick="copySecretToNotes('${game.id}', '${sec.title}', '${sec.text.replace(/'/g, "\\'")}')">📥 В блокнот</button>
+              <button class="copy-to-notes-btn" onclick="copySecretToNotes('${game.id}', '${sec.title}', '${sec.text.replace(/'/g, "\'")}')">📥 В блокнот</button>
             </h4>
-            <p style="color:#cbd5e1; font-size:0.88rem; white-space:pre-line;">${sec.text}</p>
+            <p style="color:#cbd5e1; font-size:0.85rem; white-space:pre-line; margin:0;">${sec.text}</p>
           `;
           container.appendChild(card);
         });
       } else {
         container.innerHTML = `
-          <div style="text-align:center; padding:20px; color:#94a3b8; font-size:0.88rem;">
+          <div style="text-align:center; padding:16px; color:#94a3b8; font-size:0.85rem;">
             Для этой игры пока нет встроенных секретов.<br>
             Нажмите кнопку ниже, чтобы автоматически подгрузить данные из энциклопедии на русском языке!
           </div>
@@ -1640,16 +1603,20 @@
 
         if (pages.length > 0 && pages[0].extract) {
           const fullText = pages[0].extract;
-          const paragraphs = fullText.split('\n\n').filter(p => p.length > 80 && !p.startsWith('== ')).slice(0, 4);
+          const paragraphs = fullText.split('
+
+').filter(p => p.length > 80 && !p.startsWith('== ')).slice(0, 4);
 
           const card = document.createElement('div');
           card.className = 'secret-item-card';
           card.innerHTML = `
             <h4>
               <span>📖 Особенности геймплея и советы</span>
-              <button class="copy-to-notes-btn" onclick="copySecretToNotes(activeNotebookGameId, 'Геймплей', '${paragraphs[0].replace(/'/g, "\\'")}')">📥 В блокнот</button>
+              <button class="copy-to-notes-btn" onclick="copySecretToNotes(activeNotebookGameId, 'Геймплей', '${paragraphs[0].replace(/'/g, "\'")}')">📥 В блокнот</button>
             </h4>
-            <p style="color:#cbd5e1; font-size:0.88rem;">${paragraphs.join('\n\n')}</p>
+            <p style="color:#cbd5e1; font-size:0.85rem; margin:0;">${paragraphs.join('
+
+')}</p>
           `;
           container.appendChild(card);
         } else {
@@ -1667,14 +1634,17 @@
       const game = games.find(g => g.id === targetId);
       if (!game) return;
 
-      const addition = `\n\n📌 [Секрет: ${title}]\n${text}`;
+      const addition = `
+
+📌 [Секрет: ${title}]
+${text}`;
       game.notes = (game.notes || '') + addition;
       persistData();
 
       if (activeNotebookGameId === targetId) {
         document.getElementById('nbTextarea').value = game.notes;
       }
-      alert('Секрет успешно скопирован в ваш блокнот по игре!');
+      alert('Секрет скопирован в ваш блокнот по игре!');
     }
 
     /* --- ПОИСК ОБЛОЖЕК И ОПИСАНИЙ --- */
@@ -1922,7 +1892,7 @@
         div.className = `checklist-item ${item.done ? 'done' : ''}`;
         div.innerHTML = `
           <input type="checkbox" ${item.done ? 'checked' : ''} onchange="tempChecklist[${index}].done = this.checked; renderEditChecklist();" />
-          <span style="flex-grow:1; font-size:0.85rem;">${item.text}</span>
+          <span style="flex-grow:1; font-size:0.82rem;">${item.text}</span>
           <button type="button" class="checklist-del-btn" onclick="tempChecklist.splice(${index}, 1); renderEditChecklist();">&times;</button>
         `;
         container.appendChild(div);
