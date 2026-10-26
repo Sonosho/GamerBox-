@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="referrer" content="no-referrer" />
-  <title>Геймерский уголок</title>
+  <title>Геймерский уголок v0.3</title>
 
-  <!-- Иконка веб-приложения: Аутентичный пиксельный геймпад -->
+  <!-- Иконка веб-приложения: Пиксельный геймпад -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%230a0d16' d='M0 0h32v32H0z'/%3E%3Cpath fill='%237c3aed' d='M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z'/%3E%3Cpath fill='%239333ea' d='M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z'/%3E%3Cpath fill='%23f43f5e' d='M21 15h2v2h-2z'/%3E%3Cpath fill='%2310b981' d='M25 15h2v2h-2z'/%3E%3Cpath fill='%23fbbf24' d='M23 13h2v2h-2z'/%3E%3Cpath fill='%2306b6d4' d='M23 17h2v2h-2z'/%3E%3Cpath fill='%23cbd5e1' d='M13 17h2v1h-2zm4 0h2v1h-2z'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%230a0d16' d='M0 0h32v32H0z'/%3E%3Cpath fill='%237c3aed' d='M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z'/%3E%3Cpath fill='%239333ea' d='M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z'/%3E%3Cpath fill='%23f43f5e' d='M21 15h2v2h-2z'/%3E%3Cpath fill='%2310b981' d='M25 15h2v2h-2z'/%3E%3Cpath fill='%23fbbf24' d='M23 13h2v2h-2z'/%3E%3Cpath fill='%2306b6d4' d='M23 17h2v2h-2z'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%230a0d16' d='M0 0h32v32H0z'/%3E%3Cpath fill='%237c3aed' d='M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z'/%3E%3Cpath fill='%239333ea' d='M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M7 14h4v4H7zm-2 1h8v2H5zm14 0h3v2h-3zm2-2h2v2h-2zm2 2h3v2h-3zm-2 2h2v2h-2z'/%3E%3Cpath fill='%23f43f5e' d='M21 15h2v2h-2z'/%3E%3Cpath fill='%2310b981' d='M25 15h2v2h-2z'/%3E%3Cpath fill='%23fbbf24' d='M23 13h2v2h-2z'/%3E%3Cpath fill='%2306b6d4' d='M23 17h2v2h-2z'/%3E%3Cpath fill='%23cbd5e1' d='M13 17h2v1h-2zm4 0h2v1h-2z'/%3E%3C/svg%3E" />
 
   <style>
     :root {
@@ -39,10 +39,11 @@
       background-attachment: fixed;
       color: var(--text);
       min-height: 100vh;
-      padding-bottom: 70px;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Шапка сайта */
+    /* Шапка сайта с переливающимся неоном */
     header {
       background: rgba(12, 17, 28, 0.92);
       backdrop-filter: blur(16px);
@@ -69,18 +70,43 @@
       gap: 10px;
       font-size: 1.35rem;
       font-weight: 800;
-      color: #fff;
       letter-spacing: 0.5px;
-      text-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+      text-decoration: none;
     }
+
+    /* Слегка заметный переливающийся неон для букв баннера */
+    .brand-title {
+      background: linear-gradient(135deg, #f1f5f9 0%, #c084fc 35%, #38bdf8 68%, #f1f5f9 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: neonGlowShimmer 6s ease-in-out infinite alternate;
+      display: inline-block;
+    }
+
+    @keyframes neonGlowShimmer {
+      0% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
+      }
+      50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45));
+      }
+      100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.35));
+      }
+    }
+
     .pixel-pad-icon {
       width: 36px;
       height: 36px;
       image-rendering: pixelated;
       filter: drop-shadow(0 0 8px rgba(168,85,247,0.7));
-      transition: transform 0.2s;
+      transition: transform 0.25s;
     }
-    .brand:hover .pixel-pad-icon { transform: scale(1.1) rotate(-5deg); }
+    .brand:hover .pixel-pad-icon { transform: scale(1.1) rotate(-6deg); }
 
     .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .btn {
@@ -120,7 +146,7 @@
       box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
     }
 
-    .container { max-width: 1240px; margin: 16px auto; padding: 0 14px; }
+    .container { max-width: 1240px; margin: 16px auto; padding: 0 14px; flex-grow: 1; }
 
     /* Панель фильтров */
     .controls-wrapper {
@@ -285,7 +311,6 @@
       border-radius: 4px;
     }
 
-    /* Кнопка с ключиком прямо на карточке */
     .card-key-btn {
       background: rgba(15, 23, 42, 0.88);
       border: 1px solid rgba(245, 158, 11, 0.6);
@@ -299,7 +324,6 @@
       gap: 4px;
       cursor: pointer;
       transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
     .card-key-btn:hover {
       background: #f59e0b;
@@ -381,48 +405,97 @@
       align-items: center;
       justify-content: center;
       transition: 0.2s;
-      z-index: 5;
+      z-index: 10;
     }
     .modal-close:hover { background: #ef4444; }
 
-    /* СТИЛИЗОВАННЫЙ ГЕЙМЕРСКИЙ БЛОКНОТ ДЛЯ ЗАПИСЕЙ */
-    .notebook-paper {
-      background: #0d1424;
-      background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 28px, 28px 100%;
-      border: 1px solid #22324f;
-      border-radius: 12px;
-      padding: 16px;
-      margin-top: 14px;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    /* =================================================================
+       ДИЗАЙН НАСТОЯЩЕЙ КНИГИ / ТАКТИЧЕСКОГО БЛОКНОТА ДЛЯ ЗАМЕТОК 
+       ================================================================= */
+    .book-wrapper {
+      background: #181524;
+      border: 2px solid #3b2d56;
+      border-radius: 14px;
+      box-shadow: 
+        -10px 0 25px rgba(0,0,0,0.8),
+        10px 10px 30px rgba(0,0,0,0.6),
+        inset 0 0 15px rgba(0,0,0,0.7);
+      position: relative;
+      padding: 18px 18px 18px 36px;
+      margin-top: 12px;
+      overflow: hidden;
     }
-    .notebook-header {
+
+    /* Кожаный корешок блокнота слева с прострочкой и пружинными кольцами */
+    .book-spine {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 26px;
+      background: linear-gradient(90deg, #2a1f42 0%, #150f22 100%);
+      border-right: 2px dashed rgba(168, 85, 247, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .book-ring {
+      width: 14px;
+      height: 7px;
+      background: linear-gradient(180deg, #94a3b8 0%, #334155 100%);
+      border-radius: 4px;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* Шелковая закладка-ленточка сверху */
+    .book-bookmark-ribbon {
+      position: absolute;
+      top: 0; right: 40px;
+      width: 18px;
+      height: 38px;
+      background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+      z-index: 5;
+    }
+
+    /* Страница книги: тактическая бумага с полями и разлиновкой */
+    .book-page {
+      background: #0f1523;
+      background-image: 
+        repeating-linear-gradient(transparent, transparent 27px, rgba(56, 189, 248, 0.08) 28px),
+        linear-gradient(90deg, transparent 40px, rgba(244, 63, 94, 0.25) 41px, transparent 42px);
+      border-radius: 8px;
+      padding: 14px 16px 14px 48px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .book-page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
-    .notebook-title {
-      font-size: 1rem;
+    .book-page-title {
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--accent-cyan);
+      color: #38bdf8;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .notebook-save-status {
+    .book-save-indicator {
       font-size: 0.78rem;
-      color: var(--accent-green);
+      color: #10b981;
       font-weight: 600;
-      transition: opacity 0.3s;
     }
-    .notebook-textarea {
+
+    .book-textarea {
       width: 100%;
-      min-height: 180px;
+      min-height: 200px;
       background: transparent;
       border: none;
       color: #f1f5f9;
@@ -430,28 +503,110 @@
       line-height: 28px;
       outline: none;
       resize: vertical;
-      font-family: inherit;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    .notebook-tools {
+
+    .book-toolbar {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
-      margin-top: 8px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 8px;
+      margin-top: 10px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+      padding-top: 10px;
     }
-    .notebook-tool-btn {
-      background: rgba(30, 41, 59, 0.6);
-      border: 1px solid rgba(148, 163, 184, 0.2);
+    .book-tool-btn {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.25);
       color: var(--text-muted);
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 0.78rem;
     }
-    .notebook-tool-btn:hover { color: #fff; background: rgba(56, 189, 248, 0.2); }
+    .book-tool-btn:hover { color: #fff; background: rgba(56, 189, 248, 0.25); border-color: #38bdf8; }
 
-    /* Поля ввода */
+    /* ГАЛЕРЕЯ ПРИКРЕПЛЕННЫХ СКРИНШОТОВ И КАРТ В БЛОКНОТЕ */
+    .screenshots-gallery-title {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #fbbf24;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .screenshots-grid {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 10px 4px 8px 4px;
+      margin-top: 6px;
+    }
+    .screenshot-polaroid {
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 6px;
+      width: 130px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .screenshot-polaroid:hover { transform: scale(1.04) rotate(1deg); }
+    .screenshot-img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+      background: #090e17;
+    }
+    .screenshot-caption {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+    .screenshot-delete-btn {
+      position: absolute;
+      top: 2px; right: 2px;
+      background: rgba(239, 68, 68, 0.9);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 20px; height: 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Модалка просмотра скриншота на весь экран */
+    .image-zoom-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      padding: 16px;
+    }
+    .image-zoom-img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    }
+
+    /* Поля ввода и редактор */
     .form-group { margin-bottom: 12px; }
     .form-group label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
     .form-control {
@@ -468,7 +623,6 @@
     .form-control:focus { border-color: var(--accent-cyan); }
     textarea.form-control { resize: vertical; min-height: 80px; }
 
-    /* Список кандидатов обложек */
     .search-candidates-list {
       display: flex;
       gap: 8px;
@@ -536,7 +690,7 @@
       opacity: 0.7;
     }
 
-    /* Модальное окно Секретов */
+    /* Секреты */
     .secret-item-card {
       background: #0a0f1a;
       border: 1px solid #243550;
@@ -564,7 +718,7 @@
     }
     .copy-to-notes-btn:hover { background: #38bdf8; color: #041221; }
 
-    /* Окно Игрового Советника */
+    /* Советник */
     .advisor-filter-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -607,9 +761,32 @@
       line-height: 1.4;
     }
 
-    /* Адаптив для смартфонов */
+    /* Подвал сайта с версией 0.3 */
+    footer.app-footer {
+      border-top: 1px solid rgba(56, 189, 248, 0.15);
+      background: rgba(10, 14, 23, 0.9);
+      padding: 14px 20px;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+    .version-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* Мобильная адаптация */
     @media (max-width: 650px) {
-      body { padding-bottom: 80px; }
       header { padding: 10px 12px; }
       .brand { font-size: 1.15rem; }
       .header-actions { width: 100%; justify-content: space-between; }
@@ -619,7 +796,6 @@
       .controls-row { flex-direction: column; align-items: stretch; gap: 8px; }
       .search-input { width: 100%; }
 
-      /* Сетка из 2 колонок на мобилках */
       .games-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -630,8 +806,10 @@
       .badge { font-size: 0.65rem; padding: 2px 6px; }
 
       .modal-content { padding: 16px; border-radius: 14px; max-height: 95vh; }
-      .modal-game-header { flex-direction: column; align-items: center; text-align: center; }
-      .modal-cover { width: 140px; height: 190px; }
+      .book-wrapper { padding: 14px 10px 14px 26px; }
+      .book-spine { width: 18px; }
+      .book-page { padding: 12px 10px 12px 28px; }
+      .book-page-title { font-size: 0.85rem; }
 
       .advisor-result-card { flex-direction: column; align-items: center; text-align: center; }
       .advisor-cover { width: 140px; height: 190px; }
@@ -642,8 +820,8 @@
 
   <header>
     <div class="header-content">
-      <div class="brand">
-        <!-- Пиксельный геймпад в шапке программы -->
+      <a href="#" class="brand">
+        <!-- Пиксельный геймпад -->
         <svg class="pixel-pad-icon" viewBox="0 0 32 32" shape-rendering="crispEdges">
           <path fill="#7c3aed" d="M7 8h18v2H7zm-3 2h24v2H4zm-2 2h28v10H2zm0 10h6v6H2zm22 0h6v6h-6z"/>
           <path fill="#9333ea" d="M8 10h16v2H8zm-4 2h24v8H4zm0 8h4v4H4zm20 0h4v4h-4z"/>
@@ -653,8 +831,8 @@
           <path fill="#fbbf24" d="M23 13h2v2h-2z"/>
           <path fill="#06b6d4" d="M23 17h2v2h-2z"/>
         </svg>
-        <span>Геймерский уголок</span>
-      </div>
+        <span class="brand-title">Геймерский уголок</span>
+      </a>
       <div class="header-actions">
         <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит под настроение и жанр">🎯 Подбор игры</button>
         <button class="btn btn-primary" onclick="openAddModal()">➕ Игра</button>
@@ -667,7 +845,6 @@
 
   <div class="container">
     <div class="controls-wrapper">
-      <!-- Поиск и фильтр по статусам -->
       <div class="controls-row">
         <div class="scroll-filters">
           <span class="filter-label">Статус:</span>
@@ -680,7 +857,6 @@
         <input type="text" class="search-input" id="searchBox" placeholder="🔍 Найти игру..." oninput="renderGames()" />
       </div>
 
-      <!-- Свайп-фильтр по платформам -->
       <div class="controls-row">
         <div class="scroll-filters">
           <span class="filter-label">Платформа:</span>
@@ -699,15 +875,15 @@
     <div class="games-grid" id="gamesGrid"></div>
   </div>
 
-  <!-- ОКНО 1: СТИЛИЗОВАННЫЙ БЛОКНОТИК ИГРЫ (ОТКРЫВАЕТСЯ ПРИ КЛИКЕ НА КАРТОЧКУ) -->
+  <!-- ОКНО: НАСТОЯЩИЙ СТИЛИЗОВАННЫЙ БЛОКНОТ-КНИГА ДЛЯ ЗАМЕТОК И КАРТ -->
   <div class="modal-overlay" id="notebookModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('notebookModal')">&times;</button>
 
-      <div style="display: flex; gap: 16px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 14px;">
-        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" style="width: 65px; height: 90px;" />
+      <div style="display: flex; gap: 14px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 12px;">
+        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" style="width: 60px; height: 85px;" />
         <div style="flex-grow: 1;">
-          <h2 id="nbTitle" style="color: #fff; font-size: 1.35rem; margin-bottom: 6px;"></h2>
+          <h2 id="nbTitle" style="color: #fff; font-size: 1.3rem; margin-bottom: 4px;"></h2>
           <div style="display: flex; gap: 6px; flex-wrap: wrap;">
             <span id="nbBadge" class="badge"></span>
             <span id="nbPlatformBadge" class="badge platform-badge"></span>
@@ -717,24 +893,45 @@
         <button class="btn btn-key" id="nbKeyBtn" title="Секреты и прохождение">🔑 Секреты</button>
       </div>
 
-      <!-- Собственно стилизованный блокнот -->
-      <div class="notebook-paper">
-        <div class="notebook-header">
-          <div class="notebook-title">📝 Блокнот игры (секреты, коды, заметки)</div>
-          <div class="notebook-save-status" id="nbSaveStatus">💾 Сохранено</div>
+      <!-- Конструкция книги-блокнота -->
+      <div class="book-wrapper">
+        <div class="book-spine">
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
         </div>
-        <textarea class="notebook-textarea" id="nbTextarea" placeholder="Нажмите сюда и пишите заметки прямо сейчас... Тайники, коды дверей, сборки брони, что сделать дальше..." oninput="autoSaveNotebook()"></textarea>
+        <div class="book-bookmark-ribbon"></div>
 
-        <div class="notebook-tools">
-          <button class="notebook-tool-btn" onclick="insertNotebookText('• ')">Список</button>
-          <button class="notebook-tool-btn" onclick="insertNotebookText('🔑 Код: ')">Код</button>
-          <button class="notebook-tool-btn" onclick="insertNotebookText('📍 Тайник: ')">Тайник</button>
-          <button class="notebook-tool-btn" onclick="insertNotebookText('⚔️ Билд: ')">Билд</button>
-          <button class="notebook-tool-btn" onclick="insertNotebookText('⏰ Напомнить: ')">Напоминалка</button>
+        <div class="book-page">
+          <div class="book-page-header">
+            <div class="book-page-title">📖 Полевой дневник & заметки</div>
+            <div class="book-save-indicator" id="nbSaveStatus">✍️ Сохранено</div>
+          </div>
+
+          <textarea class="book-textarea" id="nbTextarea" placeholder="Нажмите сюда и пишите заметки... Секреты, коды дверей, тайники, комбинации билда..." oninput="autoSaveNotebook()"></textarea>
+
+          <div class="book-toolbar">
+            <button class="book-tool-btn" onclick="insertNotebookText('• ')">Список</button>
+            <button class="book-tool-btn" onclick="insertNotebookText('🔑 Код: ')">Код</button>
+            <button class="book-tool-btn" onclick="insertNotebookText('📍 Тайник: ')">Тайник</button>
+            <button class="book-tool-btn" onclick="insertNotebookText('⚔️ Билд: ')">Билд</button>
+            <button class="book-tool-btn" onclick="document.getElementById('nbScreenshotInput').click()">📷 Прикрепить карту/фото</button>
+            <input type="file" id="nbScreenshotInput" style="display:none" accept="image/*" onchange="handleScreenshotUpload(event)" />
+          </div>
+
+          <!-- Галерея прикрепленных карт и скриншотов -->
+          <div id="nbScreenshotsSection" style="display:none;">
+            <div class="screenshots-gallery-title">
+              <span>🗺️ Карты и скриншоты:</span>
+            </div>
+            <div class="screenshots-grid" id="nbScreenshotsGrid"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Чеклист задач внутри блокнота -->
+      <!-- Чеклист внутри блокнота -->
       <div class="checklist-box" id="nbChecklistBox">
         <div class="checklist-header">
           <h4 style="color:#10b981; font-size:0.9rem;">🎯 Чеклист целей:</h4>
@@ -743,17 +940,22 @@
         <div id="nbChecklistItems"></div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px; flex-wrap: wrap; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; flex-wrap: wrap; gap: 8px;">
         <p id="nbDesc" style="color: var(--text-muted); font-size: 0.85rem; max-width: 450px;"></p>
         <div style="display: flex; gap: 8px; margin-left: auto;">
-          <button class="btn btn-secondary" id="nbEditBtn">⚙️ Изменить инфо</button>
-          <button class="btn btn-primary" onclick="closeModal('notebookModal')">Готово</button>
+          <button class="btn btn-secondary" id="nbEditBtn">⚙️ Настройки</button>
+          <button class="btn btn-primary" onclick="closeModal('notebookModal')">Закрыть</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ОКНО 2: КЛЮЧИК К СЕКРЕТАМ (АВТОМАТИЧЕСКАЯ БАЗА СЕКРЕТОВ И ГАЙДОВ) -->
+  <!-- ОКНО ПРОСМОТРА СКРИНШОТА НА ВЕСЬ ЭКРАН -->
+  <div class="image-zoom-overlay" id="imageZoomModal" onclick="this.style.display='none'">
+    <img id="imageZoomImg" class="image-zoom-img" src="" alt="Скриншот" />
+  </div>
+
+  <!-- ОКНО: КЛЮЧИК К СЕКРЕТАМ (АВТОМАТИЧЕСКАЯ БАЗА СЕКРЕТОВ И ГАЙДОВ) -->
   <div class="modal-overlay" id="secretsModal">
     <div class="modal-content" style="max-width: 720px;">
       <button class="modal-close" onclick="closeModal('secretsModal')">&times;</button>
@@ -762,7 +964,7 @@
         <span style="font-size: 1.6rem;">🔑</span>
         <div>
           <h3 style="color:#fbbf24; font-size: 1.25rem;" id="secretsGameTitle">Секреты и подсказки</h3>
-          <p style="color:var(--text-muted); font-size: 0.82rem;">Тайники, пасхалки, чит-коды и советы по прохождению</p>
+          <p style="color:var(--text-muted); font-size: 0.82rem;">Тайники, пасхалки и советы по прохождению</p>
         </div>
       </div>
 
@@ -773,13 +975,13 @@
       <div id="secretsListContainer"></div>
 
       <div style="display: flex; justify-content: space-between; margin-top: 18px;">
-        <button class="btn btn-secondary" onclick="fetchOnlineSecrets()">🌐 Загрузить доп. секреты из Википедии</button>
+        <button class="btn btn-secondary" onclick="fetchOnlineSecrets()">🌐 Загрузить доп. секреты</button>
         <button class="btn btn-primary" onclick="closeModal('secretsModal')">Закрыть</button>
       </div>
     </div>
   </div>
 
-  <!-- ОКНО 3: ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ ИГРЫ С ИСПРАВЛЕННЫМ ПОИСКОМ -->
+  <!-- ОКНО: ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ ИГРЫ -->
   <div class="modal-overlay" id="editModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('editModal')">&times;</button>
@@ -792,8 +994,6 @@
           <button class="btn btn-secondary" id="autoFetchBtn" onclick="fetchGameInfo()">🔍 Найти</button>
         </div>
         <small style="color:#94a3b8; display:block; margin-top:3px;">Ищет точные названия, русские синопсисы и качественные постеры</small>
-
-        <!-- Горизонтальная лента найденных вариантов -->
         <div id="searchCandidatesArea" class="search-candidates-list" style="display:none;"></div>
       </div>
 
@@ -860,7 +1060,6 @@
         <textarea class="form-control" id="gameDescInput" rows="2" placeholder="Описание игры..."></textarea>
       </div>
 
-      <!-- Чеклист -->
       <div class="checklist-box">
         <div class="checklist-header">
           <h4 style="color:#10b981; font-size:0.9rem;">🎯 Чеклист целей</h4>
@@ -883,7 +1082,7 @@
     </div>
   </div>
 
-  <!-- ОКНО 4: ИГРОВОЙ СОВЕТНИК (ХИТЫ БЕЗ ПОВТОРОВ) -->
+  <!-- ОКНО: ИГРОВОЙ СОВЕТНИК -->
   <div class="modal-overlay" id="advisorModal">
     <div class="modal-content" style="max-width: 740px;">
       <button class="modal-close" onclick="closeModal('advisorModal')">&times;</button>
@@ -951,6 +1150,14 @@
     </div>
   </div>
 
+  <!-- ПОДВАЛ С ВЕРСИЕЙ 0.3 -->
+  <footer class="app-footer">
+    <span>🎮 Геймерский уголок</span>
+    <span>•</span>
+    <span>Сохранение локально в браузере</span>
+    <span class="version-tag">Версия 0.3</span>
+  </footer>
+
   <script>
     const DEFAULT_COVER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' fill='%23111827'%3E%3Crect width='300' height='400'/%3E%3Cpath fill='%2338bdf8' d='M80 160h140v30H80zm-20 40h180v20H60z' opacity='0.25'/%3E%3Ctext x='150' y='210' fill='%2394a3b8' font-size='18' font-family='sans-serif' font-weight='bold' text-anchor='middle'%3EНЕТ ОБЛОЖКИ%3C/text%3E%3C/svg%3E";
 
@@ -959,40 +1166,37 @@
       img.src = DEFAULT_COVER_SVG;
     }
 
-    // База секретов и лайфхаков для популярных игр
+    // База секретов
     const BUILTIN_SECRETS = {
       'fable': [
-        { title: '🗝️ 30 Серебряных ключей', text: 'Ключи зарыты на кладбищах (ищите взрыхленную землю), в водоемах со всплесками (ловите удочкой) и выдаются за победу в мини-играх в тавернах (Торговый мыс, Бауэрстоун).' },
-        { title: '🚪 Двери Демонов (Demon Doors)', text: 'Дверь у Гильдии открывается зажжением фонаря. Дверь у Розового коттеджа требует коробку конфет или розу. Дверь в Борделе требует стать владельцем этого борделя.' },
+        { title: '🗝️ 30 Серебряных ключей', text: 'Ключи зарыты на кладбищах (ищите взрыхленную землю), в водоемах со всплесками (ловите удочкой) и выдаются за победу в мини-играх в тавернах.' },
+        { title: '🚪 Двери Демонов (Demon Doors)', text: 'Дверь у Гильдии открывается зажжением фонаря. Дверь у Розового коттеджа требует коробку конфет или розу. Дверь в Борделе требует стать владельцем борделя.' },
         { title: '⚔️ Лучшее оружие: Меч Веков и Слезы Аво', text: 'Меч Веков можно забрать в финале при злом выборе. Для получения доброго аналога (Слезы Аво) после титров прочитайте книгу в кабинете Мейза и отправляйтесь на кладбище Гильдии.' },
-        { title: '💰 Бесконечное золото через торговлю', text: 'Прокачайте навык Хитрости (Торговли). Скупайте у торговцев драгоценные камни (изумруды, рубины) оптом по скидке и тут же продавайте им обратно с наценкой!' }
+        { title: '💰 Бесконечное золото через торговлю', text: 'Прокачайте навык Торговли. Скупайте у торговцев изумруды и рубины оптом со скидкой и тут же продавайте им обратно с наценкой!' }
       ],
       'the outer worlds': [
         { title: '🔬 Где найти Научное оружие', text: '1) Уменьшающий луч (Shrink Ray) — в лаборатории Финеаса на Терра-2.\n2) Призматический молот — на станции «Первопроходец» в скрытой комнате над каютами экипажа.\n3) Одурманиватель — на Монархе в лаборатории UDL.' },
-        { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже вашего корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2 — у Сэма колоссальный урон кислотой.' },
-        { title: '🗣️ Прохождение без единого убийства', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты игры и убедить финального босса сдаться без боя.' },
-        { title: '⚠️ Совет по Дефектам (Flaws)', text: 'Принимайте дефекты только на урон от редких типов атак (например, плазма или радиация). Это дает ценные бонусные очки перков практически бесплатно.' }
+        { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2 — у Сэма колоссальный урон кислотой.' },
+        { title: '🗣️ Прохождение без убийств', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты и убедить боссов сдаться без единого выстрела.' }
       ],
       'dying light': [
-        { title: '🗡️ Чертеж оружия Корека', text: 'На крыше высотного здания в Трущобах найдите синий ящик за коробками. Ударьте по нему ногой ровно 76 раз — крышка откроется, и вы получите чертеж с колоссальным уроном.' },
-        { title: '⚔️ Чертеж меча ЭКСПкалибр', text: 'На скалистом островке на юго-востоке карты в тело зомби воткнут меч. Зажмите кнопку действия и удерживайте ровно 2 минуты. Затем подождите, пока тело сгорит — под ним появится чертеж.' },
-        { title: '🔦 Тактика против Прыгунов', text: 'УФ-фонарь и УФ-ракеты мгновенно парализуют ночных охотников. Бросок ракеты под ноги дает безопасное окно для спринта.' },
-        { title: '🧗 Крюк-кошка', text: 'Открывается на 12-м уровне ветки Выживания. Позволяет мгновенно забираться на любые крыши и спасаться от погонь.' }
+        { title: '🗡️ Чертеж оружия Корека', text: 'На крыше высотки в Трущобах найдите синий ящик за коробками. Ударьте по нему ногой ровно 76 раз — крышка откроется, и вы получите чертеж с колоссальным уроном.' },
+        { title: '⚔️ Чертеж меча ЭКСПкалибр', text: 'На островке на юго-востоке карты в тело зомби воткнут меч. Зажмите кнопку действия и удерживайте ровно 2 минуты. Затем подождите, пока тело сгорит — под ним появится чертеж.' },
+        { title: '🔦 Тактика против Прыгунов', text: 'УФ-фонарь и УФ-ракеты мгновенно парализуют ночных охотников.' },
+        { title: '🧗 Крюк-кошка', text: 'Открывается на 12-м уровне ветки Выживания и меняет все перемещение по городу.' }
       ],
       'ведьмак 3': [
-        { title: '⚔️ Меч Арондит', text: 'Сильнейший серебряный меч в игре. Добывается на озере Селяви в Туссенте, если подтвердить 5 рыцарских добродетелей (Честь, Сочувствие, Щедрость, Доблесть, Мудрость).' },
-        { title: '🎴 Победная колода в Гвинт', text: 'Колода Северных королевств с максимумом Шпионов (Дийкстра, Талер, Стефан) и Чучел позволяет вытягивать всю колоду и обыгрывать любого соперника.' }
+        { title: '⚔️ Меч Арондит', text: 'Сильнейший серебряный меч в игре. Добывается на озере в Туссенте, если подтвердить 5 рыцарских добродетелей.' },
+        { title: '🎴 Победная колода в Гвинт', text: 'Колода Северных королевств с максимумом Шпионов и Чучел позволяет вытягивать всю колоду и обыгрывать любого соперника.' }
       ]
     };
 
-    // Алиасы для мгновенного исправления опечаток и сленга
     const GAME_ALIASES = {
       'fable': 'Fable (серия игр)',
       'fable 1': 'Fable (игра, 2004)',
       'фейбл': 'Fable (серия игр)',
       'the outer world': 'The Outer Worlds',
       'outer world': 'The Outer Worlds',
-      'аутер ворлдс': 'The Outer Worlds',
       'дайн лайт': 'Dying Light',
       'ведьмак': 'The Witcher 3: Wild Hunt',
       'ведьмак 3': 'The Witcher 3: Wild Hunt',
@@ -1005,7 +1209,6 @@
       'скайрим': 'The Elder Scrolls V: Skyrim'
     };
 
-    // База проверенных хитов
     const HITS_DATABASE = [
       { title: "Fable Anniversary", genreCategory: "rpg", mood: "rpg", genreName: "Сказка / Action-RPG", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/288470/header.jpg", hook: "✨ Альбион, выбор между добром и злом, Двери Демонов, магия и тонкий британский юмор.", desc: "Легендарная сказочная ролевая игра от Питера Молиньё и Lionhead Studios." },
       { title: "The Outer Worlds", genreCategory: "rpg", mood: "action", genreName: "Sci-Fi / RPG / Космос", platform: "PC / Xbox / PS", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/578650/header.jpg", hook: "🚀 Колония Альцион, научное оружие, остроумные диалоги от создателей Fallout: New Vegas.", desc: "Космическая ролевая игра от первого лица от студии Obsidian Entertainment." },
@@ -1017,7 +1220,8 @@
       { title: "Fallout: New Vegas", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Постапокалипсис", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/22380/header.jpg", hook: "🏜️ Пустыня Мохаве, казино Нью-Вегаса, ретро-джаз и полная свобода выбора.", desc: "Лучшая ролевая игра во вселенной Fallout с великолепным сюжетом." }
     ];
 
-    let games = JSON.parse(localStorage.getItem('gamers_corner_data')) || [
+    // Начальные игры (всегда сохраняются и не пропадут)
+    const INITIAL_DEFAULT_GAMES = [
       {
         id: '1',
         title: 'Dying Light',
@@ -1026,19 +1230,87 @@
         rating: '10',
         completedDate: '',
         cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg',
-        description: 'Компьютерная игра в жанре survival horror от первого лица с открытым миром и элементами паркура в Харране.',
+        description: 'Survival horror от первого лица с открытым миром и элементами паркура в Харране.',
         checklist: [
           { id: '101', text: 'Найти секретный чертеж Корека', done: true },
           { id: '102', text: 'Зачистить карантинную зону в Трущобах', done: true }
         ],
-        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).\n• Чертеж оружия Корека находится на крыше высотки в Трущобах.'
+        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).\n• Чертеж оружия Корека находится на крыше высотки в Трущобах.',
+        screenshots: []
+      },
+      {
+        id: '2',
+        title: 'Ведьмак 3: Дикая Охота',
+        status: 'completed',
+        platform: 'PC',
+        rating: '10',
+        completedDate: '2024-05-15',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg',
+        description: 'Ролевая игра с открытым миром о приключениях ведьмака Геральта из Ривии.',
+        checklist: [
+          { id: '201', text: 'Собрать мастерский сет Школы Волка', done: true }
+        ],
+        notes: '• В Туссенте обязательно купить улучшение для винодельни Корво Бьянко.\n• Гвинт в Новиграде: турнир в Пассифлоре требует сильную колоду.',
+        screenshots: []
+      },
+      {
+        id: '3',
+        title: 'Fable Anniversary',
+        status: 'planned',
+        platform: 'PC',
+        rating: '9',
+        completedDate: '',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/288470/header.jpg',
+        description: 'Сказочная экшен-RPG о становлении Героя в Альбионе от Lionhead Studios.',
+        checklist: [
+          { id: '301', text: 'Открыть все Двери Демонов', done: false },
+          { id: '302', text: 'Собрать 30 серебряных ключей', done: false }
+        ],
+        notes: '• Обязательно выучить заклинание Замедление времени.\n• Прокачать навык торговли для дешевой скупки самоцветов.',
+        screenshots: []
+      },
+      {
+        id: '4',
+        title: 'The Outer Worlds',
+        status: 'playing',
+        platform: 'PC',
+        rating: '9',
+        completedDate: '',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/578650/header.jpg',
+        description: 'Научно-фантастическая ролевая игра от Obsidian Entertainment в колонии Альцион.',
+        checklist: [
+          { id: '401', text: 'Найти Уменьшающий луч у Финеаса', done: true },
+          { id: '402', text: 'Починить робота-уборщика Сэма', done: false }
+        ],
+        notes: '• Призматический молот лежит над каютами на Первопроходце.\n• Навыки Убеждения и Лжи позволяют пройти без убийств.',
+        screenshots: []
       }
     ];
 
-    // Нормализация записей
+    // Загрузка с гарантированным сохранением
+    let storedData = localStorage.getItem('gamers_corner_data');
+    let games = [];
+    if (storedData) {
+      try {
+        games = JSON.parse(storedData);
+        if (!Array.isArray(games) || games.length === 0) {
+          games = INITIAL_DEFAULT_GAMES;
+        }
+      } catch(e) {
+        games = INITIAL_DEFAULT_GAMES;
+      }
+    } else {
+      games = INITIAL_DEFAULT_GAMES;
+    }
+
+    // Сохраняем надежно
+    localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+    localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
+
     games.forEach(g => {
       if (!g.platform) g.platform = 'PC';
       if (!g.checklist) g.checklist = [];
+      if (!g.screenshots) g.screenshots = [];
       if (g.rating === undefined) g.rating = '';
       if (!g.completedDate) g.completedDate = '';
     });
@@ -1086,7 +1358,6 @@
       filtered.forEach(game => {
         const card = document.createElement('div');
         card.className = 'game-card';
-        // КЛИК НА КАРТОЧКУ — СРАЗУ ОТКРЫВАЕТ СТИЛИЗОВАННЫЙ БЛОКНОТИК
         card.onclick = () => openNotebook(game.id);
 
         let progressHtml = '';
@@ -1116,7 +1387,6 @@
             <div>
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                 <span class="badge platform-badge">${game.platform}</span>
-                <!-- КНОПКА С КЛЮЧИКОМ ДЛЯ СЕКРЕТОВ -->
                 <button class="card-key-btn" onclick="openSecretsModal('${game.id}', event)">🔑 Секреты</button>
               </div>
               <div class="card-title">${game.title}</div>
@@ -1128,7 +1398,7 @@
       });
     }
 
-    /* --- ЛОГИКА ГЕЙМЕРСКОГО БЛОКНОТА (МГНОВЕННЫЕ ЗАМЕТКИ С АВТОСОХРАНЕНИЕМ) --- */
+    /* --- ЛОГИКА НАСТОЯЩЕГО БЛОКНОТА-КНИГИ --- */
     function openNotebook(id) {
       const game = games.find(g => g.id === id);
       if (!game) return;
@@ -1138,7 +1408,7 @@
       document.getElementById('nbCover').src = game.cover || DEFAULT_COVER_SVG;
       document.getElementById('nbDesc').textContent = game.description || 'Описание отсутствует.';
       document.getElementById('nbTextarea').value = game.notes || '';
-      document.getElementById('nbSaveStatus').textContent = '💾 Сохранено';
+      document.getElementById('nbSaveStatus').textContent = '✍️ Сохранено';
 
       const badge = document.getElementById('nbBadge');
       badge.textContent = statusLabels[game.status];
@@ -1154,13 +1424,11 @@
         ratingBadge.style.display = 'none';
       }
 
-      // Ключик из блокнота
       document.getElementById('nbKeyBtn').onclick = () => openSecretsModal(game.id);
 
-      // Чеклист внутри блокнота
       renderNotebookChecklist(game);
+      renderNotebookScreenshots(game);
 
-      // Кнопка перехода к полному редактированию
       document.getElementById('nbEditBtn').onclick = () => {
         closeModal('notebookModal');
         openEditModal(game.id);
@@ -1180,8 +1448,8 @@
         const game = games.find(g => g.id === activeNotebookGameId);
         if (game) {
           game.notes = document.getElementById('nbTextarea').value;
-          localStorage.setItem('gamers_corner_data', JSON.stringify(games));
-          statusEl.textContent = '💾 Сохранено';
+          persistData();
+          statusEl.textContent = '✍️ Сохранено';
           statusEl.style.color = '#10b981';
         }
       }, 400);
@@ -1194,6 +1462,85 @@
       textarea.value = val.substring(0, start) + '\n' + prefix + val.substring(start);
       textarea.focus();
       autoSaveNotebook();
+    }
+
+    // Загрузка скриншота/карты прямо в блокнот
+    function handleScreenshotUpload(event) {
+      const file = event.target.files[0];
+      if (!file || !activeNotebookGameId) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          let w = img.width;
+          let h = img.height;
+          const maxDim = 800;
+          if (w > h && w > maxDim) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else if (h > maxDim) {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL('image/jpeg', 0.8);
+
+          const game = games.find(g => g.id === activeNotebookGameId);
+          if (game) {
+            if (!game.screenshots) game.screenshots = [];
+            game.screenshots.push({
+              id: Date.now().toString(),
+              url: compressed,
+              caption: file.name.replace(/\.[^/.]+$/, "").slice(0, 18) || 'Скриншот'
+            });
+            persistData();
+            renderNotebookScreenshots(game);
+          }
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderNotebookScreenshots(game) {
+      const sec = document.getElementById('nbScreenshotsSection');
+      const grid = document.getElementById('nbScreenshotsGrid');
+      grid.innerHTML = '';
+
+      if (game.screenshots && game.screenshots.length > 0) {
+        sec.style.display = 'block';
+        game.screenshots.forEach(sc => {
+          const div = document.createElement('div');
+          div.className = 'screenshot-polaroid';
+          div.innerHTML = `
+            <button class="screenshot-delete-btn" onclick="deleteScreenshot('${game.id}', '${sc.id}', event)">&times;</button>
+            <img class="screenshot-img" src="${sc.url}" alt="карта" onclick="zoomScreenshot('${sc.url}')" />
+            <div class="screenshot-caption">${sc.caption}</div>
+          `;
+          grid.appendChild(div);
+        });
+      } else {
+        sec.style.display = 'none';
+      }
+    }
+
+    function deleteScreenshot(gameId, scId, event) {
+      event.stopPropagation();
+      const game = games.find(g => g.id === gameId);
+      if (!game) return;
+      game.screenshots = game.screenshots.filter(s => s.id !== scId);
+      persistData();
+      renderNotebookScreenshots(game);
+    }
+
+    function zoomScreenshot(url) {
+      document.getElementById('imageZoomImg').src = url;
+      document.getElementById('imageZoomModal').style.display = 'flex';
     }
 
     function renderNotebookChecklist(game) {
@@ -1226,13 +1573,13 @@
       const item = game.checklist.find(i => i.id === itemId);
       if (item) {
         item.done = isChecked;
-        localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+        persistData();
         renderNotebookChecklist(game);
         renderGames();
       }
     }
 
-    /* --- ЛОГИКА КЛЮЧИКА (СЕКРЕТЫ И ПОДСКАЗКИ НА РУССКОМ) --- */
+    /* --- ЛОГИКА СЕКРЕТОВ --- */
     let currentSecretsGameTitle = '';
 
     function openSecretsModal(gameId, event) {
@@ -1245,7 +1592,6 @@
       const container = document.getElementById('secretsListContainer');
       container.innerHTML = '';
 
-      // Проверяем встроенную базу секретов
       const lower = game.title.toLowerCase();
       let foundSecrets = null;
       for (const [key, list] of Object.entries(BUILTIN_SECRETS)) {
@@ -1271,8 +1617,8 @@
       } else {
         container.innerHTML = `
           <div style="text-align:center; padding:20px; color:#94a3b8;">
-            Для этой игры пока нет локальных секретов.<br>
-            Нажмите кнопку ниже, чтобы автоматически выгрузить интересные факты и советы по механике на русском языке!
+            Для этой игры пока нет встроенных секретов.<br>
+            Нажмите кнопку ниже, чтобы автоматически подгрузить интересные факты и советы по механике на русском языке!
           </div>
         `;
       }
@@ -1292,7 +1638,6 @@
 
         if (pages.length > 0 && pages[0].extract) {
           const fullText = pages[0].extract;
-          // Разбиваем на абзацы и находим самые интересные секции о геймплее
           const paragraphs = fullText.split('\n\n').filter(p => p.length > 80 && !p.startsWith('== ')).slice(0, 4);
 
           const card = document.createElement('div');
@@ -1306,7 +1651,7 @@
           `;
           container.appendChild(card);
         } else {
-          alert('Дополнительных данных в энциклопедии не найдено.');
+          alert('Дополнительных данных не найдено.');
         }
       } catch (err) {
         alert('Не удалось связаться с базой знаний.');
@@ -1322,7 +1667,7 @@
 
       const addition = `\n\n📌 [Секрет: ${title}]\n${text}`;
       game.notes = (game.notes || '') + addition;
-      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      persistData();
 
       if (activeNotebookGameId === targetId) {
         document.getElementById('nbTextarea').value = game.notes;
@@ -1330,7 +1675,7 @@
       alert('Секрет успешно скопирован в ваш блокнот по игре!');
     }
 
-    /* --- ИСПРАВЛЕННЫЙ УМНЫЙ ПОИСК (FABLE, THE OUTER WORLDS И ДРУГИЕ) --- */
+    /* --- ПОИСК ОБЛОЖЕК И ОПИСАНИЙ --- */
     async function fetchGameInfo() {
       const rawInput = document.getElementById('gameTitleInput').value.trim();
       if (!rawInput) return alert('Введите название игры!');
@@ -1346,7 +1691,6 @@
       const cleanLower = rawInput.toLowerCase();
       let queryTitle = GAME_ALIASES[cleanLower] || rawInput;
 
-      // 1. Проверяем локальную базу хитов (мгновенные постеры Steam)
       const hitMatch = HITS_DATABASE.find(h => 
         h.title.toLowerCase().includes(cleanLower) || 
         cleanLower.includes(h.title.toLowerCase()) ||
@@ -1366,21 +1710,15 @@
 
       try {
         let foundCovers = [];
-
-        // 2. Поиск в русской Википедии через list=search
         const searchRes = await fetch(`https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(queryTitle)}&srlimit=5&format=json&origin=*`);
         const searchData = await searchRes.json();
         const results = searchData?.query?.search || [];
 
         for (const item of results) {
-          // Исключаем страницы значений
           if (item.title.includes('(значения)')) continue;
-
           try {
             const sumRes = await fetch(`https://ru.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(item.title)}`);
             const sum = await sumRes.json();
-
-            // Проверяем, что статья действительно о компьютерной игре или серии игр
             const isGame = (sum.description && (sum.description.includes('игра') || sum.description.includes('серия'))) || 
                            (sum.extract && (sum.extract.includes('игра') || sum.extract.includes('RPG') || sum.extract.includes('Xbox')));
 
@@ -1393,7 +1731,6 @@
           } catch(e) {}
         }
 
-        // Если картинок мало, опрашиваем англоязычную Википедию
         if (foundCovers.length === 0) {
           const enSearch = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(queryTitle + ' video game')}&gsrlimit=3&prop=pageimages|extracts&exintro=1&explaintext=1&pithumbsize=600&format=json&origin=*`);
           const enData = await enSearch.json();
@@ -1431,7 +1768,7 @@
             });
           }
         } else {
-          alert('Обложка не найдена. Нажмите «📁 Фото», чтобы прикрепить изображение из галереи телефона!');
+          alert('Обложка не найдена. Нажмите «📁 Фото», чтобы прикрепить изображение из галереи!');
         }
       } catch (err) {
         console.error(err);
@@ -1561,11 +1898,12 @@
         cover: currentAdvisorHit.cover || '',
         description: currentAdvisorHit.desc || currentAdvisorHit.description || '',
         notes: currentAdvisorHit.hook ? `Рекомендация: ${currentAdvisorHit.hook}` : '',
-        checklist: []
+        checklist: [],
+        screenshots: []
       };
 
       games.unshift(newGame);
-      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      persistData();
       renderGames();
 
       const addBtn = document.getElementById('advAddBtn');
@@ -1667,10 +2005,11 @@
       } else {
         gameData.id = Date.now().toString();
         gameData.notes = '';
+        gameData.screenshots = [];
         games.unshift(gameData);
       }
 
-      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      persistData();
       closeModal('editModal');
       renderGames();
     }
@@ -1679,7 +2018,7 @@
       if (!editingId) return;
       if (confirm('Точно удалить эту игру из списка?')) {
         games = games.filter(g => g.id !== editingId);
-        localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+        persistData();
         closeModal('editModal');
         closeModal('notebookModal');
         renderGames();
@@ -1698,6 +2037,12 @@
       document.querySelectorAll('.filter-btn-platform').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
       renderGames();
+    }
+
+    // Надежное сохранение в localStorage с резервным дубликатом
+    function persistData() {
+      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
     }
 
     function exportData() {
@@ -1720,8 +2065,9 @@
             games.forEach(g => {
               if (!g.platform) g.platform = 'PC';
               if (!g.checklist) g.checklist = [];
+              if (!g.screenshots) g.screenshots = [];
             });
-            localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+            persistData();
             renderGames();
             alert('База игр успешно восстановлена!');
           }
