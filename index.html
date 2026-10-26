@@ -1,70 +1,2075 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#171329"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Геймерский уголок"><title>Геймерский уголок · 0.6</title><link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACrUlEQVR4nO3dIYsUcRyA4Vsx2E+4ahU/g8liMgg2RTCKWLSarFrkMAqiTTCYLCY/g1j9AH4Ao/3w3WFnZ2fW3efJMzfD3suPm//O3KzOTq+fwL9cWvoE2F/iIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7S5UWO+urZt0WO+/96/vrW/Ac1OUjiIImDJA6SOEjiIImDJA6SOEjiIK0mea+s5fA9tP2Ku8lBEgdJHCRxkMRBWuZmnyN3/96b9Rt8/PR0njNZz+QgiYMkDpI4SOIgjbla2cU3KS/O72y6y8snXyY/jUNy4dc04qsWk4MkDpI4SOIgWT5fwJ6sjg8yOUjiIImDJA6SOEgzXa2MWB3f/mfOs75+98r39Rt8/nNz+6P8evhz/QbX3k/wiMkFJgdJHCRxkMRBEgdJHCRxkMRBEgdJHCQ3+2xrktXxQbtYHR9kcpDEQRIHSRwkcZBmuloZvO9mnmdl3354tOkujx+823SXQT9uX12/wY2vvyc/6AgmB0kcJHGQxEE6ruXzXfx1ecBMDpI4SOIgiYMkDtK+XK0c1f+N3JPV8UEmB0kcJHGQxEESB0kcJHGQxEESB0kcpNXZ6QQPYe7i3U2DRrx6aBGLfDgnU3w+JgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkKZ5VpaDZHKQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ/gKxyDfeW45bDQAAAABJRU5ErkJggg=="><link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACrUlEQVR4nO3dIYsUcRyA4Vsx2E+4ahU/g8liMgg2RTCKWLSarFrkMAqiTTCYLCY/g1j9AH4Ao/3w3WFnZ2fW3efJMzfD3suPm//O3KzOTq+fwL9cWvoE2F/iIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7S5UWO+urZt0WO+/96/vrW/Ac1OUjiIImDJA6SOEjiIImDJA6SOEjiIK0mea+s5fA9tP2Ku8lBEgdJHCRxkMRBWuZmnyN3/96b9Rt8/PR0njNZz+QgiYMkDpI4SOIgjbla2cU3KS/O72y6y8snXyY/jUNy4dc04qsWk4MkDpI4SOIgWT5fwJ6sjg8yOUjiIImDJA6SOEgzXa2MWB3f/mfOs75+98r39Rt8/nNz+6P8evhz/QbX3k/wiMkFJgdJHCRxkMRBEgdJHCRxkMRBEgdJHCQ3+2xrktXxQbtYHR9kcpDEQRIHSRwkcZBmuloZvO9mnmdl3354tOkujx+823SXQT9uX12/wY2vvyc/6AgmB0kcJHGQxEE6ruXzXfx1ecBMDpI4SOIgiYMkDtK+XK0c1f+N3JPV8UEmB0kcJHGQxEESB0kcJHGQxEESB0kcpNXZ6QQPYe7i3U2DRrx6aBGLfDgnU3w+JgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkKZ5VpaDZHKQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ/gKxyDfeW45bDQAAAABJRU5ErkJggg=="><link rel="manifest" href="data:application/manifest+json;charset=utf-8,{"name": "Геймерский уголок", "short_name": "Геймерский уголок", "start_url": "./", "display": "standalone", "background_color": "#171329", "theme_color": "#171329", "icons": [{"src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACrUlEQVR4nO3dIYsUcRyA4Vsx2E+4ahU/g8liMgg2RTCKWLSarFrkMAqiTTCYLCY/g1j9AH4Ao/3w3WFnZ2fW3efJMzfD3suPm//O3KzOTq+fwL9cWvoE2F/iIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7S5UWO+urZt0WO+/96/vrW/Ac1OUjiIImDJA6SOEjiIImDJA6SOEjiIK0mea+s5fA9tP2Ku8lBEgdJHCRxkMRBWuZmnyN3/96b9Rt8/PR0njNZz+QgiYMkDpI4SOIgjbla2cU3KS/O72y6y8snXyY/jUNy4dc04qsWk4MkDpI4SOIgWT5fwJ6sjg8yOUjiIImDJA6SOEgzXa2MWB3f/mfOs75+98r39Rt8/nNz+6P8evhz/QbX3k/wiMkFJgdJHCRxkMRBEgdJHCRxkMRBEgdJHCQ3+2xrktXxQbtYHR9kcpDEQRIHSRwkcZBmuloZvO9mnmdl3354tOkujx+823SXQT9uX12/wY2vvyc/6AgmB0kcJHGQxEE6ruXzXfx1ecBMDpI4SOIgiYMkDtK+XK0c1f+N3JPV8UEmB0kcJHGQxEESB0kcJHGQxEESB0kcpNXZ6QQPYe7i3U2DRrx6aBGLfDgnU3w+JgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkKZ5VpaDZHKQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ/gKxyDfeW45bDQAAAABJRU5ErkJggg==", "sizes": "180x180", "type": "image/png"}]}"><style>
-*{box-sizing:border-box;min-width:0}html{background:#161326;color:#edeafa;font:16px system-ui,-apple-system,sans-serif}body{margin:0;background:radial-gradient(ellipse at top left,#46315a88,transparent 60%),radial-gradient(ellipse at right,#144d6266,transparent 70%),#161326;min-height:100dvh}button,input,select,textarea{font:inherit}button,a,input,select,textarea{touch-action:manipulation}button{cursor:pointer;border:1px solid #645b8177;border-radius:12px;background:#302a46;color:#f8f5ff;padding:10px 12px;min-height:44px}button:hover{border-color:#bda3ff}button:disabled{opacity:.5;cursor:default}input,select,textarea{width:100%;border:1px solid #625b78;background:#191729;color:#f4efff;border-radius:10px;padding:11px;font-size:16px}header{padding:14px 12px;background:#211b36;border-bottom:1px solid #645182;position:sticky;top:0;z-index:100}main,header>div,footer{width:min(1180px,100%);margin:auto}h1{font-size:clamp(19px,4.5vw,27px);margin:0;overflow-wrap:anywhere}.brand{display:flex;align-items:center;gap:10px}.pad{width:40px;height:40px;flex-shrink:0;image-rendering:pixelated;border-radius:8px}.shine{color:#e7d5ff;background:linear-gradient(110deg,#e9ddff,#9cddf6,#dfc1ff,#e9ddff);background-size:250%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 9s ease-in-out infinite alternate}@keyframes glow{to{background-position:100%}}.actions,.modes{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.active{background:#7656b5;border-color:#ba9ae8}.primary{background:linear-gradient(120deg,#7853b4,#3c7199)}main{padding:14px 12px}.panel{border:1px solid #69598766;background:#211d3488;padding:12px;border-radius:16px;margin-bottom:16px}.filters{display:flex;gap:8px;overflow-x:auto;max-width:100%;padding:4px 0 8px}.filters button{flex:0 0 auto;white-space:nowrap;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(245px,100%),1fr));gap:16px}.game{border:1px solid #68578088;background:#282139;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}.coverbtn{padding:0;border:0;border-radius:0;display:block;width:100%;aspect-ratio:16/10;background:#141323;position:relative;overflow:hidden}.coverbtn img{width:100%;height:100%;object-fit:contain;display:block}.coverbtn .state{position:absolute;bottom:6px;left:6px;font-size:12px;background:#252037ee;padding:5px 8px;border-radius:8px;max-width:calc(100% - 12px)}.cardbody{padding:10px;display:grid;gap:8px}.title{background:none;border:0;padding:0;text-align:left;font-weight:700;overflow-wrap:anywhere;min-height:44px}.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:space-between}.tag{font-size:12px;background:#423655;padding:5px 7px;border-radius:6px;overflow-wrap:anywhere;max-width:100%}.key{font-size:13px;padding:6px 8px}.muted{color:#bcb3cf;font-size:14px}footer{padding:24px 14px;text-align:center;color:#baaccd}.alert{padding:12px;border:1px solid #e9bd6d;border-radius:12px;background:#433521;margin:10px 0;overflow-wrap:anywhere}.hidden{display:none!important}body.phone main{max-width:700px}body.phone .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}body.phone .cardbody{padding:8px}body.phone .title{font-size:14px}body.phone .meta{align-items:flex-start}body.phone .key{width:100%}dialog{position:fixed;inset:0;margin:auto;border:1px solid #76668e;border-radius:18px;background:#252036;color:#efeafa;width:min(820px,calc(100% - 16px));max-width:calc(100% - 16px);max-height:calc(100dvh - 24px);padding:16px;overflow:auto;overscroll-behavior:contain}dialog::backdrop{background:#080615cc}.modalhead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.modalhead h2{margin:4px 0;font-size:21px;overflow-wrap:anywhere}.close{flex-shrink:0}.row{display:flex;flex-wrap:wrap;gap:8px}.row>*{flex:1 1 130px}.row>button{flex:0 0 auto}label{display:block;margin:12px 0 6px;color:#d0c5e2}.book{border:7px solid #62424b;border-left:17px solid #47323c;border-radius:8px 15px 15px 8px;background:#f1e6cc;color:#473c35;padding:16px 12px;box-shadow:3px 5px 0 #bcaf94,5px 8px 0 #847960,8px 12px 20px #0006;position:relative;margin:14px 3px 24px 0}.book:before{content:'';position:absolute;left:15px;top:0;bottom:0;width:1px;background:#bd757555;pointer-events:none}.booktitle{font-family:Georgia,serif;font-size:18px;color:#705346;padding-left:12px}.paper{background:repeating-linear-gradient(transparent 0px,transparent 29px,#b9aa8c66 30px);color:#352d27;border:0;border-radius:0;line-height:30px;min-height:260px;padding:10px 8px 10px 12px;resize:vertical;font-family:Georgia,serif;font-size:17px;outline-offset:2px}.saved{font-size:12px;color:#496342;display:block;padding-left:12px;min-height:20px}.book button{background:#e1d1af;color:#4d4035;border-color:#b2a083;font-size:13px}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.photo{background:#fff7e8;padding:6px;border:1px solid #b7a787}.photo img{width:100%;height:100px;object-fit:contain}.photo p{margin:4px;font-size:12px;overflow-wrap:anywhere}.photo button{width:100%}.task{display:flex;align-items:center;gap:8px;margin:7px 0;overflow-wrap:anywhere}.task input{width:22px;height:22px;flex-shrink:0}.task span{flex:1}.candidate{display:block;width:100%;text-align:left;margin-top:6px;overflow-wrap:anywhere}.links a{display:block;color:#9ed7ff;padding:12px 0;overflow-wrap:anywhere}#zoom img{width:100%;height:auto;max-height:75dvh;object-fit:contain}progress{width:100%;accent-color:#b9a5ee}@media(max-width:600px){body.pc .grid{grid-template-columns:minmax(0,1fr)}header{padding-left:10px;padding-right:10px}.actions button{flex:1 1 auto}.book{padding:12px 6px;border-left-width:10px}.book:before{left:9px}.row{gap:6px}dialog{padding:12px}.modalhead h2{font-size:18px}.paper{min-height:240px}.gallery{gap:6px}.brand{gap:8px}}@media(prefers-reduced-motion:reduce){.shine{animation:none}}
-</style></head><body><header><div><div class="brand"><img class="pad" id="logo" alt="Пиксельный геймпад"><h1 class="shine">Геймерский уголок</h1></div><div class="modes"><button id="pc" onclick="setMode('pc')">🖥 PC</button><button id="phone" onclick="setMode('phone')">📱 Phone</button></div><div class="actions"><button class="primary" onclick="editGame()">＋ Игра</button><button onclick="advisor()">🎲 Советник</button><button onclick="exportData()">💾 Экспорт</button><button onclick="$('importfile').click()">📥 Импорт</button><button onclick="recover()">↶ Восстановление</button></div></div></header><main><div id="notice" role="status"></div><noscript>Для работы приложения включите JavaScript. Данные браузера не очищайте.</noscript><div class="panel"><input id="search" placeholder="Поиск в моей коллекции" oninput="render()" aria-label="Поиск"><div class="filters" id="statuses"></div><div class="filters" id="platforms"></div></div><div id="grid" class="grid"></div></main><footer>Геймерский уголок · Версия 0.6<br><small>База хранится на этом устройстве. Регулярно делайте экспорт.</small></footer><input id="importfile" class="hidden" type="file" accept="application/json,.json" onchange="importData(this)">
-<dialog id="nb"><div class="modalhead"><h2 id="nbtitle"></h2><button class="close" onclick="closeNotebook()">✕</button></div><div class="row"><button onclick="editGame(activeId)">⚙ Информация об игре</button><button onclick="secrets(activeId)">🔑 Помощь</button></div><div class="book"><div class="booktitle">Мой игровой дневник</div><span class="saved" id="saved">Заметки</span><textarea id="notes" class="paper" placeholder="Здесь начинается твоя история…" oninput="saveNotes()"></textarea><div class="row"><button onclick="insertNote('📍 Тайник: ')">📍 Тайник</button><button onclick="insertNote('🔑 Код: ')">🔑 Код</button><button onclick="$('photos').click()">📷 Карта / скриншот</button></div><div id="gallery" class="gallery"></div></div><div id="tasks"></div><div class="row"><input id="newtask" placeholder="Новая цель"><button onclick="addTask()">＋ Цель</button></div><details><summary>Описание и дата прохождения</summary><p id="desc"></p></details><input id="photos" type="file" class="hidden" accept="image/*" multiple onchange="uploadPhotos(this)"></dialog>
-<dialog id="editor"><div class="modalhead"><h2>Игра</h2><button class="close" onclick="$('editor').close()">✕</button></div><label for="title">Название</label><div class="row"><input id="title"><button id="findbtn" onclick="findGame()">🔍 Найти</button></div><p class="muted">Выбери подходящую часть в результатах — поиск не заменяет игру без твоего выбора.</p><div id="candidates"></div><div class="row"><div><label>Статус</label><select id="status"></select></div><div><label>Платформа</label><select id="platform"></select></div></div><div class="row"><div><label>Моя оценка</label><select id="rating"></select></div><div><label>Дата финала</label><input id="date" type="date"></div></div><label>Обложка — ссылка или фото</label><div class="row"><input id="cover"><button onclick="$('coverfile').click()">📁 Фото</button></div><input type="file" id="coverfile" class="hidden" accept="image/*" onchange="uploadCover(this)"><label>Описание на русском</label><textarea id="description" rows="4"></textarea><div class="actions"><button class="primary" onclick="saveGame()">Сохранить</button><button id="deletebtn" onclick="deleteGame()">Удалить игру</button></div></dialog>
-<dialog id="help"><div class="modalhead"><h2 id="helptitle"></h2><button onclick="$('help').close()">✕</button></div><p>Русскоязычные руководства и секреты по выбранной игре. Ссылки откроются отдельно; энциклопедическое описание не выдаётся за прохождение.</p><div id="helplinks" class="links"></div></dialog>
-<dialog id="advice"><div class="modalhead"><h2>🎲 Игровой компас</h2><button onclick="$('advice').close()">✕</button></div><label>Жанр</label><select id="genre" onchange="deck=[];nextHit()"></select><label>Настроение</label><select id="mood" onchange="deck=[];nextHit()"><option value="all">Любое</option><option value="story">Хочется истории</option><option value="action">Нужен драйв</option><option value="calm">Хочется спокойствия</option><option value="fear">Пощекотать нервы</option></select><p id="hitinfo"></p><h3 id="hittitle"></h3><p id="hitdesc"></p><div class="actions"><button onclick="nextHit()">🎲 Следующая</button><button id="addhit" onclick="addHit()">＋ В «Буду играть»</button></div></dialog>
-<dialog id="zoom"><button onclick="$('zoom').close()">Закрыть</button><img id="zoomimg" alt="Прикреплённая карта"></dialog>
-<script>
-'use strict';
-const ICON_DATA="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACrUlEQVR4nO3dIYsUcRyA4Vsx2E+4ahU/g8liMgg2RTCKWLSarFrkMAqiTTCYLCY/g1j9AH4Ao/3w3WFnZ2fW3efJMzfD3suPm//O3KzOTq+fwL9cWvoE2F/iIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7S5UWO+urZt0WO+/96/vrW/Ac1OUjiIImDJA6SOEjiIImDJA6SOEjiIK0mea+s5fA9tP2Ku8lBEgdJHCRxkMRBWuZmnyN3/96b9Rt8/PR0njNZz+QgiYMkDpI4SOIgjbla2cU3KS/O72y6y8snXyY/jUNy4dc04qsWk4MkDpI4SOIgWT5fwJ6sjg8yOUjiIImDJA6SOEgzXa2MWB3f/mfOs75+98r39Rt8/nNz+6P8evhz/QbX3k/wiMkFJgdJHCRxkMRBEgdJHCRxkMRBEgdJHCQ3+2xrktXxQbtYHR9kcpDEQRIHSRwkcZBmuloZvO9mnmdl3354tOkujx+823SXQT9uX12/wY2vvyc/6AgmB0kcJHGQxEE6ruXzXfx1ecBMDpI4SOIgiYMkDtK+XK0c1f+N3JPV8UEmB0kcJHGQxEESB0kcJHGQxEESB0kcpNXZ6QQPYe7i3U2DRrx6aBGLfDgnU3w+JgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkKZ5VpaDZHKQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ/gKxyDfeW45bDQAAAABJRU5ErkJggg==";
-const $=id=>document.getElementById(id), KEY='gamers_corner_data', BACK='gamers_corner_safety_backup', PRE='gamers_corner_pre06_backup';
-const states={playing:'🎮 Играю',planned:'⏳ Буду играть',paused:'⏸ На паузе',completed:'✓ Пройдено'};
-const platforms=['PC','Xbox','PS Vita','PlayStation','Switch','Retro','Другое'];
-let games=[],activeId=null,editingId=null,filter='all',platformFilter='all',writeLocked=false,mode='phone';
-function notice(t){$('notice').textContent=t;$('notice').className=t?'alert':'';}
-function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
-function valid(a){return Array.isArray(a)&&a.every(g=>g&&typeof g==='object'&&typeof g.title==='string')}
-function parse(s){try{let a=JSON.parse(s);return valid(a)?a:null}catch(e){return null}}
-function normal(a){return a.map(g=>({...g,id:String(g.id??uid()),status:states[g.status]?g.status:'planned',platform:g.platform||'PC',notes:typeof g.notes==='string'?g.notes:'',checklist:Array.isArray(g.checklist)?g.checklist:[],screenshots:Array.isArray(g.screenshots)?g.screenshots:[]}))}
-function uid(){return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,9)}
-function persist(){if(writeLocked){notice('Сохранение заблокировано: исходная база повреждена. Сначала экспортируйте данные или воспользуйтесь восстановлением.');return false}try{let old=get(KEY);if(parse(old)!==null)localStorage.setItem(BACK,old);localStorage.setItem(KEY,JSON.stringify(games));return true}catch(e){notice('Не удалось сохранить изменения: хранилище недоступно или заполнено. Сделайте экспорт сейчас. Данные в памяти не очищены.');return false}}
-function load(){const raw=get(KEY);if(raw!==null){const a=parse(raw);if(a!==null){games=normal(a);try{if(get(PRE)===null)localStorage.setItem(PRE,raw)}catch(e){}return}const b=parse(get(BACK));games=normal(b||[]);writeLocked=true;notice('Основная база не прочитана. Она НЕ перезаписана. Показана резервная копия, если она сохранилась. Нажмите «Восстановление».');return}const b=parse(get(BACK));games=normal(b||[]);if(b)notice('Найдена резервная копия. Нажмите «Восстановление», чтобы вернуть её.');else notice('В этом хранилище пока нет игр. Если раньше они были на другом устройстве или в другом браузере, перенесите их через экспорт/импорт.');}
-function setMode(m){mode=m==='pc'?'pc':'phone';document.body.classList.remove('pc','phone');document.body.classList.add(mode);$('pc').classList.toggle('active',mode==='pc');$('phone').classList.toggle('active',mode==='phone');try{localStorage.setItem('gamers_corner_view_mode',mode)}catch(e){}}
-function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n}
-function button(text,fn,cls){let b=el('button',cls,text);b.onclick=fn;return b}
-const fallback='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="460" height="280"><rect width="460" height="280" fill="#30233e"/><text x="230" y="150" text-anchor="middle" font-size="60">🎮</text></svg>');
-function image(url,alt){let i=el('img');i.alt=alt;i.loading='lazy';i.src=(typeof url==='string'&&/^(https?:|data:image\/)/.test(url))?url:fallback;i.onerror=()=>{i.onerror=null;i.src=fallback};return i}
-function render(){const q=$('search').value.toLowerCase();$('statuses').replaceChildren();Object.entries({all:'Все',...states}).forEach(([k,v])=>{$('statuses').append(button(v+' ('+games.filter(g=>k==='all'||g.status===k).length+')',()=>{filter=k;render()},filter===k?'active':''))});$('platforms').replaceChildren();['Все',...platforms].forEach(p=>$('platforms').append(button(p,()=>{platformFilter=p==='Все'?'all':p;render()},((p==='Все'&&platformFilter==='all')||p===platformFilter)?'active':'')));$('grid').replaceChildren();let list=games.filter(g=>(filter==='all'||g.status===filter)&&(platformFilter==='all'||g.platform===platformFilter)&&g.title.toLowerCase().includes(q));for(const g of list){let c=el('article','game'),cover=button('',()=>openNotebook(g.id),'coverbtn');cover.setAttribute('aria-label','Открыть блокнот '+g.title);cover.append(image(g.cover,g.title),el('span','state',states[g.status]));let body=el('div','cardbody'),meta=el('div','meta');meta.append(el('span','tag',g.platform+(g.rating?' · ⭐ '+g.rating:'')),button('🔑 Помощь',()=>secrets(g.id),'key'));body.append(button(g.title,()=>openNotebook(g.id),'title'),meta);if(g.checklist.length){let done=g.checklist.filter(t=>t.done).length;body.append(el('span','muted','🎯 '+done+' / '+g.checklist.length));let p=el('progress');p.max=g.checklist.length;p.value=done;body.append(p)}c.append(cover,body);$('grid').append(c)}if(!list.length)$('grid').append(el('p','muted','Здесь пока нет игр. Фильтры можно переключить на «Все».'))}
-function show(id){if(!$(id).open)$(id).showModal()}
-function game(){return games.find(g=>g.id===activeId)}
-function openNotebook(id){activeId=id;let g=game();if(!g)return;$('nbtitle').textContent=g.title;$('notes').value=g.notes;$('desc').textContent=(g.description||'Описание не добавлено.')+(g.completedDate?' · Финал: '+g.completedDate:'');$('saved').textContent='Заметки загружены';renderTasks();renderPhotos();show('nb')}
-function saveNotes(){let g=game();if(!g)return;g.notes=$('notes').value;$('saved').textContent=persist()?'✓ Сохранено на устройстве':'⚠ Не сохранено — сделайте экспорт'}
-function closeNotebook(){$('nb').close();render()}
-function insertNote(t){$('notes').setRangeText('\n'+t,$('notes').selectionStart,$('notes').selectionEnd,'end');saveNotes();$('notes').focus()}
-function renderTasks(){let g=game();$('tasks').replaceChildren();for(const t of g.checklist){let row=el('label','task'),check=el('input');check.type='checkbox';check.checked=!!t.done;check.onchange=()=>{t.done=check.checked;persist();render()};row.append(check,el('span','',t.text||''),button('×',()=>{g.checklist=g.checklist.filter(x=>x!==t);persist();renderTasks();render()}));$('tasks').append(row)}}
-function addTask(){let text=$('newtask').value.trim();if(!text||!game())return;game().checklist.push({id:uid(),text,done:false});$('newtask').value='';persist();renderTasks();render()}
-function renderPhotos(){$('gallery').replaceChildren();for(const s of game().screenshots){let box=el('div','photo'),im=image(s.url||s.dataUrl,'Карта / скриншот');im.onclick=()=>{$('zoomimg').src=im.src;show('zoom')};box.append(im,el('p','',s.caption||'Скриншот'),button('Удалить',()=>{if(confirm('Удалить это изображение?')){game().screenshots=game().screenshots.filter(x=>x!==s);persist();renderPhotos()}}));$('gallery').append(box)}}
-function compress(file,max=1600){return new Promise((resolve,reject)=>{let r=new FileReader();r.onerror=reject;r.onload=()=>{let i=new Image();i.onerror=reject;i.onload=()=>{let ratio=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*ratio);c.height=Math.round(i.height*ratio);let ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(i,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.85))};i.src=r.result};r.readAsDataURL(file)})}
-async function uploadPhotos(input){const target=activeId;try{for(const f of input.files){if(!f.type.startsWith('image/'))continue;let url=await compress(f);let g=games.find(x=>x.id===target);if(!g)continue;g.screenshots.push({id:uid(),url,caption:f.name});persist()}if(target===activeId)renderPhotos()}catch(e){notice('Не удалось обработать изображение. Попробуйте JPEG или PNG.')}input.value=''}
-async function uploadCover(input){if(!input.files[0])return;try{$('cover').value=await compress(input.files[0],800)}catch(e){notice('Фото не прочитано.')}input.value=''}
-function options(id,items){$(id).replaceChildren();for(const [value,text]of items){let o=el('option','',text);o.value=value;$(id).append(o)}}
-function editGame(id=null){editingId=id;const g=games.find(x=>x.id===id)||{};options('status',Object.entries(states));options('platform',platforms.map(x=>[x,x]));options('rating',[['','Без оценки'],...Array.from({length:10},(_,i)=>[String(i+1),String(i+1)])]);$('title').value=g.title||'';$('status').value=g.status||'planned';if(g.platform&&!platforms.includes(g.platform))$('platform').append(new Option(g.platform,g.platform));$('platform').value=g.platform||'PC';$('rating').value=g.rating||'';$('date').value=g.completedDate||'';$('cover').value=g.cover||'';$('description').value=g.description||'';$('candidates').replaceChildren();$('deletebtn').classList.toggle('hidden',!id);show('editor')}
-function saveGame(){let title=$('title').value.trim();if(!title)return;const data={title,status:$('status').value,platform:$('platform').value,rating:$('rating').value,completedDate:$('date').value,cover:$('cover').value.trim(),description:$('description').value};let g=games.find(g=>g.id===editingId);if(g)Object.assign(g,data);else games.unshift({...data,id:uid(),notes:'',checklist:[],screenshots:[]});if(persist())$('editor').close();render();if(g&&g.id===activeId&&$('nb').open)openNotebook(g.id)}
-function deleteGame(){if(!confirm('Удалить игру и её записи? Перед удалением рекомендуется экспорт.'))return;games=games.filter(g=>g.id!==editingId);if(persist()){$('editor').close();if(activeId===editingId)$('nb').close()}render()}
-async function api(params){const u=new URL('https://ru.wikipedia.org/w/api.php');for(const [k,v]of Object.entries({...params,format:'json',origin:'*'}))u.searchParams.set(k,v);const c=new AbortController(),timer=setTimeout(()=>c.abort(),12000);try{let r=await fetch(u,{signal:c.signal});if(!r.ok)throw Error('HTTP '+r.status);return await r.json()}finally{clearTimeout(timer)}}
-const aliases={'the outer world':'The Outer Worlds','outer world':'The Outer Worlds','фейбл':'Fable','дайн лайт':'Dying Light'};
-async function findGame(){let raw=$('title').value.trim();if(raw.length<2)return;let q=aliases[raw.toLowerCase()]||raw;let target=editingId;$('findbtn').disabled=true;$('candidates').textContent='Ищу варианты…';try{const data=await api({action:'query',generator:'search',gsrsearch:q,gsrlimit:8,prop:'extracts|pageimages',exintro:1,explaintext:1,exsentences:4,piprop:'thumbnail',pithumbsize:600,pilicense:'any'});if(editingId!==target)return;let pages=Object.values(data.query?.pages||{}).sort((a,b)=>(a.index||0)-(b.index||0));$('candidates').replaceChildren();const local=catalog.filter(h=>h.title.toLowerCase().includes(q.toLowerCase()));for(const h of local)candidate(h.title,h.cover,h.desc);for(const p of pages){if(!/игр|rpg|платформер|шутер/i.test(p.extract||''))continue;candidate(p.title,p.thumbnail?.source||'',p.extract||'')}if(!$('candidates').children.length)$('candidates').textContent='Подходящих результатов нет. Можно заполнить вручную.'}catch(e){$('candidates').replaceChildren();const hits=catalog.filter(h=>h.title.toLowerCase().includes(q.toLowerCase()));for(const h of hits)candidate(h.title,h.cover,h.desc);if(!hits.length)$('candidates').textContent='База поиска сейчас недоступна. Ваши сохранённые игры не затронуты.'}finally{$('findbtn').disabled=false}}
-function candidate(title,cover,desc){$('candidates').append(button(title+' — выбрать',()=>{$('title').value=title;if(cover)$('cover').value=cover;$('description').value=desc;$('candidates').replaceChildren(el('p','muted','Выбрано: '+title))},'candidate'))}
-function secrets(id){let g=games.find(x=>x.id===id);if(!g)return;$('helptitle').textContent='🔑 '+g.title;$('helplinks').replaceChildren();for(const [name,suffix] of [['Секреты и тайники','секреты тайники на русском'],['Полное прохождение','прохождение на русском'],['Карта и коллекционные предметы','карта предметы гайд на русском']]){let a=el('a','',name);a.href='https://www.google.com/search?q='+encodeURIComponent(g.title+' '+suffix);a.target='_blank';a.rel='noopener noreferrer';$('helplinks').append(a)}show('help')}
-const catalog=[];
-function seed(rows,genre,mood){for(const [title,app,desc]of rows)catalog.push({title,genre,mood,cover:app?'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/'+app+'/header.jpg':'',desc})}
-seed([['Fable Anniversary',288470,'Сказочная ролевая игра о герое Альбиона и последствиях его решений.'],['The Outer Worlds',578650,'Космическая RPG с диалогами и выбором решений в корпоративной колонии.'],['Ведьмак 3: Дикая Охота',292030,'Приключения Геральта, охота на чудовищ и путешествия по большому миру.'],['Fallout: New Vegas',22380,'Ролевая история Курьера в пустоши Мохаве.'],['Skyrim',489830,'Исследование северной провинции Тамриэля.'],['Mass Effect Legendary Edition',1328670,'Космическая ролевая трилогия о команде Шепарда.'],['Disco Elysium',632470,'Детективная ролевая история с упором на диалоги.'],['Baldur’s Gate 3',1086940,'Партийная ролевая игра с пошаговыми сражениями.']], 'rpg','story');
-seed([['Dying Light',239140,'Паркур и выживание в городе с заражёнными.'],['Days Gone',1259420,'Путешествия на мотоцикле в мире заражённых.'],['Left 4 Dead 2',550,'Кооперативные вылазки против заражённых.'],['Project Zomboid',108600,'Подробное выживание в зомби-апокалипсисе.'],['The Forest',242760,'Строительство убежища и исследование опасного острова.'],['Subnautica',264710,'Исследование подводного инопланетного мира.']], 'survival','fear');
-seed([['DOOM Eternal',782330,'Быстрые сражения против демонов.'],['Titanfall 2',1237970,'Шутер с паркуром и боевыми титанами.'],['Metro Exodus',412020,'Путешествие по постапокалиптической России.'],['Half-Life 2',220,'История сопротивления Альянсу.'],['BioShock Remastered',409710,'Исследование подводного города Восторг.'],['Wolfenstein: The New Order',201810,'Шутер в альтернативной истории.']], 'shooter','action');
-seed([['Dead Space',1693980,'Инженер Айзек Кларк на опасном космическом корабле.'],['Resident Evil 4',2050650,'История Леона Кеннеди в заражённой деревне.'],['Alien: Isolation',214490,'Скрытное выживание на станции с ксеноморфом.'],['Outlast',238320,'Исследование лечебницы с камерой ночного видения.'],['SOMA',282140,'Подводный научно-фантастический хоррор.']], 'horror','fear');
-seed([['FlatOut 2',2990,'Аркадные гонки с разрушениями.'],['Forza Horizon 5',1551360,'Автомобильный фестиваль в Мексике.'],['Wreckfest',228380,'Контактные гонки и дерби.'],['Burnout Paradise Remastered',1238080,'Скоростные заезды в открытом городе.']], 'racing','action');
-seed([['Stardew Valley',413150,'Ферма и жизнь в небольшом городке.'],['Terraria',105600,'Строительство и приключения в двумерном мире.'],['Dorfromantik',1455840,'Спокойное составление пейзажей из плиток.'],['A Short Hike',1055540,'Небольшое путешествие по острову.']], 'chill','calm');
-seed([['Hollow Knight',367520,'Исследование подземного королевства и сложные бои.'],['Dead Cells',588650,'Динамичные забеги по меняющемуся замку.'],['Ori and the Blind Forest',261570,'Платформер о путешествии лесного духа.'],['Celeste',504230,'Преодоление горы в точном платформере.'],['Hades',1145360,'Попытки выбраться из подземного царства.']], 'platformer','action');
-let deck=[],hit=null,lastHit='';
-function advisor(){options('genre',[['all','Все жанры'],['rpg','Ролевые'],['survival','Выживание'],['shooter','Шутеры'],['horror','Хоррор'],['racing','Гонки'],['chill','Спокойные'],['platformer','Платформеры']]);deck=[];nextHit();show('advice')}
-function nextHit(){let pool=catalog.filter(h=>($('genre').value==='all'||h.genre===$('genre').value)&&($('mood').value==='all'||h.mood===$('mood').value));if(!pool.length){hit=null;$('hittitle').textContent='Нет подходящих игр';$('hitdesc').textContent='Попробуй выбрать любое настроение или другой жанр.';$('hitinfo').textContent='';$('addhit').disabled=true;return}if(!deck.length){deck=[...pool];for(let i=deck.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}if(deck.length>1&&deck[deck.length-1].title===lastHit)[deck[0],deck[deck.length-1]]=[deck[deck.length-1],deck[0]]}hit=deck.pop();lastHit=hit.title;$('hittitle').textContent=hit.title;$('hitdesc').textContent=hit.desc;$('hitinfo').textContent='Подходящих: '+pool.length+' · осталось в этом круге: '+deck.length+'. После полного круга начнётся новый.';$('addhit').disabled=games.some(g=>g.title.toLowerCase()===hit.title.toLowerCase())}
-function addHit(){if(!hit)return;games.unshift({id:uid(),title:hit.title,cover:hit.cover,description:hit.desc,status:'planned',platform:'PC',rating:'',notes:'',checklist:[],screenshots:[]});persist();render();$('addhit').disabled=true}
-function download(text,name){let url=URL.createObjectURL(new Blob([text],{type:'application/json'})),a=el('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000)}
-function exportData(){download(JSON.stringify(games,null,2),'gamerbox-backup-'+new Date().toISOString().slice(0,10)+'.json');if(writeLocked&&get(KEY))download(get(KEY),'gamerbox-original-unreadable.json')}
-async function importData(input){try{let a=parse(await input.files[0].text());if(a===null)throw Error();if(!confirm('Добавить игры из копии? Текущие записи не будут заменены.'))return;for(const g of normal(a)){let existing=games.find(x=>x.id===g.id);if(existing&&JSON.stringify(existing)===JSON.stringify(g))continue;if(existing)g.id=uid();games.push(g)}if(!writeLocked)persist();else notice('Копия загружена в память. Сделайте экспорт, затем восстановление.');render()}catch(e){notice('Файл не распознан как резервная копия игр.')}input.value=''}
-function recover(){let keys=[BACK,PRE],choices=keys.map(k=>({k,a:parse(get(k))})).filter(x=>x.a!==null);if(!choices.length){notice('Резервных копий в этом браузере не найдено. Данные сайта не очищайте.');return}let chosen=choices.reduce((a,b)=>a.a.length>=b.a.length?a:b);if(!confirm('Найдена копия: '+chosen.a.length+' игр. Объединить с текущими записями? Существующие записи останутся.'))return;for(const g of normal(chosen.a))if(!games.some(x=>x.id===g.id))games.push(g);if(writeLocked){try{localStorage.setItem('gamers_corner_unreadable_'+Date.now(),get(KEY)||'');writeLocked=false}catch(e){notice('Не удалось сохранить исходную повреждённую базу. Сначала сделайте экспорт.');return}}persist();render();notice('Копия объединена с текущей базой. Если отдельные записи были перезаписаны раньше, восстановить их без более раннего экспорта невозможно.')}
-window.addEventListener('error',e=>notice('Ошибка интерфейса: '+e.message+'. Данные не очищайте; сделайте экспорт.'));
-load();setMode(get('gamers_corner_view_mode')||(innerWidth<768?'phone':'pc'));$('logo').src=ICON_DATA;render();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Геймерский уголок v0.6</title>
+
+  <!-- Иконка геймпада (iOS Safari + Android Home Screen) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" />
+  <link rel="icon" type="image/png" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAHX0lEQVR4nO3dMYgcVRjA8S/HCQGFIyEQbbRJY1RSiYVNCnvbNGkEGw2EdAchhBCEdEGMVSCNja29hY1FsApRbNJoE4SQEFAIeBALeWF3dmbe92bem/e+b/6/Lrvr7eybP2+/m707jx2cPvtSKjl68azWU6Og/eMn6j33Uk9EvOvRd66Xirxo0ESMYLOFknEXCTol5FtnHpQ4BFRy+Ohc9DGhjxJhH8s5Q2tCJuB10QSeM+wsQcdCJmKIxOPOEfbsoIdiJmKMGYp7btSzgs4Rs+YtCXbkOPdzop4U9JyQCXhd5jQxJezkoKfETMQQmdZIatRJQffFTMhIldpMStTqoFNiJmRopPSjjXpP8yBiRglDrfS1pf2wLho0MaOk3FFHR47uF+l7IkJGDpq2YqPH6A5NzFhSX0vd5mK79GDQxIwa5kbdG7RmViFmlJLyE3tdqqsc/FwGatM2uBM0owZaMHX0UO3QsScCSpjS2lbQsd2ZmLG0bnOxXXpwh2ZuRqvG2nwVdOzKBrszaom1t9lu8gwNtKw3aGZntCY2Swd7Ivz9DNgXGmbkgCs7QTNuoFWasYMdGq4QNFzZ4xtCeHH04tn2Ds38jNbF5mhGDrhC0HCFoOEKQcMVgoYrBA1XCBquEDRcIWi4QtBwhaDhCkHDFYKGKwQNVwgarhA0XCFouELQcIWg4QpBwxWChisEDVf2ax9ACVfe+7X2IZhx+7f3ax9CVm6CJuJpNtfNQ9zmgybkfMJaWg7b9AxNzGVYXleTO7TlBbfC6m5tbocm5mVZW29zQQNjTAVtbbfwwtK6mwna0qJ6ZGX9zQQNaJgI2sru4J2F82AiaECLoOFK80FbeJtbk9bPR/NBAylMfvQ9x483X1c/9pNr/xQ8knyuf/XRzm03rt6vcCT1sUMb1xfz2O3eEbRhsWjXGDVBG6WNdW1REzRcIWi4QtBwhaDhCkEbpb3OvLbr0QRtWCzWtcUs4uiTwpRPAHN/zVKfKB6+dmXntlv/3t76942r99WfFN65fmfntks3Ls04wva4CdqbvpjD7X1Rx/TFHG73FDUjR4OGYtbe3zUUs/Z+Swi6MdpYtY/TxuolaoKGKwQNVwgarhA0XCHoxnQvyc19nPaSnJdLdwTdoFis2piDWKxeYhYx8MHK86dPlI/M/0mhxjdv/iVyd/j+Hz5/Y/C+T+/+PXjf73JT3v3i2s7tIebNdfn4g7d3Hvfzwz+3/n3x8gX57uvvdx538fIFeS7aNW5f80FrffjlH6rH/fLtO+qvqfpIeyTmuTQ7cV/M4fa+qL1rfuQ4OHmq9iE0ayhm7f1TtH4+mg8a/bSxloi6ZQQ9Qj+/L6vV42qBiaBbf5tbCwvnwc03hbWMXcUo+d+in4kdGtAyE7SFt7sldS/JzX1cjJX1NxM0dsVizRWzJQQd0doVhe7xDEW7xphFjH1TeHDy1OzAtJ8oWlI6Xivjhgg7NJxpPmhr/69p71o/H80H3WXp7c8Da+ttLmhgjImga7/NtXKlo/Zx1D4PGiaC7rL2NmiVxXU2E7SF3cEzK+tvJmgRO4vqjaV1NxX0Jotvh5ZYXV9zQVvaLTywtt6mPvoOwiJ/9tZPiz3n86dPqu5aS1/hsBZyYG6H3nTv8fnah+CS5XU1HTTQRdBwxeQMvene4/OLzdI158qlXqPlcUOEHRrOEHSCJa+qtPC8FrkI2vrbZCs8rKOLoIGAoBPU2sE87JxLcRN0yZN+7/H56lGVPobary8XN0GX0tqJbu14WkPQI1qNp9XjaoGroHOd6BZGjJicx9j6a03hKugcrJ1ca8dbGkFvsBqH1eMuwV3QU06uhREjZuprsP66u9wFncrbCfX2elKtOmivJ9/r69JwGXTshHoYMWI0r9HjGrgMeozHkzhmba93VUGv7eQGa3rdboPePIlrGDFiumvgdT3cBh14PXFTeV8P10F7P3lTeV4X10FjfQgarhA0XCFouELQcIWg4QpBwxWChisEDVcIGq4QNFzZCvrw0bmtO2+debDowQAx3Sa7ze7tHz+x5PEAxewfP8HIAV8IGq7sBM0cjVbF5mcRdmg4syfy/zANWBYa7t2hGTvQGs24IcLIAWdeBR0bO9ilUUusvc12B3fooS0dqG2sza2gu7s0szRqi83O3WaTZ2iixlKmtLYTdGyXnvpEQIq+xmK7s4hyh2aeRm3aBnuD1nzQwi6NUjRtDTU6uEMzeqCGqaNGMDpyEDWWNDdmEZFjB6fPvhx7wNGLZ6on7ntyQCOlp1jQ0W8K+77AULjs1kiVM2YR5VUOokYJuWMWUYwcm1LGj6EDA1KbSfnx5qSgRfqjFiFsxE1pJPVn9ZODFpkWdUDc6zKniSm/eDIp6GBO2AGB+5Lj3M/5DapZQYvkiRrrUyJmkQxBiwxHHRA3ROLvxjl+tzVL0EEsbBHiXhvNSJnzl7SzBh1owg4I3JeU74lK/LWBIkEHKWFjPUr+2Yz9Yl9Ztg+cuNdtqb/9UjTorSfqeUFE7lPNP1z0Hz2fz/lgc/OzAAAAAElFTkSuQmCC" />
+  <link rel="shortcut icon" href="data:image/png;base64,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" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Геймерский уголок" />
+  <meta name="theme-color" content="#0a0d16" />
+  <link rel="manifest" href="data:application/manifest+json;charset=utf-8,{"name": "Геймерский уголок", "short_name": "Геймерский уголок", "start_url": "./", "display": "standalone", "background_color": "#0a0d16", "theme_color": "#0a0d16", "icons": [{"src": "data:image/png;base64,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", "sizes": "180x180", "type": "image/png"}]}" />
+
+  <style>
+    :root {
+      --bg-dark: #0a0d16;
+      --card-bg: rgba(18, 25, 41, 0.94);
+      --card-border: rgba(56, 189, 248, 0.18);
+      --card-border-hover: rgba(168, 85, 247, 0.65);
+      --accent-purple: #a855f7;
+      --accent-cyan: #38bdf8;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    *, *:before, *:after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      background-color: var(--bg-dark);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      color: var(--text);
+    }
+
+    body {
+      background-image: 
+        radial-gradient(circle at 14% 18%, rgba(168, 85, 247, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 86% 22%, rgba(56, 189, 248, 0.20) 0%, transparent 45%),
+        radial-gradient(circle at 50% 82%, rgba(244, 63, 94, 0.14) 0%, transparent 52%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: block;
+    }
+
+    /* Шапка сайта: не уезжает за верх */
+    header {
+      background: rgba(12, 17, 28, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      width: 100%;
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+
+    .brand-title {
+      background: linear-gradient(135deg, #f1f5f9 0%, #c084fc 35%, #38bdf8 68%, #f1f5f9 100%);
+      background-size: 260% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: neonGlowShimmer 6s ease-in-out infinite alternate;
+      display: inline-block;
+    }
+
+    @keyframes neonGlowShimmer {
+      0% { background-position: 0% 50%; filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3)); }
+      50% { background-position: 100% 50%; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45)); }
+      100% { background-position: 0% 50%; filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.35)); }
+    }
+
+    .pixel-pad-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(168,85,247,0.5);
+      display: block;
+    }
+
+    .header-actions { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+    .mode-switch-box {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 18px;
+      padding: 2px;
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 9px;
+      border-radius: 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-btn.active {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: #041221;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      user-select: none;
+    }
+    .btn-primary { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: #fff; }
+    .btn-advisor { background: linear-gradient(135deg, #f59e0b, #ec4899); color: #fff; font-weight: 700; }
+    .btn-secondary { background: rgba(30, 41, 59, 0.85); color: var(--text); border-color: rgba(148, 163, 184, 0.25); }
+    .btn-danger { background: #ef4444; color: #fff; }
+    .btn-key {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 12px auto;
+      padding: 0 12px;
+    }
+
+    .controls-wrapper {
+      background: rgba(18, 25, 41, 0.82);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    .controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .scroll-filters {
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      width: 100%;
+      min-width: 0;
+    }
+    .scroll-filters::-webkit-scrollbar { display: none; }
+    .filter-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      align-self: center;
+      flex-shrink: 0;
+      margin-right: 4px;
+    }
+    .filter-btn {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      color: #031326;
+      font-weight: 700;
+      border-color: transparent;
+    }
+    .filter-btn-platform.active {
+      background: linear-gradient(135deg, #a855f7, #c084fc);
+      color: #1a052b;
+    }
+
+    .search-input {
+      background: rgba(11, 16, 28, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+
+    .games-grid {
+      display: grid;
+      gap: 12px;
+      width: 100%;
+    }
+    .game-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      min-width: 0;
+    }
+    .game-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--card-border-hover);
+    }
+
+    .card-cover-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #090d16;
+      overflow: hidden;
+    }
+    .card-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .card-badges {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .badge {
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .status-playing { background: rgba(16, 185, 129, 0.94); color: #fff; }
+    .status-planned { background: rgba(245, 158, 11, 0.94); color: #fff; }
+    .status-paused { background: rgba(244, 63, 94, 0.94); color: #fff; }
+    .status-completed { background: rgba(59, 130, 246, 0.94); color: #fff; }
+
+    .rating-badge {
+      background: rgba(15, 23, 42, 0.92);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      font-weight: 800;
+    }
+    .platform-badge {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #d8b4fe;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 85px;
+    }
+
+    .card-key-btn {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(245, 158, 11, 0.6);
+      color: #fbbf24;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .card-key-btn:hover { background: #f59e0b; color: #0b0f19; }
+
+    .card-body {
+      padding: 8px 10px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6px;
+      min-width: 0;
+    }
+    .card-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .card-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .checklist-progress { margin-top: 2px; }
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+    .progress-bar-bg {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      transition: width 0.3s;
+    }
+
+    /* РЕЖИМЫ PC И PHONE */
+    body.mode-phone .container { padding: 0 8px; margin-top: 8px; }
+    body.mode-phone .controls-row { flex-direction: column; align-items: stretch; gap: 6px; }
+    body.mode-phone .games-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 8px !important;
+    }
+    body.mode-phone .card-body { padding: 6px 8px !important; }
+    body.mode-phone .card-title { font-size: 0.82rem !important; }
+
+    body.mode-pc .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+      gap: 16px !important;
+    }
+    body.mode-pc .card-title { font-size: 1rem !important; }
+    body.mode-pc .platform-badge { max-width: none !important; }
+
+    /* Модальные окна */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(3, 7, 18, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      z-index: 200;
+      backdrop-filter: blur(8px);
+    }
+    .modal-content {
+      background: #111827;
+      border: 1px solid #1f2d47;
+      border-radius: 14px;
+      max-width: 740px;
+      width: 100%;
+      max-height: 94vh;
+      overflow-y: auto;
+      padding: 16px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: #1f293d;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    /* Книга-блокнот */
+    .book-wrapper {
+      background: #181524;
+      border: 2px solid #3b2d56;
+      border-radius: 12px;
+      box-shadow: -6px 0 20px rgba(0,0,0,0.8), 6px 6px 20px rgba(0,0,0,0.6);
+      position: relative;
+      padding: 12px 10px 12px 26px;
+      margin-top: 8px;
+      overflow: hidden;
+      width: 100%;
+    }
+    .book-spine {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 18px;
+      background: linear-gradient(90deg, #2a1f42 0%, #150f22 100%);
+      border-right: 2px dashed rgba(168, 85, 247, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+    }
+    .book-ring {
+      width: 10px;
+      height: 5px;
+      background: linear-gradient(180deg, #94a3b8 0%, #334155 100%);
+      border-radius: 3px;
+    }
+    .book-bookmark-ribbon {
+      position: absolute;
+      top: 0; right: 30px;
+      width: 15px;
+      height: 30px;
+      background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+      z-index: 5;
+    }
+    .book-page {
+      background: #0f1523;
+      background-image: 
+        repeating-linear-gradient(transparent, transparent 27px, rgba(56, 189, 248, 0.08) 28px),
+        linear-gradient(90deg, transparent 26px, rgba(244, 63, 94, 0.25) 27px, transparent 28px);
+      border-radius: 6px;
+      padding: 10px 10px 10px 32px;
+      border: 1px solid rgba(255,255,255,0.05);
+      width: 100%;
+    }
+    .book-textarea {
+      width: 100%;
+      min-height: 160px;
+      background: transparent;
+      border: none;
+      color: #f1f5f9;
+      font-size: 0.92rem;
+      line-height: 28px;
+      outline: none;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .book-toolbar {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+      padding-top: 6px;
+    }
+    .book-tool-btn {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+
+    .screenshots-grid {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 6px 2px;
+    }
+    .screenshot-polaroid {
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 4px;
+      width: 110px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .screenshot-img {
+      width: 100%;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      background: #090e17;
+    }
+    .screenshot-caption {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .screenshot-delete-btn {
+      position: absolute;
+      top: 2px; right: 2px;
+      background: rgba(239, 68, 68, 0.9);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 16px; height: 16px;
+      font-size: 0.68rem;
+      cursor: pointer;
+    }
+
+    .image-zoom-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.94);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      padding: 12px;
+    }
+    .image-zoom-img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .form-group { margin-bottom: 10px; }
+    .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; }
+    .form-control {
+      width: 100%;
+      background: #090e17;
+      border: 1px solid #222f44;
+      color: #fff;
+      padding: 7px 10px;
+      border-radius: 6px;
+      outline: none;
+      font-size: 0.85rem;
+    }
+    textarea.form-control { resize: vertical; min-height: 70px; }
+
+    .search-candidates-list {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      margin-top: 6px;
+      padding-bottom: 4px;
+    }
+    .candidate-card {
+      width: 75px;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 1px solid #222f44;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #090e17;
+      text-align: center;
+    }
+    .candidate-img { width: 100%; height: 85px; object-fit: cover; display: block; }
+    .candidate-title { font-size: 0.62rem; padding: 2px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .cover-thumb-preview {
+      width: 50px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #090e17;
+      border: 1px solid #222f44;
+      flex-shrink: 0;
+    }
+
+    .checklist-box {
+      background: #0a0f1a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 10px;
+    }
+    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 6px;
+      background: rgba(18, 25, 41, 0.6);
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .checklist-item.done span { text-decoration: line-through; color: var(--text-muted); }
+    .checklist-del-btn { margin-left: auto; background: none; border: none; color: #ef4444; cursor: pointer; }
+
+    .secret-item-card {
+      background: #0a0f1a;
+      border: 1px solid #243550;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .secret-item-card h4 { color: #fbbf24; margin-bottom: 4px; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; }
+    .copy-to-notes-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .advisor-filter-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 6px;
+      background: #0c121e;
+      border: 1px solid #1f2c42;
+      padding: 8px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .advisor-result-card {
+      background: #0e1524;
+      border: 1px solid #243550;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .advisor-cover {
+      width: 120px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #090e17;
+      border: 1px solid #2a3d5e;
+      flex-shrink: 0;
+    }
+
+    footer.app-footer {
+      border-top: 1px solid rgba(56, 189, 248, 0.15);
+      background: rgba(10, 14, 23, 0.9);
+      padding: 12px 16px;
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .version-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    @media (max-width: 650px) {
+      .header-content { flex-direction: column; align-items: stretch; }
+      .header-actions { justify-content: space-between; }
+      .controls-row { flex-direction: column; align-items: stretch; }
+      .search-input { width: 100%; }
+    }
+  </style>
+</head>
+<body class="mode-phone">
+
+  <header>
+    <div class="header-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <a href="#" class="brand">
+          <img class="pixel-pad-icon" src="data:image/png;base64,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" alt="Лого" />
+          <span class="brand-title">Геймерский уголок</span>
+        </a>
+
+        <!-- Переключатель режима: ПК / Телефон -->
+        <div class="mode-switch-box" title="Переключить вид: ПК или телефон">
+          <button class="mode-btn" id="btnModePc" onclick="switchViewMode('pc')">🖥️ ПК</button>
+          <button class="mode-btn active" id="btnModePhone" onclick="switchViewMode('phone')">📱 Телефон</button>
+        </div>
+      </div>
+
+      <div class="header-actions" style="width: 100%; justify-content: space-between; margin-top: 4px;">
+        <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит">🎯 Советник</button>
+        <button class="btn btn-primary" onclick="openAddModal()">➕ Игра</button>
+        <button class="btn btn-secondary" title="Резервная копия базы" onclick="exportData()">💾</button>
+        <button class="btn btn-secondary" title="Загрузить резервную копию" onclick="document.getElementById('importFile').click()">📥</button>
+        <button class="btn btn-secondary" title="Восстановить сохраненные записи" onclick="recoverFromBackup()">↶ Резерв</button>
+        <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)" />
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="controls-wrapper">
+      <div class="controls-row">
+        <input type="text" class="search-input" id="searchBox" placeholder="🔍 Найти игру по названию..." oninput="renderGames()" />
+      </div>
+
+      <div class="controls-row">
+        <div class="scroll-filters">
+          <span class="filter-label">Статус:</span>
+          <button class="filter-btn active" onclick="setStatusFilter('all', this)">Все (<span id="count-all">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('playing', this)">🎮 Играю (<span id="count-playing">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('planned', this)">⏳ Буду играть (<span id="count-planned">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('paused', this)">⏸️ На паузе (<span id="count-paused">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('completed', this)">✅ Пройдено (<span id="count-completed">0</span>)</button>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <div class="scroll-filters">
+          <span class="filter-label">Платформа:</span>
+          <button class="filter-btn filter-btn-platform active" onclick="setPlatformFilter('all', this)">Все</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PC', this)">💻 PC</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Xbox', this)">🟢 Xbox</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PS Vita', this)">🕹️ PS Vita</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PlayStation', this)">🔵 PlayStation</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Switch', this)">🔴 Switch</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Retro', this)">👾 Retro</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Сетка карточек -->
+    <div class="games-grid" id="gamesGrid"></div>
+  </div>
+
+  <!-- ОКНО: КНИГА-БЛОКНОТ ДЛЯ ЗАМЕТОК -->
+  <div class="modal-overlay" id="notebookModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('notebookModal')">&times;</button>
+
+      <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 8px;">
+        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
+        <div style="flex-grow: 1; min-width: 0;">
+          <h2 id="nbTitle" style="color: #fff; font-size: 1.15rem; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h2>
+          <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+            <span id="nbBadge" class="badge"></span>
+            <span id="nbPlatformBadge" class="badge platform-badge"></span>
+            <span id="nbRatingBadge" class="badge rating-badge" style="display:none;"></span>
+          </div>
+        </div>
+        <button class="btn btn-key" id="nbKeyBtn" title="Секреты">🔑 Секреты</button>
+      </div>
+
+      <!-- Конструкция книги-блокнота -->
+      <div class="book-wrapper">
+        <div class="book-spine">
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
+          <div class="book-ring"></div>
+        </div>
+        <div class="book-bookmark-ribbon"></div>
+
+        <div class="book-page">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span style="font-size:0.85rem; font-weight:700; color:#38bdf8;">📖 Полевой дневник & заметки</span>
+            <span id="nbSaveStatus" style="font-size:0.75rem; color:#10b981;">✍️ Сохранено</span>
+          </div>
+
+          <textarea class="book-textarea" id="nbTextarea" placeholder="Нажмите сюда и пишите заметки... Секреты, коды дверей, тайники, комбинации билда..." oninput="autoSaveNotebook()"></textarea>
+
+          <div class="book-toolbar">
+            <button class="book-tool-btn" onclick="insertNotebookText('• ')">Список</button>
+            <button class="book-tool-btn" onclick="insertNotebookText('🔑 Код: ')">Код</button>
+            <button class="book-tool-btn" onclick="insertNotebookText('📍 Тайник: ')">Тайник</button>
+            <button class="book-tool-btn" onclick="insertNotebookText('⚔️ Билд: ')">Билд</button>
+            <button class="book-tool-btn" onclick="document.getElementById('nbScreenshotInput').click()">📷 Фото/Карта</button>
+            <input type="file" id="nbScreenshotInput" style="display:none" accept="image/*" onchange="handleScreenshotUpload(event)" />
+          </div>
+
+          <div id="nbScreenshotsSection" style="display:none; margin-top:10px;">
+            <div style="font-size:0.8rem; color:#fbbf24; font-weight:700;">🗺️ Карты и скриншоты:</div>
+            <div class="screenshots-grid" id="nbScreenshotsGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-box" id="nbChecklistBox">
+        <div class="checklist-header">
+          <span style="color:#10b981; font-size:0.82rem; font-weight:700;">🎯 Чеклист целей:</span>
+          <span id="nbChecklistRatio" style="font-size:0.72rem; color:#38bdf8; font-weight:700;"></span>
+        </div>
+        <div id="nbChecklistItems"></div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 6px;">
+        <p id="nbDesc" style="color: var(--text-muted); font-size: 0.78rem; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin:0;"></p>
+        <div style="display: flex; gap: 6px; margin-left: auto; flex-shrink:0;">
+          <button class="btn btn-secondary" id="nbEditBtn">⚙️ Инфо</button>
+          <button class="btn btn-primary" onclick="closeModal('notebookModal')">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЗУМ СКРИНШОТА -->
+  <div class="image-zoom-overlay" id="imageZoomModal" onclick="this.style.display='none'">
+    <img id="imageZoomImg" class="image-zoom-img" src="" alt="Скриншот" />
+  </div>
+
+  <!-- ОКНО: СЕКРЕТЫ -->
+  <div class="modal-overlay" id="secretsModal">
+    <div class="modal-content" style="max-width: 680px;">
+      <button class="modal-close" onclick="closeModal('secretsModal')">&times;</button>
+
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; border-bottom: 1px solid #233550; padding-bottom: 8px;">
+        <span style="font-size: 1.4rem;">🔑</span>
+        <div>
+          <h3 style="color:#fbbf24; font-size: 1.15rem; margin:0;" id="secretsGameTitle">Секреты и подсказки</h3>
+          <p style="color:var(--text-muted); font-size: 0.75rem; margin:0;">Тайники, пасхалки и советы по прохождению</p>
+        </div>
+      </div>
+
+      <div id="secretsLoading" style="text-align: center; color: #38bdf8; padding: 16px; display: none;">
+        🔍 Ищем секреты и советы на русском языке...
+      </div>
+
+      <div id="secretsListContainer"></div>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 14px; gap:6px;">
+        <button class="btn btn-secondary" onclick="fetchOnlineSecrets()">🌐 Загрузить доп. секреты</button>
+        <button class="btn btn-primary" onclick="closeModal('secretsModal')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ОКНО: ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('editModal')">&times;</button>
+      <h3 style="margin-bottom: 10px; color:#fff; font-size:1.15rem;" id="modalFormTitle">Добавить игру</h3>
+
+      <div class="form-group">
+        <label>Название игры:</label>
+        <div style="display: flex; gap: 6px;">
+          <input type="text" class="form-control" id="gameTitleInput" placeholder="Например: fable, the outer world, дайн лайт..." />
+          <button class="btn btn-secondary" id="autoFetchBtn" onclick="fetchGameInfo()">🔍 Найти</button>
+        </div>
+        <div id="searchCandidatesArea" class="search-candidates-list" style="display:none;"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
+        <div class="form-group">
+          <label>Статус:</label>
+          <select class="form-control" id="gameStatusSelect">
+            <option value="playing">🎮 Играю</option>
+            <option value="planned">⏳ Буду играть</option>
+            <option value="paused">⏸️ На паузе</option>
+            <option value="completed">✅ Пройдено</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Платформа:</label>
+          <select class="form-control" id="gamePlatformSelect">
+            <option value="PC">💻 PC</option>
+            <option value="Xbox">🟢 Xbox</option>
+            <option value="PS Vita">🕹️ PS Vita</option>
+            <option value="PlayStation">🔵 PlayStation</option>
+            <option value="Switch">🔴 Switch</option>
+            <option value="Retro">👾 Retro</option>
+            <option value="Другое">🎮 Другое</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
+        <div class="form-group">
+          <label>Оценка (1-10):</label>
+          <select class="form-control" id="gameRatingSelect">
+            <option value="">Без оценки</option>
+            <option value="10">⭐ 10 / 10</option>
+            <option value="9">⭐ 9 / 10</option>
+            <option value="8">⭐ 8 / 10</option>
+            <option value="7">⭐ 7 / 10</option>
+            <option value="6">⭐ 6 / 10</option>
+            <option value="5">⭐ 5 / 10</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Дата финала:</label>
+          <input type="date" class="form-control" id="gameCompletedDateInput" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Обложка игры:</label>
+        <div style="display: flex; gap: 6px;">
+          <input type="text" class="form-control" id="gameCoverInput" placeholder="URL картинки..." oninput="updateCoverPreview(this.value)" />
+          <button class="btn btn-secondary" type="button" onclick="document.getElementById('coverFileInput').click()">📁 Фото</button>
+          <input type="file" id="coverFileInput" style="display:none" accept="image/*" onchange="handleFileUpload(event)" />
+        </div>
+        <div style="display:flex; gap:8px; align-items:center; margin-top:5px;">
+          <img id="editCoverPreview" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Превью" onerror="handleCoverError(this)" />
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Превью постера</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Краткое описание на русском:</label>
+        <textarea class="form-control" id="gameDescInput" rows="2" placeholder="Описание игры..."></textarea>
+      </div>
+
+      <div class="checklist-box">
+        <div class="checklist-header">
+          <span style="color:#10b981; font-size:0.8rem; font-weight:700;">🎯 Чеклист целей</span>
+        </div>
+        <div id="editChecklistContainer"></div>
+        <div style="display: flex; gap: 4px; margin-top: 5px;">
+          <input type="text" class="form-control" id="newChecklistInput" placeholder="Добавить цель..." onkeypress="if(event.key==='Enter'){event.preventDefault();addChecklistItem();}" />
+          <button class="btn btn-secondary" onclick="addChecklistItem()">+</button>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 14px; gap:6px;">
+        <button class="btn btn-danger" id="deleteBtn" style="display:none;" onclick="deleteCurrentGame()">Удалить игру</button>
+        <div style="display: flex; gap: 6px; margin-left: auto;">
+          <button class="btn btn-secondary" onclick="closeModal('editModal')">Отмена</button>
+          <button class="btn btn-primary" onclick="saveGame()">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ОКНО: СОВЕТНИК ХИТОВ -->
+  <div class="modal-overlay" id="advisorModal">
+    <div class="modal-content" style="max-width: 700px;">
+      <button class="modal-close" onclick="closeModal('advisorModal')">&times;</button>
+      <h3 style="color:#f59e0b; margin-bottom: 2px; font-size: 1.15rem;">🎯 Игровой компас: Хиты под настроение</h3>
+      <p style="color:var(--text-muted); font-size: 0.78rem; margin-bottom: 8px;">Новая игра без повторов:</p>
+
+      <div class="advisor-filter-bar">
+        <div>
+          <label class="filter-label">Источник:</label>
+          <select class="form-control" id="advisorSourceSelect" onchange="resetAdvisorAndRoll()">
+            <option value="hits">🌟 База хитов (50+ игр)</option>
+            <option value="my">📁 Мой список</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="filter-label">Настроение:</label>
+          <select class="form-control" id="advisorMoodSelect" onchange="resetAdvisorAndRoll()">
+            <option value="all">🎲 Любое</option>
+            <option value="zombie">🧟 Зомби / выживание</option>
+            <option value="action">💥 Экшен / драйв</option>
+            <option value="rpg">🗡️ Сюжет / RPG</option>
+            <option value="horror">👻 Хоррор</option>
+            <option value="race">🏎️ Гонки</option>
+            <option value="retro">👾 Ретро</option>
+            <option value="chill">☕ Чилл</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="filter-label">Жанр:</label>
+          <select class="form-control" id="advisorGenreSelect" onchange="resetAdvisorAndRoll()">
+            <option value="all">Все жанры</option>
+            <option value="survival">Выживание</option>
+            <option value="shooter">Шутер</option>
+            <option value="rpg">RPG</option>
+            <option value="horror">Хоррор</option>
+            <option value="racing">Гонки</option>
+            <option value="openworld">Открытый мир</option>
+            <option value="platformer">Платформер</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="advisorResultArea">
+        <div class="advisor-result-card" id="advisorCard">
+          <img id="advCover" class="advisor-cover" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
+          <div style="flex-grow:1; display:flex; flex-direction:column; gap:4px; min-width:0;">
+            <div style="display:flex; gap:4px; flex-wrap:wrap;">
+              <span id="advPlatform" class="badge platform-badge"></span>
+              <span id="advGenre" class="badge" style="background:#0284c7; color:#fff;"></span>
+              <span id="advRating" class="badge rating-badge"></span>
+            </div>
+            <h2 id="advTitle" style="font-size:1.15rem; font-weight:800; color:#fff; margin:2px 0;"></h2>
+            <div id="advHook" class="advisor-hook" style="font-size:0.78rem;"></div>
+            <p id="advDesc" style="color:var(--text-muted); font-size:0.8rem; line-height:1.35; margin:0;"></p>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-top:12px;">
+          <button class="btn btn-secondary" onclick="rollAdvisor()">🎲 Следующая</button>
+          <button class="btn btn-primary" id="advAddBtn" onclick="addAdvisorGameToCollection()">➕ В мой список</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <span>🎮 Геймерский уголок</span>
+    <span>•</span>
+    <span>Сохранение в браузере</span>
+    <span class="version-tag">Версия 0.6</span>
+  </footer>
+
+  <script>
+    const DEFAULT_COVER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' fill='%23111827'%3E%3Crect width='300' height='400'/%3E%3Cpath fill='%2338bdf8' d='M80 160h140v30H80zm-20 40h180v20H60z' opacity='0.25'/%3E%3Ctext x='150' y='210' fill='%2394a3b8' font-size='18' font-family='sans-serif' font-weight='bold' text-anchor='middle'%3EНЕТ ОБЛОЖКИ%3C/text%3E%3C/svg%3E";
+
+    function handleCoverError(img) {
+      img.onerror = null;
+      img.src = DEFAULT_COVER_SVG;
+    }
+
+    // Переключатель вида PC / Phone
+    let currentViewMode = localStorage.getItem('gamers_corner_view_mode') || (window.innerWidth < 768 ? 'phone' : 'pc');
+
+    function switchViewMode(mode) {
+      currentViewMode = mode;
+      localStorage.setItem('gamers_corner_view_mode', mode);
+
+      document.body.classList.remove('mode-pc', 'mode-phone');
+      document.body.classList.add(mode === 'phone' ? 'mode-phone' : 'mode-pc');
+
+      const btnPc = document.getElementById('btnModePc');
+      const btnPhone = document.getElementById('btnModePhone');
+      if (btnPc && btnPhone) {
+        btnPc.classList.toggle('active', mode === 'pc');
+        btnPhone.classList.toggle('active', mode === 'phone');
+      }
+    }
+
+    // База встроенных секретов
+    const BUILTIN_SECRETS = {
+      'fable': [
+        { title: '🗝️ 30 Серебряных ключей', text: 'Ключи зарыты на кладбищах (ищите взрыхленную землю), в водоемах со всплесками (ловите удочкой) и выдаются за победу в мини-играх в тавернах.' },
+        { title: '🚪 Двери Демонов (Demon Doors)', text: 'Дверь у Гильдии открывается зажжением фонаря. Дверь у Розового коттеджа требует коробку конфет или розу. Дверь в Борделе требует стать владельцем борделя.' },
+        { title: '⚔️ Лучшее оружие: Меч Веков и Слезы Аво', text: 'Меч Веков можно забрать в финале при злом выборе. Для получения доброго аналога (Слезы Аво) после титров прочитайте книгу в кабинете Мейза и отправляйтесь на кладбище Гильдии.' },
+        { title: '💰 Бесконечное золото через торговлю', text: 'Прокачайте навык Торговли. Скупайте у торговцев изумруды и рубины оптом со скидкой и тут же продавайте им обратно с наценкой!' }
+      ],
+      'the outer worlds': [
+        { title: '🔬 Где найти Научное оружие', text: '1) Уменьшающий луч (Shrink Ray) — в лаборатории Финеаса на Терра-2.\n2) Призматический молот — на станции «Первопроходец» в скрытой комнате над каютами экипажа.\n3) Одурманиватель — на Монархе в лаборатории UDL.' },
+        { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2.' },
+        { title: '🗣️ Прохождение без убийств', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты и убедить боссов сдаться без боя.' }
+      ],
+      'dying light': [
+        { title: '🗡️ Чертеж оружия Корека', text: 'На крыше высотки в Трущобах найдите синий ящик за коробками. Ударьте по нему ногой ровно 76 раз — крышка откроется, и вы получите чертеж с колоссальным уроном.' },
+        { title: '⚔️ Чертеж меча ЭКСПкалибр', text: 'На островке на юго-востоке карты в тело зомби воткнут меч. Зажмите кнопку действия и удерживайте ровно 2 минуты. Затем подождите, пока тело сгорит — под ним появится чертеж.' },
+        { title: '🔦 Тактика против Прыгунов', text: 'УФ-фонарь и УФ-ракеты мгновенно парализуют ночных охотников.' },
+        { title: '🧗 Крюк-кошка', text: 'Открывается на 12-м уровне ветки Выживания и меняет все перемещение по городу.' }
+      ],
+      'ведьмак 3': [
+        { title: '⚔️ Меч Арондит', text: 'Сильнейший серебряный меч в игре. Добывается на озере в Туссенте, если подтвердить 5 рыцарских добродетелей.' },
+        { title: '🎴 Победная колода в Гвинт', text: 'Колода Северных королевств с максимумом Шпионов и Чучел позволяет вытягивать всю колоду и обыгрывать любого соперника.' }
+      ]
+    };
+
+    const GAME_ALIASES = {
+      'fable': 'Fable (серия игр)',
+      'fable 1': 'Fable (игра, 2004)',
+      'фейбл': 'Fable (серия игр)',
+      'the outer world': 'The Outer Worlds',
+      'outer world': 'The Outer Worlds',
+      'дайн лайт': 'Dying Light',
+      'ведьмак': 'The Witcher 3: Wild Hunt',
+      'ведьмак 3': 'The Witcher 3: Wild Hunt',
+      'сталкер': 'S.T.A.L.K.E.R.: Shadow of Chernobyl',
+      'метро': 'Metro Exodus',
+      'дед спейс': 'Dead Space',
+      'фоллаут': 'Fallout: New Vegas',
+      'киберпанк': 'Cyberpunk 2077',
+      'гта': 'Grand Theft Auto V',
+      'скайрим': 'The Elder Scrolls V: Skyrim'
+    };
+
+    const HITS_DATABASE = [
+      { title: "Fable Anniversary", genreCategory: "rpg", mood: "rpg", genreName: "Сказка / Action-RPG", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/288470/header.jpg", hook: "✨ Альбион, выбор между добром и злом, Двери Демонов, магия и тонкий британский юмор.", desc: "Легендарная сказочная ролевая игра от Питера Молиньё и Lionhead Studios." },
+      { title: "The Outer Worlds", genreCategory: "rpg", mood: "action", genreName: "Sci-Fi / RPG / Космос", platform: "PC / Xbox / PS", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/578650/header.jpg", hook: "🚀 Колония Альцион, научное оружие, остроумные диалоги от создателей Fallout: New Vegas.", desc: "Космическая ролевая игра от первого лица от студии Obsidian Entertainment." },
+      { title: "Dying Light", genreCategory: "survival", mood: "zombie", genreName: "Зомби / Паркур / Выживание", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg", hook: "🔥 Паркур от первого лица, дробящее оружие и жуткие ночные побеги от Прыгунов в Харране.", desc: "Эталон зомби-экшена с богатым крафтом и кооперативом." },
+      { title: "Ведьмак 3: Дикая Охота", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Открытый мир", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg", hook: "🐺 Славянский фольклор, чудовища по контракту, партии в гвинт и история Цири.", desc: "Эталонная ролевая игра с непревзойденными квестами." },
+      { title: "Dead Space (Remake)", genreCategory: "horror", mood: "horror", genreName: "Космический хоррор / Экшен", platform: "PC / Xbox / PS5", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1693980/header.jpg", hook: "🚀 Корабль «Ишимура», отстрел конечностей некроморфов и клаустрофобия в космосе.", desc: "Культовый научно-фантастический хоррор об Айзеке Кларке." },
+      { title: "DOOM Eternal", genreCategory: "shooter", mood: "action", genreName: "Ураганный шутер / Адреналин", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg", hook: "⚡ Бешеный темп под гитарные риффы Мика Гордона, бензопила и распил демонов.", desc: "Чистый адреналин, где остановка на месте означает гибель." },
+      { title: "Metro Exodus", genreCategory: "shooter", mood: "action", genreName: "Шутер / Постапокалипсис", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/header.jpg", hook: "🚂 Путешествие на поезде «Аврора» через разрушенную Россию в поисках чистого дома.", desc: "Глубокая атмосфера, модификация стволов прямо на коленке и мутанты." },
+      { title: "Fallout: New Vegas", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Постапокалипсис", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/22380/header.jpg", hook: "🏜️ Пустыня Мохаве, казино Нью-Вегаса, ретро-джаз и полная свобода выбора.", desc: "Лучшая ролевая игра во вселенной Fallout с великолепным сюжетом." }
+    ];
+
+    const INITIAL_DEFAULT_GAMES = [
+      {
+        id: '1',
+        title: 'Dying Light',
+        status: 'playing',
+        platform: 'PC',
+        rating: '10',
+        completedDate: '',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg',
+        description: 'Survival horror от первого лица с открытым миром и элементами паркура в Харране.',
+        checklist: [
+          { id: '101', text: 'Найти секретный чертеж Корека', done: true },
+          { id: '102', text: 'Зачистить карантинную зону в Трущобах', done: true }
+        ],
+        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).\n• Чертеж оружия Корека находится на крыше высотки в Трущобах.',
+        screenshots: []
+      },
+      {
+        id: '2',
+        title: 'Ведьмак 3: Дикая Охота',
+        status: 'completed',
+        platform: 'PC',
+        rating: '10',
+        completedDate: '2024-05-15',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg',
+        description: 'Ролевая игра с открытым миром о приключениях ведьмака Геральта из Ривии.',
+        checklist: [
+          { id: '201', text: 'Собрать мастерский сет Школы Волка', done: true }
+        ],
+        notes: '• В Туссенте обязательно купить улучшение для винодельни Корво Бьянко.\n• Гвинт в Новиграде: турнир в Пассифлоре требует сильную колоду.',
+        screenshots: []
+      },
+      {
+        id: '3',
+        title: 'Fable Anniversary',
+        status: 'planned',
+        platform: 'PC',
+        rating: '9',
+        completedDate: '',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/288470/header.jpg',
+        description: 'Сказочная экшен-RPG о становлении Героя в Альбионе от Lionhead Studios.',
+        checklist: [
+          { id: '301', text: 'Открыть все Двери Демонов', done: false },
+          { id: '302', text: 'Собрать 30 серебряных ключей', done: false }
+        ],
+        notes: '• Обязательно выучить заклинание Замедление времени.\n• Прокачать навык торговли для дешевой скупки самоцветов.',
+        screenshots: []
+      },
+      {
+        id: '4',
+        title: 'The Outer Worlds',
+        status: 'playing',
+        platform: 'PC',
+        rating: '9',
+        completedDate: '',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/578650/header.jpg',
+        description: 'Научно-фантастическая ролевая игра от Obsidian Entertainment в колонии Альцион.',
+        checklist: [
+          { id: '401', text: 'Найти Уменьшающий луч у Финеаса', done: true },
+          { id: '402', text: 'Починить робота-уборщика Сэма', done: false }
+        ],
+        notes: '• Призматический молот лежит над каютами на Первопроходце.\n• Навыки Убеждения и Лжи позволяют пройти без убийств.',
+        screenshots: []
+      }
+    ];
+
+    let storedData = null;
+    try {
+      storedData = localStorage.getItem('gamers_corner_data');
+    } catch(e) {}
+
+    let games = [];
+    if (storedData) {
+      try {
+        games = JSON.parse(storedData);
+        if (!Array.isArray(games) || games.length === 0) {
+          games = INITIAL_DEFAULT_GAMES;
+        }
+      } catch(e) {
+        games = INITIAL_DEFAULT_GAMES;
+      }
+    } else {
+      games = INITIAL_DEFAULT_GAMES;
+    }
+
+    try {
+      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
+    } catch(e) {}
+
+    games.forEach(g => {
+      if (!g.platform) g.platform = 'PC';
+      if (!g.checklist) g.checklist = [];
+      if (!g.screenshots) g.screenshots = [];
+      if (g.rating === undefined) g.rating = '';
+      if (!g.completedDate) g.completedDate = '';
+    });
+
+    let currentStatusFilter = 'all';
+    let currentPlatformFilter = 'all';
+    let activeNotebookGameId = null;
+    let editingId = null;
+    let tempChecklist = [];
+    let saveTimeout = null;
+
+    let advisorPool = [];
+    let advisorHistory = [];
+    let currentAdvisorHit = null;
+
+    const statusLabels = { playing: '🎮 Играю', planned: '⏳ Буду играть', paused: '⏸️ На паузе', completed: '✅ Пройдено' };
+    const statusClasses = { playing: 'status-playing', planned: 'status-planned', paused: 'status-paused', completed: 'status-completed' };
+
+    function renderGames() {
+      const grid = document.getElementById('gamesGrid');
+      if (!grid) return;
+      const searchBox = document.getElementById('searchBox');
+      const search = searchBox ? searchBox.value.toLowerCase() : '';
+      grid.innerHTML = '';
+
+      let counts = { all: games.length, playing: 0, planned: 0, paused: 0, completed: 0 };
+      games.forEach(g => { if (counts[g.status] !== undefined) counts[g.status]++; });
+
+      const cAll = document.getElementById('count-all');
+      const cPlaying = document.getElementById('count-playing');
+      const cPlanned = document.getElementById('count-planned');
+      const cPaused = document.getElementById('count-paused');
+      const cCompleted = document.getElementById('count-completed');
+
+      if (cAll) cAll.textContent = counts.all;
+      if (cPlaying) cPlaying.textContent = counts.playing;
+      if (cPlanned) cPlanned.textContent = counts.planned;
+      if (cPaused) cPaused.textContent = counts.paused;
+      if (cCompleted) cCompleted.textContent = counts.completed;
+
+      const filtered = games.filter(g => {
+        const matchesStatus = (currentStatusFilter === 'all' || g.status === currentStatusFilter);
+        const matchesPlatform = (currentPlatformFilter === 'all' || g.platform === currentPlatformFilter);
+        const matchesSearch = g.title.toLowerCase().includes(search);
+        return matchesStatus && matchesPlatform && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px; font-size:0.95rem;">Игр в этой категории пока нет.</div>';
+        return;
+      }
+
+      filtered.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.onclick = () => openNotebook(game.id);
+
+        let progressHtml = '';
+        if (game.checklist && game.checklist.length > 0) {
+          const total = game.checklist.length;
+          const done = game.checklist.filter(item => item.done).length;
+          const pct = Math.round((done / total) * 100);
+          progressHtml = `
+            <div class="checklist-progress">
+              <div class="progress-text"><span>🎯 ${done}/${total}</span><span>${pct}%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: ${pct}%"></div></div>
+            </div>
+          `;
+        }
+
+        const ratingBadgeHtml = game.rating ? `<span class="badge rating-badge">⭐ ${game.rating}</span>` : '';
+
+        card.innerHTML = `
+          <div class="card-cover-wrap">
+            <div class="card-badges">
+              <span class="badge ${statusClasses[game.status]}">${statusLabels[game.status]}</span>
+              ${ratingBadgeHtml}
+            </div>
+            <img class="card-cover" referrerpolicy="no-referrer" src="${game.cover || DEFAULT_COVER_SVG}" alt="${game.title}" onerror="handleCoverError(this)" />
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-meta-row" style="margin-bottom:3px;">
+                <span class="badge platform-badge" title="${game.platform}">${game.platform}</span>
+                <button class="card-key-btn" onclick="openSecretsModal('${game.id}', event)">🔑 Секреты</button>
+              </div>
+              <div class="card-title">${game.title}</div>
+            </div>
+            ${progressHtml}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openNotebook(id) {
+      const game = games.find(g => g.id === id);
+      if (!game) return;
+      activeNotebookGameId = id;
+
+      document.getElementById('nbTitle').textContent = game.title;
+      document.getElementById('nbCover').src = game.cover || DEFAULT_COVER_SVG;
+      document.getElementById('nbDesc').textContent = game.description || 'Описание отсутствует.';
+      document.getElementById('nbTextarea').value = game.notes || '';
+      document.getElementById('nbSaveStatus').textContent = '✍️ Сохранено';
+
+      const badge = document.getElementById('nbBadge');
+      badge.textContent = statusLabels[game.status];
+      badge.className = `badge ${statusClasses[game.status]}`;
+
+      document.getElementById('nbPlatformBadge').textContent = game.platform || 'PC';
+
+      const ratingBadge = document.getElementById('nbRatingBadge');
+      if (game.rating) {
+        ratingBadge.textContent = `⭐ ${game.rating}/10`;
+        ratingBadge.style.display = 'inline-flex';
+      } else {
+        ratingBadge.style.display = 'none';
+      }
+
+      document.getElementById('nbKeyBtn').onclick = () => openSecretsModal(game.id);
+
+      renderNotebookChecklist(game);
+      renderNotebookScreenshots(game);
+
+      document.getElementById('nbEditBtn').onclick = () => {
+        closeModal('notebookModal');
+        openEditModal(game.id);
+      };
+
+      document.getElementById('notebookModal').style.display = 'flex';
+    }
+
+    function autoSaveNotebook() {
+      const statusEl = document.getElementById('nbSaveStatus');
+      statusEl.textContent = '✏️ Сохранение...';
+      statusEl.style.color = '#38bdf8';
+
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => {
+        if (!activeNotebookGameId) return;
+        const game = games.find(g => g.id === activeNotebookGameId);
+        if (game) {
+          game.notes = document.getElementById('nbTextarea').value;
+          persistData();
+          statusEl.textContent = '✍️ Сохранено';
+          statusEl.style.color = '#10b981';
+        }
+      }, 400);
+    }
+
+    function insertNotebookText(prefix) {
+      const textarea = document.getElementById('nbTextarea');
+      const start = textarea.selectionStart;
+      const val = textarea.value;
+      textarea.value = val.substring(0, start) + '\n' + prefix + val.substring(start);
+      textarea.focus();
+      autoSaveNotebook();
+    }
+
+    function handleScreenshotUpload(event) {
+      const file = event.target.files[0];
+      if (!file || !activeNotebookGameId) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          let w = img.width;
+          let h = img.height;
+          const maxDim = 800;
+          if (w > h && w > maxDim) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else if (h > maxDim) {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL('image/jpeg', 0.8);
+
+          const game = games.find(g => g.id === activeNotebookGameId);
+          if (game) {
+            if (!game.screenshots) game.screenshots = [];
+            game.screenshots.push({
+              id: Date.now().toString(),
+              url: compressed,
+              caption: file.name.replace(/\.[^/.]+$/, "").slice(0, 18) || 'Скриншот'
+            });
+            persistData();
+            renderNotebookScreenshots(game);
+          }
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderNotebookScreenshots(game) {
+      const sec = document.getElementById('nbScreenshotsSection');
+      const grid = document.getElementById('nbScreenshotsGrid');
+      grid.innerHTML = '';
+
+      if (game.screenshots && game.screenshots.length > 0) {
+        sec.style.display = 'block';
+        game.screenshots.forEach(sc => {
+          const div = document.createElement('div');
+          div.className = 'screenshot-polaroid';
+          div.innerHTML = `
+            <button class="screenshot-delete-btn" onclick="deleteScreenshot('${game.id}', '${sc.id}', event)">&times;</button>
+            <img class="screenshot-img" src="${sc.url}" alt="карта" onclick="zoomScreenshot('${sc.url}')" />
+            <div class="screenshot-caption">${sc.caption}</div>
+          `;
+          grid.appendChild(div);
+        });
+      } else {
+        sec.style.display = 'none';
+      }
+    }
+
+    function deleteScreenshot(gameId, scId, event) {
+      event.stopPropagation();
+      const game = games.find(g => g.id === gameId);
+      if (!game) return;
+      game.screenshots = game.screenshots.filter(s => s.id !== scId);
+      persistData();
+      renderNotebookScreenshots(game);
+    }
+
+    function zoomScreenshot(url) {
+      document.getElementById('imageZoomImg').src = url;
+      document.getElementById('imageZoomModal').style.display = 'flex';
+    }
+
+    function renderNotebookChecklist(game) {
+      const box = document.getElementById('nbChecklistBox');
+      const container = document.getElementById('nbChecklistItems');
+      container.innerHTML = '';
+
+      if (game.checklist && game.checklist.length > 0) {
+        box.style.display = 'block';
+        const doneCount = game.checklist.filter(i => i.done).length;
+        document.getElementById('nbChecklistRatio').textContent = `${doneCount} из ${game.checklist.length} выполнено`;
+
+        game.checklist.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'checklist-item ' + (item.done ? 'done' : '');
+          div.innerHTML = `
+            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistInNotebook('${game.id}', '${item.id}', this.checked)" />
+            <span style="flex-grow:1; font-size:0.85rem;">${item.text}</span>
+          `;
+          container.appendChild(div);
+        });
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+    function toggleChecklistInNotebook(gameId, itemId, isChecked) {
+      const game = games.find(g => g.id === gameId);
+      if (!game) return;
+      const item = game.checklist.find(i => i.id === itemId);
+      if (item) {
+        item.done = isChecked;
+        persistData();
+        renderNotebookChecklist(game);
+        renderGames();
+      }
+    }
+
+    let currentSecretsGameTitle = '';
+
+    function openSecretsModal(gameId, event) {
+      if (event) event.stopPropagation();
+      const game = games.find(g => g.id === gameId);
+      if (!game) return;
+
+      currentSecretsGameTitle = game.title;
+      document.getElementById('secretsGameTitle').textContent = `Секреты: ${game.title}`;
+      const container = document.getElementById('secretsListContainer');
+      container.innerHTML = '';
+
+      const lower = game.title.toLowerCase();
+      let foundSecrets = null;
+      for (const [key, list] of Object.entries(BUILTIN_SECRETS)) {
+        if (lower.includes(key) || key.includes(lower)) {
+          foundSecrets = list;
+          break;
+        }
+      }
+
+      if (foundSecrets && foundSecrets.length > 0) {
+        foundSecrets.forEach(sec => {
+          const card = document.createElement('div');
+          card.className = 'secret-item-card';
+
+          const h4 = document.createElement('h4');
+          const titleSpan = document.createElement('span');
+          titleSpan.textContent = sec.title;
+
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'copy-to-notes-btn';
+          copyBtn.textContent = '📥 В блокнот';
+          copyBtn.onclick = () => copySecretToNotes(game.id, sec.title, sec.text);
+
+          h4.appendChild(titleSpan);
+          h4.appendChild(copyBtn);
+
+          const p = document.createElement('p');
+          p.style.color = '#cbd5e1';
+          p.style.fontSize = '0.85rem';
+          p.style.whiteSpace = 'pre-line';
+          p.style.margin = '0';
+          p.textContent = sec.text;
+
+          card.appendChild(h4);
+          card.appendChild(p);
+          container.appendChild(card);
+        });
+      } else {
+        container.innerHTML = `
+          <div style="text-align:center; padding:16px; color:#94a3b8; font-size:0.85rem;">
+            Для этой игры пока нет встроенных секретов.<br>
+            Нажмите кнопку ниже, чтобы автоматически подгрузить данные из энциклопедии на русском языке!
+          </div>
+        `;
+      }
+
+      document.getElementById('secretsModal').style.display = 'flex';
+    }
+
+    async function fetchOnlineSecrets() {
+      const loading = document.getElementById('secretsLoading');
+      const container = document.getElementById('secretsListContainer');
+      loading.style.display = 'block';
+
+      try {
+        const res = await fetch(`https://ru.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(currentSecretsGameTitle)}&gsrlimit=1&prop=extracts&exintro=0&explaintext=1&format=json&origin=*`);
+        const data = await res.json();
+        const pages = data?.query?.pages ? Object.values(data.query.pages) : [];
+
+        if (pages.length > 0 && pages[0].extract) {
+          const fullText = pages[0].extract;
+          const paragraphs = fullText.split('\n\n').filter(p => p.length > 80 && !p.startsWith('== ')).slice(0, 4);
+
+          const card = document.createElement('div');
+          card.className = 'secret-item-card';
+
+          const h4 = document.createElement('h4');
+          const titleSpan = document.createElement('span');
+          titleSpan.textContent = '📖 Особенности геймплея и советы';
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'copy-to-notes-btn';
+          copyBtn.textContent = '📥 В блокнот';
+          copyBtn.onclick = () => copySecretToNotes(activeNotebookGameId, 'Геймплей', paragraphs[0]);
+          h4.appendChild(titleSpan);
+          h4.appendChild(copyBtn);
+
+          const p = document.createElement('p');
+          p.style.color = '#cbd5e1';
+          p.style.fontSize = '0.85rem';
+          p.style.margin = '0';
+          p.textContent = paragraphs.join('\n\n');
+
+          card.appendChild(h4);
+          card.appendChild(p);
+          container.appendChild(card);
+        } else {
+          alert('Дополнительных данных не найдено.');
+        }
+      } catch (err) {
+        alert('Не удалось связаться с базой знаний.');
+      } finally {
+        loading.style.display = 'none';
+      }
+    }
+
+    function copySecretToNotes(gameId, title, text) {
+      const targetId = gameId || activeNotebookGameId;
+      const game = games.find(g => g.id === targetId);
+      if (!game) return;
+
+      const addition = `\n\n📌 [Секрет: ${title}]\n${text}`;
+      game.notes = (game.notes || '') + addition;
+      persistData();
+
+      if (activeNotebookGameId === targetId) {
+        document.getElementById('nbTextarea').value = game.notes;
+      }
+      alert('Секрет скопирован в ваш блокнот по игре!');
+    }
+
+    async function fetchGameInfo() {
+      const rawInput = document.getElementById('gameTitleInput').value.trim();
+      if (!rawInput) return alert('Введите название игры!');
+
+      const btn = document.getElementById('autoFetchBtn');
+      btn.textContent = '...';
+      btn.disabled = true;
+
+      const candidatesArea = document.getElementById('searchCandidatesArea');
+      candidatesArea.innerHTML = '';
+      candidatesArea.style.display = 'none';
+
+      const cleanLower = rawInput.toLowerCase();
+      let queryTitle = GAME_ALIASES[cleanLower] || rawInput;
+
+      const hitMatch = HITS_DATABASE.find(h => 
+        h.title.toLowerCase().includes(cleanLower) || 
+        cleanLower.includes(h.title.toLowerCase()) ||
+        (GAME_ALIASES[cleanLower] && h.title.toLowerCase().includes(GAME_ALIASES[cleanLower].toLowerCase()))
+      );
+
+      if (hitMatch) {
+        document.getElementById('gameCoverInput').value = hitMatch.cover;
+        updateCoverPreview(hitMatch.cover);
+        if (!document.getElementById('gameDescInput').value.trim()) {
+          document.getElementById('gameDescInput').value = hitMatch.desc;
+        }
+        btn.textContent = '🔍 Найти';
+        btn.disabled = false;
+        return;
+      }
+
+      try {
+        let foundCovers = [];
+        const searchRes = await fetch(`https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(queryTitle)}&srlimit=5&format=json&origin=*`);
+        const searchData = await searchRes.json();
+        const results = searchData?.query?.search || [];
+
+        for (const item of results) {
+          if (item.title.includes('(значения)')) continue;
+          try {
+            const sumRes = await fetch(`https://ru.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(item.title)}`);
+            const sum = await sumRes.json();
+            const isGame = (sum.description && (sum.description.includes('игра') || sum.description.includes('серия'))) || 
+                           (sum.extract && (sum.extract.includes('игра') || sum.extract.includes('RPG') || sum.extract.includes('Xbox')));
+
+            if (isGame || foundCovers.length === 0) {
+              const coverUrl = sum.originalimage?.source || sum.thumbnail?.source;
+              if (coverUrl) {
+                foundCovers.push({ title: sum.title, cover: coverUrl, desc: sum.extract || '' });
+              }
+            }
+          } catch(e) {}
+        }
+
+        if (foundCovers.length === 0) {
+          const enSearch = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(queryTitle + ' video game')}&gsrlimit=3&prop=pageimages|extracts&exintro=1&explaintext=1&pithumbsize=600&format=json&origin=*`);
+          const enData = await enSearch.json();
+          const enPages = enData?.query?.pages ? Object.values(enData.query.pages) : [];
+
+          enPages.forEach(p => {
+            if (p.thumbnail && p.thumbnail.source) {
+              foundCovers.push({ title: p.title, cover: p.thumbnail.source, desc: p.extract || '' });
+            }
+          });
+        }
+
+        if (foundCovers.length > 0) {
+          document.getElementById('gameCoverInput').value = foundCovers[0].cover;
+          updateCoverPreview(foundCovers[0].cover);
+          if (foundCovers[0].desc && !document.getElementById('gameDescInput').value.trim()) {
+            document.getElementById('gameDescInput').value = foundCovers[0].desc;
+          }
+
+          if (foundCovers.length > 1) {
+            candidatesArea.style.display = 'flex';
+            foundCovers.forEach(c => {
+              const card = document.createElement('div');
+              card.className = 'candidate-card';
+              card.innerHTML = `
+                <img class="candidate-img" referrerpolicy="no-referrer" src="${c.cover}" alt="вариант" onerror="handleCoverError(this)" />
+                <div class="candidate-title">${c.title}</div>
+              `;
+              card.onclick = () => {
+                document.getElementById('gameCoverInput').value = c.cover;
+                updateCoverPreview(c.cover);
+                if (c.desc) document.getElementById('gameDescInput').value = c.desc;
+              };
+              candidatesArea.appendChild(card);
+            });
+          }
+        } else {
+          alert('Обложка не найдена. Нажмите «📁 Фото», чтобы прикрепить изображение из галереи!');
+        }
+      } catch (err) {
+        alert('Не удалось загрузить данные. Используйте кнопку «📁 Фото».');
+      } finally {
+        btn.textContent = '🔍 Найти';
+        btn.disabled = false;
+      }
+    }
+
+    function updateCoverPreview(url) {
+      const prev = document.getElementById('editCoverPreview');
+      if (prev) prev.src = url.trim() || DEFAULT_COVER_SVG;
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          let w = img.width;
+          let h = img.height;
+          const maxDim = 600;
+          if (w > h && w > maxDim) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else if (h > maxDim) {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+
+          document.getElementById('gameCoverInput').value = compressedDataUrl;
+          updateCoverPreview(compressedDataUrl);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function openAdvisorModal() {
+      resetAdvisorAndRoll();
+      document.getElementById('advisorModal').style.display = 'flex';
+    }
+
+    function resetAdvisorAndRoll() {
+      const source = document.getElementById('advisorSourceSelect').value;
+      const mood = document.getElementById('advisorMoodSelect').value;
+      const genre = document.getElementById('advisorGenreSelect').value;
+
+      let baseList = (source === 'my') ? [...games] : [...HITS_DATABASE];
+
+      if (source !== 'my') {
+        if (mood !== 'all') baseList = baseList.filter(h => h.mood === mood);
+        if (genre !== 'all') baseList = baseList.filter(h => h.genreCategory === genre);
+      }
+
+      for (let i = baseList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [baseList[i], baseList[j]] = [baseList[j], baseList[i]];
+      }
+
+      advisorPool = baseList;
+      advisorHistory = [];
+      rollAdvisor();
+    }
+
+    function rollAdvisor() {
+      if (!advisorPool || advisorPool.length === 0) {
+        document.getElementById('advisorCard').style.display = 'none';
+        document.getElementById('advAddBtn').style.display = 'none';
+        alert('По выбранным критериям ничего не найдено!');
+        return;
+      }
+
+      document.getElementById('advisorCard').style.display = 'flex';
+      document.getElementById('advAddBtn').style.display = 'inline-flex';
+
+      if (advisorHistory.length >= advisorPool.length) {
+        advisorHistory = [];
+      }
+
+      let available = advisorPool.filter(g => !advisorHistory.includes(g.title));
+      if (available.length === 0) available = advisorPool;
+
+      const chosen = available[0];
+      advisorHistory.push(chosen.title);
+      currentAdvisorHit = chosen;
+
+      document.getElementById('advTitle').textContent = chosen.title;
+      document.getElementById('advCover').src = chosen.cover || DEFAULT_COVER_SVG;
+      document.getElementById('advPlatform').textContent = chosen.platform || 'PC';
+      document.getElementById('advGenre').textContent = chosen.genreName || 'Хит';
+      document.getElementById('advRating').textContent = chosen.rating ? `⭐ ${chosen.rating}/10` : '⭐ 9/10';
+      document.getElementById('advHook').textContent = chosen.hook || '✨ Отличная игра!';
+      document.getElementById('advDesc').textContent = chosen.desc || chosen.description || '';
+
+      const exists = games.some(g => g.title.toLowerCase() === chosen.title.toLowerCase());
+      const addBtn = document.getElementById('advAddBtn');
+      if (exists) {
+        addBtn.textContent = '✅ Уже в вашем списке';
+        addBtn.disabled = true;
+      } else {
+        addBtn.textContent = '➕ В мой список';
+        addBtn.disabled = false;
+      }
+    }
+
+    function addAdvisorGameToCollection() {
+      if (!currentAdvisorHit) return;
+      const newGame = {
+        id: Date.now().toString(),
+        title: currentAdvisorHit.title,
+        status: 'planned',
+        platform: currentAdvisorHit.platform ? currentAdvisorHit.platform.split(' / ')[0] : 'PC',
+        rating: currentAdvisorHit.rating || '',
+        completedDate: '',
+        cover: currentAdvisorHit.cover || '',
+        description: currentAdvisorHit.desc || currentAdvisorHit.description || '',
+        notes: currentAdvisorHit.hook ? `Рекомендация: ${currentAdvisorHit.hook}` : '',
+        checklist: [],
+        screenshots: []
+      };
+
+      games.unshift(newGame);
+      persistData();
+      renderGames();
+
+      const addBtn = document.getElementById('advAddBtn');
+      addBtn.textContent = '✅ Добавлено!';
+      addBtn.disabled = true;
+    }
+
+    function renderEditChecklist() {
+      const container = document.getElementById('editChecklistContainer');
+      container.innerHTML = '';
+      tempChecklist.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'checklist-item ' + (item.done ? 'done' : '');
+        div.innerHTML = `
+          <input type="checkbox" ${item.done ? 'checked' : ''} onchange="tempChecklist[${index}].done = this.checked; renderEditChecklist();" />
+          <span style="flex-grow:1; font-size:0.82rem;">${item.text}</span>
+          <button type="button" class="checklist-del-btn" onclick="tempChecklist.splice(${index}, 1); renderEditChecklist();">&times;</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addChecklistItem() {
+      const input = document.getElementById('newChecklistInput');
+      const text = input.value.trim();
+      if (!text) return;
+      tempChecklist.push({ id: Date.now().toString(), text: text, done: false });
+      input.value = '';
+      renderEditChecklist();
+    }
+
+    function openAddModal() {
+      editingId = null;
+      tempChecklist = [];
+      document.getElementById('modalFormTitle').textContent = 'Добавить игру';
+      document.getElementById('gameTitleInput').value = '';
+      document.getElementById('gameStatusSelect').value = 'playing';
+      document.getElementById('gamePlatformSelect').value = 'PC';
+      document.getElementById('gameRatingSelect').value = '';
+      document.getElementById('gameCompletedDateInput').value = '';
+      document.getElementById('gameCoverInput').value = '';
+      document.getElementById('searchCandidatesArea').innerHTML = '';
+      document.getElementById('searchCandidatesArea').style.display = 'none';
+      updateCoverPreview('');
+      document.getElementById('gameDescInput').value = '';
+      document.getElementById('deleteBtn').style.display = 'none';
+      renderEditChecklist();
+      document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function openEditModal(id) {
+      const game = games.find(g => g.id === id);
+      if (!game) return;
+      editingId = id;
+      tempChecklist = JSON.parse(JSON.stringify(game.checklist || []));
+
+      document.getElementById('modalFormTitle').textContent = 'Редактировать игру';
+      document.getElementById('gameTitleInput').value = game.title;
+      document.getElementById('gameStatusSelect').value = game.status;
+      document.getElementById('gamePlatformSelect').value = game.platform || 'PC';
+      document.getElementById('gameRatingSelect').value = game.rating || '';
+      document.getElementById('gameCompletedDateInput').value = game.completedDate || '';
+      document.getElementById('gameCoverInput').value = game.cover;
+      document.getElementById('searchCandidatesArea').innerHTML = '';
+      document.getElementById('searchCandidatesArea').style.display = 'none';
+      updateCoverPreview(game.cover);
+      document.getElementById('gameDescInput').value = game.description;
+      document.getElementById('deleteBtn').style.display = 'block';
+
+      renderEditChecklist();
+      document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function saveGame() {
+      const title = document.getElementById('gameTitleInput').value.trim();
+      if (!title) return alert('Введите название игры!');
+
+      const gameData = {
+        title: title,
+        status: document.getElementById('gameStatusSelect').value,
+        platform: document.getElementById('gamePlatformSelect').value,
+        rating: document.getElementById('gameRatingSelect').value,
+        completedDate: document.getElementById('gameCompletedDateInput').value,
+        cover: document.getElementById('gameCoverInput').value.trim(),
+        description: document.getElementById('gameDescInput').value.trim(),
+        checklist: tempChecklist
+      };
+
+      if (editingId) {
+        const index = games.findIndex(g => g.id === editingId);
+        if (index !== -1) {
+          games[index] = Object.assign({}, games[index], gameData);
+        }
+      } else {
+        gameData.id = Date.now().toString();
+        gameData.notes = '';
+        gameData.screenshots = [];
+        games.unshift(gameData);
+      }
+
+      persistData();
+      closeModal('editModal');
+      renderGames();
+    }
+
+    function deleteCurrentGame() {
+      if (!editingId) return;
+      if (confirm('Точно удалить эту игру из списка?')) {
+        games = games.filter(g => g.id !== editingId);
+        persistData();
+        closeModal('editModal');
+        closeModal('notebookModal');
+        renderGames();
+      }
+    }
+
+    function setStatusFilter(status, el) {
+      currentStatusFilter = status;
+      document.querySelectorAll('.filter-btn:not(.filter-btn-platform)').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderGames();
+    }
+
+    function setPlatformFilter(platform, el) {
+      currentPlatformFilter = platform;
+      document.querySelectorAll('.filter-btn-platform').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderGames();
+    }
+
+    function persistData() {
+      try {
+        localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+        localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
+      } catch(e) {}
+    }
+
+    function exportData() {
+      const blob = new Blob([JSON.stringify(games, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `gamers_corner_backup_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            games = imported;
+            games.forEach(g => {
+              if (!g.platform) g.platform = 'PC';
+              if (!g.checklist) g.checklist = [];
+              if (!g.screenshots) g.screenshots = [];
+            });
+            persistData();
+            renderGames();
+            alert('База игр успешно восстановлена!');
+          }
+        } catch (err) {
+          alert('Ошибка при чтении файла резервной копии.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function recoverFromBackup() {
+      const choices = ['gamers_corner_safety_backup', 'gamers_corner_data'];
+      for (let i = 0; i < choices.length; i++) {
+        try {
+          const data = localStorage.getItem(choices[i]);
+          if (data) {
+            const parsed = JSON.parse(data);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              games = parsed;
+              localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+              renderGames();
+              alert('База успешно восстановлена из памяти браузера: ' + games.length + ' игр!');
+              return;
+            }
+          }
+        } catch(e) {}
+      }
+      alert('Резервных записей в памяти браузера не найдено.');
+    }
+
+    window.onclick = (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.style.display = 'none';
+      }
+    };
+
+    // Запуск приложения
+    switchViewMode(currentViewMode);
+    renderGames();
+  </script>
+</body>
+</html>
