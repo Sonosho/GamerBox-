@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- no-referrer решает проблему блокировки 403 Forbidden со сторонних хранилищ и Википедии -->
+  <meta name="referrer" content="no-referrer" />
+  <title>Геймерский уголок</title>
+  <!-- Пиксельный геймпад -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' shape-rendering='crispEdges'%3E%3Cpath fill='%230b0f19' d='M0 0h24v24H0z'/%3E%3Cpath fill='%23a855f7' d='M6 6h12v2H6zm-2 2h16v2H4zm-2 2h20v6H2zm0 6h4v4H2zm16 0h4v4h-4z'/%3E%3Cpath fill='%2338bdf8' d='M6 11h2v2H6zm-1 1h4v1H5zm12-1h2v2h-2zm-1 1h4v1h-4z'/%3E%3Cpath fill='%2322c55e' d='M10 13h4v1h-4z'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg-dark: #0a0d16;
+      --card-bg: rgba(18, 25, 41, 0.88);
+      --card-border: rgba(56, 189, 248, 0.18);
+      --card-border-hover: rgba(168, 85, 247, 0.6);
+      --accent-purple: #a855f7;
+      --accent-cyan: #38bdf8;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 14% 18%, rgba(168, 85, 247, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 86% 22%, rgba(56, 189, 248, 0.20) 0%, transparent 45%),
+        radial-gradient(circle at 50% 82%, rgba(244, 63, 94, 0.15) 0%, transparent 52%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    /* Шапка сайта */
+    header {
+      background: rgba(12, 17, 28, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+    }
+    .header-content {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+    }
+    .brand svg { width: 32px; height: 32px; image-rendering: pixelated; filter: drop-shadow(0 0 8px rgba(56,189,248,0.6)); }
+
+    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+    .btn-advisor {
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      color: #fff;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-advisor:hover, .btn-advisor:active {
+      box-shadow: 0 0 16px rgba(236, 72, 153, 0.7);
+      transform: translateY(-2px);
+    }
+    .btn-primary { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: #fff; }
+    .btn-primary:hover, .btn-primary:active { box-shadow: 0 0 16px rgba(139, 92, 246, 0.6); transform: translateY(-2px); }
+    .btn-secondary {
+      background: rgba(30, 41, 59, 0.8);
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.25);
+    }
+    .btn-secondary:hover { background: rgba(51, 65, 85, 0.95); border-color: var(--accent-cyan); }
+    .btn-danger { background: #ef4444; color: #fff; }
+
+    .container { max-width: 1240px; margin: 16px auto; padding: 0 14px; }
+
+    /* Панель фильтров (оптимизирована под свайп на телефоне) */
+    .controls-wrapper {
+      background: rgba(18, 25, 41, 0.8);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+    .controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .scroll-filters {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      flex-grow: 1;
+    }
+    .scroll-filters::-webkit-scrollbar { display: none; }
+    .filter-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      align-self: center;
+      flex-shrink: 0;
+      margin-right: 4px;
+    }
+    .filter-btn {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { color: #fff; border-color: rgba(56, 189, 248, 0.4); }
+    .filter-btn.active {
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      color: #031326;
+      font-weight: 700;
+      border-color: transparent;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+    .filter-btn-platform.active {
+      background: linear-gradient(135deg, #a855f7, #c084fc);
+      color: #1a052b;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+    }
+
+    .search-input {
+      background: rgba(11, 16, 28, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 9px;
+      width: 240px;
+      outline: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    }
+
+    /* Сетка игр (2 колонки на телефоне, 3-4 на ПК) */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .game-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    }
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.65), 0 0 16px rgba(168, 85, 247, 0.3);
+    }
+    .card-cover-wrap {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      background: #090d16;
+      overflow: hidden;
+    }
+    .card-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .game-card:hover .card-cover { transform: scale(1.04); }
+
+    .card-badges {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-playing { background: rgba(16, 185, 129, 0.92); color: #fff; }
+    .status-planned { background: rgba(245, 158, 11, 0.92); color: #fff; }
+    .status-paused { background: rgba(244, 63, 94, 0.92); color: #fff; }
+    .status-completed { background: rgba(59, 130, 246, 0.92); color: #fff; }
+
+    .rating-badge {
+      background: rgba(15, 23, 42, 0.92);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      font-weight: 800;
+    }
+    .platform-badge {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #d8b4fe;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 4px;
+    }
+
+    .card-body {
+      padding: 12px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .checklist-progress { margin-top: 4px; }
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+    .progress-bar-bg {
+      height: 5px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      transition: width 0.3s ease;
+    }
+
+    /* Модальные окна */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(3, 7, 18, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      z-index: 200;
+      backdrop-filter: blur(8px);
+    }
+    .modal-content {
+      background: #111827;
+      border: 1px solid #1f2d47;
+      border-radius: 16px;
+      max-width: 760px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 22px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: #1f293d;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+    .modal-close:hover { background: #ef4444; }
+
+    .modal-game-header { display: flex; gap: 18px; margin-bottom: 18px; }
+    .modal-cover {
+      width: 150px;
+      height: 220px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #0c111a;
+      flex-shrink: 0;
+      border: 1px solid #24324a;
+    }
+
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+    .form-control {
+      width: 100%;
+      background: #090e17;
+      border: 1px solid #222f44;
+      color: #fff;
+      padding: 9px 12px;
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.92rem;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus { border-color: var(--accent-cyan); }
+    textarea.form-control { resize: vertical; min-height: 80px; }
+
+    /* Блок поиска и загрузки обложки */
+    .cover-actions-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .cover-preview-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .cover-thumb-preview {
+      width: 55px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #090e17;
+      border: 1px solid #222f44;
+    }
+
+    /* Список кандидатов обложек */
+    .search-candidates-list {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-top: 8px;
+      padding-bottom: 6px;
+    }
+    .candidate-card {
+      width: 80px;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 1px solid #222f44;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #090e17;
+      text-align: center;
+      transition: 0.2s;
+    }
+    .candidate-card:hover { border-color: var(--accent-cyan); transform: scale(1.05); }
+    .candidate-img { width: 100%; height: 95px; object-fit: cover; display: block; }
+    .candidate-title { font-size: 0.68rem; padding: 3px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* Чеклист */
+    .checklist-box {
+      background: #0a0f1a;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 14px;
+    }
+    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      background: rgba(18, 25, 41, 0.6);
+      border-radius: 6px;
+      margin-bottom: 6px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .checklist-item.done span {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .checklist-item input[type="checkbox"] {
+      width: 18px; height: 18px; accent-color: var(--accent-green); cursor: pointer;
+    }
+    .checklist-del-btn {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    .notes-box {
+      background: #0a0f1a;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 14px;
+    }
+    .notes-box h4 { font-size: 0.92rem; color: #38bdf8; margin-bottom: 8px; }
+
+    /* Окно Игрового Советника */
+    .advisor-filter-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      background: #0c121e;
+      border: 1px solid #1f2c42;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+    .advisor-result-card {
+      background: #0e1524;
+      border: 1px solid #243550;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .advisor-cover {
+      width: 150px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #090e17;
+      border: 1px solid #2a3d5e;
+      flex-shrink: 0;
+    }
+    .advisor-details { flex-grow: 1; display: flex; flex-direction: column; gap: 7px; }
+    .advisor-title { font-size: 1.35rem; font-weight: 800; color: #fff; }
+    .advisor-badge-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .advisor-hook {
+      background: rgba(168, 85, 247, 0.12);
+      border-left: 3px solid var(--accent-purple);
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+
+    /* Адаптив для смартфонов */
+    @media (max-width: 650px) {
+      body { padding-bottom: 80px; }
+      header { padding: 10px 12px; }
+      .brand { font-size: 1.15rem; }
+      .header-actions { width: 100%; justify-content: space-between; }
+      .btn { padding: 7px 11px; font-size: 0.82rem; }
+      .container { padding: 0 10px; margin-top: 10px; }
+
+      .controls-row { flex-direction: column; align-items: stretch; gap: 8px; }
+      .search-input { width: 100%; }
+
+      /* На смартфонах сетка из 2 аккуратных колонок */
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .card-cover-wrap { height: 180px; }
+      .card-body { padding: 8px; }
+      .card-title { font-size: 0.88rem; }
+      .badge { font-size: 0.65rem; padding: 2px 6px; }
+
+      .modal-content { padding: 16px; border-radius: 14px; max-height: 95vh; }
+      .modal-game-header { flex-direction: column; align-items: center; text-align: center; }
+      .modal-cover { width: 140px; height: 190px; }
+
+      .advisor-result-card { flex-direction: column; align-items: center; text-align: center; }
+      .advisor-cover { width: 140px; height: 190px; }
+      .advisor-badge-row { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="brand">
+        <!-- Пиксельный геймпад -->
+        <svg viewBox="0 0 24 24" shape-rendering="crispEdges">
+          <path fill="#a855f7" d="M6 6h12v2H6zm-2 2h16v2H4zm-2 2h20v6H2zm0 6h4v4H2zm16 0h4v4h-4z"/>
+          <path fill="#38bdf8" d="M6 11h2v2H6zm-1 1h4v1H5zm12-1h2v2h-2zm-1 1h4v1h-4z"/>
+          <path fill="#22c55e" d="M10 13h4v1h-4z"/>
+        </svg>
+        <span>Геймерский уголок</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит под настроение и жанр">🎯 Подбор игры</button>
+        <button class="btn btn-primary" onclick="openAddModal()">➕ Игра</button>
+        <button class="btn btn-secondary" title="Резервная копия базы" onclick="exportData()">💾</button>
+        <button class="btn btn-secondary" title="Загрузить резервную копию" onclick="document.getElementById('importFile').click()">📥</button>
+        <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)" />
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="controls-wrapper">
+      <!-- Поиск и фильтр по статусам -->
+      <div class="controls-row">
+        <div class="scroll-filters">
+          <span class="filter-label">Статус:</span>
+          <button class="filter-btn active" onclick="setStatusFilter('all', this)">Все (<span id="count-all">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('playing', this)">🎮 Играю (<span id="count-playing">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('planned', this)">⏳ Буду играть (<span id="count-planned">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('paused', this)">⏸️ На паузе (<span id="count-paused">0</span>)</button>
+          <button class="filter-btn" onclick="setStatusFilter('completed', this)">✅ Пройдено (<span id="count-completed">0</span>)</button>
+        </div>
+        <input type="text" class="search-input" id="searchBox" placeholder="🔍 Найти игру..." oninput="renderGames()" />
+      </div>
+
+      <!-- Свайп-фильтр по платформам -->
+      <div class="controls-row">
+        <div class="scroll-filters">
+          <span class="filter-label">Платформа:</span>
+          <button class="filter-btn filter-btn-platform active" onclick="setPlatformFilter('all', this)">Все</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PC', this)">💻 PC</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Xbox', this)">🟢 Xbox</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PS Vita', this)">🕹️ PS Vita</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PlayStation', this)">🔵 PlayStation</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Switch', this)">🔴 Switch</button>
+          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Retro', this)">👾 Retro</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Сетка карточек -->
+    <div class="games-grid" id="gamesGrid"></div>
+  </div>
+
+  <!-- Модальное окно создания / редактирования игры -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('editModal')">&times;</button>
+      <h3 style="margin-bottom: 14px; color:#fff;" id="modalFormTitle">Добавить игру</h3>
+
+      <div class="form-group">
+        <label>Название игры (на русском или английском):</label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" class="form-control" id="gameTitleInput" placeholder="Например: дайн лайт, ведьмак 3, dead space..." />
+          <button class="btn btn-secondary" id="autoFetchBtn" onclick="fetchGameInfo()">🔍 Найти</button>
+        </div>
+        <div id="searchCandidatesArea" class="search-candidates-list" style="display:none;"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+        <div class="form-group">
+          <label>Статус:</label>
+          <select class="form-control" id="gameStatusSelect">
+            <option value="playing">🎮 Играю</option>
+            <option value="planned">⏳ Буду играть</option>
+            <option value="paused">⏸️ На паузе</option>
+            <option value="completed">✅ Пройдено</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Платформа:</label>
+          <select class="form-control" id="gamePlatformSelect">
+            <option value="PC">💻 PC</option>
+            <option value="Xbox">🟢 Xbox</option>
+            <option value="PS Vita">🕹️ PS Vita</option>
+            <option value="PlayStation">🔵 PlayStation</option>
+            <option value="Switch">🔴 Switch</option>
+            <option value="Retro">👾 Retro</option>
+            <option value="Другое">🎮 Другое</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+        <div class="form-group">
+          <label>Моя оценка:</label>
+          <select class="form-control" id="gameRatingSelect">
+            <option value="">Без оценки</option>
+            <option value="10">⭐ 10 / 10</option>
+            <option value="9">⭐ 9 / 10</option>
+            <option value="8">⭐ 8 / 10</option>
+            <option value="7">⭐ 7 / 10</option>
+            <option value="6">⭐ 6 / 10</option>
+            <option value="5">⭐ 5 / 10</option>
+            <option value="4">⭐ 4 / 10</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Дата прохождения:</label>
+          <input type="date" class="form-control" id="gameCompletedDateInput" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Обложка игры:</label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" class="form-control" id="gameCoverInput" placeholder="URL картинки..." oninput="updateCoverPreview(this.value)" />
+          <button class="btn btn-secondary" type="button" onclick="document.getElementById('coverFileInput').click()" title="Загрузить фото из галереи телефона">📁 Фото</button>
+          <input type="file" id="coverFileInput" style="display:none" accept="image/*" onchange="handleFileUpload(event)" />
+        </div>
+        <div class="cover-preview-box">
+          <img id="editCoverPreview" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Превью" onerror="handleCoverError(this)" />
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Превью обложки</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Краткое описание:</label>
+        <textarea class="form-control" id="gameDescInput" rows="2" placeholder="Описание игры..."></textarea>
+      </div>
+
+      <!-- Чеклист -->
+      <div class="checklist-box">
+        <div class="checklist-header">
+          <h4 style="color:#10b981; font-size:0.9rem;">🎯 Чеклист целей</h4>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Квесты, секреты</span>
+        </div>
+        <div id="editChecklistContainer"></div>
+        <div style="display: flex; gap: 6px; margin-top: 8px;">
+          <input type="text" class="form-control" id="newChecklistInput" placeholder="Добавить цель..." onkeypress="if(event.key==='Enter'){event.preventDefault();addChecklistItem();}" />
+          <button class="btn btn-secondary" onclick="addChecklistItem()">+</button>
+        </div>
+      </div>
+
+      <div class="notes-box">
+        <h4>📝 Личный блокнот (секреты, тайники, подсказки)</h4>
+        <textarea class="form-control" id="gameNotesInput" rows="3" placeholder="Тайники, любимый билд, коды от сейфов, подсказки..."></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 18px;">
+        <button class="btn btn-danger" id="deleteBtn" style="display:none;" onclick="deleteCurrentGame()">Удалить</button>
+        <div style="display: flex; gap: 8px; margin-left: auto;">
+          <button class="btn btn-secondary" onclick="closeModal('editModal')">Отмена</button>
+          <button class="btn btn-primary" onclick="saveGame()">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Окно детального просмотра игры -->
+  <div class="modal-overlay" id="viewModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('viewModal')">&times;</button>
+      <div class="modal-game-header">
+        <img id="viewCover" class="modal-cover" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
+        <div style="flex-grow: 1;">
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;">
+            <div id="viewBadge" class="badge"></div>
+            <div id="viewPlatformBadge" class="badge platform-badge"></div>
+            <div id="viewRatingBadge" class="badge rating-badge" style="display:none;"></div>
+            <div id="viewDateBadge" class="badge" style="background:#1e293b; color:#94a3b8; display:none;"></div>
+          </div>
+          <h2 id="viewTitle" style="color: #fff; margin-bottom: 8px; font-size: 1.4rem;"></h2>
+          <p id="viewDesc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.45;"></p>
+        </div>
+      </div>
+
+      <div class="checklist-box" id="viewChecklistBox">
+        <div class="checklist-header">
+          <h4 style="color:#10b981; font-size:0.9rem;">🎯 Чеклист прохождения:</h4>
+          <span id="viewChecklistRatio" style="font-size:0.8rem; color:#38bdf8; font-weight:700;"></span>
+        </div>
+        <div id="viewChecklistItems"></div>
+      </div>
+
+      <div class="notes-box">
+        <h4>📝 Мои заметки и секреты:</h4>
+        <div id="viewNotes" style="white-space: pre-wrap; font-size: 0.9rem; color: #e2e8f0; line-height: 1.55;"></div>
+      </div>
+
+      <div style="margin-top: 18px; display: flex; justify-content: flex-end; gap: 8px;">
+        <button class="btn btn-secondary" id="editFromViewBtn">✏️ Редактировать</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Окно Игрового Советника -->
+  <div class="modal-overlay" id="advisorModal">
+    <div class="modal-content" style="max-width: 740px;">
+      <button class="modal-close" onclick="closeModal('advisorModal')">&times;</button>
+      <h3 style="color:#f59e0b; margin-bottom: 4px; font-size: 1.25rem;">🎯 Игровой компас: Подбор под настроение</h3>
+      <p style="color:var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Каждый клик предлагает новую игру без повторов:</p>
+
+      <div class="advisor-filter-bar">
+        <div>
+          <label class="filter-label">Источник:</label>
+          <select class="form-control" id="advisorSourceSelect" onchange="resetAdvisorAndRoll()">
+            <option value="hits">🌟 Большая база хитов (60+ игр)</option>
+            <option value="my">📁 Только мой личный список</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="filter-label">Настроение:</label>
+          <select class="form-control" id="advisorMoodSelect" onchange="resetAdvisorAndRoll()">
+            <option value="all">🎲 Любое настроение</option>
+            <option value="zombie">🧟 Зомби, выживание и паркур</option>
+            <option value="action">💥 Адреналин, стрельба и драйв</option>
+            <option value="rpg">🗡️ Глубокий сюжет, RPG и открытый мир</option>
+            <option value="horror">👻 Пощекотать нервы (Хоррор / Триллер)</option>
+            <option value="race">🏎️ Скорость, гонки и автобезумие</option>
+            <option value="retro">👾 Ретро, олдскул и портативки</option>
+            <option value="chill">☕ Почиллить и расслабиться</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="filter-label">Жанр:</label>
+          <select class="form-control" id="advisorGenreSelect" onchange="resetAdvisorAndRoll()">
+            <option value="all">Все жанры</option>
+            <option value="survival">Выживание / Зомби</option>
+            <option value="shooter">Шутер / Экшен</option>
+            <option value="rpg">RPG / Ролевая</option>
+            <option value="horror">Хоррор</option>
+            <option value="racing">Гонки</option>
+            <option value="openworld">Открытый мир</option>
+            <option value="platformer">Платформер / Ретро</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="advisorResultArea">
+        <div class="advisor-result-card" id="advisorCard">
+          <img id="advCover" class="advisor-cover" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
+          <div class="advisor-details">
+            <div class="advisor-badge-row">
+              <span id="advPlatform" class="badge platform-badge"></span>
+              <span id="advGenre" class="badge" style="background:#0284c7; color:#fff;"></span>
+              <span id="advRating" class="badge rating-badge"></span>
+            </div>
+            <h2 id="advTitle" class="advisor-title"></h2>
+            <div id="advHook" class="advisor-hook"></div>
+            <p id="advDesc" style="color:var(--text-muted); font-size:0.88rem; line-height:1.45;"></p>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:16px;">
+          <button class="btn btn-secondary" onclick="rollAdvisor()">🎲 Следующая игра</button>
+          <button class="btn btn-primary" id="advAddBtn" onclick="addAdvisorGameToCollection()">➕ В мой список («Буду играть»)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Красивая SVG-заглушка с постером, если картинка не загрузилась
+    const DEFAULT_COVER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' fill='%23111827'%3E%3Crect width='300' height='400'/%3E%3Cpath fill='%2338bdf8' d='M80 160h140v30H80zm-20 40h180v20H60z' opacity='0.25'/%3E%3Ctext x='150' y='210' fill='%2394a3b8' font-size='18' font-family='sans-serif' font-weight='bold' text-anchor='middle'%3EНЕТ ОБЛОЖКИ%3C/text%3E%3C/svg%3E";
+
+    function handleCoverError(img) {
+      img.onerror = null;
+      img.src = DEFAULT_COVER_SVG;
+    }
+
+    // Словарь русской транслитерации и сленга для мгновенного нахождения игр
+    const GAME_ALIASES = {
+      'дайн лайт': 'Dying Light',
+      'даинг лайт': 'Dying Light',
+      'дайнг лайт': 'Dying Light',
+      'ведьмак': 'The Witcher 3: Wild Hunt',
+      'ведьмак 3': 'The Witcher 3: Wild Hunt',
+      'сталкер': 'S.T.A.L.K.E.R.: Shadow of Chernobyl',
+      'метро': 'Metro Exodus',
+      'метро исход': 'Metro Exodus',
+      'дед спейс': 'Dead Space',
+      'дэд спейс': 'Dead Space',
+      'фоллаут': 'Fallout: New Vegas',
+      'фоллаут 4': 'Fallout 4',
+      'нью вегас': 'Fallout: New Vegas',
+      'киберпанк': 'Cyberpunk 2077',
+      'киберпанк 2077': 'Cyberpunk 2077',
+      'гта': 'Grand Theft Auto V',
+      'гта 5': 'Grand Theft Auto V',
+      'скайрим': 'The Elder Scrolls V: Skyrim',
+      'элден ринг': 'Elden Ring',
+      'елден ринг': 'Elden Ring',
+      'дум': 'DOOM Eternal',
+      'дум этернал': 'DOOM Eternal',
+      'резидент': 'Resident Evil 4',
+      'резидент эвил': 'Resident Evil 4',
+      'нфс': 'Need for Speed: Most Wanted',
+      'нид фор спид': 'Need for Speed: Most Wanted',
+      'флэтаут': 'FlatOut 2',
+      'флетаут': 'FlatOut 2',
+      'дейс ган': 'Days Gone',
+      'дэйс ган': 'Days Gone',
+      'жизнь после': 'Days Gone',
+      'одни из нас': 'The Last of Us Part I',
+      'ласт оф ас': 'The Last of Us Part I',
+      'халлоу найт': 'Hollow Knight',
+      'холлоу найт': 'Hollow Knight',
+      'хейдис': 'Hades',
+      'аид': 'Hades',
+      'халфа': 'Half-Life 2',
+      'халф лайф': 'Half-Life 2',
+      'макс пейн': 'Max Payne 3',
+      'дишонорд': 'Dishonored',
+      'персона 4': 'Persona 4 Golden',
+      'киллзон': 'Killzone: Mercenary',
+      'сабнатика': 'Subnautica',
+      'террария': 'Terraria',
+      'лефт 4 дед': 'Left 4 Dead 2',
+      'лефт фо дед': 'Left 4 Dead 2'
+    };
+
+    // Обширная база мировых хитов (более 50 легендарных игр с прямыми Steam CDN постерами)
+    const HITS_DATABASE = [
+      // ЗОМБИ И ВЫЖИВАНИЕ
+      { title: "Dying Light", genreCategory: "survival", mood: "zombie", genreName: "Зомби / Паркур / Выживание", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg", hook: "🔥 Паркур от первого лица, дробящее оружие и жуткие ночные бега от Прыгунов в Харране.", desc: "Эталон зомби-экшена с богатым крафтом и кооперативом." },
+      { title: "Days Gone", genreCategory: "survival", mood: "zombie", genreName: "Зомби / Открытый мир / Мотоцикл", platform: "PC / PlayStation", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1259420/header.jpg", hook: "🏍️ Огромные орды из 500 фриков, апгрейд верного байка и выживание в лесах Орегона.", desc: "Крепкая история байкера Дикона Сент-Джона в постапокалипсисе." },
+      { title: "The Last of Us Part I", genreCategory: "survival", mood: "zombie", genreName: "Драма / Зомби / Стелс", platform: "PC / PlayStation", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg", hook: "🌿 Джоэл и Элли, щелкуны, дефицит патронов и одна из лучших историй в играх.", desc: "Кинематографичный шедевр о человечности в разрушенном мире." },
+      { title: "Left 4 Dead 2", genreCategory: "survival", mood: "zombie", genreName: "Кооп / Зомби-шутер", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/550/header.jpg", hook: "🧟 Танки, Ведьмы, сковородка в руках и отчаянный прорыв к эвакуации.", desc: "Лучший кооперативный зомби-шутер всех времен." },
+      { title: "Dead Island Definitive Edition", genreCategory: "survival", mood: "zombie", genreName: "Зомби / Слешер / Остров", platform: "PC / Xbox", rating: "8", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/383150/header.jpg", hook: "🏝️ Тропический курорт Баной, модифицированные мачете с током и яркое солнце.", desc: "Веселое крошево мертвецов на райском тропическом острове." },
+      { title: "State of Decay 2", genreCategory: "survival", mood: "zombie", genreName: "Выживание / База / Зомби", platform: "PC / Xbox", rating: "8", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/495420/header.jpg", hook: "🏘️ Постройка базы, поиск припасов и забота о выживших в общине.", desc: "Глубокий симулятор выживания общины среди ходячих мертвецов." },
+      { title: "Subnautica", genreCategory: "survival", mood: "chill", genreName: "Выживание / Океан / Исследование", platform: "PC / Xbox / Switch", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/264710/header.jpg", hook: "🌊 Невероятный инопланетный океан, батискаф «Мотылек» и левиафаны на глубине.", desc: "Уникальное подводное приключение с крафтом и тайнами." },
+      { title: "The Forest", genreCategory: "survival", mood: "horror", genreName: "Выживание / Каннибалы / Остров", platform: "PC / PlayStation", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/242760/header.jpg", hook: "🪓 Авиакатастрофа, постройка укреплений из бревен и жуткие пещеры мутантов.", desc: "Один из самых атмосферных симуляторов выживания на диком острове." },
+      { title: "Project Zomboid", genreCategory: "survival", mood: "zombie", genreName: "Хардкор / Изометрия / Зомби", platform: "PC", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/108600/header.jpg", hook: "💀 «Это история вашей смерти». Дождь, заколоченные окна и сотни зомби вокруг.", desc: "Ультимативная песочница про выживание в мертвом округе Нокс." },
+
+      // ШУТЕРЫ И ЭКШЕН
+      { title: "DOOM Eternal", genreCategory: "shooter", mood: "action", genreName: "Ураганный шутер / Адреналин", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg", hook: "⚡ Бешеный темп под гитарные риффы Мика Гордона, бензопила и распил демонов.", desc: "Чистый адреналин, где остановка на месте означает гибель." },
+      { title: "Metro Exodus", genreCategory: "shooter", mood: "action", genreName: "Шутер / Постапокалипсис", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/header.jpg", hook: "🚂 Путешествие на поезде «Аврора» через разрушенную Россию в поисках чистого дома.", desc: "Глубокая атмосфера, модификация стволов прямо на коленке и мутанты." },
+      { title: "S.T.A.L.K.E.R.: Тень Чернобыля", genreCategory: "shooter", mood: "action", genreName: "Шутер / Зона / Атмосфера", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/4500/header.jpg", hook: "☢️ Посиделки у костра, аномалии, артефакты и опасные вылазки к Припяти.", desc: "Культовая классика с непревзойденной атмосферой чернобыльской Зоны." },
+      { title: "Half-Life 2", genreCategory: "shooter", mood: "action", genreName: "Шутер / Сюжет / Физика", platform: "PC", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/220/header.jpg", hook: "🔧 Гордон Фримен, монтировка, грави-пушка и восстание в Сити-17.", desc: "Величайший сюжетный шутер в истории игровой индустрии." },
+      { title: "BioShock Remastered", genreCategory: "shooter", mood: "action", genreName: "Шутер / Подводный город / Арт-деко", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/409710/header.jpg", hook: " подводный город Восторг, плазмиды, Большие Папочки и философия Эндрю Райана.", desc: "Шедевр с невероятным сюжетом и атмосферой ретро-футуризма." },
+      { title: "Max Payne 3", genreCategory: "shooter", mood: "action", genreName: "Шутер / Замедление времени / Драйв", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/204100/header.jpg", hook: "🕶️ Фавелы Сан-Паулу, зрелищные прыжки в замедлении времени и стрельба с двух рук.", desc: "Лучшая механика перестрелок и нуарный характер Макса." },
+      { title: "Titanfall 2", genreCategory: "shooter", mood: "action", genreName: "Шутер / Мехи / Паркур", platform: "PC / Xbox / PS", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1237970/header.jpg", hook: "🤖 Дружба пилота Купера и титана БТ-7274, бег по стенам и идеальный темп.", desc: "Одна из лучших сюжетных кампаний в шутерах за последнее десятилетие." },
+      { title: "Wolfenstein: The New Order", genreCategory: "shooter", mood: "action", genreName: "Шутер / Альтернативная история", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/201810/header.jpg", hook: "💥 Би Джей Бласковиц с двумя дробовиками против бронированных роботов.", desc: "Яркий, драйвовый боевик с отличными персонажами и стрельбой." },
+      { title: "Killzone: Mercenary", genreCategory: "shooter", mood: "retro", genreName: "Портативный шутер / Киберпанк", platform: "PS Vita", rating: "9", cover: "https://upload.wikimedia.org/wikipedia/en/e/ed/Killzone_Mercenary_Cover.jpg", hook: "🕹️ Лучший графический шутер на PS Vita с сочной стрельбой наемника.", desc: "Главный консольный боевик для портативной консоли Sony." },
+
+      // RPG И ОТКРЫТЫЙ МИР
+      { title: "Ведьмак 3: Дикая Охота", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Открытый мир", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg", hook: "🐺 Славянский фольклор, чудовища по контракту, партии в гвинт и история Цири.", desc: "Эталонная RPG, где второстепенные квесты увлекательнее книг." },
+      { title: "Fallout: New Vegas", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Постапокалипсис / Пустыня", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/22380/header.jpg", hook: "🏜️ Пустыня Мохаве, казино Нью-Вегаса, ретро-джаз и полная свобода выбора.", desc: "Лучшая ролевая игра серии Fallout с непревзойденной вариативностью." },
+      { title: "Cyberpunk 2077", genreCategory: "openworld", mood: "action", genreName: "Киберпанк / RPG / Найт-Сити", platform: "PC / Xbox / PS5", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", hook: "🦾 Неоновые улицы Найт-Сити, импланты и бунтарь Джонни Сильверхэнд в голове.", desc: "Грандиозный ролевой экшен с потрясающей музыкой и визуалом." },
+      { title: "Red Dead Redemption 2", genreCategory: "openworld", mood: "rpg", genreName: "Вестерн / Открытый мир / Драма", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", hook: "🤠 Закат Дикого Запада, жизнь банды Датча и проникновенная драма Артура Моргана.", desc: "Самый живой и детально проработанный открытый мир в видеоиграх." },
+      { title: "The Elder Scrolls V: Skyrim", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Фэнтези / Драконы", platform: "PC / Xbox / Switch", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/489830/header.jpg", hook: "⚔️ «Фус-Ро-Да!», заснеженные горы Скайрима, гильдии воров и драконьи крики.", desc: "Легенда с бесконечной реиграбельностью и свободой исследований." },
+      { title: "Grand Theft Auto V", genreCategory: "openworld", mood: "action", genreName: "Открытый мир / Экшен / Ограбления", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", hook: "💰 Лос-Сантос, Майкл, Франклин и безумный Тревор на масштабных ограблениях.", desc: "Одна из самых масштабных и веселых криминальных песочниц." },
+      { title: "Elden Ring", genreCategory: "rpg", mood: "rpg", genreName: "Темное фэнтези / RPG / Челлендж", platform: "PC / Xbox / PS5", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", hook: "🗡️ Междуземье, золотой Поток, эпические боссы полубоги и сотни билдов.", desc: "Шедевр Хидэтаки Миядзаки с невероятным чувством открытия тайн." },
+      { title: "Kingdom Come: Deliverance", genreCategory: "rpg", mood: "rpg", genreName: "Реалистичное средневековье / RPG", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/379430/header.jpg", hook: "🛡️ Сын кузнеца Индржих в Богемии XV века, фехтование и историческая достоверность.", desc: "Уникальная ролевая игра без магии и драконов с душой." },
+      { title: "Persona 4 Golden", genreCategory: "rpg", mood: "retro", genreName: "JRPG / Детектив / Дружба", platform: "PS Vita / PC", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1113000/header.jpg", hook: "📺 Туманный городок Инаба, Полуночный канал и расследование загадочных убийств.", desc: "Главная гордость PS Vita: великолепный стиль, музыка и сюжет." },
+
+      // ХОРРОРЫ
+      { title: "Dead Space (Remake)", genreCategory: "horror", mood: "horror", genreName: "Космический хоррор / Экшен", platform: "PC / Xbox / PS5", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1693980/header.jpg", hook: "🚀 Корабль «Ишимура», отстрел конечностей некроморфов и клаустрофобия.", desc: "Один из лучших научно-фантастических кошмаров игровой индустрии." },
+      { title: "Resident Evil 4", genreCategory: "horror", mood: "horror", genreName: "Хоррор / Выживание / Леон", platform: "PC / Xbox / PS", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", hook: "🇪🇸 Европейская деревушка, мутанты с бензопилами и легендарный торговец.", desc: "Идеально выверенный баланс экшена, выживания и напряжения." },
+      { title: "Resident Evil 7: Biohazard", genreCategory: "horror", mood: "horror", genreName: "Хоррор от первого лица / Бейкеры", platform: "PC / Xbox / PS", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/418370/header.jpg", hook: "🏚️ Поместье безумной семейки Бейкеров в Луизиане и первобытный страх за дверью.", desc: "Возвращение серии к истокам настоящего пугающего выживания." },
+      { title: "Alien: Isolation", genreCategory: "horror", mood: "horror", genreName: "Стелс-хоррор / Чужой / Космос", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/214490/header.jpg", hook: "🛸 Станция «Севастополь», детектор движения и умный ксеноморф, который учится.", desc: "Абсолютный триумф атмосферы оригинального фильма Ридли Скотта." },
+      { title: "Outlast", genreCategory: "horror", mood: "horror", genreName: "Психологический ужас / Камера", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/238320/header.jpg", hook: "📹 Психиатрическая лечебница Маунт-Мэссив, режим ночного видения и прятки в шкафах.", desc: "Бескомпромиссный хоррор, где можно только бежать и прятаться." },
+      { title: "Silent Hill 2 Remake", genreCategory: "horror", mood: "horror", genreName: "Психологический хоррор / Туман", platform: "PC / PS5", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg", hook: "🌫️ Город в густом тумане, Пирамидоголовый и письмо от умершей жены Мэри.", desc: "Трагическая и глубокая классика психологического кошмара." },
+
+      // ГОНКИ
+      { title: "FlatOut 2", genreCategory: "racing", mood: "race", genreName: "Аркадные гонки / Разрушения", platform: "PC / Xbox / Retro", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/2990/header.jpg", hook: "🚗 Металл летит во все стороны, рок-саундтрек 2000-х и вылеты через лобовое стекло.", desc: "Самый веселый гоночный дестрой с друзьями или ботами." },
+      { title: "Need for Speed: Most Wanted (2005)", genreCategory: "racing", mood: "race", genreName: "Гонки / Полиция / Черный список", platform: "PC / Xbox / Retro", rating: "10", cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/NFS_Most_Wanted.jpg", hook: "🚔 Погони с вертолетами и шипами на легендарной BMW M3 GTR против Рэйзора.", desc: "Непревзойденный король уличных аркадных гонок." },
+      { title: "Forza Horizon 5", genreCategory: "racing", mood: "race", genreName: "Автофестиваль / Мексика / Чилл", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", hook: "🌴 Красочная Мексика, сотни красивых машин, саванна, вулкан и чистый кайф езды.", desc: "Главный праздник автолюбителей с огромным открытым миром." },
+      { title: "Wreckfest", genreCategory: "racing", mood: "race", genreName: "Дерби / Физика аварий", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/228380/header.jpg", hook: "🚜 Реалистичная физика смятия кузовов, газонокосилки, школьные автобусы и грязь.", desc: "Духовный наследник FlatOut с современной физикой разрушений." },
+      { title: "Burnout Paradise Remastered", genreCategory: "racing", mood: "race", genreName: "Безумные скорости / Город аварий", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1238080/header.jpg", hook: "🏙️ Парадайз-Сити, бесконечный трафик, эффектные замедленные тейкдауны соперников.", desc: "Скоростной гоночный адреналин под трек Paradise City." },
+
+      // РЕТРО, ПЛАТФОРМЕРЫ И ЧИЛЛ
+      { title: "Hollow Knight", genreCategory: "platformer", mood: "chill", genreName: "Метроидвания / Шедевр", platform: "PC / Switch / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg", hook: "🪲 Таинственный Халлоунест, филигранное владение гвоздем и музыка для души.", desc: "Лучшая метроидвания современного поколения." },
+      { title: "Hades", genreCategory: "platformer", mood: "action", genreName: "Рогалик / Слэшер / Мифология", platform: "PC / Xbox / Switch", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1145360/header.jpg", hook: "⚡ Загрей пробивается из царства Аида на Олимп под дары Зевса и Афины.", desc: "Динамичный и безумно увлекательный рогалик с отличными диалогами." },
+      { title: "Hotline Miami", genreCategory: "platformer", mood: "action", genreName: "Неон / Ретро / Мясорубка", platform: "PC / PS Vita", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/219150/header.jpg", hook: "🐔 Маски животных, синтвейв музыка 80-х и мгновенная жестокая зачистка комнат.", desc: "Стильный и бешеный ретро-боевик с видом сверху." },
+      { title: "Katana ZERO", genreCategory: "platformer", mood: "action", genreName: "Нео-нуар / Самурай / Замедление", platform: "PC / Switch", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/460950/header.jpg", hook: "🗡️ Катана, замедление времени наркотиком Хронос и идеальные тайминги ударов.", desc: "Шикарный самурайский экшен с глубоким сюжетом." },
+      { title: "Dead Cells", genreCategory: "platformer", mood: "action", genreName: "Рогалик / Метроидвания / Драйв", platform: "PC / Xbox / Switch", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/588650/header.jpg", hook: "⚔️ Бесконечные забеги по мрачному замку с сотнями комбинаций оружия и магии.", desc: "Ультра-динамичный платформер, от которого невозможно оторваться." }
+    ];
+
+    // Пользовательские сохраненные игры
+    let games = JSON.parse(localStorage.getItem('gamers_corner_data')) || [
+      {
+        id: '1',
+        title: 'Dying Light',
+        status: 'playing',
+        platform: 'PC',
+        rating: '10',
+        completedDate: '',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg',
+        description: 'Компьютерная игра в жанре survival horror от первого лица с открытым миром и элементами паркура в Харране.',
+        checklist: [
+          { id: '101', text: 'Найти секретный чертеж Корека', done: true },
+          { id: '102', text: 'Зачистить карантинную зону в Трущобах', done: true },
+          { id: '103', text: 'Пройти дополнение The Following', done: false }
+        ],
+        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).\n• Чертеж оружия Корека находится на крыше высотки в Трущобах.'
+      },
+      {
+        id: '2',
+        title: 'Ведьмак 3: Дикая Охота',
+        status: 'completed',
+        platform: 'PC',
+        rating: '10',
+        completedDate: '2024-05-15',
+        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg',
+        description: 'Ролевая игра с открытым миром о приключениях ведьмака Геральта из Ривии.',
+        checklist: [
+          { id: '201', text: 'Собрать мастерский сет Школы Волка', done: true },
+          { id: '202', text: 'Завершить сюжет «Кровь и Вино»', done: true }
+        ],
+        notes: '• В Туссенте обязательно купить улучшение для винодельни Корво Бьянко.\n• Гвинт в Новиграде: турнир в Пассифлоре требует сильную колоду.'
+      }
+    ];
+
+    // Нормализация записей
+    games.forEach(g => {
+      if (!g.platform) g.platform = 'PC';
+      if (!g.checklist) g.checklist = [];
+      if (g.rating === undefined) g.rating = '';
+      if (!g.completedDate) g.completedDate = '';
+      if (g.title.toLowerCase().includes('dying light') && (!g.cover || g.cover.includes('wikipedia'))) {
+        g.cover = 'https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg';
+      }
+      if (g.title.toLowerCase().includes('ведьмак 3') && (!g.cover || g.cover.includes('wikipedia'))) {
+        g.cover = 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg';
+      }
+    });
+
+    let currentStatusFilter = 'all';
+    let currentPlatformFilter = 'all';
+    let editingId = null;
+    let tempChecklist = [];
+
+    // Система отслеживания, чтобы игры в советнике не повторялись
+    let advisorPool = [];
+    let advisorHistory = [];
+    let currentAdvisorHit = null;
+
+    const statusLabels = {
+      playing: '🎮 Играю',
+      planned: '⏳ Буду играть',
+      paused: '⏸️ На паузе',
+      completed: '✅ Пройдено'
+    };
+
+    const statusClasses = {
+      playing: 'status-playing',
+      planned: 'status-planned',
+      paused: 'status-paused',
+      completed: 'status-completed'
+    };
+
+    function updateCoverPreview(url) {
+      const prev = document.getElementById('editCoverPreview');
+      prev.src = url.trim() || DEFAULT_COVER_SVG;
+    }
+
+    // Загрузка фото с телефона/компьютера с автоматическим сжатием через canvas
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          // Сжимаем картинку до оптимального размера для постера (макс 450x600), чтобы не забивать память
+          const canvas = document.createElement('canvas');
+          let w = img.width;
+          let h = img.height;
+          const maxDim = 600;
+          if (w > h && w > maxDim) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else if (h > maxDim) {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+
+          document.getElementById('gameCoverInput').value = compressedDataUrl;
+          updateCoverPreview(compressedDataUrl);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Умный поиск обложки и описания
+    async function fetchGameInfo() {
+      const rawInput = document.getElementById('gameTitleInput').value.trim();
+      if (!rawInput) return alert('Введите название игры!');
+
+      const btn = document.getElementById('autoFetchBtn');
+      btn.textContent = '...';
+      btn.disabled = true;
+
+      const candidatesArea = document.getElementById('searchCandidatesArea');
+      candidatesArea.innerHTML = '';
+      candidatesArea.style.display = 'none';
+
+      // 1. Проверяем словарь сленга/транслита
+      const cleanLower = rawInput.toLowerCase();
+      let queryTitle = GAME_ALIASES[cleanLower] || rawInput;
+
+      // 2. Проверяем локальную базу хитов (мгновенные постеры Steam CDN)
+      const hitMatch = HITS_DATABASE.find(h => 
+        h.title.toLowerCase().includes(cleanLower) || 
+        cleanLower.includes(h.title.toLowerCase()) ||
+        (GAME_ALIASES[cleanLower] && h.title.toLowerCase().includes(GAME_ALIASES[cleanLower].toLowerCase()))
+      );
+
+      if (hitMatch) {
+        document.getElementById('gameCoverInput').value = hitMatch.cover;
+        updateCoverPreview(hitMatch.cover);
+        if (!document.getElementById('gameDescInput').value.trim()) {
+          document.getElementById('gameDescInput').value = hitMatch.desc;
+        }
+        btn.textContent = '🔍 Найти';
+        btn.disabled = false;
+        return;
+      }
+
+      // 3. Запрос в Википедию (Action API с генератором поиска и получением постеров)
+      try {
+        let foundCovers = [];
+
+        // Поиск в русской Википедии
+        const ruRes = await fetch(`https://ru.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(queryTitle + ' игра')}&gsrlimit=3&prop=pageimages|extracts&exintro=1&explaintext=1&pithumbsize=600&format=json&origin=*`);
+        const ruData = await ruRes.json();
+        const ruPages = ruData?.query?.pages ? Object.values(ruData.query.pages) : [];
+
+        ruPages.forEach(p => {
+          if (p.thumbnail && p.thumbnail.source) {
+            foundCovers.push({ title: p.title, cover: p.thumbnail.source, desc: p.extract || '' });
+          }
+        });
+
+        // Если обложек мало, запрашиваем в англоязычной Википедии (оригинальные арты)
+        if (foundCovers.length === 0) {
+          const enRes = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(queryTitle + ' video game')}&gsrlimit=3&prop=pageimages|extracts&exintro=1&explaintext=1&pithumbsize=600&format=json&origin=*`);
+          const enData = await enRes.json();
+          const enPages = enData?.query?.pages ? Object.values(enData.query.pages) : [];
+
+          enPages.forEach(p => {
+            if (p.thumbnail && p.thumbnail.source) {
+              foundCovers.push({ title: p.title, cover: p.thumbnail.source, desc: p.extract || '' });
+            }
+          });
+        }
+
+        if (foundCovers.length > 0) {
+          // Берем первый результат по умолчанию
+          document.getElementById('gameCoverInput').value = foundCovers[0].cover;
+          updateCoverPreview(foundCovers[0].cover);
+          if (foundCovers[0].desc && !document.getElementById('gameDescInput').value.trim()) {
+            document.getElementById('gameDescInput').value = foundCovers[0].desc;
+          }
+
+          // Если найдено несколько вариантов — показываем мини-галерею
+          if (foundCovers.length > 1) {
+            candidatesArea.style.display = 'flex';
+            foundCovers.forEach(c => {
+              const card = document.createElement('div');
+              card.className = 'candidate-card';
+              card.innerHTML = `
+                <img class="candidate-img" referrerpolicy="no-referrer" src="${c.cover}" alt="вар" />
+                <div class="candidate-title">${c.title}</div>
+              `;
+              card.onclick = () => {
+                document.getElementById('gameCoverInput').value = c.cover;
+                updateCoverPreview(c.cover);
+                if (c.desc) document.getElementById('gameDescInput').value = c.desc;
+              };
+              candidatesArea.appendChild(card);
+            });
+          }
+        } else {
+          alert('Обложка не найдена. Нажмите кнопку «📁 Фото», чтобы выбрать любую картинку или скриншот прямо с телефона!');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Не удалось связаться с базой. Нажмите «📁 Фото», чтобы прикрепить картинку из памяти устройства.');
+      } finally {
+        btn.textContent = '🔍 Найти';
+        btn.disabled = false;
+      }
+    }
+
+    function renderGames() {
+      const grid = document.getElementById('gamesGrid');
+      const search = document.getElementById('searchBox').value.toLowerCase();
+      grid.innerHTML = '';
+
+      let counts = { all: games.length, playing: 0, planned: 0, paused: 0, completed: 0 };
+      games.forEach(g => { if (counts[g.status] !== undefined) counts[g.status]++; });
+
+      document.getElementById('count-all').textContent = counts.all;
+      document.getElementById('count-playing').textContent = counts.playing;
+      document.getElementById('count-planned').textContent = counts.planned;
+      document.getElementById('count-paused').textContent = counts.paused;
+      document.getElementById('count-completed').textContent = counts.completed;
+
+      const filtered = games.filter(g => {
+        const matchesStatus = (currentStatusFilter === 'all' || g.status === currentStatusFilter);
+        const matchesPlatform = (currentPlatformFilter === 'all' || g.platform === currentPlatformFilter);
+        const matchesSearch = g.title.toLowerCase().includes(search);
+        return matchesStatus && matchesPlatform && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px; font-size:1rem;">Игр в этой категории пока нет.</div>`;
+        return;
+      }
+
+      filtered.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.onclick = () => openViewModal(game.id);
+
+        let progressHtml = '';
+        if (game.checklist && game.checklist.length > 0) {
+          const total = game.checklist.length;
+          const done = game.checklist.filter(item => item.done).length;
+          const pct = Math.round((done / total) * 100);
+          progressHtml = `
+            <div class="checklist-progress">
+              <div class="progress-text">
+                <span>🎯 ${done}/${total}</span>
+                <span>${pct}%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${pct}%"></div>
+              </div>
+            </div>
+          `;
+        }
+
+        const ratingBadgeHtml = game.rating ? `<span class="badge rating-badge">⭐ ${game.rating}</span>` : '';
+
+        card.innerHTML = `
+          <div class="card-cover-wrap">
+            <div class="card-badges">
+              <span class="badge ${statusClasses[game.status]}">${statusLabels[game.status]}</span>
+              ${ratingBadgeHtml}
+            </div>
+            <img class="card-cover" referrerpolicy="no-referrer" src="${game.cover || DEFAULT_COVER_SVG}" alt="${game.title}" onerror="handleCoverError(this)" />
+          </div>
+          <div class="card-body">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <span class="badge platform-badge">${game.platform}</span>
+                ${game.completedDate ? `<span style="font-size:0.7rem; color:#94a3b8;">🏁 ${game.completedDate.slice(0,7)}</span>` : ''}
+              </div>
+              <div class="card-title">${game.title}</div>
+            </div>
+            ${progressHtml}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setStatusFilter(status, el) {
+      currentStatusFilter = status;
+      document.querySelectorAll('.filter-btn:not(.filter-btn-platform)').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderGames();
+    }
+
+    function setPlatformFilter(platform, el) {
+      currentPlatformFilter = platform;
+      document.querySelectorAll('.filter-btn-platform').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderGames();
+    }
+
+    /* --- ЛОГИКА ИГРОВОГО СОВЕТНИКА БЕЗ ПОВТОРОВ --- */
+    function openAdvisorModal() {
+      resetAdvisorAndRoll();
+      document.getElementById('advisorModal').style.display = 'flex';
+    }
+
+    function resetAdvisorAndRoll() {
+      const source = document.getElementById('advisorSourceSelect').value;
+      const mood = document.getElementById('advisorMoodSelect').value;
+      const genre = document.getElementById('advisorGenreSelect').value;
+
+      let baseList = (source === 'my') ? [...games] : [...HITS_DATABASE];
+
+      if (source !== 'my') {
+        if (mood !== 'all') {
+          baseList = baseList.filter(h => h.mood === mood);
+        }
+        if (genre !== 'all') {
+          baseList = baseList.filter(h => h.genreCategory === genre);
+        }
+      }
+
+      // Перемешиваем список (тасование Фишера-Йетса)
+      for (let i = baseList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [baseList[i], baseList[j]] = [baseList[j], baseList[i]];
+      }
+
+      advisorPool = baseList;
+      advisorHistory = [];
+      rollAdvisor();
+    }
+
+    function rollAdvisor() {
+      if (!advisorPool || advisorPool.length === 0) {
+        document.getElementById('advisorCard').style.display = 'none';
+        document.getElementById('advAddBtn').style.display = 'none';
+        alert('По выбранным фильтрам ничего не найдено! Смените настроение или жанр.');
+        return;
+      }
+
+      document.getElementById('advisorCard').style.display = 'flex';
+      document.getElementById('advAddBtn').style.display = 'inline-flex';
+
+      // Если все игры из текущего пула уже были показаны — сбрасываем историю для нового круга
+      if (advisorHistory.length >= advisorPool.length) {
+        advisorHistory = [];
+      }
+
+      // Находим игру, которая еще не показывалась в текущем цикле
+      let available = advisorPool.filter(g => !advisorHistory.includes(g.title));
+      if (available.length === 0) available = advisorPool;
+
+      const chosen = available[0];
+      advisorHistory.push(chosen.title);
+      currentAdvisorHit = chosen;
+
+      document.getElementById('advTitle').textContent = chosen.title;
+      document.getElementById('advCover').src = chosen.cover || DEFAULT_COVER_SVG;
+      document.getElementById('advPlatform').textContent = chosen.platform || 'PC';
+      document.getElementById('advGenre').textContent = chosen.genreName || (chosen.genreCategory ? chosen.genreCategory.toUpperCase() : 'Хит');
+      document.getElementById('advRating').textContent = chosen.rating ? `⭐ ${chosen.rating}/10` : '⭐ 9/10';
+      document.getElementById('advHook').textContent = chosen.hook || '✨ Отличная игра для яркого вечера!';
+      document.getElementById('advDesc').textContent = chosen.desc || chosen.description || 'Классика, в которую стоит сыграть.';
+
+      const exists = games.some(g => g.title.toLowerCase() === chosen.title.toLowerCase());
+      const addBtn = document.getElementById('advAddBtn');
+      if (exists) {
+        addBtn.textContent = '✅ Уже в вашем списке';
+        addBtn.disabled = true;
+      } else {
+        addBtn.textContent = '➕ В мой список («Буду играть»)';
+        addBtn.disabled = false;
+      }
+    }
+
+    function addAdvisorGameToCollection() {
+      if (!currentAdvisorHit) return;
+      const newGame = {
+        id: Date.now().toString(),
+        title: currentAdvisorHit.title,
+        status: 'planned',
+        platform: currentAdvisorHit.platform ? currentAdvisorHit.platform.split(' / ')[0] : 'PC',
+        rating: currentAdvisorHit.rating || '',
+        completedDate: '',
+        cover: currentAdvisorHit.cover || '',
+        description: currentAdvisorHit.desc || currentAdvisorHit.description || '',
+        notes: currentAdvisorHit.hook ? `Рекомендация: ${currentAdvisorHit.hook}` : '',
+        checklist: []
+      };
+
+      games.unshift(newGame);
+      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      renderGames();
+
+      const addBtn = document.getElementById('advAddBtn');
+      addBtn.textContent = '✅ Добавлено!';
+      addBtn.disabled = true;
+    }
+
+    /* --- РЕДАКТИРОВАНИЕ И МОДАЛЬНЫЕ ОКНА --- */
+    function renderEditChecklist() {
+      const container = document.getElementById('editChecklistContainer');
+      container.innerHTML = '';
+      tempChecklist.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = `checklist-item ${item.done ? 'done' : ''}`;
+        div.innerHTML = `
+          <input type="checkbox" ${item.done ? 'checked' : ''} onchange="tempChecklist[${index}].done = this.checked; renderEditChecklist();" />
+          <span style="flex-grow:1; font-size:0.88rem;">${item.text}</span>
+          <button type="button" class="checklist-del-btn" onclick="tempChecklist.splice(${index}, 1); renderEditChecklist();">&times;</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addChecklistItem() {
+      const input = document.getElementById('newChecklistInput');
+      const text = input.value.trim();
+      if (!text) return;
+      tempChecklist.push({ id: Date.now().toString(), text: text, done: false });
+      input.value = '';
+      renderEditChecklist();
+    }
+
+    function openAddModal() {
+      editingId = null;
+      tempChecklist = [];
+      document.getElementById('modalFormTitle').textContent = 'Добавить игру';
+      document.getElementById('gameTitleInput').value = '';
+      document.getElementById('gameStatusSelect').value = 'playing';
+      document.getElementById('gamePlatformSelect').value = 'PC';
+      document.getElementById('gameRatingSelect').value = '';
+      document.getElementById('gameCompletedDateInput').value = '';
+      document.getElementById('gameCoverInput').value = '';
+      document.getElementById('searchCandidatesArea').innerHTML = '';
+      document.getElementById('searchCandidatesArea').style.display = 'none';
+      updateCoverPreview('');
+      document.getElementById('gameDescInput').value = '';
+      document.getElementById('gameNotesInput').value = '';
+      document.getElementById('deleteBtn').style.display = 'none';
+      renderEditChecklist();
+      document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function openEditModal(id) {
+      const game = games.find(g => g.id === id);
+      if (!game) return;
+      editingId = id;
+      closeModal('viewModal');
+      tempChecklist = JSON.parse(JSON.stringify(game.checklist || []));
+
+      document.getElementById('modalFormTitle').textContent = 'Редактировать игру';
+      document.getElementById('gameTitleInput').value = game.title;
+      document.getElementById('gameStatusSelect').value = game.status;
+      document.getElementById('gamePlatformSelect').value = game.platform || 'PC';
+      document.getElementById('gameRatingSelect').value = game.rating || '';
+      document.getElementById('gameCompletedDateInput').value = game.completedDate || '';
+      document.getElementById('gameCoverInput').value = game.cover;
+      document.getElementById('searchCandidatesArea').innerHTML = '';
+      document.getElementById('searchCandidatesArea').style.display = 'none';
+      updateCoverPreview(game.cover);
+      document.getElementById('gameDescInput').value = game.description;
+      document.getElementById('gameNotesInput').value = game.notes || '';
+      document.getElementById('deleteBtn').style.display = 'block';
+
+      renderEditChecklist();
+      document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function openViewModal(id) {
+      const game = games.find(g => g.id === id);
+      if (!game) return;
+
+      document.getElementById('viewTitle').textContent = game.title;
+      document.getElementById('viewDesc').textContent = game.description || 'Описание отсутствует.';
+      document.getElementById('viewNotes').textContent = game.notes || 'Заметок пока нет. Нажмите «Редактировать», чтобы записать тайники или секреты!';
+      document.getElementById('viewCover').src = game.cover || DEFAULT_COVER_SVG;
+
+      const badge = document.getElementById('viewBadge');
+      badge.textContent = statusLabels[game.status];
+      badge.className = `badge ${statusClasses[game.status]}`;
+
+      document.getElementById('viewPlatformBadge').textContent = game.platform || 'PC';
+
+      const ratingBadge = document.getElementById('viewRatingBadge');
+      if (game.rating) {
+        ratingBadge.textContent = `⭐ ${game.rating} / 10`;
+        ratingBadge.style.display = 'inline-flex';
+      } else {
+        ratingBadge.style.display = 'none';
+      }
+
+      const dateBadge = document.getElementById('viewDateBadge');
+      if (game.completedDate) {
+        dateBadge.textContent = `🏁 Финал: ${game.completedDate}`;
+        dateBadge.style.display = 'inline-flex';
+      } else {
+        dateBadge.style.display = 'none';
+      }
+
+      const checklistBox = document.getElementById('viewChecklistBox');
+      const itemsContainer = document.getElementById('viewChecklistItems');
+      itemsContainer.innerHTML = '';
+
+      if (game.checklist && game.checklist.length > 0) {
+        checklistBox.style.display = 'block';
+        const doneCount = game.checklist.filter(i => i.done).length;
+        document.getElementById('viewChecklistRatio').textContent = `${doneCount} из ${game.checklist.length} выполнено`;
+
+        game.checklist.forEach(item => {
+          const div = document.createElement('div');
+          div.className = `checklist-item ${item.done ? 'done' : ''}`;
+          div.innerHTML = `
+            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistView('${game.id}', '${item.id}', this.checked)" />
+            <span style="flex-grow:1; font-size:0.9rem;">${item.text}</span>
+          `;
+          itemsContainer.appendChild(div);
+        });
+      } else {
+        checklistBox.style.display = 'none';
+      }
+
+      document.getElementById('editFromViewBtn').onclick = () => openEditModal(game.id);
+      document.getElementById('viewModal').style.display = 'flex';
+    }
+
+    function toggleChecklistView(gameId, itemId, isChecked) {
+      const game = games.find(g => g.id === gameId);
+      if (!game) return;
+      const item = game.checklist.find(i => i.id === itemId);
+      if (item) {
+        item.done = isChecked;
+        localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+        openViewModal(gameId);
+        renderGames();
+      }
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function saveGame() {
+      const title = document.getElementById('gameTitleInput').value.trim();
+      if (!title) return alert('Введите название игры!');
+
+      const gameData = {
+        title: title,
+        status: document.getElementById('gameStatusSelect').value,
+        platform: document.getElementById('gamePlatformSelect').value,
+        rating: document.getElementById('gameRatingSelect').value,
+        completedDate: document.getElementById('gameCompletedDateInput').value,
+        cover: document.getElementById('gameCoverInput').value.trim(),
+        description: document.getElementById('gameDescInput').value.trim(),
+        notes: document.getElementById('gameNotesInput').value.trim(),
+        checklist: tempChecklist
+      };
+
+      if (editingId) {
+        const index = games.findIndex(g => g.id === editingId);
+        if (index !== -1) {
+          games[index] = { ...games[index], ...gameData };
+        }
+      } else {
+        gameData.id = Date.now().toString();
+        games.unshift(gameData);
+      }
+
+      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+      closeModal('editModal');
+      renderGames();
+    }
+
+    function deleteCurrentGame() {
+      if (!editingId) return;
+      if (confirm('Точно удалить эту игру из списка?')) {
+        games = games.filter(g => g.id !== editingId);
+        localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+        closeModal('editModal');
+        renderGames();
+      }
+    }
+
+    function exportData() {
+      const blob = new Blob([JSON.stringify(games, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `gamers_corner_backup_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            games = imported;
+            games.forEach(g => {
+              if (!g.platform) g.platform = 'PC';
+              if (!g.checklist) g.checklist = [];
+            });
+            localStorage.setItem('gamers_corner_data', JSON.stringify(games));
+            renderGames();
+            alert('База игр успешно восстановлена!');
+          }
+        } catch (err) {
+          alert('Ошибка при чтении файла резервной копии.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    window.onclick = (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.style.display = 'none';
+      }
+    };
+
+    renderGames();
+  </script>
+</body>
+</html>
