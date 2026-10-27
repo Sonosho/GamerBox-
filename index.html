@@ -1,2075 +1,1542 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="referrer" content="no-referrer" />
-  <title>Геймерский уголок v0.6</title>
-
-  <!-- Иконка геймпада (iOS Safari + Android Home Screen) -->
-  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" />
-  <link rel="icon" type="image/png" sizes="180x180" href="data:image/png;base64,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" />
-  <link rel="shortcut icon" href="data:image/png;base64,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" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Геймерский уголок" />
-  <meta name="theme-color" content="#0a0d16" />
-  <link rel="manifest" href="data:application/manifest+json;charset=utf-8,{"name": "Геймерский уголок", "short_name": "Геймерский уголок", "start_url": "./", "display": "standalone", "background_color": "#0a0d16", "theme_color": "#0a0d16", "icons": [{"src": "data:image/png;base64,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", "sizes": "180x180", "type": "image/png"}]}" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Геймерский уголок v0.7</title>
+  <meta name="theme-color" content="#2c332d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232c332d'/%3E%3Crect x='6' y='10' width='20' height='12' rx='4' fill='%2348574c' stroke='%2388a08b' stroke-width='1.5'/%3E%3Crect x='9' y='15' width='6' height='2' fill='%23d1dec9'/%3E%3Crect x='11' y='13' width='2' height='6' fill='%23d1dec9'/%3E%3Ccircle cx='21' cy='15' r='1.3' fill='%23e07a5f'/%3E%3Ccircle cx='23' cy='17' r='1.3' fill='%2381b29a'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%232c332d'/%3E%3Crect x='30' y='55' width='120' height='70' rx='25' fill='%2348574c' stroke='%2388a08b' stroke-width='6'/%3E%3Crect x='50' y='85' width='30' height='10' rx='2' fill='%23d1dec9'/%3E%3Crect x='60' y='75' width='10' height='30' rx='2' fill='%23d1dec9'/%3E%3Ccircle cx='125' cy='85' r='7' fill='%23e07a5f'/%3E%3Ccircle cx='137' cy='97' r='7' fill='%2381b29a'/%3E%3C/svg%3E">
   <style>
     :root {
-      --bg-dark: #0a0d16;
-      --card-bg: rgba(18, 25, 41, 0.94);
-      --card-border: rgba(56, 189, 248, 0.18);
-      --card-border-hover: rgba(168, 85, 247, 0.65);
-      --accent-purple: #a855f7;
-      --accent-cyan: #38bdf8;
-      --accent-green: #10b981;
-      --accent-amber: #f59e0b;
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
+      --bg-main: #ecefe9;
+      --bg-surface: #ffffff;
+      --bg-card: #f8faf7;
+      --border-color: #d6ded2;
+      --border-dark: #b8c4b3;
+      --text-main: #242c25;
+      --text-muted: #5e6b5f;
+      --primary: #3d5a45;
+      --primary-hover: #2e4434;
+      --accent: #b45309;
+
+      /* Book theme */
+      --book-leather: #3c2a21;
+      --book-leather-light: #543d31;
+      --book-paper: #fbf7ec;
+      --book-paper-dark: #f2e9d2;
+      --book-lines: rgba(90, 75, 60, 0.12);
+      --book-margin: rgba(180, 80, 70, 0.28);
+      --book-text: #2f2519;
+      --book-text-muted: #6e5e4e;
+
+      /* Status colors */
+      --st-playing: #2e7d32;
+      --st-playing-bg: #e8f5e9;
+      --st-planned: #0277bd;
+      --st-planned-bg: #e1f5fe;
+      --st-completed: #556b2f;
+      --st-completed-bg: #f1f8e9;
+      --st-paused: #c2410c;
+      --st-paused-bg: #fff7ed;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-book: 0 10px 25px rgba(44, 30, 20, 0.25), inset 0 0 15px rgba(139, 94, 60, 0.12);
     }
 
-    *, *:before, *:after { box-sizing: border-box; }
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-      background-color: var(--bg-dark);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      color: var(--text);
     }
 
-    body {
-      background-image: 
-        radial-gradient(circle at 14% 18%, rgba(168, 85, 247, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 86% 22%, rgba(56, 189, 248, 0.20) 0%, transparent 45%),
-        radial-gradient(circle at 50% 82%, rgba(244, 63, 94, 0.14) 0%, transparent 52%),
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
-      background-attachment: fixed;
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
       min-height: 100vh;
-      display: block;
+      overflow-x: hidden;
+      line-height: 1.5;
     }
 
-    /* Шапка сайта: не уезжает за верх */
-    header {
-      background: rgba(12, 17, 28, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 10px 14px;
-      border-bottom: 1px solid rgba(56, 189, 248, 0.22);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      width: 100%;
-    }
-    .header-content {
-      max-width: 1200px;
+    .container {
+      max-width: 960px;
       margin: 0 auto;
+      padding: 16px 14px 60px;
+    }
+
+    /* Header */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 16px;
     }
-    .brand {
+
+    .header-brand {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-    }
-
-    .brand-title {
-      background: linear-gradient(135deg, #f1f5f9 0%, #c084fc 35%, #38bdf8 68%, #f1f5f9 100%);
-      background-size: 260% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: neonGlowShimmer 6s ease-in-out infinite alternate;
-      display: inline-block;
-    }
-
-    @keyframes neonGlowShimmer {
-      0% { background-position: 0% 50%; filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3)); }
-      50% { background-position: 100% 50%; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.45)); }
-      100% { background-position: 0% 50%; filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.35)); }
+      gap: 12px;
     }
 
     .pixel-pad-icon {
       width: 32px;
       height: 32px;
+      background: #2c332d;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(168,85,247,0.5);
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 1px #88a08b;
     }
 
-    .header-actions { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-
-    .mode-switch-box {
-      display: inline-flex;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 18px;
-      padding: 2px;
+    .pixel-pad-icon svg {
+      width: 24px;
+      height: 24px;
     }
-    .mode-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 5px 9px;
-      border-radius: 14px;
-      font-size: 0.75rem;
+
+    .header-brand h1 {
+      font-size: 1.25rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
+      color: var(--primary);
+      letter-spacing: -0.02em;
     }
-    .mode-btn.active {
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
-      color: #041221;
-      box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+
+    .version-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #e2e9df;
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 12px;
+      margin-left: 6px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn {
-      padding: 6px 12px;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.82rem;
-      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      user-select: none;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: var(--bg-surface);
+      color: var(--text-main);
     }
-    .btn-primary { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: #fff; }
-    .btn-advisor { background: linear-gradient(135deg, #f59e0b, #ec4899); color: #fff; font-weight: 700; }
-    .btn-secondary { background: rgba(30, 41, 59, 0.85); color: var(--text); border-color: rgba(148, 163, 184, 0.25); }
-    .btn-danger { background: #ef4444; color: #fff; }
-    .btn-key {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #fff;
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-ghost {
+      border-color: var(--border-color);
+      color: var(--text-muted);
+      background: #fbfdfa;
+    }
+
+    .btn-ghost:hover {
+      background: #eaf0e7;
+      color: var(--text-main);
+    }
+
+    /* Controls: Search & Filter */
+    .controls-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 9px 12px 9px 36px;
+      font-size: 0.92rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      outline: none;
+      background: #fafcfa;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      padding: 5px 11px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: #f4f6f2;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Game List (Concise) */
+    .list-section-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      padding-left: 2px;
       font-weight: 700;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 12px auto;
-      padding: 0 12px;
-    }
-
-    .controls-wrapper {
-      background: rgba(18, 25, 41, 0.82);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      padding: 10px;
-      margin-bottom: 14px;
+    .games-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      width: 100%;
+      gap: 6px;
+      margin-bottom: 24px;
     }
-    .controls-row {
+
+    .game-item {
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .game-item:hover {
+      border-color: var(--border-dark);
+      background: #fdfefd;
+      transform: translateY(-1px);
+    }
+
+    .game-item.selected {
+      border-color: var(--primary);
+      background: #f4f8f3;
+      box-shadow: 0 0 0 1.5px var(--primary);
+    }
+
+    .game-item-cover {
+      width: 44px;
+      height: 52px;
+      border-radius: 4px;
+      object-fit: cover;
+      background: #d8ded5;
+      flex-shrink: 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .game-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .game-item-title {
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .game-item-meta {
+      display: flex;
       align-items: center;
       gap: 8px;
-      width: 100%;
-    }
-    .scroll-filters {
-      display: flex;
-      gap: 5px;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding-bottom: 2px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      width: 100%;
-      min-width: 0;
-    }
-    .scroll-filters::-webkit-scrollbar { display: none; }
-    .filter-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      align-self: center;
-      flex-shrink: 0;
-      margin-right: 4px;
-    }
-    .filter-btn {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      color: var(--text-muted);
-      padding: 5px 10px;
-      border-radius: 16px;
-      cursor: pointer;
       font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .platform-badge {
+      background: #eef2eb;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 12px;
+      white-space: nowrap;
       flex-shrink: 0;
-      transition: all 0.2s;
-    }
-    .filter-btn.active {
-      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
-      color: #031326;
-      font-weight: 700;
-      border-color: transparent;
-    }
-    .filter-btn-platform.active {
-      background: linear-gradient(135deg, #a855f7, #c084fc);
-      color: #1a052b;
     }
 
-    .search-input {
-      background: rgba(11, 16, 28, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 8px;
-      outline: none;
-      font-size: 0.85rem;
-      width: 100%;
+    .status-playing {
+      background: var(--st-playing-bg);
+      color: var(--st-playing);
+      border: 1px solid #c8e6c9;
+    }
+    .status-planned {
+      background: var(--st-planned-bg);
+      color: var(--st-planned);
+      border: 1px solid #b3e5fc;
+    }
+    .status-completed {
+      background: var(--st-completed-bg);
+      color: var(--st-completed);
+      border: 1px solid #dcedc8;
+    }
+    .status-paused {
+      background: var(--st-paused-bg);
+      color: var(--st-paused);
+      border: 1px solid #fed7aa;
     }
 
-    .games-grid {
-      display: grid;
-      gap: 12px;
-      width: 100%;
+    .empty-state {
+      padding: 32px 16px;
+      text-align: center;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-md);
     }
-    .game-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
-      position: relative;
+
+    /* Detail / Workspace Area */
+    .detail-container {
+      scroll-margin-top: 16px;
+      display: none;
+    }
+
+    .detail-container.active {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Top description card */
+    .overview-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .overview-layout {
       display: flex;
-      flex-direction: column;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      gap: 16px;
+    }
+
+    .overview-poster {
+      width: 105px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      flex-shrink: 0;
+      background: #e2e8df;
+    }
+
+    .overview-body {
+      flex: 1;
       min-width: 0;
     }
-    .game-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--card-border-hover);
+
+    .overview-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
     }
 
-    .card-cover-wrap {
+    .overview-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-main);
+    }
+
+    .overview-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .overview-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-height: 120px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .overview-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #edf2eb;
+    }
+
+    /* Field Notebook / Ancient Book */
+    .field-notebook {
+      background: var(--book-leather);
+      padding: 12px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-book);
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      background: #090d16;
-      overflow: hidden;
-    }
-    .card-cover {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
+      border: 2px solid #281a13;
     }
 
-    .card-badges {
+    /* Leather cover embossed styling */
+    .field-notebook::before {
+      content: '';
       position: absolute;
       top: 6px;
       left: 6px;
       right: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      bottom: 6px;
+      border: 1px dashed rgba(212, 175, 55, 0.35);
+      border-radius: calc(var(--radius-lg) - 4px);
       pointer-events: none;
-      z-index: 2;
-    }
-    .badge {
-      padding: 2px 6px;
-      border-radius: 5px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
-      backdrop-filter: blur(6px);
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .status-playing { background: rgba(16, 185, 129, 0.94); color: #fff; }
-    .status-planned { background: rgba(245, 158, 11, 0.94); color: #fff; }
-    .status-paused { background: rgba(244, 63, 94, 0.94); color: #fff; }
-    .status-completed { background: rgba(59, 130, 246, 0.94); color: #fff; }
-
-    .rating-badge {
-      background: rgba(15, 23, 42, 0.92);
-      color: #fbbf24;
-      border: 1px solid rgba(251, 191, 36, 0.4);
-      font-weight: 800;
-    }
-    .platform-badge {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(168, 85, 247, 0.4);
-      color: #d8b4fe;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 5px;
-      border-radius: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 85px;
     }
 
-    .card-key-btn {
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid rgba(245, 158, 11, 0.6);
-      color: #fbbf24;
-      padding: 2px 6px;
-      border-radius: 5px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .card-key-btn:hover { background: #f59e0b; color: #0b0f19; }
-
-    .card-body {
-      padding: 8px 10px;
-      flex-grow: 1;
+    .notebook-spine {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      align-items: center;
+      color: #e2cca6;
+      font-family: Georgia, serif;
+      font-size: 0.92rem;
+      font-style: italic;
+      padding: 4px 10px 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .notebook-spine span {
+      display: inline-flex;
+      align-items: center;
       gap: 6px;
-      min-width: 0;
-    }
-    .card-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.25;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-    .card-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 4px;
-      width: 100%;
-      min-width: 0;
     }
 
-    .checklist-progress { margin-top: 2px; }
-    .progress-text {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-    .progress-bar-bg {
-      height: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #10b981, #06b6d4);
-      transition: width 0.3s;
-    }
-
-    /* РЕЖИМЫ PC И PHONE */
-    body.mode-phone .container { padding: 0 8px; margin-top: 8px; }
-    body.mode-phone .controls-row { flex-direction: column; align-items: stretch; gap: 6px; }
-    body.mode-phone .games-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 8px !important;
-    }
-    body.mode-phone .card-body { padding: 6px 8px !important; }
-    body.mode-phone .card-title { font-size: 0.82rem !important; }
-
-    body.mode-pc .games-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
-      gap: 16px !important;
-    }
-    body.mode-pc .card-title { font-size: 1rem !important; }
-    body.mode-pc .platform-badge { max-width: none !important; }
-
-    /* Модальные окна */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(3, 7, 18, 0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      z-index: 200;
-      backdrop-filter: blur(8px);
-    }
-    .modal-content {
-      background: #111827;
-      border: 1px solid #1f2d47;
-      border-radius: 14px;
-      max-width: 740px;
-      width: 100%;
-      max-height: 94vh;
-      overflow-y: auto;
-      padding: 16px;
+    .bookmark-ribbon {
+      width: 14px;
+      height: 24px;
+      background: #8e2b20;
+      border-radius: 0 0 2px 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
       position: relative;
     }
-    .modal-close {
+
+    .bookmark-ribbon::after {
+      content: '';
       position: absolute;
-      top: 10px; right: 10px;
-      background: #1f293d;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff;
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 6px solid var(--book-leather);
     }
 
-    /* Книга-блокнот */
-    .book-wrapper {
-      background: #181524;
-      border: 2px solid #3b2d56;
-      border-radius: 12px;
-      box-shadow: -6px 0 20px rgba(0,0,0,0.8), 6px 6px 20px rgba(0,0,0,0.6);
-      position: relative;
-      padding: 12px 10px 12px 26px;
-      margin-top: 8px;
-      overflow: hidden;
-      width: 100%;
-    }
-    .book-spine {
-      position: absolute;
-      top: 0; bottom: 0; left: 0;
-      width: 18px;
-      background: linear-gradient(90deg, #2a1f42 0%, #150f22 100%);
-      border-right: 2px dashed rgba(168, 85, 247, 0.35);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      padding: 12px 0;
-    }
-    .book-ring {
-      width: 10px;
-      height: 5px;
-      background: linear-gradient(180deg, #94a3b8 0%, #334155 100%);
-      border-radius: 3px;
-    }
-    .book-bookmark-ribbon {
-      position: absolute;
-      top: 0; right: 30px;
-      width: 15px;
-      height: 30px;
-      background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
-      z-index: 5;
-    }
-    .book-page {
-      background: #0f1523;
+    .notebook-paper {
+      background: var(--book-paper);
       background-image: 
-        repeating-linear-gradient(transparent, transparent 27px, rgba(56, 189, 248, 0.08) 28px),
-        linear-gradient(90deg, transparent 26px, rgba(244, 63, 94, 0.25) 27px, transparent 28px);
+        linear-gradient(90deg, transparent 46px, var(--book-margin) 47px, transparent 48px),
+        repeating-linear-gradient(transparent, transparent 27px, var(--book-lines) 28px);
       border-radius: 6px;
-      padding: 10px 10px 10px 32px;
-      border: 1px solid rgba(255,255,255,0.05);
-      width: 100%;
+      padding: 20px 16px 20px 58px;
+      box-shadow: inset 3px 0 8px rgba(0,0,0,0.15), inset -3px 0 8px rgba(0,0,0,0.06);
+      position: relative;
+      border: 1px solid #d4c8ad;
+      min-height: 280px;
     }
-    .book-textarea {
+
+    .notebook-paper::before {
+      /* Left binder holes */
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 24px;
+      bottom: 24px;
+      width: 8px;
+      background: repeating-linear-gradient(to bottom, #7a5c43, #7a5c43 8px, transparent 8px, transparent 48px);
+      border-radius: 4px;
+      opacity: 0.35;
+    }
+
+    .notebook-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(90, 75, 60, 0.2);
+      padding-bottom: 6px;
+    }
+
+    .notebook-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--book-text);
+      letter-spacing: 0.02em;
+    }
+
+    .notebook-save-status {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--book-text-muted);
+    }
+
+    .notebook-textarea {
       width: 100%;
       min-height: 160px;
       background: transparent;
       border: none;
-      color: #f1f5f9;
-      font-size: 0.92rem;
-      line-height: 28px;
       outline: none;
       resize: vertical;
-      font-family: inherit;
-    }
-    .book-toolbar {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-      border-top: 1px dashed rgba(255,255,255,0.1);
-      padding-top: 6px;
-    }
-    .book-tool-btn {
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      color: var(--text-muted);
-      padding: 3px 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.75rem;
+      font-family: Georgia, 'Palatino Linotype', serif;
+      font-size: 0.98rem;
+      line-height: 28px;
+      color: var(--book-text);
+      letter-spacing: 0.01em;
+      margin-bottom: 14px;
     }
 
-    .screenshots-grid {
+    .notebook-textarea::placeholder {
+      color: #9d8c79;
+      font-style: italic;
+    }
+
+    /* Images pinned inside the notebook */
+    .notebook-gallery-title {
+      font-family: Georgia, serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--book-text);
+      margin-bottom: 8px;
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 6px 2px;
+      justify-content: space-between;
+      align-items: center;
     }
-    .screenshot-polaroid {
-      background: #1e293b;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
-      padding: 4px;
-      width: 110px;
-      flex-shrink: 0;
+
+    .notebook-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .pinned-photo {
       position: relative;
+      background: #ffffff;
+      padding: 6px 6px 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      border-radius: 2px;
+      transform: rotate(calc(-1.5deg + (3deg * var(--r, 0.5))));
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .screenshot-img {
-      width: 100%;
-      height: 75px;
-      object-fit: cover;
-      border-radius: 4px;
-      display: block;
-      background: #090e17;
+
+    .pinned-photo:hover {
+      transform: scale(1.03) rotate(0deg);
+      z-index: 5;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
     }
-    .screenshot-caption {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      margin-top: 3px;
-      text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .screenshot-delete-btn {
+
+    /* Old scotch-tape look on photos */
+    .pinned-photo::before {
+      content: '';
       position: absolute;
-      top: 2px; right: 2px;
-      background: rgba(239, 68, 68, 0.9);
-      color: #fff;
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38px;
+      height: 12px;
+      background: rgba(255, 255, 230, 0.65);
+      border: 1px solid rgba(220, 210, 180, 0.5);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .pinned-photo img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+      cursor: zoom-in;
+    }
+
+    .pinned-photo-del {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: rgba(142, 43, 32, 0.85);
+      color: white;
       border: none;
       border-radius: 50%;
-      width: 16px; height: 16px;
-      font-size: 0.68rem;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
     }
 
-    .image-zoom-overlay {
+    .notebook-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      border-top: 1px dashed rgba(90, 75, 60, 0.25);
+      padding-top: 10px;
+    }
+
+    .btn-paper {
+      background: #eee4cc;
+      border: 1px solid #c9baa0;
+      color: var(--book-text);
+      font-family: Georgia, serif;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .btn-paper:hover {
+      background: #e2d4b8;
+    }
+
+    /* Modal / Popups */
+    .modal-overlay {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.94);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(20, 25, 22, 0.65);
+      backdrop-filter: blur(2px);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 300;
-      padding: 12px;
+      padding: 16px;
+      z-index: 100;
     }
-    .image-zoom-img {
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      max-width: 480px;
+      width: 100%;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      outline: none;
+      background: #fafbfa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    /* Lightbox for screenshots */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 16px;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
       max-width: 95vw;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 6px;
-    }
-
-    .form-group { margin-bottom: 10px; }
-    .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; }
-    .form-control {
-      width: 100%;
-      background: #090e17;
-      border: 1px solid #222f44;
-      color: #fff;
-      padding: 7px 10px;
-      border-radius: 6px;
-      outline: none;
-      font-size: 0.85rem;
-    }
-    textarea.form-control { resize: vertical; min-height: 70px; }
-
-    .search-candidates-list {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      margin-top: 6px;
-      padding-bottom: 4px;
-    }
-    .candidate-card {
-      width: 75px;
-      flex-shrink: 0;
-      cursor: pointer;
-      border: 1px solid #222f44;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #090e17;
-      text-align: center;
-    }
-    .candidate-img { width: 100%; height: 85px; object-fit: cover; display: block; }
-    .candidate-title { font-size: 0.62rem; padding: 2px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-    .cover-thumb-preview {
-      width: 50px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 6px;
-      background: #090e17;
-      border: 1px solid #222f44;
-      flex-shrink: 0;
-    }
-
-    .checklist-box {
-      background: #0a0f1a;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 8px;
-      margin-top: 10px;
-    }
-    .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .checklist-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 6px;
-      background: rgba(18, 25, 41, 0.6);
       border-radius: 4px;
-      margin-bottom: 4px;
-    }
-    .checklist-item.done span { text-decoration: line-through; color: var(--text-muted); }
-    .checklist-del-btn { margin-left: auto; background: none; border: none; color: #ef4444; cursor: pointer; }
-
-    .secret-item-card {
-      background: #0a0f1a;
-      border: 1px solid #243550;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
-    .secret-item-card h4 { color: #fbbf24; margin-bottom: 4px; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; }
-    .copy-to-notes-btn {
-      background: #1e293b;
-      border: 1px solid #334155;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
 
-    .advisor-filter-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 6px;
-      background: #0c121e;
-      border: 1px solid #1f2c42;
-      padding: 8px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .advisor-result-card {
-      background: #0e1524;
-      border: 1px solid #243550;
-      border-radius: 10px;
-      padding: 12px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .advisor-cover {
-      width: 120px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 6px;
-      background: #090e17;
-      border: 1px solid #2a3d5e;
-      flex-shrink: 0;
-    }
-
-    footer.app-footer {
-      border-top: 1px solid rgba(56, 189, 248, 0.15);
-      background: rgba(10, 14, 23, 0.9);
-      padding: 12px 16px;
-      margin-top: 24px;
+    /* Footer */
+    footer {
       text-align: center;
+      padding-top: 24px;
       font-size: 0.78rem;
       color: var(--text-muted);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .version-tag {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      padding: 2px 6px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      border: 1px solid rgba(56, 189, 248, 0.3);
     }
 
-    @media (max-width: 650px) {
-      .header-content { flex-direction: column; align-items: stretch; }
-      .header-actions { justify-content: space-between; }
-      .controls-row { flex-direction: column; align-items: stretch; }
-      .search-input { width: 100%; }
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px 10px 50px;
+      }
+      .overview-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .overview-poster {
+        width: 130px;
+        height: 175px;
+      }
+      .overview-tags {
+        justify-content: center;
+      }
+      .overview-actions {
+        justify-content: center;
+      }
+      .notebook-paper {
+        padding: 16px 12px 16px 42px;
+        background-image: 
+          linear-gradient(90deg, transparent 34px, var(--book-margin) 35px, transparent 36px),
+          repeating-linear-gradient(transparent, transparent 27px, var(--book-lines) 28px);
+      }
+      .notebook-paper::before {
+        left: 12px;
+      }
+      .header-brand h1 {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
-<body class="mode-phone">
-
-  <header>
-    <div class="header-content">
-      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <a href="#" class="brand">
-          <img class="pixel-pad-icon" src="data:image/png;base64,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" alt="Лого" />
-          <span class="brand-title">Геймерский уголок</span>
-        </a>
-
-        <!-- Переключатель режима: ПК / Телефон -->
-        <div class="mode-switch-box" title="Переключить вид: ПК или телефон">
-          <button class="mode-btn" id="btnModePc" onclick="switchViewMode('pc')">🖥️ ПК</button>
-          <button class="mode-btn active" id="btnModePhone" onclick="switchViewMode('phone')">📱 Телефон</button>
-        </div>
-      </div>
-
-      <div class="header-actions" style="width: 100%; justify-content: space-between; margin-top: 4px;">
-        <button class="btn btn-advisor" onclick="openAdvisorModal()" title="Случайный хит">🎯 Советник</button>
-        <button class="btn btn-primary" onclick="openAddModal()">➕ Игра</button>
-        <button class="btn btn-secondary" title="Резервная копия базы" onclick="exportData()">💾</button>
-        <button class="btn btn-secondary" title="Загрузить резервную копию" onclick="document.getElementById('importFile').click()">📥</button>
-        <button class="btn btn-secondary" title="Восстановить сохраненные записи" onclick="recoverFromBackup()">↶ Резерв</button>
-        <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)" />
-      </div>
-    </div>
-  </header>
+<body>
 
   <div class="container">
-    <div class="controls-wrapper">
-      <div class="controls-row">
-        <input type="text" class="search-input" id="searchBox" placeholder="🔍 Найти игру по названию..." oninput="renderGames()" />
-      </div>
-
-      <div class="controls-row">
-        <div class="scroll-filters">
-          <span class="filter-label">Статус:</span>
-          <button class="filter-btn active" onclick="setStatusFilter('all', this)">Все (<span id="count-all">0</span>)</button>
-          <button class="filter-btn" onclick="setStatusFilter('playing', this)">🎮 Играю (<span id="count-playing">0</span>)</button>
-          <button class="filter-btn" onclick="setStatusFilter('planned', this)">⏳ Буду играть (<span id="count-planned">0</span>)</button>
-          <button class="filter-btn" onclick="setStatusFilter('paused', this)">⏸️ На паузе (<span id="count-paused">0</span>)</button>
-          <button class="filter-btn" onclick="setStatusFilter('completed', this)">✅ Пройдено (<span id="count-completed">0</span>)</button>
+    <!-- Header -->
+    <header>
+      <div class="header-brand">
+        <div class="pixel-pad-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d1dec9" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="4" />
+            <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Геймерский уголок <span class="version-tag">v0.7</span></h1>
         </div>
       </div>
-
-      <div class="controls-row">
-        <div class="scroll-filters">
-          <span class="filter-label">Платформа:</span>
-          <button class="filter-btn filter-btn-platform active" onclick="setPlatformFilter('all', this)">Все</button>
-          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PC', this)">💻 PC</button>
-          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Xbox', this)">🟢 Xbox</button>
-          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PS Vita', this)">🕹️ PS Vita</button>
-          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('PlayStation', this)">🔵 PlayStation</button>
-          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Switch', this)">🔴 Switch</button>
-          <button class="filter-btn filter-btn-platform" onclick="setPlatformFilter('Retro', this)">👾 Retro</button>
-        </div>
+      <div class="header-actions">
+        <button class="btn btn-ghost" id="btn-backup" title="Управление базой">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          База
+        </button>
+        <button class="btn btn-primary" id="btn-add-game">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Добавить
+        </button>
       </div>
+    </header>
+
+    <!-- Controls: Search & Status Filters -->
+    <section class="controls-panel">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Поиск по названию или платформе...">
+      </div>
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">Все (<span id="count-all">0</span>)</button>
+        <button class="chip" data-filter="playing">Играю (<span id="count-playing">0</span>)</button>
+        <button class="chip" data-filter="planned">В планах (<span id="count-planned">0</span>)</button>
+        <button class="chip" data-filter="completed">Пройдено (<span id="count-completed">0</span>)</button>
+        <button class="chip" data-filter="paused">На паузе (<span id="count-paused">0</span>)</button>
+      </div>
+    </section>
+
+    <!-- Concise Game List -->
+    <div class="list-section-title">Список игр</div>
+    <div class="games-list" id="games-list-container">
+      <!-- Generated via JS -->
     </div>
 
-    <!-- Сетка карточек -->
-    <div class="games-grid" id="gamesGrid"></div>
-  </div>
+    <!-- Active Game Detail Section (Overview + Field Notebook) -->
+    <section class="detail-container" id="game-detail-section">
 
-  <!-- ОКНО: КНИГА-БЛОКНОТ ДЛЯ ЗАМЕТОК -->
-  <div class="modal-overlay" id="notebookModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('notebookModal')">&times;</button>
-
-      <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #1f2e48; padding-bottom: 8px;">
-        <img id="nbCover" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
-        <div style="flex-grow: 1; min-width: 0;">
-          <h2 id="nbTitle" style="color: #fff; font-size: 1.15rem; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h2>
-          <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-            <span id="nbBadge" class="badge"></span>
-            <span id="nbPlatformBadge" class="badge platform-badge"></span>
-            <span id="nbRatingBadge" class="badge rating-badge" style="display:none;"></span>
-          </div>
-        </div>
-        <button class="btn btn-key" id="nbKeyBtn" title="Секреты">🔑 Секреты</button>
-      </div>
-
-      <!-- Конструкция книги-блокнота -->
-      <div class="book-wrapper">
-        <div class="book-spine">
-          <div class="book-ring"></div>
-          <div class="book-ring"></div>
-          <div class="book-ring"></div>
-          <div class="book-ring"></div>
-        </div>
-        <div class="book-bookmark-ribbon"></div>
-
-        <div class="book-page">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span style="font-size:0.85rem; font-weight:700; color:#38bdf8;">📖 Полевой дневник & заметки</span>
-            <span id="nbSaveStatus" style="font-size:0.75rem; color:#10b981;">✍️ Сохранено</span>
-          </div>
-
-          <textarea class="book-textarea" id="nbTextarea" placeholder="Нажмите сюда и пишите заметки... Секреты, коды дверей, тайники, комбинации билда..." oninput="autoSaveNotebook()"></textarea>
-
-          <div class="book-toolbar">
-            <button class="book-tool-btn" onclick="insertNotebookText('• ')">Список</button>
-            <button class="book-tool-btn" onclick="insertNotebookText('🔑 Код: ')">Код</button>
-            <button class="book-tool-btn" onclick="insertNotebookText('📍 Тайник: ')">Тайник</button>
-            <button class="book-tool-btn" onclick="insertNotebookText('⚔️ Билд: ')">Билд</button>
-            <button class="book-tool-btn" onclick="document.getElementById('nbScreenshotInput').click()">📷 Фото/Карта</button>
-            <input type="file" id="nbScreenshotInput" style="display:none" accept="image/*" onchange="handleScreenshotUpload(event)" />
-          </div>
-
-          <div id="nbScreenshotsSection" style="display:none; margin-top:10px;">
-            <div style="font-size:0.8rem; color:#fbbf24; font-weight:700;">🗺️ Карты и скриншоты:</div>
-            <div class="screenshots-grid" id="nbScreenshotsGrid"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="checklist-box" id="nbChecklistBox">
-        <div class="checklist-header">
-          <span style="color:#10b981; font-size:0.82rem; font-weight:700;">🎯 Чеклист целей:</span>
-          <span id="nbChecklistRatio" style="font-size:0.72rem; color:#38bdf8; font-weight:700;"></span>
-        </div>
-        <div id="nbChecklistItems"></div>
-      </div>
-
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 6px;">
-        <p id="nbDesc" style="color: var(--text-muted); font-size: 0.78rem; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin:0;"></p>
-        <div style="display: flex; gap: 6px; margin-left: auto; flex-shrink:0;">
-          <button class="btn btn-secondary" id="nbEditBtn">⚙️ Инфо</button>
-          <button class="btn btn-primary" onclick="closeModal('notebookModal')">Закрыть</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ЗУМ СКРИНШОТА -->
-  <div class="image-zoom-overlay" id="imageZoomModal" onclick="this.style.display='none'">
-    <img id="imageZoomImg" class="image-zoom-img" src="" alt="Скриншот" />
-  </div>
-
-  <!-- ОКНО: СЕКРЕТЫ -->
-  <div class="modal-overlay" id="secretsModal">
-    <div class="modal-content" style="max-width: 680px;">
-      <button class="modal-close" onclick="closeModal('secretsModal')">&times;</button>
-
-      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; border-bottom: 1px solid #233550; padding-bottom: 8px;">
-        <span style="font-size: 1.4rem;">🔑</span>
-        <div>
-          <h3 style="color:#fbbf24; font-size: 1.15rem; margin:0;" id="secretsGameTitle">Секреты и подсказки</h3>
-          <p style="color:var(--text-muted); font-size: 0.75rem; margin:0;">Тайники, пасхалки и советы по прохождению</p>
-        </div>
-      </div>
-
-      <div id="secretsLoading" style="text-align: center; color: #38bdf8; padding: 16px; display: none;">
-        🔍 Ищем секреты и советы на русском языке...
-      </div>
-
-      <div id="secretsListContainer"></div>
-
-      <div style="display: flex; justify-content: space-between; margin-top: 14px; gap:6px;">
-        <button class="btn btn-secondary" onclick="fetchOnlineSecrets()">🌐 Загрузить доп. секреты</button>
-        <button class="btn btn-primary" onclick="closeModal('secretsModal')">Закрыть</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ОКНО: ДОБАВЛЕНИЕ / РЕДАКТИРОВАНИЕ -->
-  <div class="modal-overlay" id="editModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('editModal')">&times;</button>
-      <h3 style="margin-bottom: 10px; color:#fff; font-size:1.15rem;" id="modalFormTitle">Добавить игру</h3>
-
-      <div class="form-group">
-        <label>Название игры:</label>
-        <div style="display: flex; gap: 6px;">
-          <input type="text" class="form-control" id="gameTitleInput" placeholder="Например: fable, the outer world, дайн лайт..." />
-          <button class="btn btn-secondary" id="autoFetchBtn" onclick="fetchGameInfo()">🔍 Найти</button>
-        </div>
-        <div id="searchCandidatesArea" class="search-candidates-list" style="display:none;"></div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
-        <div class="form-group">
-          <label>Статус:</label>
-          <select class="form-control" id="gameStatusSelect">
-            <option value="playing">🎮 Играю</option>
-            <option value="planned">⏳ Буду играть</option>
-            <option value="paused">⏸️ На паузе</option>
-            <option value="completed">✅ Пройдено</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Платформа:</label>
-          <select class="form-control" id="gamePlatformSelect">
-            <option value="PC">💻 PC</option>
-            <option value="Xbox">🟢 Xbox</option>
-            <option value="PS Vita">🕹️ PS Vita</option>
-            <option value="PlayStation">🔵 PlayStation</option>
-            <option value="Switch">🔴 Switch</option>
-            <option value="Retro">👾 Retro</option>
-            <option value="Другое">🎮 Другое</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
-        <div class="form-group">
-          <label>Оценка (1-10):</label>
-          <select class="form-control" id="gameRatingSelect">
-            <option value="">Без оценки</option>
-            <option value="10">⭐ 10 / 10</option>
-            <option value="9">⭐ 9 / 10</option>
-            <option value="8">⭐ 8 / 10</option>
-            <option value="7">⭐ 7 / 10</option>
-            <option value="6">⭐ 6 / 10</option>
-            <option value="5">⭐ 5 / 10</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Дата финала:</label>
-          <input type="date" class="form-control" id="gameCompletedDateInput" />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Обложка игры:</label>
-        <div style="display: flex; gap: 6px;">
-          <input type="text" class="form-control" id="gameCoverInput" placeholder="URL картинки..." oninput="updateCoverPreview(this.value)" />
-          <button class="btn btn-secondary" type="button" onclick="document.getElementById('coverFileInput').click()">📁 Фото</button>
-          <input type="file" id="coverFileInput" style="display:none" accept="image/*" onchange="handleFileUpload(event)" />
-        </div>
-        <div style="display:flex; gap:8px; align-items:center; margin-top:5px;">
-          <img id="editCoverPreview" class="cover-thumb-preview" referrerpolicy="no-referrer" src="" alt="Превью" onerror="handleCoverError(this)" />
-          <span style="font-size: 0.72rem; color: var(--text-muted);">Превью постера</span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Краткое описание на русском:</label>
-        <textarea class="form-control" id="gameDescInput" rows="2" placeholder="Описание игры..."></textarea>
-      </div>
-
-      <div class="checklist-box">
-        <div class="checklist-header">
-          <span style="color:#10b981; font-size:0.8rem; font-weight:700;">🎯 Чеклист целей</span>
-        </div>
-        <div id="editChecklistContainer"></div>
-        <div style="display: flex; gap: 4px; margin-top: 5px;">
-          <input type="text" class="form-control" id="newChecklistInput" placeholder="Добавить цель..." onkeypress="if(event.key==='Enter'){event.preventDefault();addChecklistItem();}" />
-          <button class="btn btn-secondary" onclick="addChecklistItem()">+</button>
-        </div>
-      </div>
-
-      <div style="display: flex; justify-content: space-between; margin-top: 14px; gap:6px;">
-        <button class="btn btn-danger" id="deleteBtn" style="display:none;" onclick="deleteCurrentGame()">Удалить игру</button>
-        <div style="display: flex; gap: 6px; margin-left: auto;">
-          <button class="btn btn-secondary" onclick="closeModal('editModal')">Отмена</button>
-          <button class="btn btn-primary" onclick="saveGame()">Сохранить</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ОКНО: СОВЕТНИК ХИТОВ -->
-  <div class="modal-overlay" id="advisorModal">
-    <div class="modal-content" style="max-width: 700px;">
-      <button class="modal-close" onclick="closeModal('advisorModal')">&times;</button>
-      <h3 style="color:#f59e0b; margin-bottom: 2px; font-size: 1.15rem;">🎯 Игровой компас: Хиты под настроение</h3>
-      <p style="color:var(--text-muted); font-size: 0.78rem; margin-bottom: 8px;">Новая игра без повторов:</p>
-
-      <div class="advisor-filter-bar">
-        <div>
-          <label class="filter-label">Источник:</label>
-          <select class="form-control" id="advisorSourceSelect" onchange="resetAdvisorAndRoll()">
-            <option value="hits">🌟 База хитов (50+ игр)</option>
-            <option value="my">📁 Мой список</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="filter-label">Настроение:</label>
-          <select class="form-control" id="advisorMoodSelect" onchange="resetAdvisorAndRoll()">
-            <option value="all">🎲 Любое</option>
-            <option value="zombie">🧟 Зомби / выживание</option>
-            <option value="action">💥 Экшен / драйв</option>
-            <option value="rpg">🗡️ Сюжет / RPG</option>
-            <option value="horror">👻 Хоррор</option>
-            <option value="race">🏎️ Гонки</option>
-            <option value="retro">👾 Ретро</option>
-            <option value="chill">☕ Чилл</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="filter-label">Жанр:</label>
-          <select class="form-control" id="advisorGenreSelect" onchange="resetAdvisorAndRoll()">
-            <option value="all">Все жанры</option>
-            <option value="survival">Выживание</option>
-            <option value="shooter">Шутер</option>
-            <option value="rpg">RPG</option>
-            <option value="horror">Хоррор</option>
-            <option value="racing">Гонки</option>
-            <option value="openworld">Открытый мир</option>
-            <option value="platformer">Платформер</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="advisorResultArea">
-        <div class="advisor-result-card" id="advisorCard">
-          <img id="advCover" class="advisor-cover" referrerpolicy="no-referrer" src="" alt="Обложка" onerror="handleCoverError(this)" />
-          <div style="flex-grow:1; display:flex; flex-direction:column; gap:4px; min-width:0;">
-            <div style="display:flex; gap:4px; flex-wrap:wrap;">
-              <span id="advPlatform" class="badge platform-badge"></span>
-              <span id="advGenre" class="badge" style="background:#0284c7; color:#fff;"></span>
-              <span id="advRating" class="badge rating-badge"></span>
+      <!-- Top: Quick Overview -->
+      <div class="overview-card">
+        <div class="overview-layout">
+          <img src="" alt="Обложка" class="overview-poster" id="detail-poster">
+          <div class="overview-body">
+            <div class="overview-header-row">
+              <h2 class="overview-title" id="detail-title">Название игры</h2>
             </div>
-            <h2 id="advTitle" style="font-size:1.15rem; font-weight:800; color:#fff; margin:2px 0;"></h2>
-            <div id="advHook" class="advisor-hook" style="font-size:0.78rem;"></div>
-            <p id="advDesc" style="color:var(--text-muted); font-size:0.8rem; line-height:1.35; margin:0;"></p>
+            <div class="overview-tags">
+              <span class="platform-badge" id="detail-platform">PC</span>
+              <span class="status-badge" id="detail-status-badge">Играю</span>
+              <span id="detail-year" style="font-size:0.8rem; color:var(--text-muted);"></span>
+            </div>
+            <p class="overview-desc" id="detail-desc">Краткое описание сюжета и игры появится здесь...</p>
+            <div class="overview-actions">
+              <button class="btn btn-ghost" id="btn-edit-game" style="font-size:0.8rem; padding:5px 10px;">
+                ✏️ Изменить
+              </button>
+              <button class="btn btn-ghost" id="btn-delete-game" style="font-size:0.8rem; padding:5px 10px; color:#b91c1c;">
+                🗑️ Удалить
+              </button>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-top:12px;">
-          <button class="btn btn-secondary" onclick="rollAdvisor()">🎲 Следующая</button>
-          <button class="btn btn-primary" id="advAddBtn" onclick="addAdvisorGameToCollection()">➕ В мой список</button>
+      <!-- Bottom: Ancient / Field Notebook -->
+      <div class="field-notebook">
+        <div class="notebook-spine">
+          <span>📖 Полевой дневник игрока</span>
+          <div class="bookmark-ribbon" title="Закладка"></div>
         </div>
+
+        <div class="notebook-paper">
+          <div class="notebook-header">
+            <div class="notebook-title" id="notebook-game-label">Заметки к игре</div>
+            <div class="notebook-save-status" id="save-indicator">Сохранено</div>
+          </div>
+
+          <textarea 
+            class="notebook-textarea" 
+            id="notebook-text" 
+            placeholder="Ведите полевые заметки здесь: пароли от сейфов, координаты тайников, рецепты зелий, прокачку билда или мысли о прохождении..."></textarea>
+
+          <div class="notebook-gallery-title">
+            <span>Вклеенные зарисовки и карты</span>
+          </div>
+
+          <div class="notebook-images" id="notebook-gallery">
+            <!-- Pinned screenshots / maps -->
+          </div>
+
+          <div class="notebook-toolbar">
+            <label class="btn-paper">
+              <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
+              📎 Вклеить карту / скриншот
+            </label>
+            <button class="btn-paper" id="btn-prompt-img-url">
+              🔗 Добавить по ссылке
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      Геймерский уголок • Версия 0.7 • Полевой журнал бэклога
+    </footer>
+  </div>
+
+  <!-- Modal: Add / Edit Game -->
+  <div class="modal-overlay" id="game-modal">
+    <div class="modal-box">
+      <h3 class="modal-title" id="modal-heading">Добавить игру</h3>
+      <form id="game-form">
+        <input type="hidden" id="form-game-id">
+        <div class="form-group">
+          <label for="form-title">Название игры *</label>
+          <input type="text" id="form-title" required placeholder="Например: Fable Anniversary">
+        </div>
+        <div class="form-group">
+          <label for="form-platform">Платформа</label>
+          <input type="text" id="form-platform" placeholder="PC, Xbox Series, PS Vita, Switch...">
+        </div>
+        <div class="form-group">
+          <label for="form-status">Статус прохождения</label>
+          <select id="form-status">
+            <option value="playing">Играю</option>
+            <option value="planned">В планах</option>
+            <option value="completed">Пройдено</option>
+            <option value="paused">На паузе</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="form-cover">Ссылка на обложку (URL)</label>
+          <input type="url" id="form-cover" placeholder="https://... или оставьте пустым">
+        </div>
+        <div class="form-group">
+          <label for="form-desc">Краткое описание</label>
+          <textarea id="form-desc" rows="3" placeholder="Пара предложений о сюжете или геймплее..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="modal-cancel">Отмена</button>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Backup / Restore / Reset -->
+  <div class="modal-overlay" id="backup-modal">
+    <div class="modal-box">
+      <h3 class="modal-title">Управление базой игр</h3>
+      <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:14px;">
+        Ваши записи сохраняются прямо в браузере. Вы можете экспортировать резервную копию в файл или восстановить её.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn btn-ghost" id="btn-export-json" style="justify-content: flex-start;">
+          💾 Экспортировать базу в файл (JSON)
+        </button>
+        <label class="btn btn-ghost" style="justify-content: flex-start; cursor: pointer;">
+          <input type="file" id="import-json-input" accept=".json" style="display: none;">
+          📥 Импортировать базу из файла
+        </label>
+        <button class="btn btn-ghost" id="btn-reset-defaults" style="justify-content: flex-start; color: #b45309;">
+          🔄 Вернуть начальный набор игр
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="backup-close">Закрыть</button>
       </div>
     </div>
   </div>
 
-  <footer class="app-footer">
-    <span>🎮 Геймерский уголок</span>
-    <span>•</span>
-    <span>Сохранение в браузере</span>
-    <span class="version-tag">Версия 0.6</span>
-  </footer>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Увеличенный просмотр">
+  </div>
 
   <script>
-    const DEFAULT_COVER_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' fill='%23111827'%3E%3Crect width='300' height='400'/%3E%3Cpath fill='%2338bdf8' d='M80 160h140v30H80zm-20 40h180v20H60z' opacity='0.25'/%3E%3Ctext x='150' y='210' fill='%2394a3b8' font-size='18' font-family='sans-serif' font-weight='bold' text-anchor='middle'%3EНЕТ ОБЛОЖКИ%3C/text%3E%3C/svg%3E";
-
-    function handleCoverError(img) {
-      img.onerror = null;
-      img.src = DEFAULT_COVER_SVG;
-    }
-
-    // Переключатель вида PC / Phone
-    let currentViewMode = localStorage.getItem('gamers_corner_view_mode') || (window.innerWidth < 768 ? 'phone' : 'pc');
-
-    function switchViewMode(mode) {
-      currentViewMode = mode;
-      localStorage.setItem('gamers_corner_view_mode', mode);
-
-      document.body.classList.remove('mode-pc', 'mode-phone');
-      document.body.classList.add(mode === 'phone' ? 'mode-phone' : 'mode-pc');
-
-      const btnPc = document.getElementById('btnModePc');
-      const btnPhone = document.getElementById('btnModePhone');
-      if (btnPc && btnPhone) {
-        btnPc.classList.toggle('active', mode === 'pc');
-        btnPhone.classList.toggle('active', mode === 'phone');
-      }
-    }
-
-    // База встроенных секретов
-    const BUILTIN_SECRETS = {
-      'fable': [
-        { title: '🗝️ 30 Серебряных ключей', text: 'Ключи зарыты на кладбищах (ищите взрыхленную землю), в водоемах со всплесками (ловите удочкой) и выдаются за победу в мини-играх в тавернах.' },
-        { title: '🚪 Двери Демонов (Demon Doors)', text: 'Дверь у Гильдии открывается зажжением фонаря. Дверь у Розового коттеджа требует коробку конфет или розу. Дверь в Борделе требует стать владельцем борделя.' },
-        { title: '⚔️ Лучшее оружие: Меч Веков и Слезы Аво', text: 'Меч Веков можно забрать в финале при злом выборе. Для получения доброго аналога (Слезы Аво) после титров прочитайте книгу в кабинете Мейза и отправляйтесь на кладбище Гильдии.' },
-        { title: '💰 Бесконечное золото через торговлю', text: 'Прокачайте навык Торговли. Скупайте у торговцев изумруды и рубины оптом со скидкой и тут же продавайте им обратно с наценкой!' }
-      ],
-      'the outer worlds': [
-        { title: '🔬 Где найти Научное оружие', text: '1) Уменьшающий луч (Shrink Ray) — в лаборатории Финеаса на Терра-2.\n2) Призматический молот — на станции «Первопроходец» в скрытой комнате над каютами экипажа.\n3) Одурманиватель — на Монархе в лаборатории UDL.' },
-        { title: '🤖 Спутник Сэм (робот-уборщик)', text: 'Находится на втором этаже корабля «Безнадежный». Чтобы активировать его, найдите кислотный модуль в заброшенной лаборатории в Роузвей на Терра-2.' },
-        { title: '🗣️ Прохождение без убийств', text: 'При прокачке Убеждения и Лжи до 100 можно мирно завершить все ключевые конфликты и убедить боссов сдаться без боя.' }
-      ],
-      'dying light': [
-        { title: '🗡️ Чертеж оружия Корека', text: 'На крыше высотки в Трущобах найдите синий ящик за коробками. Ударьте по нему ногой ровно 76 раз — крышка откроется, и вы получите чертеж с колоссальным уроном.' },
-        { title: '⚔️ Чертеж меча ЭКСПкалибр', text: 'На островке на юго-востоке карты в тело зомби воткнут меч. Зажмите кнопку действия и удерживайте ровно 2 минуты. Затем подождите, пока тело сгорит — под ним появится чертеж.' },
-        { title: '🔦 Тактика против Прыгунов', text: 'УФ-фонарь и УФ-ракеты мгновенно парализуют ночных охотников.' },
-        { title: '🧗 Крюк-кошка', text: 'Открывается на 12-м уровне ветки Выживания и меняет все перемещение по городу.' }
-      ],
-      'ведьмак 3': [
-        { title: '⚔️ Меч Арондит', text: 'Сильнейший серебряный меч в игре. Добывается на озере в Туссенте, если подтвердить 5 рыцарских добродетелей.' },
-        { title: '🎴 Победная колода в Гвинт', text: 'Колода Северных королевств с максимумом Шпионов и Чучел позволяет вытягивать всю колоду и обыгрывать любого соперника.' }
-      ]
-    };
-
-    const GAME_ALIASES = {
-      'fable': 'Fable (серия игр)',
-      'fable 1': 'Fable (игра, 2004)',
-      'фейбл': 'Fable (серия игр)',
-      'the outer world': 'The Outer Worlds',
-      'outer world': 'The Outer Worlds',
-      'дайн лайт': 'Dying Light',
-      'ведьмак': 'The Witcher 3: Wild Hunt',
-      'ведьмак 3': 'The Witcher 3: Wild Hunt',
-      'сталкер': 'S.T.A.L.K.E.R.: Shadow of Chernobyl',
-      'метро': 'Metro Exodus',
-      'дед спейс': 'Dead Space',
-      'фоллаут': 'Fallout: New Vegas',
-      'киберпанк': 'Cyberpunk 2077',
-      'гта': 'Grand Theft Auto V',
-      'скайрим': 'The Elder Scrolls V: Skyrim'
-    };
-
-    const HITS_DATABASE = [
-      { title: "Fable Anniversary", genreCategory: "rpg", mood: "rpg", genreName: "Сказка / Action-RPG", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/288470/header.jpg", hook: "✨ Альбион, выбор между добром и злом, Двери Демонов, магия и тонкий британский юмор.", desc: "Легендарная сказочная ролевая игра от Питера Молиньё и Lionhead Studios." },
-      { title: "The Outer Worlds", genreCategory: "rpg", mood: "action", genreName: "Sci-Fi / RPG / Космос", platform: "PC / Xbox / PS", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/578650/header.jpg", hook: "🚀 Колония Альцион, научное оружие, остроумные диалоги от создателей Fallout: New Vegas.", desc: "Космическая ролевая игра от первого лица от студии Obsidian Entertainment." },
-      { title: "Dying Light", genreCategory: "survival", mood: "zombie", genreName: "Зомби / Паркур / Выживание", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg", hook: "🔥 Паркур от первого лица, дробящее оружие и жуткие ночные побеги от Прыгунов в Харране.", desc: "Эталон зомби-экшена с богатым крафтом и кооперативом." },
-      { title: "Ведьмак 3: Дикая Охота", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Открытый мир", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg", hook: "🐺 Славянский фольклор, чудовища по контракту, партии в гвинт и история Цири.", desc: "Эталонная ролевая игра с непревзойденными квестами." },
-      { title: "Dead Space (Remake)", genreCategory: "horror", mood: "horror", genreName: "Космический хоррор / Экшен", platform: "PC / Xbox / PS5", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/1693980/header.jpg", hook: "🚀 Корабль «Ишимура», отстрел конечностей некроморфов и клаустрофобия в космосе.", desc: "Культовый научно-фантастический хоррор об Айзеке Кларке." },
-      { title: "DOOM Eternal", genreCategory: "shooter", mood: "action", genreName: "Ураганный шутер / Адреналин", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg", hook: "⚡ Бешеный темп под гитарные риффы Мика Гордона, бензопила и распил демонов.", desc: "Чистый адреналин, где остановка на месте означает гибель." },
-      { title: "Metro Exodus", genreCategory: "shooter", mood: "action", genreName: "Шутер / Постапокалипсис", platform: "PC / Xbox", rating: "9", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/412020/header.jpg", hook: "🚂 Путешествие на поезде «Аврора» через разрушенную Россию в поисках чистого дома.", desc: "Глубокая атмосфера, модификация стволов прямо на коленке и мутанты." },
-      { title: "Fallout: New Vegas", genreCategory: "rpg", mood: "rpg", genreName: "RPG / Постапокалипсис", platform: "PC / Xbox", rating: "10", cover: "https://cdn.cloudflare.steamstatic.com/steam/apps/22380/header.jpg", hook: "🏜️ Пустыня Мохаве, казино Нью-Вегаса, ретро-джаз и полная свобода выбора.", desc: "Лучшая ролевая игра во вселенной Fallout с великолепным сюжетом." }
-    ];
-
-    const INITIAL_DEFAULT_GAMES = [
+    // --- Initial / Default Database ---
+    const DEFAULT_GAMES = [
       {
-        id: '1',
-        title: 'Dying Light',
-        status: 'playing',
-        platform: 'PC',
-        rating: '10',
-        completedDate: '',
-        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/239140/header.jpg',
-        description: 'Survival horror от первого лица с открытым миром и элементами паркура в Харране.',
-        checklist: [
-          { id: '101', text: 'Найти секретный чертеж Корека', done: true },
-          { id: '102', text: 'Зачистить карантинную зону в Трущобах', done: true }
-        ],
-        notes: '• В ночное время выходят опасные Прыгуны (лучше держаться крыш и УФ-фонарей).\n• Чертеж оружия Корека находится на крыше высотки в Трущобах.',
-        screenshots: []
+        id: "game_fable",
+        title: "Fable Anniversary",
+        platform: "PC / Xbox",
+        status: "playing",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/Fable_Anniversary_cover.jpg",
+        desc: "Ремастер легендарной ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
+        notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.
+• Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.
+• Прокачать заклинание 'Молния' для быстрого контроля толпы.",
+        images: []
       },
       {
-        id: '2',
-        title: 'Ведьмак 3: Дикая Охота',
-        status: 'completed',
-        platform: 'PC',
-        rating: '10',
-        completedDate: '2024-05-15',
-        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg',
-        description: 'Ролевая игра с открытым миром о приключениях ведьмака Геральта из Ривии.',
-        checklist: [
-          { id: '201', text: 'Собрать мастерский сет Школы Волка', done: true }
-        ],
-        notes: '• В Туссенте обязательно купить улучшение для винодельни Корво Бьянко.\n• Гвинт в Новиграде: турнир в Пассифлоре требует сильную колоду.',
-        screenshots: []
+        id: "game_dying_light",
+        title: "Dying Light",
+        platform: "PC",
+        status: "playing",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Dying_Light_cover.jpg",
+        desc: "Паркур в открытом мире среди заражённых Харрана. Днём исследуйте руины и собирайте припасы, а ночью прячьтесь от смертоносных Прыгунов.",
+        notes: "• Ночные вылазки дают удвоенный опыт выживания.
+• Чертеж 'Кореш Камикадзе' лежит на подвесном мосту.
+• Собрать больше марли и спирта для аптечек.",
+        images: []
       },
       {
-        id: '3',
-        title: 'Fable Anniversary',
-        status: 'planned',
-        platform: 'PC',
-        rating: '9',
-        completedDate: '',
-        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/288470/header.jpg',
-        description: 'Сказочная экшен-RPG о становлении Героя в Альбионе от Lionhead Studios.',
-        checklist: [
-          { id: '301', text: 'Открыть все Двери Демонов', done: false },
-          { id: '302', text: 'Собрать 30 серебряных ключей', done: false }
-        ],
-        notes: '• Обязательно выучить заклинание Замедление времени.\n• Прокачать навык торговли для дешевой скупки самоцветов.',
-        screenshots: []
+        id: "game_witcher3",
+        title: "Ведьмак 3: Дикая Охота",
+        platform: "PC",
+        status: "completed",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/a/a2/The_Witcher_3-_Wild_Hunt_Cover.jpg",
+        desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
+        notes: "• Заказ на Лихо у колодца выполнен.
+• Сет школы Грифона собран на 1-й уровень.
+• В Новиграде не забыть заглянуть к Пассифлоре на турнир по Гвинту.",
+        images: []
       },
       {
-        id: '4',
-        title: 'The Outer Worlds',
-        status: 'playing',
-        platform: 'PC',
-        rating: '9',
-        completedDate: '',
-        cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/578650/header.jpg',
-        description: 'Научно-фантастическая ролевая игра от Obsidian Entertainment в колонии Альцион.',
-        checklist: [
-          { id: '401', text: 'Найти Уменьшающий луч у Финеаса', done: true },
-          { id: '402', text: 'Починить робота-уборщика Сэма', done: false }
-        ],
-        notes: '• Призматический молот лежит над каютами на Первопроходце.\n• Навыки Убеждения и Лжи позволяют пройти без убийств.',
-        screenshots: []
+        id: "game_outer_worlds",
+        title: "The Outer Worlds",
+        platform: "PC / Xbox",
+        status: "planned",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/0/07/The_Outer_Worlds.jpg",
+        desc: "Сатирическая космическая RPG от Obsidian. Колония Алкион под пятой корпораций, чернушный юмор, компаньоны и вариативные задания.",
+        notes: "• Первое прохождение планирую через диалоги и взлом.
+• Не забыть взять Парвати в команду на первопроходце.",
+        images: []
       }
     ];
 
-    let storedData = null;
-    try {
-      storedData = localStorage.getItem('gamers_corner_data');
-    } catch(e) {}
+    // State
+    const STORAGE_KEY = "gamerbox_games_v07";
+    // Migration fallback keys from previous versions
+    const LEGACY_KEYS = ["gamerbox_games", "gamers_corner_games", "gamerbox_data"];
 
     let games = [];
-    if (storedData) {
-      try {
-        games = JSON.parse(storedData);
-        if (!Array.isArray(games) || games.length === 0) {
-          games = INITIAL_DEFAULT_GAMES;
-        }
-      } catch(e) {
-        games = INITIAL_DEFAULT_GAMES;
-      }
-    } else {
-      games = INITIAL_DEFAULT_GAMES;
-    }
-
-    try {
-      localStorage.setItem('gamers_corner_data', JSON.stringify(games));
-      localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
-    } catch(e) {}
-
-    games.forEach(g => {
-      if (!g.platform) g.platform = 'PC';
-      if (!g.checklist) g.checklist = [];
-      if (!g.screenshots) g.screenshots = [];
-      if (g.rating === undefined) g.rating = '';
-      if (!g.completedDate) g.completedDate = '';
-    });
-
-    let currentStatusFilter = 'all';
-    let currentPlatformFilter = 'all';
-    let activeNotebookGameId = null;
-    let editingId = null;
-    let tempChecklist = [];
+    let currentFilter = "all";
+    let activeGameId = null;
     let saveTimeout = null;
 
-    let advisorPool = [];
-    let advisorHistory = [];
-    let currentAdvisorHit = null;
+    // --- Data Storage Helpers ---
+    function loadGames() {
+      // 1. Try current v0.7 key
+      let raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        } catch (e) {
+          console.warn("Ошибка парсинга v0.7:", e);
+        }
+      }
 
-    const statusLabels = { playing: '🎮 Играю', planned: '⏳ Буду играть', paused: '⏸️ На паузе', completed: '✅ Пройдено' };
-    const statusClasses = { playing: 'status-playing', planned: 'status-planned', paused: 'status-paused', completed: 'status-completed' };
+      // 2. Try legacy keys to preserve user's previous progress
+      for (const legKey of LEGACY_KEYS) {
+        let legRaw = localStorage.getItem(legKey);
+        if (legRaw) {
+          try {
+            const parsed = JSON.parse(legRaw);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              console.log("Восстановлена база из ключа " + legKey);
+              saveGames(parsed);
+              return parsed;
+            }
+          } catch (e) {}
+        }
+      }
 
-    function renderGames() {
-      const grid = document.getElementById('gamesGrid');
-      if (!grid) return;
-      const searchBox = document.getElementById('searchBox');
-      const search = searchBox ? searchBox.value.toLowerCase() : '';
-      grid.innerHTML = '';
+      // 3. Fallback to initial seed
+      return DEFAULT_GAMES;
+    }
 
-      let counts = { all: games.length, playing: 0, planned: 0, paused: 0, completed: 0 };
-      games.forEach(g => { if (counts[g.status] !== undefined) counts[g.status]++; });
+    function saveGames(data) {
+      games = data;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+      } catch (e) {
+        alert("Превышен лимит памяти браузера (localStorage). Рекомендуется удалить тяжёлые изображения.");
+      }
+    }
 
-      const cAll = document.getElementById('count-all');
-      const cPlaying = document.getElementById('count-playing');
-      const cPlanned = document.getElementById('count-planned');
-      const cPaused = document.getElementById('count-paused');
-      const cCompleted = document.getElementById('count-completed');
+    // --- Status metadata ---
+    const STATUS_MAP = {
+      playing: { label: "Играю", class: "status-playing" },
+      planned: { label: "В планах", class: "status-planned" },
+      completed: { label: "Пройдено", class: "status-completed" },
+      paused: { label: "На паузе", class: "status-paused" }
+    };
 
-      if (cAll) cAll.textContent = counts.all;
-      if (cPlaying) cPlaying.textContent = counts.playing;
-      if (cPlanned) cPlanned.textContent = counts.planned;
-      if (cPaused) cPaused.textContent = counts.paused;
-      if (cCompleted) cCompleted.textContent = counts.completed;
+    // --- DOM Elements ---
+    const gamesListEl = document.getElementById("games-list-container");
+    const searchInput = document.getElementById("search-input");
+    const chips = document.querySelectorAll(".chip");
+
+    // Details
+    const detailSection = document.getElementById("game-detail-section");
+    const detailPoster = document.getElementById("detail-poster");
+    const detailTitle = document.getElementById("detail-title");
+    const detailPlatform = document.getElementById("detail-platform");
+    const detailStatusBadge = document.getElementById("detail-status-badge");
+    const detailDesc = document.getElementById("detail-desc");
+    const notebookGameLabel = document.getElementById("notebook-game-label");
+    const notebookText = document.getElementById("notebook-text");
+    const notebookGallery = document.getElementById("notebook-gallery");
+    const saveIndicator = document.getElementById("save-indicator");
+
+    // Modal Add/Edit
+    const gameModal = document.getElementById("game-modal");
+    const gameForm = document.getElementById("game-form");
+    const modalHeading = document.getElementById("modal-heading");
+    const formGameId = document.getElementById("form-game-id");
+    const formTitle = document.getElementById("form-title");
+    const formPlatform = document.getElementById("form-platform");
+    const formStatus = document.getElementById("form-status");
+    const formCover = document.getElementById("form-cover");
+    const formDesc = document.getElementById("form-desc");
+    const modalCancel = document.getElementById("modal-cancel");
+
+    // Backup Modal
+    const backupModal = document.getElementById("backup-modal");
+    const backupClose = document.getElementById("backup-close");
+    const btnBackup = document.getElementById("btn-backup");
+    const btnExportJson = document.getElementById("btn-export-json");
+    const importJsonInput = document.getElementById("import-json-input");
+    const btnResetDefaults = document.getElementById("btn-reset-defaults");
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    // --- Rendering ---
+    function renderCounters() {
+      const counts = { all: games.length, playing: 0, planned: 0, completed: 0, paused: 0 };
+      games.forEach(g => {
+        if (counts[g.status] !== undefined) counts[g.status]++;
+      });
+      document.getElementById("count-all").textContent = counts.all;
+      document.getElementById("count-playing").textContent = counts.playing;
+      document.getElementById("count-planned").textContent = counts.planned;
+      document.getElementById("count-completed").textContent = counts.completed;
+      document.getElementById("count-paused").textContent = counts.paused;
+    }
+
+    function renderList() {
+      renderCounters();
+      const query = searchInput.value.trim().toLowerCase();
 
       const filtered = games.filter(g => {
-        const matchesStatus = (currentStatusFilter === 'all' || g.status === currentStatusFilter);
-        const matchesPlatform = (currentPlatformFilter === 'all' || g.platform === currentPlatformFilter);
-        const matchesSearch = g.title.toLowerCase().includes(search);
-        return matchesStatus && matchesPlatform && matchesSearch;
+        const matchesFilter = (currentFilter === "all") || (g.status === currentFilter);
+        const matchesQuery = !query || 
+          g.title.toLowerCase().includes(query) || 
+          (g.platform && g.platform.toLowerCase().includes(query));
+        return matchesFilter && matchesQuery;
       });
 
+      gamesListEl.innerHTML = "";
+
       if (filtered.length === 0) {
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px; font-size:0.95rem;">Игр в этой категории пока нет.</div>';
+        gamesListEl.innerHTML = `
+          <div class="empty-state">
+            В этом разделе пока нет игр. Нажмите «Добавить», чтобы завести новую запись!
+          </div>
+        `;
         return;
       }
 
       filtered.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game-card';
-        card.onclick = () => openNotebook(game.id);
+        const stInfo = STATUS_MAP[game.status] || { label: game.status, class: "" };
+        const isSelected = game.id === activeGameId;
 
-        let progressHtml = '';
-        if (game.checklist && game.checklist.length > 0) {
-          const total = game.checklist.length;
-          const done = game.checklist.filter(item => item.done).length;
-          const pct = Math.round((done / total) * 100);
-          progressHtml = `
-            <div class="checklist-progress">
-              <div class="progress-text"><span>🎯 ${done}/${total}</span><span>${pct}%</span></div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: ${pct}%"></div></div>
+        const row = document.createElement("div");
+        row.className = `game-item ${isSelected ? "selected" : ""}`;
+        row.dataset.id = game.id;
+
+        const coverSrc = game.cover || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 50" fill="%23d8ded5"%3E%3Crect width="40" height="50"/%3E%3Ctext x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-size="14" fill="%238fa08c"%3E🎮%3C/text%3E%3C/svg%3E';
+
+        row.innerHTML = `
+          <img src="${coverSrc}" class="game-item-cover" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 40 50\' fill=\'%23d8ded5\'%3E%3Crect width=\'40\' height=\'50\'/%3E%3C/svg%3E'">
+          <div class="game-item-info">
+            <div class="game-item-title">${escapeHtml(game.title)}</div>
+            <div class="game-item-meta">
+              <span class="platform-badge">${escapeHtml(game.platform || "Любая")}</span>
             </div>
-          `;
-        }
-
-        const ratingBadgeHtml = game.rating ? `<span class="badge rating-badge">⭐ ${game.rating}</span>` : '';
-
-        card.innerHTML = `
-          <div class="card-cover-wrap">
-            <div class="card-badges">
-              <span class="badge ${statusClasses[game.status]}">${statusLabels[game.status]}</span>
-              ${ratingBadgeHtml}
-            </div>
-            <img class="card-cover" referrerpolicy="no-referrer" src="${game.cover || DEFAULT_COVER_SVG}" alt="${game.title}" onerror="handleCoverError(this)" />
           </div>
-          <div class="card-body">
-            <div>
-              <div class="card-meta-row" style="margin-bottom:3px;">
-                <span class="badge platform-badge" title="${game.platform}">${game.platform}</span>
-                <button class="card-key-btn" onclick="openSecretsModal('${game.id}', event)">🔑 Секреты</button>
-              </div>
-              <div class="card-title">${game.title}</div>
-            </div>
-            ${progressHtml}
-          </div>
+          <span class="status-badge ${stInfo.class}">
+            ${stInfo.label}
+          </span>
         `;
-        grid.appendChild(card);
+
+        row.addEventListener("click", () => {
+          selectGame(game.id, true);
+        });
+
+        gamesListEl.appendChild(row);
       });
     }
 
-    function openNotebook(id) {
-      const game = games.find(g => g.id === id);
-      if (!game) return;
-      activeNotebookGameId = id;
-
-      document.getElementById('nbTitle').textContent = game.title;
-      document.getElementById('nbCover').src = game.cover || DEFAULT_COVER_SVG;
-      document.getElementById('nbDesc').textContent = game.description || 'Описание отсутствует.';
-      document.getElementById('nbTextarea').value = game.notes || '';
-      document.getElementById('nbSaveStatus').textContent = '✍️ Сохранено';
-
-      const badge = document.getElementById('nbBadge');
-      badge.textContent = statusLabels[game.status];
-      badge.className = `badge ${statusClasses[game.status]}`;
-
-      document.getElementById('nbPlatformBadge').textContent = game.platform || 'PC';
-
-      const ratingBadge = document.getElementById('nbRatingBadge');
-      if (game.rating) {
-        ratingBadge.textContent = `⭐ ${game.rating}/10`;
-        ratingBadge.style.display = 'inline-flex';
-      } else {
-        ratingBadge.style.display = 'none';
+    function selectGame(gameId, smoothScroll = false) {
+      activeGameId = gameId;
+      const game = games.find(g => g.id === gameId);
+      if (!game) {
+        detailSection.classList.remove("active");
+        return;
       }
 
-      document.getElementById('nbKeyBtn').onclick = () => openSecretsModal(game.id);
+      // Update selection in list
+      document.querySelectorAll(".game-item").forEach(el => {
+        el.classList.toggle("selected", el.dataset.id === gameId);
+      });
 
-      renderNotebookChecklist(game);
-      renderNotebookScreenshots(game);
+      // Populate overview
+      detailTitle.textContent = game.title;
+      detailPlatform.textContent = game.platform || "Платформа не указана";
 
-      document.getElementById('nbEditBtn').onclick = () => {
-        closeModal('notebookModal');
-        openEditModal(game.id);
-      };
+      const stInfo = STATUS_MAP[game.status] || { label: game.status, class: "" };
+      detailStatusBadge.textContent = stInfo.label;
+      detailStatusBadge.className = `status-badge ${stInfo.class}`;
 
-      document.getElementById('notebookModal').style.display = 'flex';
+      detailDesc.textContent = game.desc || "Описание отсутствует. Нажмите «Изменить», чтобы добавить синопсис.";
+      detailPoster.src = game.cover || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" fill="%23d8ded5"%3E%3Crect width="100" height="130"/%3E%3Ctext x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-size="28" fill="%238fa08c"%3E🎮%3C/text%3E%3C/svg%3E';
+
+      // Populate notebook
+      notebookGameLabel.textContent = `Заметки: ${game.title}`;
+      notebookText.value = game.notes || "";
+      saveIndicator.textContent = "Сохранено";
+      renderGallery(game.images || []);
+
+      detailSection.classList.add("active");
+
+      if (smoothScroll) {
+        setTimeout(() => {
+          detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+      }
     }
 
-    function autoSaveNotebook() {
-      const statusEl = document.getElementById('nbSaveStatus');
-      statusEl.textContent = '✏️ Сохранение...';
-      statusEl.style.color = '#38bdf8';
+    function renderGallery(images) {
+      notebookGallery.innerHTML = "";
+      if (!images || images.length === 0) {
+        notebookGallery.innerHTML = `<span style="font-size:0.8rem; color:#8c7b68; font-style:italic;">Пока нет прикреплённых карт или снимков.</span>`;
+        return;
+      }
 
+      images.forEach((imgUrl, idx) => {
+        const photo = document.createElement("div");
+        photo.className = "pinned-photo";
+        photo.style.setProperty("--r", (idx % 2 === 0 ? "0.8" : "0.2"));
+
+        photo.innerHTML = `
+          <img src="${imgUrl}" alt="Зарисовка ${idx + 1}">
+          <button class="pinned-photo-del" title="Удалить картинку">&times;</button>
+        `;
+
+        photo.querySelector("img").addEventListener("click", () => {
+          lightboxImg.src = imgUrl;
+          lightbox.classList.add("active");
+        });
+
+        photo.querySelector(".pinned-photo-del").addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (confirm("Удалить этот снимок из полевого блокнота?")) {
+            deleteImageFromGame(idx);
+          }
+        });
+
+        notebookGallery.appendChild(photo);
+      });
+    }
+
+    function deleteImageFromGame(index) {
+      const game = games.find(g => g.id === activeGameId);
+      if (!game || !game.images) return;
+      game.images.splice(index, 1);
+      saveGames(games);
+      renderGallery(game.images);
+    }
+
+    // --- Autosave Notebook Notes ---
+    notebookText.addEventListener("input", () => {
+      saveIndicator.textContent = "Запись...";
       clearTimeout(saveTimeout);
       saveTimeout = setTimeout(() => {
-        if (!activeNotebookGameId) return;
-        const game = games.find(g => g.id === activeNotebookGameId);
+        const game = games.find(g => g.id === activeGameId);
         if (game) {
-          game.notes = document.getElementById('nbTextarea').value;
-          persistData();
-          statusEl.textContent = '✍️ Сохранено';
-          statusEl.style.color = '#10b981';
+          game.notes = notebookText.value;
+          saveGames(games);
+          saveIndicator.textContent = "Сохранено в журнал";
         }
-      }, 400);
-    }
+      }, 500);
+    });
 
-    function insertNotebookText(prefix) {
-      const textarea = document.getElementById('nbTextarea');
-      const start = textarea.selectionStart;
-      const val = textarea.value;
-      textarea.value = val.substring(0, start) + '\n' + prefix + val.substring(start);
-      textarea.focus();
-      autoSaveNotebook();
-    }
-
-    function handleScreenshotUpload(event) {
-      const file = event.target.files[0];
-      if (!file || !activeNotebookGameId) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const canvas = document.createElement('canvas');
-          let w = img.width;
-          let h = img.height;
-          const maxDim = 800;
-          if (w > h && w > maxDim) {
-            h = Math.round((h * maxDim) / w);
-            w = maxDim;
-          } else if (h > maxDim) {
-            w = Math.round((w * maxDim) / h);
-            h = maxDim;
-          }
-          canvas.width = w;
-          canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-          const compressed = canvas.toDataURL('image/jpeg', 0.8);
-
-          const game = games.find(g => g.id === activeNotebookGameId);
-          if (game) {
-            if (!game.screenshots) game.screenshots = [];
-            game.screenshots.push({
-              id: Date.now().toString(),
-              url: compressed,
-              caption: file.name.replace(/\.[^/.]+$/, "").slice(0, 18) || 'Скриншот'
-            });
-            persistData();
-            renderNotebookScreenshots(game);
-          }
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function renderNotebookScreenshots(game) {
-      const sec = document.getElementById('nbScreenshotsSection');
-      const grid = document.getElementById('nbScreenshotsGrid');
-      grid.innerHTML = '';
-
-      if (game.screenshots && game.screenshots.length > 0) {
-        sec.style.display = 'block';
-        game.screenshots.forEach(sc => {
-          const div = document.createElement('div');
-          div.className = 'screenshot-polaroid';
-          div.innerHTML = `
-            <button class="screenshot-delete-btn" onclick="deleteScreenshot('${game.id}', '${sc.id}', event)">&times;</button>
-            <img class="screenshot-img" src="${sc.url}" alt="карта" onclick="zoomScreenshot('${sc.url}')" />
-            <div class="screenshot-caption">${sc.caption}</div>
-          `;
-          grid.appendChild(div);
-        });
-      } else {
-        sec.style.display = 'none';
-      }
-    }
-
-    function deleteScreenshot(gameId, scId, event) {
-      event.stopPropagation();
-      const game = games.find(g => g.id === gameId);
-      if (!game) return;
-      game.screenshots = game.screenshots.filter(s => s.id !== scId);
-      persistData();
-      renderNotebookScreenshots(game);
-    }
-
-    function zoomScreenshot(url) {
-      document.getElementById('imageZoomImg').src = url;
-      document.getElementById('imageZoomModal').style.display = 'flex';
-    }
-
-    function renderNotebookChecklist(game) {
-      const box = document.getElementById('nbChecklistBox');
-      const container = document.getElementById('nbChecklistItems');
-      container.innerHTML = '';
-
-      if (game.checklist && game.checklist.length > 0) {
-        box.style.display = 'block';
-        const doneCount = game.checklist.filter(i => i.done).length;
-        document.getElementById('nbChecklistRatio').textContent = `${doneCount} из ${game.checklist.length} выполнено`;
-
-        game.checklist.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'checklist-item ' + (item.done ? 'done' : '');
-          div.innerHTML = `
-            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistInNotebook('${game.id}', '${item.id}', this.checked)" />
-            <span style="flex-grow:1; font-size:0.85rem;">${item.text}</span>
-          `;
-          container.appendChild(div);
-        });
-      } else {
-        box.style.display = 'none';
-      }
-    }
-
-    function toggleChecklistInNotebook(gameId, itemId, isChecked) {
-      const game = games.find(g => g.id === gameId);
-      if (!game) return;
-      const item = game.checklist.find(i => i.id === itemId);
-      if (item) {
-        item.done = isChecked;
-        persistData();
-        renderNotebookChecklist(game);
-        renderGames();
-      }
-    }
-
-    let currentSecretsGameTitle = '';
-
-    function openSecretsModal(gameId, event) {
-      if (event) event.stopPropagation();
-      const game = games.find(g => g.id === gameId);
-      if (!game) return;
-
-      currentSecretsGameTitle = game.title;
-      document.getElementById('secretsGameTitle').textContent = `Секреты: ${game.title}`;
-      const container = document.getElementById('secretsListContainer');
-      container.innerHTML = '';
-
-      const lower = game.title.toLowerCase();
-      let foundSecrets = null;
-      for (const [key, list] of Object.entries(BUILTIN_SECRETS)) {
-        if (lower.includes(key) || key.includes(lower)) {
-          foundSecrets = list;
-          break;
-        }
-      }
-
-      if (foundSecrets && foundSecrets.length > 0) {
-        foundSecrets.forEach(sec => {
-          const card = document.createElement('div');
-          card.className = 'secret-item-card';
-
-          const h4 = document.createElement('h4');
-          const titleSpan = document.createElement('span');
-          titleSpan.textContent = sec.title;
-
-          const copyBtn = document.createElement('button');
-          copyBtn.className = 'copy-to-notes-btn';
-          copyBtn.textContent = '📥 В блокнот';
-          copyBtn.onclick = () => copySecretToNotes(game.id, sec.title, sec.text);
-
-          h4.appendChild(titleSpan);
-          h4.appendChild(copyBtn);
-
-          const p = document.createElement('p');
-          p.style.color = '#cbd5e1';
-          p.style.fontSize = '0.85rem';
-          p.style.whiteSpace = 'pre-line';
-          p.style.margin = '0';
-          p.textContent = sec.text;
-
-          card.appendChild(h4);
-          card.appendChild(p);
-          container.appendChild(card);
-        });
-      } else {
-        container.innerHTML = `
-          <div style="text-align:center; padding:16px; color:#94a3b8; font-size:0.85rem;">
-            Для этой игры пока нет встроенных секретов.<br>
-            Нажмите кнопку ниже, чтобы автоматически подгрузить данные из энциклопедии на русском языке!
-          </div>
-        `;
-      }
-
-      document.getElementById('secretsModal').style.display = 'flex';
-    }
-
-    async function fetchOnlineSecrets() {
-      const loading = document.getElementById('secretsLoading');
-      const container = document.getElementById('secretsListContainer');
-      loading.style.display = 'block';
-
-      try {
-        const res = await fetch(`https://ru.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(currentSecretsGameTitle)}&gsrlimit=1&prop=extracts&exintro=0&explaintext=1&format=json&origin=*`);
-        const data = await res.json();
-        const pages = data?.query?.pages ? Object.values(data.query.pages) : [];
-
-        if (pages.length > 0 && pages[0].extract) {
-          const fullText = pages[0].extract;
-          const paragraphs = fullText.split('\n\n').filter(p => p.length > 80 && !p.startsWith('== ')).slice(0, 4);
-
-          const card = document.createElement('div');
-          card.className = 'secret-item-card';
-
-          const h4 = document.createElement('h4');
-          const titleSpan = document.createElement('span');
-          titleSpan.textContent = '📖 Особенности геймплея и советы';
-          const copyBtn = document.createElement('button');
-          copyBtn.className = 'copy-to-notes-btn';
-          copyBtn.textContent = '📥 В блокнот';
-          copyBtn.onclick = () => copySecretToNotes(activeNotebookGameId, 'Геймплей', paragraphs[0]);
-          h4.appendChild(titleSpan);
-          h4.appendChild(copyBtn);
-
-          const p = document.createElement('p');
-          p.style.color = '#cbd5e1';
-          p.style.fontSize = '0.85rem';
-          p.style.margin = '0';
-          p.textContent = paragraphs.join('\n\n');
-
-          card.appendChild(h4);
-          card.appendChild(p);
-          container.appendChild(card);
-        } else {
-          alert('Дополнительных данных не найдено.');
-        }
-      } catch (err) {
-        alert('Не удалось связаться с базой знаний.');
-      } finally {
-        loading.style.display = 'none';
-      }
-    }
-
-    function copySecretToNotes(gameId, title, text) {
-      const targetId = gameId || activeNotebookGameId;
-      const game = games.find(g => g.id === targetId);
-      if (!game) return;
-
-      const addition = `\n\n📌 [Секрет: ${title}]\n${text}`;
-      game.notes = (game.notes || '') + addition;
-      persistData();
-
-      if (activeNotebookGameId === targetId) {
-        document.getElementById('nbTextarea').value = game.notes;
-      }
-      alert('Секрет скопирован в ваш блокнот по игре!');
-    }
-
-    async function fetchGameInfo() {
-      const rawInput = document.getElementById('gameTitleInput').value.trim();
-      if (!rawInput) return alert('Введите название игры!');
-
-      const btn = document.getElementById('autoFetchBtn');
-      btn.textContent = '...';
-      btn.disabled = true;
-
-      const candidatesArea = document.getElementById('searchCandidatesArea');
-      candidatesArea.innerHTML = '';
-      candidatesArea.style.display = 'none';
-
-      const cleanLower = rawInput.toLowerCase();
-      let queryTitle = GAME_ALIASES[cleanLower] || rawInput;
-
-      const hitMatch = HITS_DATABASE.find(h => 
-        h.title.toLowerCase().includes(cleanLower) || 
-        cleanLower.includes(h.title.toLowerCase()) ||
-        (GAME_ALIASES[cleanLower] && h.title.toLowerCase().includes(GAME_ALIASES[cleanLower].toLowerCase()))
-      );
-
-      if (hitMatch) {
-        document.getElementById('gameCoverInput').value = hitMatch.cover;
-        updateCoverPreview(hitMatch.cover);
-        if (!document.getElementById('gameDescInput').value.trim()) {
-          document.getElementById('gameDescInput').value = hitMatch.desc;
-        }
-        btn.textContent = '🔍 Найти';
-        btn.disabled = false;
-        return;
-      }
-
-      try {
-        let foundCovers = [];
-        const searchRes = await fetch(`https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(queryTitle)}&srlimit=5&format=json&origin=*`);
-        const searchData = await searchRes.json();
-        const results = searchData?.query?.search || [];
-
-        for (const item of results) {
-          if (item.title.includes('(значения)')) continue;
-          try {
-            const sumRes = await fetch(`https://ru.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(item.title)}`);
-            const sum = await sumRes.json();
-            const isGame = (sum.description && (sum.description.includes('игра') || sum.description.includes('серия'))) || 
-                           (sum.extract && (sum.extract.includes('игра') || sum.extract.includes('RPG') || sum.extract.includes('Xbox')));
-
-            if (isGame || foundCovers.length === 0) {
-              const coverUrl = sum.originalimage?.source || sum.thumbnail?.source;
-              if (coverUrl) {
-                foundCovers.push({ title: sum.title, cover: coverUrl, desc: sum.extract || '' });
-              }
-            }
-          } catch(e) {}
-        }
-
-        if (foundCovers.length === 0) {
-          const enSearch = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(queryTitle + ' video game')}&gsrlimit=3&prop=pageimages|extracts&exintro=1&explaintext=1&pithumbsize=600&format=json&origin=*`);
-          const enData = await enSearch.json();
-          const enPages = enData?.query?.pages ? Object.values(enData.query.pages) : [];
-
-          enPages.forEach(p => {
-            if (p.thumbnail && p.thumbnail.source) {
-              foundCovers.push({ title: p.title, cover: p.thumbnail.source, desc: p.extract || '' });
-            }
-          });
-        }
-
-        if (foundCovers.length > 0) {
-          document.getElementById('gameCoverInput').value = foundCovers[0].cover;
-          updateCoverPreview(foundCovers[0].cover);
-          if (foundCovers[0].desc && !document.getElementById('gameDescInput').value.trim()) {
-            document.getElementById('gameDescInput').value = foundCovers[0].desc;
-          }
-
-          if (foundCovers.length > 1) {
-            candidatesArea.style.display = 'flex';
-            foundCovers.forEach(c => {
-              const card = document.createElement('div');
-              card.className = 'candidate-card';
-              card.innerHTML = `
-                <img class="candidate-img" referrerpolicy="no-referrer" src="${c.cover}" alt="вариант" onerror="handleCoverError(this)" />
-                <div class="candidate-title">${c.title}</div>
-              `;
-              card.onclick = () => {
-                document.getElementById('gameCoverInput').value = c.cover;
-                updateCoverPreview(c.cover);
-                if (c.desc) document.getElementById('gameDescInput').value = c.desc;
-              };
-              candidatesArea.appendChild(card);
-            });
-          }
-        } else {
-          alert('Обложка не найдена. Нажмите «📁 Фото», чтобы прикрепить изображение из галереи!');
-        }
-      } catch (err) {
-        alert('Не удалось загрузить данные. Используйте кнопку «📁 Фото».');
-      } finally {
-        btn.textContent = '🔍 Найти';
-        btn.disabled = false;
-      }
-    }
-
-    function updateCoverPreview(url) {
-      const prev = document.getElementById('editCoverPreview');
-      if (prev) prev.src = url.trim() || DEFAULT_COVER_SVG;
-    }
-
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
+    // --- Image attachment ---
+    document.getElementById("image-upload-input").addEventListener("change", function(e) {
+      const file = e.target.files[0];
       if (!file) return;
 
       const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const canvas = document.createElement('canvas');
-          let w = img.width;
-          let h = img.height;
-          const maxDim = 600;
-          if (w > h && w > maxDim) {
-            h = Math.round((h * maxDim) / w);
-            w = maxDim;
-          } else if (h > maxDim) {
-            w = Math.round((w * maxDim) / h);
-            h = maxDim;
-          }
-          canvas.width = w;
-          canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
-
-          document.getElementById('gameCoverInput').value = compressedDataUrl;
-          updateCoverPreview(compressedDataUrl);
-        };
-        img.src = e.target.result;
+      reader.onload = function(event) {
+        addImageToCurrentGame(event.target.result);
       };
       reader.readAsDataURL(file);
+      this.value = "";
+    });
+
+    document.getElementById("btn-prompt-img-url").addEventListener("click", () => {
+      const url = prompt("Введите прямую ссылку на изображение карты или скриншота:");
+      if (url && url.trim()) {
+        addImageToCurrentGame(url.trim());
+      }
+    });
+
+    function addImageToCurrentGame(imgSrc) {
+      const game = games.find(g => g.id === activeGameId);
+      if (!game) return;
+      if (!game.images) game.images = [];
+      game.images.push(imgSrc);
+      saveGames(games);
+      renderGallery(game.images);
     }
 
-    function openAdvisorModal() {
-      resetAdvisorAndRoll();
-      document.getElementById('advisorModal').style.display = 'flex';
-    }
-
-    function resetAdvisorAndRoll() {
-      const source = document.getElementById('advisorSourceSelect').value;
-      const mood = document.getElementById('advisorMoodSelect').value;
-      const genre = document.getElementById('advisorGenreSelect').value;
-
-      let baseList = (source === 'my') ? [...games] : [...HITS_DATABASE];
-
-      if (source !== 'my') {
-        if (mood !== 'all') baseList = baseList.filter(h => h.mood === mood);
-        if (genre !== 'all') baseList = baseList.filter(h => h.genreCategory === genre);
-      }
-
-      for (let i = baseList.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [baseList[i], baseList[j]] = [baseList[j], baseList[i]];
-      }
-
-      advisorPool = baseList;
-      advisorHistory = [];
-      rollAdvisor();
-    }
-
-    function rollAdvisor() {
-      if (!advisorPool || advisorPool.length === 0) {
-        document.getElementById('advisorCard').style.display = 'none';
-        document.getElementById('advAddBtn').style.display = 'none';
-        alert('По выбранным критериям ничего не найдено!');
-        return;
-      }
-
-      document.getElementById('advisorCard').style.display = 'flex';
-      document.getElementById('advAddBtn').style.display = 'inline-flex';
-
-      if (advisorHistory.length >= advisorPool.length) {
-        advisorHistory = [];
-      }
-
-      let available = advisorPool.filter(g => !advisorHistory.includes(g.title));
-      if (available.length === 0) available = advisorPool;
-
-      const chosen = available[0];
-      advisorHistory.push(chosen.title);
-      currentAdvisorHit = chosen;
-
-      document.getElementById('advTitle').textContent = chosen.title;
-      document.getElementById('advCover').src = chosen.cover || DEFAULT_COVER_SVG;
-      document.getElementById('advPlatform').textContent = chosen.platform || 'PC';
-      document.getElementById('advGenre').textContent = chosen.genreName || 'Хит';
-      document.getElementById('advRating').textContent = chosen.rating ? `⭐ ${chosen.rating}/10` : '⭐ 9/10';
-      document.getElementById('advHook').textContent = chosen.hook || '✨ Отличная игра!';
-      document.getElementById('advDesc').textContent = chosen.desc || chosen.description || '';
-
-      const exists = games.some(g => g.title.toLowerCase() === chosen.title.toLowerCase());
-      const addBtn = document.getElementById('advAddBtn');
-      if (exists) {
-        addBtn.textContent = '✅ Уже в вашем списке';
-        addBtn.disabled = true;
-      } else {
-        addBtn.textContent = '➕ В мой список';
-        addBtn.disabled = false;
-      }
-    }
-
-    function addAdvisorGameToCollection() {
-      if (!currentAdvisorHit) return;
-      const newGame = {
-        id: Date.now().toString(),
-        title: currentAdvisorHit.title,
-        status: 'planned',
-        platform: currentAdvisorHit.platform ? currentAdvisorHit.platform.split(' / ')[0] : 'PC',
-        rating: currentAdvisorHit.rating || '',
-        completedDate: '',
-        cover: currentAdvisorHit.cover || '',
-        description: currentAdvisorHit.desc || currentAdvisorHit.description || '',
-        notes: currentAdvisorHit.hook ? `Рекомендация: ${currentAdvisorHit.hook}` : '',
-        checklist: [],
-        screenshots: []
-      };
-
-      games.unshift(newGame);
-      persistData();
-      renderGames();
-
-      const addBtn = document.getElementById('advAddBtn');
-      addBtn.textContent = '✅ Добавлено!';
-      addBtn.disabled = true;
-    }
-
-    function renderEditChecklist() {
-      const container = document.getElementById('editChecklistContainer');
-      container.innerHTML = '';
-      tempChecklist.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'checklist-item ' + (item.done ? 'done' : '');
-        div.innerHTML = `
-          <input type="checkbox" ${item.done ? 'checked' : ''} onchange="tempChecklist[${index}].done = this.checked; renderEditChecklist();" />
-          <span style="flex-grow:1; font-size:0.82rem;">${item.text}</span>
-          <button type="button" class="checklist-del-btn" onclick="tempChecklist.splice(${index}, 1); renderEditChecklist();">&times;</button>
-        `;
-        container.appendChild(div);
+    // --- Filter chips & search ---
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        currentFilter = chip.dataset.filter;
+        renderList();
       });
-    }
+    });
 
-    function addChecklistItem() {
-      const input = document.getElementById('newChecklistInput');
-      const text = input.value.trim();
-      if (!text) return;
-      tempChecklist.push({ id: Date.now().toString(), text: text, done: false });
-      input.value = '';
-      renderEditChecklist();
-    }
+    searchInput.addEventListener("input", renderList);
 
-    function openAddModal() {
-      editingId = null;
-      tempChecklist = [];
-      document.getElementById('modalFormTitle').textContent = 'Добавить игру';
-      document.getElementById('gameTitleInput').value = '';
-      document.getElementById('gameStatusSelect').value = 'playing';
-      document.getElementById('gamePlatformSelect').value = 'PC';
-      document.getElementById('gameRatingSelect').value = '';
-      document.getElementById('gameCompletedDateInput').value = '';
-      document.getElementById('gameCoverInput').value = '';
-      document.getElementById('searchCandidatesArea').innerHTML = '';
-      document.getElementById('searchCandidatesArea').style.display = 'none';
-      updateCoverPreview('');
-      document.getElementById('gameDescInput').value = '';
-      document.getElementById('deleteBtn').style.display = 'none';
-      renderEditChecklist();
-      document.getElementById('editModal').style.display = 'flex';
-    }
+    // --- Add / Edit Game Modal ---
+    document.getElementById("btn-add-game").addEventListener("click", () => {
+      modalHeading.textContent = "Добавить игру";
+      formGameId.value = "";
+      gameForm.reset();
+      gameModal.classList.add("active");
+    });
 
-    function openEditModal(id) {
-      const game = games.find(g => g.id === id);
+    document.getElementById("btn-edit-game").addEventListener("click", () => {
+      const game = games.find(g => g.id === activeGameId);
       if (!game) return;
-      editingId = id;
-      tempChecklist = JSON.parse(JSON.stringify(game.checklist || []));
+      modalHeading.textContent = "Редактировать игру";
+      formGameId.value = game.id;
+      formTitle.value = game.title;
+      formPlatform.value = game.platform || "";
+      formStatus.value = game.status;
+      formCover.value = game.cover || "";
+      formDesc.value = game.desc || "";
+      gameModal.classList.add("active");
+    });
 
-      document.getElementById('modalFormTitle').textContent = 'Редактировать игру';
-      document.getElementById('gameTitleInput').value = game.title;
-      document.getElementById('gameStatusSelect').value = game.status;
-      document.getElementById('gamePlatformSelect').value = game.platform || 'PC';
-      document.getElementById('gameRatingSelect').value = game.rating || '';
-      document.getElementById('gameCompletedDateInput').value = game.completedDate || '';
-      document.getElementById('gameCoverInput').value = game.cover;
-      document.getElementById('searchCandidatesArea').innerHTML = '';
-      document.getElementById('searchCandidatesArea').style.display = 'none';
-      updateCoverPreview(game.cover);
-      document.getElementById('gameDescInput').value = game.description;
-      document.getElementById('deleteBtn').style.display = 'block';
+    modalCancel.addEventListener("click", () => {
+      gameModal.classList.remove("active");
+    });
 
-      renderEditChecklist();
-      document.getElementById('editModal').style.display = 'flex';
-    }
+    gameForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = formGameId.value;
+      const title = formTitle.value.trim();
+      const platform = formPlatform.value.trim();
+      const status = formStatus.value;
+      const cover = formCover.value.trim();
+      const desc = formDesc.value.trim();
 
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-
-    function saveGame() {
-      const title = document.getElementById('gameTitleInput').value.trim();
-      if (!title) return alert('Введите название игры!');
-
-      const gameData = {
-        title: title,
-        status: document.getElementById('gameStatusSelect').value,
-        platform: document.getElementById('gamePlatformSelect').value,
-        rating: document.getElementById('gameRatingSelect').value,
-        completedDate: document.getElementById('gameCompletedDateInput').value,
-        cover: document.getElementById('gameCoverInput').value.trim(),
-        description: document.getElementById('gameDescInput').value.trim(),
-        checklist: tempChecklist
-      };
-
-      if (editingId) {
-        const index = games.findIndex(g => g.id === editingId);
-        if (index !== -1) {
-          games[index] = Object.assign({}, games[index], gameData);
+      if (id) {
+        // Edit existing
+        const game = games.find(g => g.id === id);
+        if (game) {
+          game.title = title;
+          game.platform = platform;
+          game.status = status;
+          game.cover = cover;
+          game.desc = desc;
         }
       } else {
-        gameData.id = Date.now().toString();
-        gameData.notes = '';
-        gameData.screenshots = [];
-        games.unshift(gameData);
+        // New game
+        const newGame = {
+          id: "game_" + Date.now(),
+          title,
+          platform,
+          status,
+          cover,
+          desc,
+          notes: "",
+          images: []
+        };
+        games.unshift(newGame);
+        activeGameId = newGame.id;
       }
 
-      persistData();
-      closeModal('editModal');
-      renderGames();
-    }
-
-    function deleteCurrentGame() {
-      if (!editingId) return;
-      if (confirm('Точно удалить эту игру из списка?')) {
-        games = games.filter(g => g.id !== editingId);
-        persistData();
-        closeModal('editModal');
-        closeModal('notebookModal');
-        renderGames();
+      saveGames(games);
+      gameModal.classList.remove("active");
+      renderList();
+      if (activeGameId) {
+        selectGame(activeGameId, true);
       }
-    }
+    });
 
-    function setStatusFilter(status, el) {
-      currentStatusFilter = status;
-      document.querySelectorAll('.filter-btn:not(.filter-btn-platform)').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      renderGames();
-    }
+    // Delete game
+    document.getElementById("btn-delete-game").addEventListener("click", () => {
+      const game = games.find(g => g.id === activeGameId);
+      if (!game) return;
+      if (confirm(`Удалить игру «${game.title}» и все записи к ней?`)) {
+        games = games.filter(g => g.id !== activeGameId);
+        saveGames(games);
+        activeGameId = null;
+        detailSection.classList.remove("active");
+        renderList();
+      }
+    });
 
-    function setPlatformFilter(platform, el) {
-      currentPlatformFilter = platform;
-      document.querySelectorAll('.filter-btn-platform').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-      renderGames();
-    }
+    // --- Backup & Restore Modal ---
+    btnBackup.addEventListener("click", () => {
+      backupModal.classList.add("active");
+    });
 
-    function persistData() {
-      try {
-        localStorage.setItem('gamers_corner_data', JSON.stringify(games));
-        localStorage.setItem('gamers_corner_safety_backup', JSON.stringify(games));
-      } catch(e) {}
-    }
+    backupClose.addEventListener("click", () => {
+      backupModal.classList.remove("active");
+    });
 
-    function exportData() {
-      const blob = new Blob([JSON.stringify(games, null, 2)], { type: 'application/json' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `gamers_corner_backup_${new Date().toISOString().slice(0,10)}.json`;
-      a.click();
-    }
+    btnExportJson.addEventListener("click", () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(games, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `gamerbox_backup_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    });
 
-    function importData(event) {
-      const file = event.target.files[0];
+    importJsonInput.addEventListener("change", function(e) {
+      const file = e.target.files[0];
       if (!file) return;
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = function(event) {
         try {
-          const imported = JSON.parse(e.target.result);
+          const imported = JSON.parse(event.target.result);
           if (Array.isArray(imported)) {
-            games = imported;
-            games.forEach(g => {
-              if (!g.platform) g.platform = 'PC';
-              if (!g.checklist) g.checklist = [];
-              if (!g.screenshots) g.screenshots = [];
-            });
-            persistData();
-            renderGames();
-            alert('База игр успешно восстановлена!');
+            saveGames(imported);
+            renderList();
+            if (imported.length > 0) selectGame(imported[0].id, false);
+            alert("База успешно импортирована!");
+            backupModal.classList.remove("active");
+          } else {
+            alert("Файл имеет неверный формат базы данных.");
           }
         } catch (err) {
-          alert('Ошибка при чтении файла резервной копии.');
+          alert("Ошибка чтения JSON-файла: " + err.message);
         }
       };
       reader.readAsText(file);
+      this.value = "";
+    });
+
+    btnResetDefaults.addEventListener("click", () => {
+      if (confirm("Сбросить базу к 4 начальным играм по умолчанию? Ваши текущие заметки будут заменены.")) {
+        saveGames(DEFAULT_GAMES);
+        renderList();
+        selectGame(DEFAULT_GAMES[0].id, false);
+        backupModal.classList.remove("active");
+      }
+    });
+
+    // Lightbox close
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    function escapeHtml(text) {
+      if (!text) return "";
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
     }
 
-    function recoverFromBackup() {
-      const choices = ['gamers_corner_safety_backup', 'gamers_corner_data'];
-      for (let i = 0; i < choices.length; i++) {
-        try {
-          const data = localStorage.getItem(choices[i]);
-          if (data) {
-            const parsed = JSON.parse(data);
-            if (Array.isArray(parsed) && parsed.length > 0) {
-              games = parsed;
-              localStorage.setItem('gamers_corner_data', JSON.stringify(games));
-              renderGames();
-              alert('База успешно восстановлена из памяти браузера: ' + games.length + ' игр!');
-              return;
-            }
-          }
-        } catch(e) {}
-      }
-      alert('Резервных записей в памяти браузера не найдено.');
+    // --- Initialize ---
+    games = loadGames();
+    renderList();
+    if (games.length > 0) {
+      selectGame(games[0].id, false);
     }
-
-    window.onclick = (e) => {
-      if (e.target.classList.contains('modal-overlay')) {
-        e.target.style.display = 'none';
-      }
-    };
-
-    // Запуск приложения
-    switchViewMode(currentViewMode);
-    renderGames();
   </script>
 </body>
 </html>
