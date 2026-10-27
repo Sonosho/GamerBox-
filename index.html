@@ -3,49 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Геймерский уголок v0.7</title>
-  <meta name="theme-color" content="#2c332d">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232c332d'/%3E%3Crect x='6' y='10' width='20' height='12' rx='4' fill='%2348574c' stroke='%2388a08b' stroke-width='1.5'/%3E%3Crect x='9' y='15' width='6' height='2' fill='%23d1dec9'/%3E%3Crect x='11' y='13' width='2' height='6' fill='%23d1dec9'/%3E%3Ccircle cx='21' cy='15' r='1.3' fill='%23e07a5f'/%3E%3Ccircle cx='23' cy='17' r='1.3' fill='%2381b29a'/%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%232c332d'/%3E%3Crect x='30' y='55' width='120' height='70' rx='25' fill='%2348574c' stroke='%2388a08b' stroke-width='6'/%3E%3Crect x='50' y='85' width='30' height='10' rx='2' fill='%23d1dec9'/%3E%3Crect x='60' y='75' width='10' height='30' rx='2' fill='%23d1dec9'/%3E%3Ccircle cx='125' cy='85' r='7' fill='%23e07a5f'/%3E%3Ccircle cx='137' cy='97' r='7' fill='%2381b29a'/%3E%3C/svg%3E">
+  <title>Геймерский уголок v0.8</title>
+  <meta name="theme-color" content="#18201a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2318201a'/%3E%3Crect x='4' y='8' width='24' height='16' rx='3' fill='%23384a3c' stroke='%23709477' stroke-width='2'/%3E%3Crect x='8' y='14' width='6' height='2' fill='%23c2d6c6'/%3E%3Crect x='10' y='12' width='2' height='6' fill='%23c2d6c6'/%3E%3Crect x='20' y='13' width='3' height='3' fill='%23e06c53'/%3E%3Crect x='23' y='16' width='3' height='3' fill='%235ea881'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='24' fill='%2318201a'/%3E%3Crect x='25' y='45' width='130' height='90' rx='18' fill='%23384a3c' stroke='%23709477' stroke-width='8'/%3E%3Crect x='45' y='80' width='32' height='12' fill='%23c2d6c6'/%3E%3Crect x='55' y='70' width='12' height='32' fill='%23c2d6c6'/%3E%3Crect x='115' y='75' width='16' height='16' rx='2' fill='%23e06c53'/%3E%3Crect x='132' y='92' width='16' height='16' rx='2' fill='%235ea881'/%3E%3C/svg%3E">
+
   <style>
+    /* --- RETRO PIXEL VARIABLES & THEME --- */
     :root {
-      --bg-main: #ecefe9;
-      --bg-surface: #ffffff;
-      --bg-card: #f8faf7;
-      --border-color: #d6ded2;
-      --border-dark: #b8c4b3;
-      --text-main: #242c25;
-      --text-muted: #5e6b5f;
-      --primary: #3d5a45;
-      --primary-hover: #2e4434;
-      --accent: #b45309;
+      --bg-dark: #121814;
+      --panel-bg: #1c251f;
+      --card-bg: #222d25;
+      --card-hover: #29362d;
+      --pixel-border: #445949;
+      --pixel-border-bright: #698b71;
+      --text-main: #e2ebe4;
+      --text-dim: #92a897;
+      --accent-retro: #eab308;
+      --btn-green: #2e7d32;
+      --btn-green-hover: #388e3c;
 
-      /* Book theme */
-      --book-leather: #3c2a21;
-      --book-leather-light: #543d31;
-      --book-paper: #fbf7ec;
-      --book-paper-dark: #f2e9d2;
-      --book-lines: rgba(90, 75, 60, 0.12);
-      --book-margin: rgba(180, 80, 70, 0.28);
-      --book-text: #2f2519;
-      --book-text-muted: #6e5e4e;
+      /* Ancient Notebook Theme */
+      --book-leather: #38261c;
+      --book-edge: #23160f;
+      --book-paper: #f8f3e3;
+      --book-paper-shade: #eee4cb;
+      --book-lines: rgba(110, 85, 60, 0.14);
+      --book-margin-line: rgba(185, 75, 60, 0.35);
+      --book-ink: #2b2015;
+      --book-ink-muted: #6f5c49;
 
-      /* Status colors */
-      --st-playing: #2e7d32;
-      --st-playing-bg: #e8f5e9;
-      --st-planned: #0277bd;
-      --st-planned-bg: #e1f5fe;
-      --st-completed: #556b2f;
-      --st-completed-bg: #f1f8e9;
-      --st-paused: #c2410c;
-      --st-paused-bg: #fff7ed;
+      /* Retro status tags */
+      --tag-play-bg: #17381b;
+      --tag-play-fg: #6ee787;
+      --tag-play-border: #2e7d32;
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-      --shadow-book: 0 10px 25px rgba(44, 30, 20, 0.25), inset 0 0 15px rgba(139, 94, 60, 0.12);
+      --tag-plan-bg: #132e42;
+      --tag-plan-fg: #64b5f6;
+      --tag-plan-border: #1976d2;
+
+      --tag-comp-bg: #2f3818;
+      --tag-comp-fg: #cddc39;
+      --tag-comp-border: #689f38;
+
+      --tag-pause-bg: #3d2315;
+      --tag-pause-fg: #ffb74d;
+      --tag-pause-border: #f57c00;
     }
 
     * {
@@ -55,449 +58,505 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-main);
+    /* Seamless Pixel Grid Pattern */
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(rgba(110, 148, 119, 0.12) 1px, transparent 1px),
+        linear-gradient(to right, rgba(25, 35, 28, 0.7) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(25, 35, 28, 0.7) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px, 16px 16px;
       color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace;
       min-height: 100vh;
       overflow-x: hidden;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .container {
-      max-width: 960px;
+    .app-container {
+      max-width: 940px;
       margin: 0 auto;
-      padding: 16px 14px 60px;
+      padding: 14px 12px 60px;
+    }
+
+    /* Pixel Art Bevel Box Style */
+    .retro-box {
+      background: var(--panel-bg);
+      border: 2px solid var(--pixel-border);
+      box-shadow: 2px 2px 0px #090e0b, -1px -1px 0px #2f3e33 inset;
+      border-radius: 4px;
     }
 
     /* Header */
     header {
+      padding: 12px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 16px;
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border-color);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .header-brand {
+    .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .pixel-pad-icon {
-      width: 32px;
-      height: 32px;
-      background: #2c332d;
-      border-radius: 6px;
+    .retro-gamepad-icon {
+      width: 34px;
+      height: 34px;
+      background: #121814;
+      border: 2px solid var(--pixel-border-bright);
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 0 0 1px #88a08b;
+      box-shadow: 1px 1px 0 #000;
+      flex-shrink: 0;
     }
 
-    .pixel-pad-icon svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .header-brand h1 {
-      font-size: 1.25rem;
+    .brand-title {
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--primary);
-      letter-spacing: -0.02em;
+      letter-spacing: 0.02em;
+      color: #9fe2aa;
+      text-transform: uppercase;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 1px 1px 0 #0d1a10;
     }
 
     .version-tag {
       font-size: 0.72rem;
-      font-weight: 600;
-      background: #e2e9df;
-      color: var(--primary);
-      padding: 2px 7px;
-      border-radius: 12px;
+      background: #2f4534;
+      color: #e2f7e6;
+      padding: 2px 6px;
+      border: 1px solid var(--pixel-border-bright);
+      border-radius: 2px;
+      font-family: monospace;
+      vertical-align: middle;
       margin-left: 6px;
     }
 
-    .header-actions {
+    .header-btns {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       font-size: 0.88rem;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-      border: 1px solid transparent;
+      font-weight: 700;
+      padding: 7px 12px;
       cursor: pointer;
-      transition: all 0.15s ease;
-      background: var(--bg-surface);
-      color: var(--text-main);
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-family: inherit;
+      transition: all 0.1s ease;
+      user-select: none;
     }
 
-    .btn-primary {
-      background: var(--primary);
+    .btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: none !important;
+    }
+
+    .btn-green {
+      background: var(--btn-green);
       color: #ffffff;
-      border-color: var(--primary);
+      border: 2px solid #5cae63;
+      box-shadow: 2px 2px 0px #133a18;
+    }
+    .btn-green:hover {
+      background: var(--btn-green-hover);
     }
 
-    .btn-primary:hover {
-      background: var(--primary-hover);
+    .btn-dark {
+      background: #25332a;
+      color: #c9ded0;
+      border: 2px solid var(--pixel-border);
+      box-shadow: 2px 2px 0px #0e1611;
+    }
+    .btn-dark:hover {
+      background: #2f4035;
+      color: #ffffff;
     }
 
-    .btn-ghost {
-      border-color: var(--border-color);
-      color: var(--text-muted);
-      background: #fbfdfa;
+    .btn-danger {
+      background: #6b2020;
+      color: #ffc4c4;
+      border: 2px solid #993b3b;
+      box-shadow: 2px 2px 0px #380d0d;
+    }
+    .btn-danger:hover {
+      background: #802727;
     }
 
-    .btn-ghost:hover {
-      background: #eaf0e7;
-      color: var(--text-main);
+    /* Add/Edit Game Form Box (Inline, collapsible) */
+    .form-drawer {
+      padding: 14px;
+      margin-bottom: 14px;
+      display: none;
+      border-left: 4px solid #5cae63;
     }
 
-    /* Controls: Search & Filter */
+    .form-drawer.open {
+      display: block;
+      animation: retroSlide 0.15s ease-out;
+    }
+
+    @keyframes retroSlide {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-group-full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .retro-input {
+      width: 100%;
+      background: #141c16;
+      border: 1px solid var(--pixel-border);
+      color: #f0f7f2;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      border-radius: 2px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .retro-input:focus {
+      border-color: #698b71;
+      background: #19241c;
+      box-shadow: 0 0 0 1px #698b71;
+    }
+
+    /* Controls Panel */
     .controls-panel {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
       padding: 12px;
-      margin-bottom: 16px;
-      box-shadow: var(--shadow-sm);
+      margin-bottom: 14px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .search-box {
+    .search-row {
       position: relative;
       width: 100%;
     }
 
-    .search-box input {
-      width: 100%;
-      padding: 9px 12px 9px 36px;
-      font-size: 0.92rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      outline: none;
-      background: #fafcfa;
-      transition: border-color 0.2s, background 0.2s;
+    .search-row input {
+      padding-left: 32px;
     }
 
-    .search-box input:focus {
-      border-color: var(--primary);
-      background: #ffffff;
-    }
-
-    .search-box svg {
+    .search-row svg {
       position: absolute;
-      left: 11px;
+      left: 10px;
       top: 50%;
       transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      color: var(--text-muted);
+      width: 15px;
+      height: 15px;
+      color: var(--text-dim);
       pointer-events: none;
     }
 
-    .filter-chips {
+    .filter-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .chip {
-      padding: 5px 11px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      background: #f4f6f2;
-      color: var(--text-muted);
+    .pill {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border: 1px solid var(--pixel-border);
+      background: #151d17;
+      color: var(--text-dim);
       cursor: pointer;
-      user-select: none;
-      transition: all 0.15s ease;
-    }
-
-    .chip.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      font-weight: 600;
-    }
-
-    /* Game List (Concise) */
-    .list-section-title {
-      font-size: 0.82rem;
+      border-radius: 2px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      padding-left: 2px;
       font-weight: 700;
+      user-select: none;
+      transition: all 0.1s ease;
     }
 
-    .games-list {
+    .pill.active {
+      background: #2b3d30;
+      color: #9fe2aa;
+      border-color: #698b71;
+      box-shadow: inset 0 0 0 1px #698b71;
+    }
+
+    /* Concise Game List */
+    .section-headline {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .game-list-rows {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    .game-item {
+    .game-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
+      gap: 10px;
+      padding: 9px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--pixel-border);
+      border-radius: 3px;
       cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: var(--shadow-sm);
+      transition: all 0.1s ease;
+      box-shadow: 1px 1px 0 #0b110d;
     }
 
-    .game-item:hover {
-      border-color: var(--border-dark);
-      background: #fdfefd;
-      transform: translateY(-1px);
+    .game-row:hover {
+      background: var(--card-hover);
+      border-color: var(--pixel-border-bright);
+      transform: translateX(2px);
     }
 
-    .game-item.selected {
-      border-color: var(--primary);
-      background: #f4f8f3;
-      box-shadow: 0 0 0 1.5px var(--primary);
+    .game-row.active {
+      background: #26382b;
+      border-color: #72a37b;
+      box-shadow: 0 0 0 1px #72a37b, 2px 2px 0 #000;
     }
 
-    .game-item-cover {
-      width: 44px;
-      height: 52px;
-      border-radius: 4px;
+    .game-cover-mini {
+      width: 42px;
+      height: 50px;
       object-fit: cover;
-      background: #d8ded5;
+      background: #17211a;
+      border: 1px solid #3d4f41;
+      border-radius: 2px;
       flex-shrink: 0;
-      border: 1px solid var(--border-color);
     }
 
-    .game-item-info {
+    .game-meta {
       flex: 1;
       min-width: 0;
     }
 
-    .game-item-title {
-      font-weight: 600;
-      font-size: 0.96rem;
-      color: var(--text-main);
+    .game-title-text {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #f1f8f3;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 2px;
     }
 
-    .game-item-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+    .game-sub-text {
+      font-size: 0.76rem;
+      color: var(--text-dim);
     }
 
-    .platform-badge {
-      background: #eef2eb;
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
+    .status-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
       padding: 3px 8px;
-      border-radius: 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
       white-space: nowrap;
       flex-shrink: 0;
+      border-width: 1px;
+      border-style: solid;
     }
 
-    .status-playing {
-      background: var(--st-playing-bg);
-      color: var(--st-playing);
-      border: 1px solid #c8e6c9;
+    .st-playing {
+      background: var(--tag-play-bg);
+      color: var(--tag-play-fg);
+      border-color: var(--tag-play-border);
     }
-    .status-planned {
-      background: var(--st-planned-bg);
-      color: var(--st-planned);
-      border: 1px solid #b3e5fc;
+    .st-planned {
+      background: var(--tag-plan-bg);
+      color: var(--tag-plan-fg);
+      border-color: var(--tag-plan-border);
     }
-    .status-completed {
-      background: var(--st-completed-bg);
-      color: var(--st-completed);
-      border: 1px solid #dcedc8;
+    .st-completed {
+      background: var(--tag-comp-bg);
+      color: var(--tag-comp-fg);
+      border-color: var(--tag-comp-border);
     }
-    .status-paused {
-      background: var(--st-paused-bg);
-      color: var(--st-paused);
-      border: 1px solid #fed7aa;
-    }
-
-    .empty-state {
-      padding: 32px 16px;
-      text-align: center;
-      color: var(--text-muted);
-      background: var(--bg-surface);
-      border: 1px dashed var(--border-color);
-      border-radius: var(--radius-md);
+    .st-paused {
+      background: var(--tag-pause-bg);
+      color: var(--tag-pause-fg);
+      border-color: var(--tag-pause-border);
     }
 
-    /* Detail / Workspace Area */
-    .detail-container {
-      scroll-margin-top: 16px;
+    /* Workspace / Game Details (Smooth Scroll Target) */
+    .workspace-wrap {
+      scroll-margin-top: 14px;
       display: none;
     }
 
-    .detail-container.active {
+    .workspace-wrap.active {
       display: block;
-      animation: fadeIn 0.25s ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Top: Game Overview */
+    .overview-box {
+      padding: 14px;
+      margin-bottom: 18px;
     }
 
-    /* Top description card */
-    .overview-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .overview-layout {
+    .overview-content {
       display: flex;
       gap: 16px;
     }
 
-    .overview-poster {
-      width: 105px;
-      height: 140px;
+    .overview-poster-img {
+      width: 110px;
+      height: 146px;
       object-fit: cover;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-color);
+      background: #141c16;
+      border: 2px solid var(--pixel-border);
+      border-radius: 3px;
       flex-shrink: 0;
-      background: #e2e8df;
+      box-shadow: 2px 2px 0 #000;
     }
 
-    .overview-body {
+    .overview-info {
       flex: 1;
       min-width: 0;
     }
 
-    .overview-header-row {
+    .overview-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .overview-title {
+    .overview-title-h2 {
       font-size: 1.25rem;
       font-weight: 700;
+      color: #9fe2aa;
       line-height: 1.25;
-      color: var(--text-main);
+      font-family: 'Courier New', monospace;
     }
 
-    .overview-tags {
+    .overview-badges {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 10px;
     }
 
-    .overview-desc {
+    .platform-pill {
+      background: #141d16;
+      border: 1px solid var(--pixel-border);
+      color: #a4b8a8;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
+
+    .overview-text {
       font-size: 0.88rem;
-      color: var(--text-muted);
+      color: #ccd9cf;
       line-height: 1.5;
       max-height: 120px;
       overflow-y: auto;
-      padding-right: 4px;
+      margin-bottom: 12px;
     }
 
-    .overview-actions {
+    .overview-buttons {
       display: flex;
       gap: 8px;
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid #edf2eb;
+      flex-wrap: wrap;
     }
 
-    /* Field Notebook / Ancient Book */
-    .field-notebook {
+    /* BOTTOM: ANCIENT BOOK FIELD NOTEBOOK */
+    .ancient-book {
       background: var(--book-leather);
-      padding: 12px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-book);
+      border: 3px solid var(--book-edge);
+      border-radius: 6px;
+      padding: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 0 12px rgba(22, 14, 9, 0.7);
       position: relative;
-      border: 2px solid #281a13;
     }
 
-    /* Leather cover embossed styling */
-    .field-notebook::before {
+    /* Stitched book border */
+    .ancient-book::after {
       content: '';
       position: absolute;
       top: 6px;
       left: 6px;
       right: 6px;
       bottom: 6px;
-      border: 1px dashed rgba(212, 175, 55, 0.35);
-      border-radius: calc(var(--radius-lg) - 4px);
+      border: 1px dashed rgba(220, 185, 120, 0.35);
+      border-radius: 4px;
       pointer-events: none;
     }
 
-    .notebook-spine {
+    .book-titlebar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #e2cca6;
-      font-family: Georgia, serif;
-      font-size: 0.92rem;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+
+    .book-titlebar-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1rem;
       font-style: italic;
-      padding: 4px 10px 10px;
-      letter-spacing: 0.04em;
-    }
-
-    .notebook-spine span {
-      display: inline-flex;
+      color: #e5cfac;
+      display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      text-shadow: 1px 1px 1px #000;
     }
 
-    .bookmark-ribbon {
+    .book-ribbon {
       width: 14px;
-      height: 24px;
+      height: 22px;
       background: #8e2b20;
-      border-radius: 0 0 2px 2px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       position: relative;
     }
-
-    .bookmark-ribbon::after {
+    .book-ribbon::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -506,59 +565,59 @@
       height: 0;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
-      border-bottom: 6px solid var(--book-leather);
+      border-bottom: 5px solid var(--book-leather);
     }
 
-    .notebook-paper {
+    .parchment-sheet {
       background: var(--book-paper);
       background-image: 
-        linear-gradient(90deg, transparent 46px, var(--book-margin) 47px, transparent 48px),
+        linear-gradient(90deg, transparent 44px, var(--book-margin-line) 45px, transparent 46px),
         repeating-linear-gradient(transparent, transparent 27px, var(--book-lines) 28px);
-      border-radius: 6px;
-      padding: 20px 16px 20px 58px;
-      box-shadow: inset 3px 0 8px rgba(0,0,0,0.15), inset -3px 0 8px rgba(0,0,0,0.06);
+      border: 1px solid #c9bda3;
+      border-radius: 4px;
+      padding: 16px 14px 16px 54px;
+      box-shadow: inset 4px 0 10px rgba(0,0,0,0.18), inset -2px 0 6px rgba(0,0,0,0.06);
+      min-height: 260px;
       position: relative;
-      border: 1px solid #d4c8ad;
-      min-height: 280px;
     }
 
-    .notebook-paper::before {
-      /* Left binder holes */
+    /* Left punch holes */
+    .parchment-sheet::before {
       content: '';
       position: absolute;
-      left: 18px;
-      top: 24px;
-      bottom: 24px;
+      left: 14px;
+      top: 20px;
+      bottom: 20px;
       width: 8px;
-      background: repeating-linear-gradient(to bottom, #7a5c43, #7a5c43 8px, transparent 8px, transparent 48px);
+      background: repeating-linear-gradient(to bottom, #7a5d46, #7a5d46 8px, transparent 8px, transparent 46px);
       border-radius: 4px;
-      opacity: 0.35;
+      opacity: 0.4;
     }
 
-    .notebook-header {
+    .sheet-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
-      border-bottom: 1px solid rgba(90, 75, 60, 0.2);
+      border-bottom: 1px solid rgba(110, 85, 60, 0.25);
       padding-bottom: 6px;
+      margin-bottom: 10px;
     }
 
-    .notebook-title {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.05rem;
+    .sheet-game-name {
+      font-family: Georgia, serif;
       font-weight: 700;
-      color: var(--book-text);
-      letter-spacing: 0.02em;
+      font-size: 1.05rem;
+      color: var(--book-ink);
     }
 
-    .notebook-save-status {
-      font-size: 0.75rem;
+    .sheet-autosave-msg {
+      font-family: Georgia, serif;
+      font-size: 0.74rem;
       font-style: italic;
-      color: var(--book-text-muted);
+      color: var(--book-ink-muted);
     }
 
-    .notebook-textarea {
+    .book-textarea {
       width: 100%;
       min-height: 160px;
       background: transparent;
@@ -568,80 +627,73 @@
       font-family: Georgia, 'Palatino Linotype', serif;
       font-size: 0.98rem;
       line-height: 28px;
-      color: var(--book-text);
-      letter-spacing: 0.01em;
+      color: var(--book-ink);
       margin-bottom: 14px;
     }
 
-    .notebook-textarea::placeholder {
-      color: #9d8c79;
+    .book-textarea::placeholder {
+      color: #9c8975;
       font-style: italic;
     }
 
-    /* Images pinned inside the notebook */
-    .notebook-gallery-title {
+    .attached-maps-title {
       font-family: Georgia, serif;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--book-text);
+      color: var(--book-ink);
       margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
-    .notebook-images {
+    .gallery-pins {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 12px;
-      margin-top: 8px;
+      margin-bottom: 12px;
     }
 
-    .pinned-photo {
+    .pin-card {
       position: relative;
       background: #ffffff;
       padding: 6px 6px 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.22);
       border-radius: 2px;
-      transform: rotate(calc(-1.5deg + (3deg * var(--r, 0.5))));
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transform: rotate(calc(-1.5deg + (3deg * var(--rand, 0.5))));
+      transition: transform 0.15s, box-shadow 0.15s;
     }
 
-    .pinned-photo:hover {
-      transform: scale(1.03) rotate(0deg);
+    .pin-card:hover {
+      transform: scale(1.04) rotate(0deg);
       z-index: 5;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
     }
 
-    /* Old scotch-tape look on photos */
-    .pinned-photo::before {
+    /* Tape strip on photo */
+    .pin-card::before {
       content: '';
       position: absolute;
-      top: -7px;
+      top: -6px;
       left: 50%;
       transform: translateX(-50%);
-      width: 38px;
-      height: 12px;
-      background: rgba(255, 255, 230, 0.65);
-      border: 1px solid rgba(220, 210, 180, 0.5);
-      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      width: 36px;
+      height: 11px;
+      background: rgba(255, 255, 230, 0.7);
+      border: 1px solid rgba(210, 200, 170, 0.55);
     }
 
-    .pinned-photo img {
+    .pin-card img {
       width: 100%;
       height: 90px;
       object-fit: cover;
       display: block;
-      border-radius: 2px;
       cursor: zoom-in;
     }
 
-    .pinned-photo-del {
+    .pin-card-del {
       position: absolute;
       top: 2px;
       right: 2px;
-      background: rgba(142, 43, 32, 0.85);
-      color: white;
+      background: rgba(150, 40, 30, 0.9);
+      color: #fff;
       border: none;
       border-radius: 50%;
       width: 20px;
@@ -653,414 +705,337 @@
       cursor: pointer;
     }
 
-    .notebook-toolbar {
+    .notebook-tools {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 8px;
-      margin-top: 12px;
-      border-top: 1px dashed rgba(90, 75, 60, 0.25);
+      border-top: 1px dashed rgba(110, 85, 60, 0.3);
       padding-top: 10px;
     }
 
-    .btn-paper {
-      background: #eee4cc;
-      border: 1px solid #c9baa0;
-      color: var(--book-text);
+    .btn-parchment {
+      background: #ede0c2;
+      border: 1px solid #b8a684;
+      color: var(--book-ink);
       font-family: Georgia, serif;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       padding: 6px 12px;
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: background 0.15s;
     }
 
-    .btn-paper:hover {
-      background: #e2d4b8;
+    .btn-parchment:hover {
+      background: #e3d2ad;
     }
 
-    /* Modal / Popups */
-    .modal-overlay {
+    /* Lightbox */
+    .image-viewer {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(20, 25, 22, 0.65);
-      backdrop-filter: blur(2px);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      z-index: 100;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-box {
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      max-width: 480px;
-      width: 100%;
-      padding: 20px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border-color);
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    .modal-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 14px;
-    }
-
-    .form-group {
-      margin-bottom: 12px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 8px 10px;
-      font-size: 0.9rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      outline: none;
-      background: #fafbfa;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--primary);
-      background: #ffffff;
-    }
-
-    .modal-footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      margin-top: 16px;
-    }
-
-    /* Lightbox for screenshots */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.88);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
+      z-index: 999;
       padding: 16px;
       cursor: zoom-out;
     }
-
-    .lightbox.active {
+    .image-viewer.open {
       display: flex;
     }
-
-    .lightbox img {
+    .image-viewer img {
       max-width: 95vw;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 4px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      border: 2px solid #555;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding-top: 24px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+    /* Modal for Backup */
+    .modal-shade {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 800;
+      padding: 16px;
+    }
+    .modal-shade.open {
+      display: flex;
+    }
+    .modal-dialog {
+      background: var(--panel-bg);
+      border: 2px solid var(--pixel-border-bright);
+      padding: 18px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 4px 4px 0 #000;
     }
 
-    /* Mobile adjustments */
-    @media (max-width: 600px) {
-      .container {
-        padding: 10px 10px 50px;
+    /* Responsive */
+    @media (max-width: 620px) {
+      .app-container {
+        padding: 8px 8px 50px;
       }
-      .overview-layout {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .overview-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-      .overview-poster {
-        width: 130px;
-        height: 175px;
-      }
-      .overview-tags {
+      .overview-badges, .overview-buttons {
         justify-content: center;
       }
-      .overview-actions {
-        justify-content: center;
-      }
-      .notebook-paper {
-        padding: 16px 12px 16px 42px;
+      .parchment-sheet {
+        padding: 14px 10px 14px 40px;
         background-image: 
-          linear-gradient(90deg, transparent 34px, var(--book-margin) 35px, transparent 36px),
+          linear-gradient(90deg, transparent 32px, var(--book-margin-line) 33px, transparent 34px),
           repeating-linear-gradient(transparent, transparent 27px, var(--book-lines) 28px);
       }
-      .notebook-paper::before {
-        left: 12px;
-      }
-      .header-brand h1 {
-        font-size: 1.1rem;
+      .parchment-sheet::before {
+        left: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="header-brand">
-        <div class="pixel-pad-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d1dec9" stroke-width="2">
-            <rect x="2" y="6" width="20" height="12" rx="4" />
-            <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01" stroke-width="2.5" stroke-linecap="round"/>
+  <div class="app-container">
+
+    <!-- HEADER -->
+    <header class="retro-box">
+      <div class="brand-wrap">
+        <div class="retro-gamepad-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9fe2aa" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="3" stroke-width="2"/>
+            <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01" stroke-width="2.5" stroke-linecap="square"/>
           </svg>
         </div>
         <div>
-          <h1>Геймерский уголок <span class="version-tag">v0.7</span></h1>
+          <span class="brand-title">Геймерский уголок</span>
+          <span class="version-tag">v0.8</span>
         </div>
       </div>
-      <div class="header-actions">
-        <button class="btn btn-ghost" id="btn-backup" title="Управление базой">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
-            <polyline points="17 21 17 13 7 13 7 21"/>
-            <polyline points="7 3 7 8 15 8"/>
-          </svg>
-          База
+      <div class="header-btns">
+        <button class="btn btn-dark" onclick="toggleBackupModal(true)" title="Резервные копии">
+          💾 База
         </button>
-        <button class="btn btn-primary" id="btn-add-game">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="12" y1="5" x2="12" y2="19"/>
-            <line x1="5" y1="12" x2="19" y2="12"/>
-          </svg>
-          Добавить
+        <button class="btn btn-green" id="btn-toggle-add" onclick="toggleAddDrawer()">
+          ➕ Добавить игру
         </button>
       </div>
     </header>
 
-    <!-- Controls: Search & Status Filters -->
-    <section class="controls-panel">
-      <div class="search-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- INLINE ADD / EDIT GAME DRAWER (Direct & 100% Reliable) -->
+    <section class="retro-box form-drawer" id="game-drawer">
+      <div class="section-headline">
+        <span id="drawer-title" style="color:#9fe2aa;">➕ Новая запись игры</span>
+        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" onclick="toggleAddDrawer(false)">✕ Закрыть</button>
+      </div>
+
+      <form id="drawer-form" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" id="input-game-id" value="">
+        <div class="form-grid">
+          <div>
+            <label class="form-label">Название игры *</label>
+            <input type="text" id="input-title" class="retro-input" required placeholder="Например: Fable, Witcher 3...">
+          </div>
+          <div>
+            <label class="form-label">Платформа</label>
+            <input type="text" id="input-platform" class="retro-input" placeholder="PC, Xbox, Vita, Switch...">
+          </div>
+          <div>
+            <label class="form-label">Статус</label>
+            <select id="input-status" class="retro-input">
+              <option value="playing">Играю</option>
+              <option value="planned">В планах</option>
+              <option value="completed">Пройдено</option>
+              <option value="paused">На паузе</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Ссылка на обложку (URL)</label>
+            <input type="url" id="input-cover" class="retro-input" placeholder="https://... (необязательно)">
+          </div>
+          <div class="form-group-full">
+            <label class="form-label">Краткий синопсис / описание</label>
+            <textarea id="input-desc" class="retro-input" rows="2" placeholder="О чем игра, пара фраз о сеттинге..."></textarea>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn btn-dark" onclick="toggleAddDrawer(false)">Отмена</button>
+          <button type="submit" class="btn btn-green" id="btn-drawer-submit">✅ Сохранить в список</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- CONTROLS: SEARCH & FILTER CHIPS -->
+    <section class="retro-box controls-panel">
+      <div class="search-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="11" cy="11" r="8"/>
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" id="search-input" placeholder="Поиск по названию или платформе...">
+        <input type="text" id="search-box" class="retro-input" placeholder="Быстрый поиск по названию или платформе..." oninput="handleSearch(this.value)">
       </div>
-      <div class="filter-chips">
-        <button class="chip active" data-filter="all">Все (<span id="count-all">0</span>)</button>
-        <button class="chip" data-filter="playing">Играю (<span id="count-playing">0</span>)</button>
-        <button class="chip" data-filter="planned">В планах (<span id="count-planned">0</span>)</button>
-        <button class="chip" data-filter="completed">Пройдено (<span id="count-completed">0</span>)</button>
-        <button class="chip" data-filter="paused">На паузе (<span id="count-paused">0</span>)</button>
+      <div class="filter-pills">
+        <button class="pill active" data-filter="all" onclick="setFilter('all', this)">Все (<span id="cnt-all">0</span>)</button>
+        <button class="pill" data-filter="playing" onclick="setFilter('playing', this)">Играю (<span id="cnt-playing">0</span>)</button>
+        <button class="pill" data-filter="planned" onclick="setFilter('planned', this)">В планах (<span id="cnt-planned">0</span>)</button>
+        <button class="pill" data-filter="completed" onclick="setFilter('completed', this)">Пройдено (<span id="cnt-completed">0</span>)</button>
+        <button class="pill" data-filter="paused" onclick="setFilter('paused', this)">На паузе (<span id="cnt-paused">0</span>)</button>
       </div>
     </section>
 
-    <!-- Concise Game List -->
-    <div class="list-section-title">Список игр</div>
-    <div class="games-list" id="games-list-container">
-      <!-- Generated via JS -->
+    <!-- CONCISE GAME LIST -->
+    <div class="section-headline">
+      <span>Список игр (<span id="list-total-count">0</span>)</span>
+      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Нажмите на игру для перехода</span>
     </div>
 
-    <!-- Active Game Detail Section (Overview + Field Notebook) -->
-    <section class="detail-container" id="game-detail-section">
+    <div class="game-list-rows" id="games-container">
+      <!-- Populated via Javascript -->
+    </div>
+
+    <!-- WORKSPACE: GAME DETAILS & ANCIENT FIELD NOTEBOOK -->
+    <div class="workspace-wrap" id="game-workspace">
 
       <!-- Top: Quick Overview -->
-      <div class="overview-card">
-        <div class="overview-layout">
-          <img src="" alt="Обложка" class="overview-poster" id="detail-poster">
-          <div class="overview-body">
-            <div class="overview-header-row">
-              <h2 class="overview-title" id="detail-title">Название игры</h2>
+      <div class="retro-box overview-box">
+        <div class="overview-content">
+          <img src="" id="view-cover" class="overview-poster-img" alt="Обложка">
+          <div class="overview-info">
+            <div class="overview-head">
+              <h2 class="overview-title-h2" id="view-title">Название игры</h2>
             </div>
-            <div class="overview-tags">
-              <span class="platform-badge" id="detail-platform">PC</span>
-              <span class="status-badge" id="detail-status-badge">Играю</span>
-              <span id="detail-year" style="font-size:0.8rem; color:var(--text-muted);"></span>
+            <div class="overview-badges">
+              <span class="platform-pill" id="view-platform">PC</span>
+              <span class="status-tag" id="view-status-tag">Играю</span>
             </div>
-            <p class="overview-desc" id="detail-desc">Краткое описание сюжета и игры появится здесь...</p>
-            <div class="overview-actions">
-              <button class="btn btn-ghost" id="btn-edit-game" style="font-size:0.8rem; padding:5px 10px;">
-                ✏️ Изменить
-              </button>
-              <button class="btn btn-ghost" id="btn-delete-game" style="font-size:0.8rem; padding:5px 10px; color:#b91c1c;">
-                🗑️ Удалить
-              </button>
+            <p class="overview-text" id="view-desc">Описание отсутствует.</p>
+            <div class="overview-buttons">
+              <button class="btn btn-dark" onclick="startEditCurrentGame()">✏️ Редактировать</button>
+              <button class="btn btn-danger" onclick="deleteCurrentGame()">🗑️ Удалить игру</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Bottom: Ancient / Field Notebook -->
-      <div class="field-notebook">
-        <div class="notebook-spine">
-          <span>📖 Полевой дневник игрока</span>
-          <div class="bookmark-ribbon" title="Закладка"></div>
+      <!-- Bottom: Ancient Book Field Journal -->
+      <div class="ancient-book">
+        <div class="book-titlebar">
+          <div class="book-titlebar-title">
+            <span>📜 Полевой журнал следопыта</span>
+          </div>
+          <div class="book-ribbon" title="Шёлковая закладка"></div>
         </div>
 
-        <div class="notebook-paper">
-          <div class="notebook-header">
-            <div class="notebook-title" id="notebook-game-label">Заметки к игре</div>
-            <div class="notebook-save-status" id="save-indicator">Сохранено</div>
+        <div class="parchment-sheet">
+          <div class="sheet-header">
+            <div class="sheet-game-name" id="book-game-title">Заметки к игре</div>
+            <div class="sheet-autosave-msg" id="book-save-status">Запись сохранена</div>
           </div>
 
           <textarea 
-            class="notebook-textarea" 
-            id="notebook-text" 
-            placeholder="Ведите полевые заметки здесь: пароли от сейфов, координаты тайников, рецепты зелий, прокачку билда или мысли о прохождении..."></textarea>
+            class="book-textarea" 
+            id="book-notes-input" 
+            placeholder="Ведите полевые заметки здесь: пароли от дверей, билды, рецепты, тайники, невыполненные квесты..."
+            oninput="handleNotesInput()"></textarea>
 
-          <div class="notebook-gallery-title">
-            <span>Вклеенные зарисовки и карты</span>
+          <div class="attached-maps-title">Вклеенные зарисовки и карты местности</div>
+          <div class="gallery-pins" id="book-gallery-pins">
+            <!-- Pinned screenshots / sketches -->
           </div>
 
-          <div class="notebook-images" id="notebook-gallery">
-            <!-- Pinned screenshots / maps -->
-          </div>
-
-          <div class="notebook-toolbar">
-            <label class="btn-paper">
-              <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
-              📎 Вклеить карту / скриншот
+          <div class="notebook-tools">
+            <label class="btn-parchment">
+              <input type="file" id="file-image-picker" accept="image/*" style="display:none;" onchange="handleImageFileUpload(event)">
+              📎 Вклеить снимок с устройства
             </label>
-            <button class="btn-paper" id="btn-prompt-img-url">
-              🔗 Добавить по ссылке
+            <button class="btn-parchment" onclick="promptAddImageUrl()">
+              🔗 Вклеить по ссылке (URL)
             </button>
           </div>
         </div>
       </div>
 
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-      Геймерский уголок • Версия 0.7 • Полевой журнал бэклога
+    <!-- FOOTER -->
+    <footer style="text-align: center; margin-top: 30px; font-size: 0.78rem; color: #627c69; font-family: monospace;">
+      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 0.8 • RETRO EDITION
     </footer>
+
   </div>
 
-  <!-- Modal: Add / Edit Game -->
-  <div class="modal-overlay" id="game-modal">
-    <div class="modal-box">
-      <h3 class="modal-title" id="modal-heading">Добавить игру</h3>
-      <form id="game-form">
-        <input type="hidden" id="form-game-id">
-        <div class="form-group">
-          <label for="form-title">Название игры *</label>
-          <input type="text" id="form-title" required placeholder="Например: Fable Anniversary">
-        </div>
-        <div class="form-group">
-          <label for="form-platform">Платформа</label>
-          <input type="text" id="form-platform" placeholder="PC, Xbox Series, PS Vita, Switch...">
-        </div>
-        <div class="form-group">
-          <label for="form-status">Статус прохождения</label>
-          <select id="form-status">
-            <option value="playing">Играю</option>
-            <option value="planned">В планах</option>
-            <option value="completed">Пройдено</option>
-            <option value="paused">На паузе</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="form-cover">Ссылка на обложку (URL)</label>
-          <input type="url" id="form-cover" placeholder="https://... или оставьте пустым">
-        </div>
-        <div class="form-group">
-          <label for="form-desc">Краткое описание</label>
-          <textarea id="form-desc" rows="3" placeholder="Пара предложений о сюжете или геймплее..."></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-ghost" id="modal-cancel">Отмена</button>
-          <button type="submit" class="btn btn-primary">Сохранить</button>
-        </div>
-      </form>
-    </div>
+  <!-- LIGHTBOX IMAGE VIEWER -->
+  <div class="image-viewer" id="lightbox-viewer" onclick="this.classList.remove('open')">
+    <img id="lightbox-viewer-img" src="" alt="Снимок">
   </div>
 
-  <!-- Modal: Backup / Restore / Reset -->
-  <div class="modal-overlay" id="backup-modal">
-    <div class="modal-box">
-      <h3 class="modal-title">Управление базой игр</h3>
-      <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:14px;">
-        Ваши записи сохраняются прямо в браузере. Вы можете экспортировать резервную копию в файл или восстановить её.
+  <!-- BACKUP & RESTORE MODAL -->
+  <div class="modal-shade" id="modal-backup-shade">
+    <div class="modal-dialog">
+      <div class="section-headline" style="color:#9fe2aa; margin-bottom:12px;">
+        <span>Управление базой игр</span>
+        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" onclick="toggleBackupModal(false)">✕</button>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-dim); margin-bottom:14px;">
+        Все данные надёжно сохраняются в памяти браузера. Вы можете сохранить файл базы на диск или восстановить его на любом устройстве.
       </p>
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        <button class="btn btn-ghost" id="btn-export-json" style="justify-content: flex-start;">
-          💾 Экспортировать базу в файл (JSON)
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-dark" style="justify-content:flex-start;" onclick="exportDatabaseFile()">
+          💾 Экспортировать в файл (.json)
         </button>
-        <label class="btn btn-ghost" style="justify-content: flex-start; cursor: pointer;">
-          <input type="file" id="import-json-input" accept=".json" style="display: none;">
-          📥 Импортировать базу из файла
+        <label class="btn btn-dark" style="justify-content:flex-start; cursor:pointer;">
+          <input type="file" id="file-import-json" accept=".json" style="display:none;" onchange="importDatabaseFile(event)">
+          📥 Импортировать из файла (.json)
         </label>
-        <button class="btn btn-ghost" id="btn-reset-defaults" style="justify-content: flex-start; color: #b45309;">
-          🔄 Вернуть начальный набор игр
+        <button class="btn btn-danger" style="justify-content:flex-start;" onclick="resetToInitialDefaults()">
+          🔄 Сбросить к исходным 4 играм
         </button>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="backup-close">Закрыть</button>
+      <div style="margin-top:14px; text-align:right;">
+        <button class="btn btn-green" onclick="toggleBackupModal(false)">Готово</button>
       </div>
     </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="" alt="Увеличенный просмотр">
   </div>
 
   <script>
-    // --- Initial / Default Database ---
-    const DEFAULT_GAMES = [
+    // --- 1. DEFAULT DATA ---
+    const INITIAL_GAMES = [
       {
-        id: "game_fable",
+        id: "g_fable",
         title: "Fable Anniversary",
         platform: "PC / Xbox",
         status: "playing",
         cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/Fable_Anniversary_cover.jpg",
-        desc: "Ремастер легендарной ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
+        desc: "Ремастер классической ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
         notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.
 • Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.
 • Прокачать заклинание 'Молния' для быстрого контроля толпы.",
         images: []
       },
       {
-        id: "game_dying_light",
+        id: "g_dying_light",
         title: "Dying Light",
         platform: "PC",
         status: "playing",
         cover: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Dying_Light_cover.jpg",
         desc: "Паркур в открытом мире среди заражённых Харрана. Днём исследуйте руины и собирайте припасы, а ночью прячьтесь от смертоносных Прыгунов.",
         notes: "• Ночные вылазки дают удвоенный опыт выживания.
-• Чертеж 'Кореш Камикадзе' лежит на подвесном мосту.
+• Чертёж 'Кореш Камикадзе' лежит на подвесном мосту.
 • Собрать больше марли и спирта для аптечек.",
         images: []
       },
       {
-        id: "game_witcher3",
+        id: "g_witcher3",
         title: "Ведьмак 3: Дикая Охота",
         platform: "PC",
         status: "completed",
@@ -1068,361 +1043,356 @@
         desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
         notes: "• Заказ на Лихо у колодца выполнен.
 • Сет школы Грифона собран на 1-й уровень.
-• В Новиграде не забыть заглянуть к Пассифлоре на турнир по Гвинту.",
+• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
         images: []
       },
       {
-        id: "game_outer_worlds",
+        id: "g_outer_worlds",
         title: "The Outer Worlds",
         platform: "PC / Xbox",
         status: "planned",
         cover: "https://upload.wikimedia.org/wikipedia/ru/0/07/The_Outer_Worlds.jpg",
         desc: "Сатирическая космическая RPG от Obsidian. Колония Алкион под пятой корпораций, чернушный юмор, компаньоны и вариативные задания.",
-        notes: "• Первое прохождение планирую через диалоги и взлом.
-• Не забыть взять Парвати в команду на первопроходце.",
+        notes: "• Первое прохождение планирую через дипломатию и взлом.
+• Не забыть взять Парвати в команду на 'Первопроходце'.",
         images: []
       }
     ];
 
-    // State
-    const STORAGE_KEY = "gamerbox_games_v07";
-    // Migration fallback keys from previous versions
-    const LEGACY_KEYS = ["gamerbox_games", "gamers_corner_games", "gamerbox_data"];
-
-    let games = [];
-    let currentFilter = "all";
-    let activeGameId = null;
-    let saveTimeout = null;
-
-    // --- Data Storage Helpers ---
-    function loadGames() {
-      // 1. Try current v0.7 key
-      let raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        } catch (e) {
-          console.warn("Ошибка парсинга v0.7:", e);
-        }
-      }
-
-      // 2. Try legacy keys to preserve user's previous progress
-      for (const legKey of LEGACY_KEYS) {
-        let legRaw = localStorage.getItem(legKey);
-        if (legRaw) {
-          try {
-            const parsed = JSON.parse(legRaw);
-            if (Array.isArray(parsed) && parsed.length > 0) {
-              console.log("Восстановлена база из ключа " + legKey);
-              saveGames(parsed);
-              return parsed;
-            }
-          } catch (e) {}
-        }
-      }
-
-      // 3. Fallback to initial seed
-      return DEFAULT_GAMES;
-    }
-
-    function saveGames(data) {
-      games = data;
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
-      } catch (e) {
-        alert("Превышен лимит памяти браузера (localStorage). Рекомендуется удалить тяжёлые изображения.");
-      }
-    }
-
-    // --- Status metadata ---
+    // Status map
     const STATUS_MAP = {
-      playing: { label: "Играю", class: "status-playing" },
-      planned: { label: "В планах", class: "status-planned" },
-      completed: { label: "Пройдено", class: "status-completed" },
-      paused: { label: "На паузе", class: "status-paused" }
+      playing: { label: "Играю", cls: "st-playing" },
+      planned: { label: "В планах", cls: "st-planned" },
+      completed: { label: "Пройдено", cls: "st-completed" },
+      paused: { label: "На паузе", cls: "st-paused" }
     };
 
-    // --- DOM Elements ---
-    const gamesListEl = document.getElementById("games-list-container");
-    const searchInput = document.getElementById("search-input");
-    const chips = document.querySelectorAll(".chip");
+    // State
+    const STORAGE_KEY = "gamerbox_games_v08";
+    const OLD_STORAGE_KEYS = [
+      "gamerbox_games_v07",
+      "gamerbox_games",
+      "gamers_corner_games",
+      "gamerbox_data"
+    ];
 
-    // Details
-    const detailSection = document.getElementById("game-detail-section");
-    const detailPoster = document.getElementById("detail-poster");
-    const detailTitle = document.getElementById("detail-title");
-    const detailPlatform = document.getElementById("detail-platform");
-    const detailStatusBadge = document.getElementById("detail-status-badge");
-    const detailDesc = document.getElementById("detail-desc");
-    const notebookGameLabel = document.getElementById("notebook-game-label");
-    const notebookText = document.getElementById("notebook-text");
-    const notebookGallery = document.getElementById("notebook-gallery");
-    const saveIndicator = document.getElementById("save-indicator");
+    let gamesList = [];
+    let currentFilter = "all";
+    let activeGameId = null;
+    let notesTimer = null;
 
-    // Modal Add/Edit
-    const gameModal = document.getElementById("game-modal");
-    const gameForm = document.getElementById("game-form");
-    const modalHeading = document.getElementById("modal-heading");
-    const formGameId = document.getElementById("form-game-id");
-    const formTitle = document.getElementById("form-title");
-    const formPlatform = document.getElementById("form-platform");
-    const formStatus = document.getElementById("form-status");
-    const formCover = document.getElementById("form-cover");
-    const formDesc = document.getElementById("form-desc");
-    const modalCancel = document.getElementById("modal-cancel");
+    // --- 2. STORAGE SYSTEM WITH MIGRATION ---
+    function loadSavedGames() {
+      // Try v0.8
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return normalizeData(parsed);
+        }
+      } catch (e) {
+        console.warn("Storage v0.8 load error", e);
+      }
 
-    // Backup Modal
-    const backupModal = document.getElementById("backup-modal");
-    const backupClose = document.getElementById("backup-close");
-    const btnBackup = document.getElementById("btn-backup");
-    const btnExportJson = document.getElementById("btn-export-json");
-    const importJsonInput = document.getElementById("import-json-input");
-    const btnResetDefaults = document.getElementById("btn-reset-defaults");
+      // Try older versions
+      for (const oldKey of OLD_STORAGE_KEYS) {
+        try {
+          const oldStored = localStorage.getItem(oldKey);
+          if (oldStored) {
+            const parsed = JSON.parse(oldStored);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              console.log("Migrated from", oldKey);
+              const normalized = normalizeData(parsed);
+              saveGames(normalized);
+              return normalized;
+            }
+          }
+        } catch (e) {}
+      }
 
-    // Lightbox
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
+      // Default seed
+      return INITIAL_GAMES;
+    }
 
-    // --- Rendering ---
-    function renderCounters() {
-      const counts = { all: games.length, playing: 0, planned: 0, completed: 0, paused: 0 };
-      games.forEach(g => {
+    function normalizeData(arr) {
+      return arr.map((item, idx) => {
+        // Status normalization
+        let st = (item.status || "playing").toLowerCase();
+        if (st.includes("игра") || st === "playing") st = "playing";
+        else if (st.includes("план") || st.includes("буду") || st === "planned") st = "planned";
+        else if (st.includes("пройд") || st === "completed") st = "completed";
+        else if (st.includes("пауз") || st === "paused") st = "paused";
+        else st = "playing";
+
+        return {
+          id: item.id || ("game_" + Date.now() + "_" + idx),
+          title: item.title || "Без названия",
+          platform: item.platform || "PC",
+          status: st,
+          cover: item.cover || "",
+          desc: item.desc || item.description || "",
+          notes: item.notes || item.secrets || "",
+          images: Array.isArray(item.images) ? item.images : []
+        };
+      });
+    }
+
+    function saveGames(arr) {
+      gamesList = arr;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gamesList));
+      } catch (err) {
+        console.error("Local storage error:", err);
+      }
+    }
+
+    // --- 3. RENDERING ---
+    function updateCounters() {
+      const counts = { all: gamesList.length, playing: 0, planned: 0, completed: 0, paused: 0 };
+      gamesList.forEach(g => {
         if (counts[g.status] !== undefined) counts[g.status]++;
       });
-      document.getElementById("count-all").textContent = counts.all;
-      document.getElementById("count-playing").textContent = counts.playing;
-      document.getElementById("count-planned").textContent = counts.planned;
-      document.getElementById("count-completed").textContent = counts.completed;
-      document.getElementById("count-paused").textContent = counts.paused;
+      document.getElementById("cnt-all").textContent = counts.all;
+      document.getElementById("cnt-playing").textContent = counts.playing;
+      document.getElementById("cnt-planned").textContent = counts.planned;
+      document.getElementById("cnt-completed").textContent = counts.completed;
+      document.getElementById("cnt-paused").textContent = counts.paused;
+      document.getElementById("list-total-count").textContent = counts.all;
     }
 
     function renderList() {
-      renderCounters();
-      const query = searchInput.value.trim().toLowerCase();
+      updateCounters();
+      const container = document.getElementById("games-container");
+      const searchVal = document.getElementById("search-box").value.trim().toLowerCase();
 
-      const filtered = games.filter(g => {
+      const filtered = gamesList.filter(g => {
         const matchesFilter = (currentFilter === "all") || (g.status === currentFilter);
-        const matchesQuery = !query || 
-          g.title.toLowerCase().includes(query) || 
-          (g.platform && g.platform.toLowerCase().includes(query));
-        return matchesFilter && matchesQuery;
+        const matchesSearch = !searchVal || 
+          g.title.toLowerCase().includes(searchVal) || 
+          (g.platform && g.platform.toLowerCase().includes(searchVal));
+        return matchesFilter && matchesSearch;
       });
 
-      gamesListEl.innerHTML = "";
+      container.innerHTML = "";
 
       if (filtered.length === 0) {
-        gamesListEl.innerHTML = `
-          <div class="empty-state">
-            В этом разделе пока нет игр. Нажмите «Добавить», чтобы завести новую запись!
+        container.innerHTML = `
+          <div style="text-align:center; padding:24px; color:#859e8c; border:1px dashed #3a4c3e; border-radius:3px;">
+            В этом разделе нет игр. Нажмите «➕ Добавить игру» сверху!
           </div>
         `;
         return;
       }
 
       filtered.forEach(game => {
-        const stInfo = STATUS_MAP[game.status] || { label: game.status, class: "" };
+        const stInfo = STATUS_MAP[game.status] || STATUS_MAP.playing;
         const isSelected = game.id === activeGameId;
 
         const row = document.createElement("div");
-        row.className = `game-item ${isSelected ? "selected" : ""}`;
-        row.dataset.id = game.id;
+        row.className = "game-row" + (isSelected ? " active" : "");
+        row.onclick = () => selectGame(game.id, true);
 
-        const coverSrc = game.cover || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 50" fill="%23d8ded5"%3E%3Crect width="40" height="50"/%3E%3Ctext x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-size="14" fill="%238fa08c"%3E🎮%3C/text%3E%3C/svg%3E';
+        const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 50' fill='%2319241c'%3E%3Crect width='40' height='50'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
+        const coverSrc = game.cover && game.cover.trim() ? game.cover : fallbackSvg;
 
         row.innerHTML = `
-          <img src="${coverSrc}" class="game-item-cover" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 40 50\' fill=\'%23d8ded5\'%3E%3Crect width=\'40\' height=\'50\'/%3E%3C/svg%3E'">
-          <div class="game-item-info">
-            <div class="game-item-title">${escapeHtml(game.title)}</div>
-            <div class="game-item-meta">
-              <span class="platform-badge">${escapeHtml(game.platform || "Любая")}</span>
-            </div>
+          <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.src='${fallbackSvg}'">
+          <div class="game-meta">
+            <div class="game-title-text">${safeHtml(game.title)}</div>
+            <div class="game-sub-text">${safeHtml(game.platform || "Любая")}</div>
           </div>
-          <span class="status-badge ${stInfo.class}">
-            ${stInfo.label}
-          </span>
+          <span class="status-tag ${stInfo.cls}">${stInfo.label}</span>
         `;
 
-        row.addEventListener("click", () => {
-          selectGame(game.id, true);
-        });
-
-        gamesListEl.appendChild(row);
+        container.appendChild(row);
       });
     }
 
     function selectGame(gameId, smoothScroll = false) {
       activeGameId = gameId;
-      const game = games.find(g => g.id === gameId);
+      const game = gamesList.find(g => g.id === gameId);
+      const ws = document.getElementById("game-workspace");
+
       if (!game) {
-        detailSection.classList.remove("active");
+        ws.classList.remove("active");
         return;
       }
 
-      // Update selection in list
-      document.querySelectorAll(".game-item").forEach(el => {
-        el.classList.toggle("selected", el.dataset.id === gameId);
+      // Update selection styling in list
+      document.querySelectorAll(".game-row").forEach(el => {
+        el.classList.toggle("active", el.innerText.includes(game.title));
       });
 
-      // Populate overview
-      detailTitle.textContent = game.title;
-      detailPlatform.textContent = game.platform || "Платформа не указана";
+      // Fill overview
+      document.getElementById("view-title").textContent = game.title;
+      document.getElementById("view-platform").textContent = game.platform || "Платформа не указана";
 
-      const stInfo = STATUS_MAP[game.status] || { label: game.status, class: "" };
-      detailStatusBadge.textContent = stInfo.label;
-      detailStatusBadge.className = `status-badge ${stInfo.class}`;
+      const stInfo = STATUS_MAP[game.status] || STATUS_MAP.playing;
+      const statusTag = document.getElementById("view-status-tag");
+      statusTag.textContent = stInfo.label;
+      statusTag.className = "status-tag " + stInfo.cls;
 
-      detailDesc.textContent = game.desc || "Описание отсутствует. Нажмите «Изменить», чтобы добавить синопсис.";
-      detailPoster.src = game.cover || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" fill="%23d8ded5"%3E%3Crect width="100" height="130"/%3E%3Ctext x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-size="28" fill="%238fa08c"%3E🎮%3C/text%3E%3C/svg%3E';
+      document.getElementById("view-desc").textContent = game.desc || "Описание отсутствует. Нажмите 'Редактировать', чтобы добавить.";
 
-      // Populate notebook
-      notebookGameLabel.textContent = `Заметки: ${game.title}`;
-      notebookText.value = game.notes || "";
-      saveIndicator.textContent = "Сохранено";
-      renderGallery(game.images || []);
+      const fallbackSvgLarge = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' fill='%2319241c'%3E%3Crect width='100' height='130'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='26' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
+      const viewCover = document.getElementById("view-cover");
+      viewCover.src = game.cover && game.cover.trim() ? game.cover : fallbackSvgLarge;
+      viewCover.onerror = () => { viewCover.src = fallbackSvgLarge; };
 
-      detailSection.classList.add("active");
+      // Fill ancient notebook
+      document.getElementById("book-game-title").textContent = `Заметки: ${game.title}`;
+      document.getElementById("book-notes-input").value = game.notes || "";
+      document.getElementById("book-save-status").textContent = "Запись сохранена";
+
+      renderNotebookGallery(game.images || []);
+
+      ws.classList.add("active");
 
       if (smoothScroll) {
         setTimeout(() => {
-          detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 50);
+          ws.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 40);
       }
     }
 
-    function renderGallery(images) {
-      notebookGallery.innerHTML = "";
+    function renderNotebookGallery(images) {
+      const gallery = document.getElementById("book-gallery-pins");
+      gallery.innerHTML = "";
+
       if (!images || images.length === 0) {
-        notebookGallery.innerHTML = `<span style="font-size:0.8rem; color:#8c7b68; font-style:italic;">Пока нет прикреплённых карт или снимков.</span>`;
+        gallery.innerHTML = `<span style="font-size:0.8rem; color:#85725d; font-style:italic;">Пока нет прикреплённых карт или зарисовок.</span>`;
         return;
       }
 
-      images.forEach((imgUrl, idx) => {
-        const photo = document.createElement("div");
-        photo.className = "pinned-photo";
-        photo.style.setProperty("--r", (idx % 2 === 0 ? "0.8" : "0.2"));
+      images.forEach((imgSrc, idx) => {
+        const card = document.createElement("div");
+        card.className = "pin-card";
+        card.style.setProperty("--rand", (idx % 2 === 0 ? "0.8" : "0.2"));
 
-        photo.innerHTML = `
-          <img src="${imgUrl}" alt="Зарисовка ${idx + 1}">
-          <button class="pinned-photo-del" title="Удалить картинку">&times;</button>
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="Зарисовка">
+          <button class="pin-card-del" title="Удалить" onclick="deleteGalleryImage(event, ${idx})">&times;</button>
         `;
 
-        photo.querySelector("img").addEventListener("click", () => {
-          lightboxImg.src = imgUrl;
-          lightbox.classList.add("active");
-        });
+        card.querySelector("img").onclick = () => {
+          document.getElementById("lightbox-viewer-img").src = imgSrc;
+          document.getElementById("lightbox-viewer").classList.add("open");
+        };
 
-        photo.querySelector(".pinned-photo-del").addEventListener("click", (e) => {
-          e.stopPropagation();
-          if (confirm("Удалить этот снимок из полевого блокнота?")) {
-            deleteImageFromGame(idx);
-          }
-        });
-
-        notebookGallery.appendChild(photo);
+        gallery.appendChild(card);
       });
     }
 
-    function deleteImageFromGame(index) {
-      const game = games.find(g => g.id === activeGameId);
+    function deleteGalleryImage(e, index) {
+      e.stopPropagation();
+      const game = gamesList.find(g => g.id === activeGameId);
       if (!game || !game.images) return;
-      game.images.splice(index, 1);
-      saveGames(games);
-      renderGallery(game.images);
+      if (confirm("Удалить этот снимок из полевого журнала?")) {
+        game.images.splice(index, 1);
+        saveGames(gamesList);
+        renderNotebookGallery(game.images);
+      }
     }
 
-    // --- Autosave Notebook Notes ---
-    notebookText.addEventListener("input", () => {
-      saveIndicator.textContent = "Запись...";
-      clearTimeout(saveTimeout);
-      saveTimeout = setTimeout(() => {
-        const game = games.find(g => g.id === activeGameId);
+    // --- 4. NOTEBOOK AUTOSAVE ---
+    function handleNotesInput() {
+      const statusLabel = document.getElementById("book-save-status");
+      statusLabel.textContent = "Печатаем...";
+      clearTimeout(notesTimer);
+      notesTimer = setTimeout(() => {
+        const game = gamesList.find(g => g.id === activeGameId);
         if (game) {
-          game.notes = notebookText.value;
-          saveGames(games);
-          saveIndicator.textContent = "Сохранено в журнал";
+          game.notes = document.getElementById("book-notes-input").value;
+          saveGames(gamesList);
+          statusLabel.textContent = "Запись сохранена";
         }
-      }, 500);
-    });
+      }, 400);
+    }
 
-    // --- Image attachment ---
-    document.getElementById("image-upload-input").addEventListener("change", function(e) {
+    // --- 5. IMAGE ATTACHMENT ---
+    function handleImageFileUpload(e) {
       const file = e.target.files[0];
       if (!file) return;
 
       const reader = new FileReader();
-      reader.onload = function(event) {
-        addImageToCurrentGame(event.target.result);
+      reader.onload = function(evt) {
+        attachImageToGame(evt.target.result);
       };
       reader.readAsDataURL(file);
-      this.value = "";
-    });
-
-    document.getElementById("btn-prompt-img-url").addEventListener("click", () => {
-      const url = prompt("Введите прямую ссылку на изображение карты или скриншота:");
-      if (url && url.trim()) {
-        addImageToCurrentGame(url.trim());
-      }
-    });
-
-    function addImageToCurrentGame(imgSrc) {
-      const game = games.find(g => g.id === activeGameId);
-      if (!game) return;
-      if (!game.images) game.images = [];
-      game.images.push(imgSrc);
-      saveGames(games);
-      renderGallery(game.images);
+      e.target.value = "";
     }
 
-    // --- Filter chips & search ---
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        currentFilter = chip.dataset.filter;
-        renderList();
-      });
-    });
+    function promptAddImageUrl() {
+      const url = prompt("Введите ссылку (URL) на изображение карты или скриншота:");
+      if (url && url.trim()) {
+        attachImageToGame(url.trim());
+      }
+    }
 
-    searchInput.addEventListener("input", renderList);
-
-    // --- Add / Edit Game Modal ---
-    document.getElementById("btn-add-game").addEventListener("click", () => {
-      modalHeading.textContent = "Добавить игру";
-      formGameId.value = "";
-      gameForm.reset();
-      gameModal.classList.add("active");
-    });
-
-    document.getElementById("btn-edit-game").addEventListener("click", () => {
-      const game = games.find(g => g.id === activeGameId);
+    function attachImageToGame(src) {
+      const game = gamesList.find(g => g.id === activeGameId);
       if (!game) return;
-      modalHeading.textContent = "Редактировать игру";
-      formGameId.value = game.id;
-      formTitle.value = game.title;
-      formPlatform.value = game.platform || "";
-      formStatus.value = game.status;
-      formCover.value = game.cover || "";
-      formDesc.value = game.desc || "";
-      gameModal.classList.add("active");
-    });
+      if (!game.images) game.images = [];
+      game.images.push(src);
+      saveGames(gamesList);
+      renderNotebookGallery(game.images);
+    }
 
-    modalCancel.addEventListener("click", () => {
-      gameModal.classList.remove("active");
-    });
+    // --- 6. ADD / EDIT DRAWER (DIRECT & FOOLPROOF) ---
+    function toggleAddDrawer(forceOpen) {
+      const drawer = document.getElementById("game-drawer");
+      const isCurrentlyOpen = drawer.classList.contains("open");
+      const nextOpen = forceOpen !== undefined ? forceOpen : !isCurrentlyOpen;
 
-    gameForm.addEventListener("submit", (e) => {
+      if (nextOpen) {
+        // Reset form for fresh addition
+        document.getElementById("drawer-title").textContent = "➕ Новая запись игры";
+        document.getElementById("btn-drawer-submit").textContent = "✅ Сохранить в список";
+        document.getElementById("input-game-id").value = "";
+        document.getElementById("drawer-form").reset();
+        drawer.classList.add("open");
+        drawer.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => document.getElementById("input-title").focus(), 150);
+      } else {
+        drawer.classList.remove("open");
+      }
+    }
+
+    function startEditCurrentGame() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+
+      const drawer = document.getElementById("game-drawer");
+      document.getElementById("drawer-title").textContent = `✏️ Редактирование: ${game.title}`;
+      document.getElementById("btn-drawer-submit").textContent = "✅ Обновить данные";
+      document.getElementById("input-game-id").value = game.id;
+      document.getElementById("input-title").value = game.title;
+      document.getElementById("input-platform").value = game.platform || "";
+      document.getElementById("input-status").value = game.status;
+      document.getElementById("input-cover").value = game.cover || "";
+      document.getElementById("input-desc").value = game.desc || "";
+
+      drawer.classList.add("open");
+      drawer.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function handleFormSubmit(e) {
       e.preventDefault();
-      const id = formGameId.value;
-      const title = formTitle.value.trim();
-      const platform = formPlatform.value.trim();
-      const status = formStatus.value;
-      const cover = formCover.value.trim();
-      const desc = formDesc.value.trim();
+      const id = document.getElementById("input-game-id").value;
+      const title = document.getElementById("input-title").value.trim();
+      const platform = document.getElementById("input-platform").value.trim();
+      const status = document.getElementById("input-status").value;
+      const cover = document.getElementById("input-cover").value.trim();
+      const desc = document.getElementById("input-desc").value.trim();
+
+      if (!title) {
+        alert("Пожалуйста, введите название игры!");
+        return;
+      }
 
       if (id) {
         // Edit existing
-        const game = games.find(g => g.id === id);
+        const game = gamesList.find(g => g.id === id);
         if (game) {
           game.title = title;
           game.platform = platform;
@@ -1431,9 +1401,9 @@
           game.desc = desc;
         }
       } else {
-        // New game
+        // Add new
         const newGame = {
-          id: "game_" + Date.now(),
+          id: "g_" + Date.now(),
           title,
           platform,
           status,
@@ -1442,100 +1412,114 @@
           notes: "",
           images: []
         };
-        games.unshift(newGame);
+        gamesList.unshift(newGame);
         activeGameId = newGame.id;
       }
 
-      saveGames(games);
-      gameModal.classList.remove("active");
+      saveGames(gamesList);
+      toggleAddDrawer(false);
       renderList();
-      if (activeGameId) {
-        selectGame(activeGameId, true);
-      }
-    });
+      selectGame(activeGameId || id, true);
+    }
 
-    // Delete game
-    document.getElementById("btn-delete-game").addEventListener("click", () => {
-      const game = games.find(g => g.id === activeGameId);
+    function deleteCurrentGame() {
+      const game = gamesList.find(g => g.id === activeGameId);
       if (!game) return;
-      if (confirm(`Удалить игру «${game.title}» и все записи к ней?`)) {
-        games = games.filter(g => g.id !== activeGameId);
-        saveGames(games);
-        activeGameId = null;
-        detailSection.classList.remove("active");
+
+      if (confirm(`Точно удалить «${game.title}» и все полевые заметки по ней?`)) {
+        gamesList = gamesList.filter(g => g.id !== activeGameId);
+        saveGames(gamesList);
+        activeGameId = gamesList.length > 0 ? gamesList[0].id : null;
         renderList();
+        if (activeGameId) {
+          selectGame(activeGameId, false);
+        } else {
+          document.getElementById("game-workspace").classList.remove("active");
+        }
       }
-    });
+    }
 
-    // --- Backup & Restore Modal ---
-    btnBackup.addEventListener("click", () => {
-      backupModal.classList.add("active");
-    });
+    // --- 7. FILTER & SEARCH ---
+    function setFilter(filterKey, btnEl) {
+      currentFilter = filterKey;
+      document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+      btnEl.classList.add("active");
+      renderList();
+    }
 
-    backupClose.addEventListener("click", () => {
-      backupModal.classList.remove("active");
-    });
+    function handleSearch(val) {
+      renderList();
+    }
 
-    btnExportJson.addEventListener("click", () => {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(games, null, 2));
-      const downloadAnchor = document.createElement("a");
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `gamerbox_backup_${new Date().toISOString().slice(0,10)}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-    });
+    // --- 8. BACKUP & RESTORE MODAL ---
+    function toggleBackupModal(show) {
+      const modal = document.getElementById("modal-backup-shade");
+      modal.classList.toggle("open", show);
+    }
 
-    importJsonInput.addEventListener("change", function(e) {
+    function exportDatabaseFile() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gamesList, null, 2));
+      const a = document.createElement("a");
+      a.href = dataStr;
+      a.download = `gamerbox_v08_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function importDatabaseFile(e) {
       const file = e.target.files[0];
       if (!file) return;
+
       const reader = new FileReader();
-      reader.onload = function(event) {
+      reader.onload = function(evt) {
         try {
-          const imported = JSON.parse(event.target.result);
+          const imported = JSON.parse(evt.target.result);
           if (Array.isArray(imported)) {
-            saveGames(imported);
+            gamesList = normalizeData(imported);
+            saveGames(gamesList);
             renderList();
-            if (imported.length > 0) selectGame(imported[0].id, false);
+            if (gamesList.length > 0) selectGame(gamesList[0].id, false);
             alert("База успешно импортирована!");
-            backupModal.classList.remove("active");
+            toggleBackupModal(false);
           } else {
-            alert("Файл имеет неверный формат базы данных.");
+            alert("Неверный формат базы!");
           }
         } catch (err) {
-          alert("Ошибка чтения JSON-файла: " + err.message);
+          alert("Ошибка чтения файла: " + err.message);
         }
       };
       reader.readAsText(file);
-      this.value = "";
-    });
-
-    btnResetDefaults.addEventListener("click", () => {
-      if (confirm("Сбросить базу к 4 начальным играм по умолчанию? Ваши текущие заметки будут заменены.")) {
-        saveGames(DEFAULT_GAMES);
-        renderList();
-        selectGame(DEFAULT_GAMES[0].id, false);
-        backupModal.classList.remove("active");
-      }
-    });
-
-    // Lightbox close
-    lightbox.addEventListener("click", () => {
-      lightbox.classList.remove("active");
-    });
-
-    function escapeHtml(text) {
-      if (!text) return "";
-      const div = document.createElement("div");
-      div.textContent = text;
-      return div.innerHTML;
+      e.target.value = "";
     }
 
-    // --- Initialize ---
-    games = loadGames();
-    renderList();
-    if (games.length > 0) {
-      selectGame(games[0].id, false);
+    function resetToInitialDefaults() {
+      if (confirm("Сбросить текущие игры и вернуть стартовые 4 игры?")) {
+        gamesList = normalizeData(INITIAL_GAMES);
+        saveGames(gamesList);
+        renderList();
+        selectGame(gamesList[0].id, false);
+        toggleBackupModal(false);
+      }
+    }
+
+    function safeHtml(str) {
+      if (!str) return "";
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // --- 9. STARTUP ---
+    try {
+      gamesList = loadSavedGames();
+      renderList();
+      if (gamesList.length > 0) {
+        selectGame(gamesList[0].id, false);
+      }
+    } catch (err) {
+      console.error("Critical startup error:", err);
+      gamesList = INITIAL_GAMES;
+      renderList();
+      selectGame(gamesList[0].id, false);
     }
   </script>
 </body>
