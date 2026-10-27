@@ -1,65 +1,3023 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#121814"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Геймерский уголок"><title>Геймерский уголок 1.02</title><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><style>*{box-sizing:border-box} [hidden]{display:none!important} :root{color-scheme:dark;--bg:#121814;--panel:#202d24;--ink:#e4eee6;--muted:#adc1b1;--line:#58745e;--input:#121c15}body.day{color-scheme:light;--bg:#e5ebdf;--panel:#fafcf6;--ink:#18291e;--muted:#48614f;--line:#78967b;--input:#fff}body{margin:0;background-color:var(--bg);background-image:linear-gradient(90deg,#61846b18 2px,transparent 2px),linear-gradient(#61846b18 2px,transparent 2px);background-size:16px 16px;color:var(--ink);font:16px system-ui,sans-serif}main{max-width:940px;margin:auto;padding:14px}header,.panel,.row{background:var(--panel);border:2px solid var(--line);box-shadow:3px 3px #0005;padding:14px;margin-bottom:12px}header,.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}h1{font: bold 22px monospace;margin:0;flex:1}h2{font-size:21px}h3{font-size:17px}button,select,input,textarea{font:inherit}button,.filelabel{cursor:pointer;background:var(--panel);color:var(--ink);border:2px solid var(--line);padding:9px 12px;border-radius:3px}button:hover{filter:brightness(1.12)}button:disabled{opacity:.6;cursor:wait}input,textarea,select{background:var(--input);color:var(--ink);border:1px solid var(--line);padding:9px;max-width:100%}input:not([type=checkbox]):not([type=range]),textarea,select{width:100%}label{display:block;margin:8px 0}small,.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}.row{display:flex;align-items:center;gap:12px;padding:10px}.open-game{border:0;text-align:left;flex:1;min-width:0;padding:4px;background:transparent}.open-game strong{display:block;overflow-wrap:anywhere}.cover{position:relative;flex-shrink:0;padding:0;width:48px;height:64px}.cover img{width:100%;height:100%;object-fit:cover}.medal{position:absolute;left:-6px;top:-8px;font-size:19px;filter:drop-shadow(1px 2px 1px #000)}.status{font-size:13px;max-width:125px}.badge{font-size:12px;padding:3px 7px;background:#a93628;color:#fff;border:2px solid #d69373;border-radius:45%;display:inline-block;margin:3px}.badge.selected{outline:2px solid #e5b642}.overview{display:flex;gap:18px}.overview .cover{width:105px;height:140px}.overview article{flex:1;min-width:0}.book{background:#402b21;border:3px solid #24170f;padding:12px;box-shadow:4px 6px 12px #0006;margin-top:16px}.book-toggle{width:100%;color:#eed9ac;background:#402b21;border:1px dashed #ba965d;display:flex;align-items:center;gap:16px;text-align:left;font-family:Georgia,serif}.book-icon{display:inline-block;width:46px;height:58px;background:#6e3528;border:3px solid #c29a5e;box-shadow:4px 2px #f0dfb3,inset 6px 0 #422318;font:bold 24px Georgia;text-align:center;padding-top:8px;color:#edd39d;flex-shrink:0}.paper{background:#f7f0db;background-image:repeating-linear-gradient(transparent,transparent 27px,#846c4422 28px);color:#302216;padding:18px;margin-top:12px;font-family:Georgia,serif;overflow-wrap:anywhere}.paper button,.paper input,.paper textarea,.paper select{color:#302216;background:#f8f1de;border-color:#bca581}.paper textarea{background:transparent;border:0;line-height:28px;min-height:180px;font-family:Georgia,serif}.paper small{color:#70583b}.quest{display:flex;align-items:center;gap:8px;padding:6px 0}.quest span{flex:1}.quest.done span{text-decoration:line-through;opacity:.6}.quest button{padding:3px 9px}.gallery{display:flex;gap:12px;flex-wrap:wrap}.photo{background:#fff;padding:5px;max-width:160px;box-shadow:2px 3px 5px #0005}.photo img{width:140px;height:100px;object-fit:cover}.voice{margin:9px 0;padding:8px;background:#e9dbbb}.voice audio{width:100%;height:40px}.progress{width:100%}#notice{padding:9px;background:#84602b;color:white;margin:8px 0}#clock{font: bold 22px monospace}dialog{background:var(--panel);color:var(--ink);max-width:min(95vw,600px);border:2px solid var(--line)}dialog::backdrop{background:#000a}.result{display:block;width:100%;text-align:left;margin:6px 0}.thumb{height:60px;width:45px;object-fit:cover;float:left;margin-right:10px}footer{text-align:center;padding:28px;font:13px monospace}.active-filter{outline:2px solid #99ba63}#boot{font-size:12px}.task-add{display:flex;gap:8px}.task-add input{min-width:0}.paper .bar{margin:10px 0}@media(max-width:550px){main{padding:8px}.grid{grid-template-columns:1fr}.overview{flex-direction:column}.row{gap:7px;padding:8px}.status{max-width:102px;padding:8px 5px}header button{padding:8px}h1{font-size:19px}.paper{padding:12px}.bar>*{max-width:100%}}</style></head><body><main><header><img src="icon-192.png" width="40" height="40" alt="Геймпад"><h1>Геймерский уголок <small>1.02</small></h1><button id="theme" title="День / ночь">☀️</button><button id="backup">💾 База</button><button id="add">＋ Игра</button></header><div id="boot">Запуск…</div><div id="notice" role="status" hidden></div>
-<section id="editor" class="panel" hidden><h2 id="editor-title">Добавить игру</h2><form id="form"><div class="grid"><label class="full">Название<input id="title" required maxlength="200"></label><div class="full bar"><button type="button" id="online">🔎 Найти в интернете</button><small>Описание на русском, выбор результата перед заполнением</small></div><label>Платформа<select id="platform"></select></label><label>Статус<select id="status"></select></label><label>Моя оценка<select id="rating"></select></label><label>Обложка — ссылка или сохранённое изображение<input id="cover-url" type="text"></label><label class="full">Описание<textarea id="description" rows="3"></textarea></label></div><div class="bar"><button type="submit">✓ Сохранить</button><button type="button" id="cancel">Отмена</button></div></form></section>
-<section class="panel"><input id="search" placeholder="Поиск по своей коллекции" aria-label="Поиск игр"><div id="filters" class="bar" style="margin-top:10px"></div><label>Фильтр по печати<select id="tag-filter"></select></label></section><div id="list"></div>
-<section id="workspace" hidden><div class="panel overview"><button class="cover" id="big-cover" title="Загрузить обложку"></button><article><h2 id="game-title"></h2><div class="bar"><small id="game-platform"></small><small id="game-rating"></small></div><p id="game-desc"></p><div class="bar"><button id="edit">✎ Изменить</button><button id="delete">Удалить</button></div><h3>Прохождение</h3><label>Прогресс: <output id="percent">0%</output><input id="progress" class="progress" type="range" min="0" max="100" step="1"></label><div class="bar"><span id="clock">00:00:00</span><button id="timer">▶ Начать сессию</button><button id="set-time">Указать часы</button></div><small>Таймер считает время до нажатия «Стоп», включая время в фоне.</small><h3>Сургучные печати</h3><div id="tags" class="bar"></div></article></div>
-<div class="book"><button class="book-toggle" id="book-toggle" aria-expanded="false"><span class="book-icon" aria-hidden="true">✦</span><span>Полевой журнал следопыта<br><small id="book-label">Открыть блокнот ▼</small></span></button><div id="book-body" class="paper" hidden><h3 id="note-title"></h3><small id="save-label">Заметки</small><h3>Квесты и задачи <small id="quest-count"></small></h3><form id="quest-form" class="task-add"><input id="quest-text" placeholder="Новая задача" required maxlength="500"><button type="submit">＋</button></form><div id="quests"></div><div class="bar"><select id="template" aria-label="Шаблон записи"></select><button id="insert-template">Вставить шаблон</button></div><textarea id="notes" placeholder="Мысли, билды, пароли, планы…" aria-label="Записи дневника"></textarea><h3>Голосовые мысли</h3><button id="record">🎙 Записать мысль</button><small id="record-status"></small><div id="voices"></div><h3>Карты и зарисовки</h3><div class="bar"><button id="attach">📎 Из файлов</button><button id="attach-url">🔗 По ссылке</button></div><div id="gallery" class="gallery"></div></div></div></section>
-<footer>ГЕЙМЕРСКИЙ УГОЛОК · 1.02</footer></main><input type="file" id="cover-file" accept="image/*" hidden><input type="file" id="image-file" accept="image/*" hidden><input type="file" id="import-file" accept="application/json,.json" hidden>
-<dialog id="results"><h2>Результаты поиска</h2><div id="results-list"></div><button id="results-close">Закрыть</button></dialog><dialog id="database"><h2>Резервная копия</h2><p>Данные находятся в этом браузере. Экспорт включает заметки, задачи, изображения, голосовые и время.</p><div class="bar"><button id="export">Экспорт JSON</button><button id="import">Импорт JSON</button><button id="database-close">Закрыть</button></div></dialog><noscript>Для работы приложения включите JavaScript.</noscript><script>(function(){'use strict';
-const $=id=>document.getElementById(id), KEY='gamerbox_games_v102';
-const statuses={playing:'Играю',planned:'В планах',completed:'Пройдено',paused:'На паузе'};
-const seals={masterpiece:'🔥 Шедевр',hardcore:'💀 Хардкор',coop:'👥 Кооператив',dlc:'⌛ Ждёт DLC',platinum:'🏆 Платина'};
-const templates={build:['⚔ Билд персонажа','Оружие / броня:','Основные навыки:','Распределение очков:'],codes:['🔐 Коды и сейфы','Локация:','Код:','Подсказка:'],stash:['💎 Тайники','Ориентир:','Нужный ключ:','Награда:'],craft:['🧪 Рецепты крафта','Предмет:','Компоненты:','Где найти:']};
-let games=[],active=null,editing=null,filter='all',coverTarget=null,bookOpen=false,rec=null,recordBusy=false,urls=[],dirty=false;
-function message(t){$('notice').textContent=t;$('notice').hidden=!t;}
-function uid(){return 'g_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);}
-function el(tag,text,cls){const x=document.createElement(tag);if(text!==undefined)x.textContent=text;if(cls)x.className=cls;return x;}
-function button(text,fn,cls){const x=el('button',text,cls);x.type='button';x.addEventListener('click',fn);return x;}
-function option(select,value,label){const o=el('option',label);o.value=value;select.append(o);}
-function current(){return games.find(g=>g.id===active);}
-function normalize(a){const ids=new Set();return a.filter(x=>x&&typeof x==='object').map(x=>{let id=String(x.id||uid());if(ids.has(id))id=uid();ids.add(id);let s=String(x.status||'playing');if(!statuses[s])s=/пройд/i.test(s)?'completed':/план|буду/i.test(s)?'planned':/пауз/i.test(s)?'paused':'playing';const n=Number(x.rating);return {...x,id,title:String(x.title||x.name||'Без названия'),platform:String(x.platform||'PC'),status:s,rating:Number.isFinite(n)?Math.max(0,Math.min(5,n)):0,cover:String(x.cover||''),desc:String(x.desc||x.description||''),notes:String(x.notes||''),images:Array.isArray(x.images)?x.images:[],voices:Array.isArray(x.voices)?x.voices:[],quests:Array.isArray(x.quests)?x.quests.map(q=>({id:String(q.id||uid()),text:String(q.text||''),done:!!q.done})):[],tags:Array.isArray(x.tags)?x.tags.filter(t=>seals[t]):[],progress:Math.max(0,Math.min(100,Number(x.progress)||0)),playedMs:Math.max(0,Number(x.playedMs)||0),timerStartedAt:Number(x.timerStartedAt)||null};});}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(games));dirty=false;$('save-label').textContent='✓ Сохранено';return true;}catch(e){dirty=true;$('save-label').textContent='⚠ Не сохранено';message('Не удалось сохранить в браузере: '+e.message+'. Сделайте экспорт базы.');return false;}}
-function load(){const keys=[KEY,'gamerbox_games_v101','gamerbox_games_v10','gamerbox_games_v09','gamerbox_games_v08','gamerbox_games_v07','gamerbox_games','gamers_corner_games','gamerbox_data'];for(const key of keys){try{const raw=localStorage.getItem(key);if(raw===null)continue;const d=JSON.parse(raw),a=Array.isArray(d)?d:Array.isArray(d.games)?d.games:null;if(a){games=normalize(a);if(key!==KEY){message('Прочитана база прошлой версии. Исходная копия не изменена.');persist();}return;}}catch(e){message('Не удалось прочитать '+key+'. Исходные данные оставлены без изменений.');}}games=[];}
-function makeCover(g,big=false){const b=button('',e=>{e.stopPropagation();coverTarget=g.id;$('cover-file').value='';$('cover-file').click();},'cover');b.title='Нажмите для загрузки обложки';if(g.cover){const im=el('img');im.alt=g.title;im.addEventListener('error',()=>{im.remove();b.prepend(el('span','📷'));},{once:true});im.src=g.cover;b.append(im);}else b.append(el('span','📷'));if(g.rating===5)b.append(el('span','🏅','medal'));return b;}
-function drawList(){const list=$('list');list.replaceChildren();let shown=0;const query=$('search').value.toLocaleLowerCase(),tag=$('tag-filter').value;games.forEach(g=>{if(filter!=='all'&&g.status!==filter)return;if(tag&& !g.tags.includes(tag))return;if(!(g.title+' '+g.platform).toLocaleLowerCase().includes(query))return;shown++;const row=el('div',undefined,'row');row.append(makeCover(g));const open=button('',()=>select(g.id,true),'open-game');open.append(el('strong',g.title),el('small',g.platform+' · '+(g.rating?'★'.repeat(Math.round(g.rating)):'Без оценки')+' · '+g.progress+'% · '+g.quests.filter(q=>q.done).length+'/'+g.quests.length));const marks=el('div');g.tags.forEach(t=>marks.append(el('span',seals[t],'badge')));open.append(marks);row.append(open);const st=el('select',undefined,'status');st.setAttribute('aria-label','Статус '+g.title);Object.entries(statuses).forEach(([k,v])=>option(st,k,v));st.value=g.status;st.addEventListener('click',e=>e.stopPropagation());st.addEventListener('change',()=>{g.status=st.value;persist();drawList();});row.append(st);list.append(row);});if(!shown)list.append(el('p','Ничего не найдено. Добавьте игру или измените фильтр.'));}
-function clock(ms){const s=Math.floor(ms/1000);return String(Math.floor(s/3600)).padStart(2,'0')+':'+String(Math.floor(s/60)%60).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
-function elapsed(g){return g.playedMs+(g.timerStartedAt?Math.max(0,Date.now()-g.timerStartedAt):0);}
-function showClock(){const g=current();if(!g)return;$('clock').textContent=clock(elapsed(g));$('timer').textContent=g.timerStartedAt?'■ Стоп сессии':'▶ Начать сессию';}
-function syncBook(){ $('book-body').hidden=!bookOpen;$('book-toggle').setAttribute('aria-expanded',String(bookOpen));$('book-label').textContent=bookOpen?'Свернуть блокнот ▲':'Открыть блокнот ▼';}
-function cleanup(){document.querySelectorAll('#voices audio').forEach(a=>a.pause());urls.forEach(u=>URL.revokeObjectURL(u));urls=[];}
-function select(id,scroll=false){active=id;const g=current();$('workspace').hidden=!g;if(!g)return;$('game-title').textContent=g.title;$('game-platform').textContent=g.platform;$('game-rating').textContent=g.rating?'Моя оценка: '+g.rating+'/5':'Моя оценка: не выставлена';$('game-desc').textContent=g.desc||'Описание пока не добавлено.';const b=makeCover(g,true);b.id='big-cover';$('big-cover').replaceWith(b);$('progress').value=g.progress;$('percent').textContent=g.progress+'%';$('notes').value=g.notes;$('note-title').textContent=g.title;$('tags').replaceChildren();Object.entries(seals).forEach(([k,v])=>{const b=button(v,()=>{g.tags=g.tags.includes(k)?g.tags.filter(t=>t!==k):[...g.tags,k];persist();drawList();select(g.id);},'badge'+(g.tags.includes(k)?' selected':''));b.setAttribute('aria-pressed',String(g.tags.includes(k)));$('tags').append(b);});drawQuests();drawMedia();syncBook();showClock();if(scroll)$('workspace').scrollIntoView({behavior:'smooth',block:'start'});}
-function drawQuests(){const g=current();if(!g)return;$('quests').replaceChildren();$('quest-count').textContent=g.quests.filter(q=>q.done).length+'/'+g.quests.length;g.quests.forEach(q=>{const row=el('div',undefined,'quest'+(q.done?' done':''));const check=el('input');check.type='checkbox';check.checked=q.done;check.setAttribute('aria-label',q.text);check.addEventListener('change',()=>{q.done=check.checked;persist();drawQuests();drawList();});row.append(check,el('span',q.text),button('×',()=>{g.quests=g.quests.filter(t=>t.id!==q.id);persist();drawQuests();drawList();}));$('quests').append(row);});}
-function drawMedia(){cleanup();const g=current();$('voices').replaceChildren();g.voices.forEach((v,i)=>{const row=el('div',undefined,'voice');row.append(el('small',v.date||'Голосовая заметка'));const a=el('audio');a.controls=true;a.preload='metadata';a.src=v.src||v.url||'';a.addEventListener('play',()=>document.querySelectorAll('audio').forEach(o=>{if(o!==a)o.pause();}));a.addEventListener('error',()=>{if(!row.querySelector('.audio-error'))row.append(el('small','Формат этой записи не поддерживается или файл повреждён. Можно скачать оригинал.','audio-error'));});row.append(a);const link=el('a','Скачать');link.href=a.src;link.download='voice-'+(v.id||i)+(a.src.includes('audio/mp4')?'.m4a':'.webm');row.append(link,button('Удалить',()=>{if(confirm('Удалить голосовую заметку?')){g.voices.splice(i,1);persist();drawMedia();}}));$('voices').append(row);});$('gallery').replaceChildren();g.images.forEach((src,i)=>{const div=el('div',undefined,'photo'),im=el('img');im.src=typeof src==='string'?src:src.src||'';im.alt='Карта или снимок';const link=el('a');link.href=im.src;link.target='_blank';link.rel='noopener';link.append(im);div.append(link,button('Удалить',()=>{if(confirm('Удалить картинку?')){g.images.splice(i,1);persist();drawMedia();}}));$('gallery').append(div);});}
-function edit(id=null){editing=id;const g=games.find(x=>x.id===id);$('form').reset();$('editor-title').textContent=g?'Изменить игру':'Добавить игру';$('title').value=g?g.title:'';$('status').value=g?g.status:'playing';$('rating').value=g?String(g.rating):'0';const p=g?g.platform:'PC';if(!Array.from($('platform').options).some(o=>o.value===p))option($('platform'),p,p);$('platform').value=p;$('cover-url').value=g?g.cover:'';$('description').value=g?g.desc:'';$('editor').hidden=false;$('editor').scrollIntoView({behavior:'smooth'});}
-async function readFile(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(file);});}
-async function imageData(file,max=1200){if(!file.type.startsWith('image/'))throw Error('Выберите изображение');const src=await readFile(file);return new Promise((resolve,reject)=>{const im=new Image();im.onerror=()=>reject(Error('Не удалось открыть изображение'));im.onload=()=>{const k=Math.min(1,max/im.width,max/im.height),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const ctx=c.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(im,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.88));};im.src=src;});}
-function download(name,text){const url=URL.createObjectURL(new Blob([text],{type:'application/json'})),a=el('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);}
-function theme(day){document.body.classList.toggle('day',day);$('theme').textContent=day?'🌙':'☀️';try{localStorage.setItem('gamerbox_theme',day?'light':'dark');}catch(e){} }
-async function wiki(params){const u=new URL('https://ru.wikipedia.org/w/api.php');Object.entries({...params,format:'json',origin:'*'}).forEach(([k,v])=>u.searchParams.set(k,v));const c=new AbortController(),t=setTimeout(()=>c.abort(),15000);try{const r=await fetch(u,{signal:c.signal});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();if(d.error)throw Error(d.error.info);return d;}finally{clearTimeout(t);}}
-$('online').addEventListener('click',async()=>{const q=$('title').value.trim();if(!q)return message('Введите название игры.');$('online').disabled=true;try{const d=await wiki({action:'query',list:'search',srsearch:q,srlimit:8});$('results-list').replaceChildren();for(const p of d.query.search){$('results-list').append(button(p.title,async()=>{try{const data=await wiki({action:'query',pageids:p.pageid,prop:'extracts|pageimages|info',exintro:1,explaintext:1,piprop:'original|thumbnail',pithumbsize:600,inprop:'url'});const page=data.query.pages[p.pageid];$('description').value=page.extract||'';const cover=(page.original&&page.original.source)||(page.thumbnail&&page.thumbnail.source);if(cover)$('cover-url').value=cover;$('results').close();message('Описание загружено на русском. Проверьте, что выбрана нужная игра.');}catch(e){message('Не удалось получить описание: '+e.message);}},'result'));}if(!d.query.search.length)$('results-list').append(el('p','Ничего не найдено. Попробуйте другое название.'));$('results').showModal();}catch(e){message('Интернет-поиск недоступен: '+e.message+'. Ручное добавление продолжает работать.');}finally{$('online').disabled=false;}});
-$('add').addEventListener('click',()=>edit());$('edit').addEventListener('click',()=>edit(active));$('cancel').addEventListener('click',()=>$('editor').hidden=true);
-$('form').addEventListener('submit',e=>{e.preventDefault();const title=$('title').value.trim();if(!title)return;let g=games.find(x=>x.id===editing);if(!g){g=normalize([{id:uid(),title}])[0];games.unshift(g);}Object.assign(g,{title,platform:$('platform').value,status:$('status').value,rating:Number($('rating').value),cover:$('cover-url').value.trim(),desc:$('description').value});persist();$('editor').hidden=true;filter='all';$('search').value='';$('tag-filter').value='';drawList();select(g.id,true);});
-$('search').addEventListener('input',drawList);$('tag-filter').addEventListener('change',drawList);
-$('delete').addEventListener('click',()=>{const g=current();if(!g)return;if(rec||recordBusy)return message('Сначала завершите запись.');if(confirm('Удалить «'+g.title+'» вместе с заметками?')){games=games.filter(x=>x.id!==g.id);persist();cleanup();active=null;$('workspace').hidden=true;drawList();}});
-$('progress').addEventListener('input',()=>{const g=current();if(!g)return;g.progress=Number($('progress').value);$('percent').textContent=g.progress+'%';persist();drawList();});
-$('timer').addEventListener('click',()=>{const g=current();if(!g)return;if(g.timerStartedAt){g.playedMs=elapsed(g);g.timerStartedAt=null;}else{const now=Date.now();games.forEach(x=>{if(x.timerStartedAt){x.playedMs+=Math.max(0,now-x.timerStartedAt);x.timerStartedAt=null;}});g.timerStartedAt=now;}persist();showClock();});
-$('set-time').addEventListener('click',()=>{const g=current();const value=prompt('Общее наигранное время в часах (например, 12.5)',(elapsed(g)/3600000).toFixed(2));if(value===null)return;const n=Number(value.replace(',','.'));if(!Number.isFinite(n)||n<0)return message('Введите неотрицательное число часов.');g.playedMs=Math.round(n*3600000);g.timerStartedAt=null;persist();showClock();});setInterval(showClock,1000);
-$('book-toggle').addEventListener('click',()=>{bookOpen=!bookOpen;syncBook();try{localStorage.setItem('gamerbox_book_open',JSON.stringify(bookOpen));}catch(e){}});
-$('notes').addEventListener('input',()=>{const g=current();if(g){g.notes=$('notes').value;persist();}});
-$('quest-form').addEventListener('submit',e=>{e.preventDefault();const g=current(),text=$('quest-text').value.trim();if(g&&text){g.quests.push({id:uid(),text,done:false});$('quest-text').value='';persist();drawQuests();drawList();}});
-$('insert-template').addEventListener('click',()=>{const g=current(),t=templates[$('template').value];if(!g||!t)return;const field=$('notes'),at=field.selectionStart,end=field.selectionEnd;const text='\n\n=== '+t[0]+' ===\n'+t.slice(1).join('\n')+'\n';g.notes=field.value.slice(0,at)+text+field.value.slice(end);field.value=g.notes;field.focus();field.setSelectionRange(at+text.length,at+text.length);persist();});
-$('cover-file').addEventListener('change',async e=>{const f=e.target.files[0],id=coverTarget;if(!f)return;try{const data=await imageData(f,800),g=games.find(x=>x.id===id);if(g){g.cover=data;persist();drawList();if(active===id)select(id);}}catch(e){message(e.message);}});
-$('attach').addEventListener('click',()=>{$('image-file').value='';$('image-file').click();});$('image-file').addEventListener('change',async e=>{const f=e.target.files[0],id=active;if(!f)return;try{const data=await imageData(f,1800),g=games.find(x=>x.id===id);if(g){g.images.push(data);persist();if(active===id)drawMedia();}}catch(e){message(e.message);}});
-$('attach-url').addEventListener('click',()=>{const src=prompt('Прямая HTTPS-ссылка на изображение');if(src&&/^https:\/\//i.test(src)){current().images.push(src.trim());persist();drawMedia();}});
-$('record').addEventListener('click',async()=>{if(rec&&rec.state==='recording'){rec.stop();$('record').disabled=true;return;}if(recordBusy)return;const id=active;if(!id)return;if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder)return message('Запись микрофона недоступна. Откройте приложение по HTTPS в поддерживаемом браузере.');recordBusy=true;$('record').disabled=true;let stream=null;try{stream=await navigator.mediaDevices.getUserMedia({audio:true});const types=['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus'];const mime=types.find(t=>MediaRecorder.isTypeSupported(t));const recorder=new MediaRecorder(stream,mime?{mimeType:mime}:undefined);rec=recorder;const chunks=[],started=Date.now();recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};const timer=setInterval(()=>{$('record-status').textContent=' ● '+clock(Date.now()-started);},1000);recorder.onerror=e=>message('Ошибка микрофона: '+(e.error?e.error.message:'запись прервана'));recorder.onstop=async()=>{clearInterval(timer);stream.getTracks().forEach(t=>t.stop());try{const blob=new Blob(chunks,{type:recorder.mimeType||(chunks[0]&&chunks[0].type)||''});if(!blob.size)throw Error('Пустая запись');const src=await readFile(blob),g=games.find(x=>x.id===id);if(g){g.voices.push({id:uid(),date:new Date().toLocaleString('ru-RU'),src,mime:blob.type});persist();if(active===id)drawMedia();}}catch(e){message('Не удалось сохранить аудио: '+e.message);}finally{rec=null;recordBusy=false;$('record').disabled=false;$('record').textContent='🎙 Записать мысль';$('record-status').textContent='';}};recorder.start();$('record').textContent='■ Стоп и сохранить';$('record').disabled=false;}catch(e){if(stream)stream.getTracks().forEach(t=>t.stop());rec=null;recordBusy=false;$('record').disabled=false;message('Нет доступа к микрофону: '+e.message);}});
-$('theme').addEventListener('click',()=>theme(!document.body.classList.contains('day')));
-$('backup').addEventListener('click',()=>$('database').showModal());$('database-close').addEventListener('click',()=>$('database').close());$('results-close').addEventListener('click',()=>$('results').close());
-$('export').addEventListener('click',()=>download('gamerbox-1.02-backup.json',JSON.stringify({version:'1.02',exportedAt:new Date().toISOString(),games},null,2)));
-$('import').addEventListener('click',()=>{if(rec||recordBusy)return message('Сначала завершите запись.');$('import-file').value='';$('import-file').click();});
-$('import-file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text()),arr=Array.isArray(d)?d:d.games;if(!Array.isArray(arr))throw Error('В файле нет массива игр');if(!confirm('Заменить текущую базу из файла? Сначала экспортируйте текущую копию.'))return;games=normalize(arr);persist();cleanup();active=null;$('workspace').hidden=true;drawList();$('database').close();message('Импорт завершён: '+games.length+' игр.');}catch(e){message('Ошибка импорта: '+e.message);}});
-window.addEventListener('beforeunload',e=>{if(dirty||rec||recordBusy){e.preventDefault();e.returnValue='';}});
-Object.entries(statuses).forEach(([k,v])=>option($('status'),k,v));['PC','Xbox Series X/S','Xbox One','Xbox 360','PlayStation 5','PlayStation 4','PlayStation 3','PlayStation Vita','PSP','Nintendo Switch','Nintendo DS / 3DS','Ретро консоль / Эмулятор','Android / iOS','Другая'].forEach(p=>option($('platform'),p,p));for(let i=0;i<=5;i++)option($('rating'),String(i),i?i+'/5'+(i===5?' — личный хит 🏅':''):'Не оценена');
-option($('tag-filter'),'','Все печати');Object.entries(seals).forEach(([k,v])=>option($('tag-filter'),k,v));Object.entries(templates).forEach(([k,v])=>option($('template'),k,v[0]));
-Object.entries({all:'Все',...statuses}).forEach(([k,v])=>$('filters').append(button(v,()=>{filter=k;drawList();})));
-try{theme(localStorage.getItem('gamerbox_theme')==='light');bookOpen=localStorage.getItem('gamerbox_book_open')==='true';}catch(e){}load();drawList();syncBook();$('boot').textContent='✓ 1.02 · интерфейс запущен';
-window.GamerBoxTest={normalize,elapsed,clock,getGames:()=>games,select,edit,persist,drawList};
-})();</script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Геймерский уголок v1.02</title>
+  <meta name="theme-color" content="#121814">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ГеймерBox">
+
+  <!-- Crisp 192x192 PNG Pixel Gamepad Icons for iOS Home Screen & Favicon -->
+  <link rel="icon" type="image/png" href="data:image/png;base64,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">
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+  <link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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">
+
+  <style>
+    /* --- CSS THEMES: DARK (DEFAULT) & LIGHT (DAY) --- */
+    :root {
+      --bg-dark: #121814;
+      --panel-bg: #1a241d;
+      --card-bg: #212d24;
+      --card-hover: #29382d;
+      --pixel-border: #445949;
+      --pixel-border-bright: #6fa079;
+      --text-main: #e4eee6;
+      --text-dim: #92a898;
+      --btn-green: #2e7d32;
+      --btn-green-hover: #388e3c;
+      --btn-red: #c62828;
+      --input-bg: #141c16;
+
+      /* Ancient Notebook Theme (always authentic warm paper) */
+      --book-leather: #38261b;
+      --book-edge: #23160e;
+      --book-paper: #f7f2e2;
+      --book-lines: rgba(110, 85, 60, 0.15);
+      --book-margin-line: rgba(185, 75, 60, 0.35);
+      --book-ink: #2b2014;
+      --book-ink-muted: #735f4b;
+
+      /* Status colors */
+      --st-playing-bg: #17381b;
+      --st-playing-fg: #6ee787;
+      --st-planned-bg: #132e42;
+      --st-planned-fg: #64b5f6;
+      --st-completed-bg: #2f3818;
+      --st-completed-fg: #cddc39;
+      --st-paused-bg: #3d2315;
+      --st-paused-fg: #ffb74d;
+
+      /* Rating star gold */
+      --gold-star: #f59e0b;
+    }
+
+    body.theme-light {
+      --bg-dark: #e8eee5;
+      --panel-bg: #f5faf3;
+      --card-bg: #ffffff;
+      --card-hover: #edf5eb;
+      --pixel-border: #b3c7b7;
+      --pixel-border-bright: #4e8059;
+      --text-main: #18241b;
+      --text-dim: #4d6652;
+      --input-bg: #ffffff;
+
+      --st-playing-bg: #e8f5e9;
+      --st-playing-fg: #2e7d32;
+      --st-planned-bg: #e1f5fe;
+      --st-planned-fg: #0277bd;
+      --st-completed-bg: #f1f8e9;
+      --st-completed-fg: #556b2f;
+      --st-paused-bg: #fff7ed;
+      --st-paused-fg: #c2410c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    /* Seamless Pixel Art Grid Background */
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(rgba(110, 150, 120, 0.15) 1px, transparent 1px),
+        linear-gradient(to right, rgba(28, 38, 30, 0.7) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 38, 30, 0.7) 1px, transparent 1px);
+      background-size: 16px 16px, 16px 16px, 16px 16px;
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.45;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    body.theme-light {
+      background-image: 
+        radial-gradient(rgba(60, 100, 70, 0.12) 1px, transparent 1px),
+        linear-gradient(to right, rgba(200, 215, 198, 0.6) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 215, 198, 0.6) 1px, transparent 1px);
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 12px 10px 60px;
+    }
+
+    /* Retro Box */
+    .retro-box {
+      background: var(--panel-bg);
+      border: 2px solid var(--pixel-border);
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.05) inset;
+      border-radius: 4px;
+    }
+
+    /* Header */
+    header {
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .retro-gamepad-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--input-bg);
+      border: 2px solid var(--pixel-border-bright);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .retro-gamepad-icon img {
+      width: 28px;
+      height: 28px;
+      image-rendering: pixelated;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #9fe2aa;
+      text-transform: uppercase;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    }
+    body.theme-light .brand-title {
+      color: #276735;
+      text-shadow: none;
+    }
+
+    .version-tag {
+      font-size: 0.72rem;
+      background: #2f4534;
+      color: #e2f7e6;
+      padding: 2px 6px;
+      border: 1px solid var(--pixel-border-bright);
+      border-radius: 2px;
+      font-family: monospace;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    body.theme-light .version-tag {
+      background: #d4e5d6;
+      color: #1b4d26;
+    }
+
+    .header-btns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 8px 13px;
+      cursor: pointer;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-family: inherit;
+      transition: all 0.1s ease;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: none !important;
+    }
+
+    .btn-green {
+      background: var(--btn-green);
+      color: #ffffff;
+      border: 2px solid #5cae63;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    }
+    .btn-green:hover {
+      background: var(--btn-green-hover);
+    }
+
+    .btn-dark {
+      background: #25332a;
+      color: #c9ded0;
+      border: 2px solid var(--pixel-border);
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    }
+    body.theme-light .btn-dark {
+      background: #e2ede0;
+      color: #1f3323;
+    }
+    .btn-dark:hover {
+      background: #2f4035;
+      color: #ffffff;
+    }
+    body.theme-light .btn-dark:hover {
+      background: #d4e5d1;
+      color: #122116;
+    }
+
+    .btn-theme {
+      font-size: 1.15rem;
+      padding: 6px 10px;
+    }
+
+    .btn-danger {
+      background: #6b2020;
+      color: #ffc4c4;
+      border: 2px solid #993b3b;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    }
+    .btn-danger:hover {
+      background: #802727;
+    }
+
+    .btn-record {
+      background: #78281f;
+      color: #ffdede;
+      border: 2px solid #b73e32;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+      font-size: 0.82rem;
+      padding: 6px 12px;
+    }
+    .btn-record.recording {
+      background: #b71c1c;
+      color: #ffffff;
+      animation: pulseRecord 1s infinite alternate;
+      border-color: #ff5252;
+    }
+    @keyframes pulseRecord {
+      from { box-shadow: 0 0 4px #ff5252; }
+      to { box-shadow: 0 0 14px #ff1744; }
+    }
+
+    /* Inline Add / Edit Panel */
+    .form-panel {
+      padding: 14px;
+      margin-bottom: 14px;
+      display: none;
+      border-left: 4px solid #5cae63;
+    }
+
+    .form-panel.active {
+      display: block;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .form-group-full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .retro-input {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--pixel-border);
+      color: var(--text-main);
+      padding: 8px 10px;
+      font-size: 0.92rem;
+      border-radius: 2px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .retro-input:focus {
+      border-color: var(--pixel-border-bright);
+      box-shadow: 0 0 0 1px var(--pixel-border-bright);
+    }
+
+    /* Auto-search Online Row */
+    .input-with-search {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-search-online {
+      background: #1b4d2e;
+      color: #bbf7d0;
+      border: 1px solid #38a169;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.1s;
+    }
+    body.theme-light .btn-search-online {
+      background: #2e7d32;
+      color: #ffffff;
+    }
+    .btn-search-online:hover {
+      background: #276749;
+    }
+
+    .search-status-msg {
+      font-size: 0.78rem;
+      margin-top: 4px;
+      min-height: 18px;
+    }
+
+    /* Controls Panel */
+    .controls-panel {
+      padding: 12px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-row {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-row input {
+      padding-left: 32px;
+    }
+
+    .search-row svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 5px 11px;
+      border: 1px solid var(--pixel-border);
+      background: var(--input-bg);
+      color: var(--text-dim);
+      cursor: pointer;
+      border-radius: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      user-select: none;
+      transition: all 0.1s ease;
+    }
+
+    .pill.active {
+      background: #2b3d30;
+      color: #9fe2aa;
+      border-color: #698b71;
+      box-shadow: inset 0 0 0 1px #698b71;
+    }
+    body.theme-light .pill.active {
+      background: #2e7d32;
+      color: #ffffff;
+      border-color: #2e7d32;
+    }
+
+    /* Section Headline */
+    .section-headline {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Game List Rows */
+    .game-list-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+
+    .game-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--pixel-border);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.1s ease;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    }
+
+    .game-row:hover {
+      background: var(--card-hover);
+      border-color: var(--pixel-border-bright);
+    }
+
+    .game-row.active {
+      background: #26382b;
+      border-color: #72a37b;
+      box-shadow: 0 0 0 1.5px #72a37b, 2px 2px 0 rgba(0,0,0,0.3);
+    }
+    body.theme-light .game-row.active {
+      background: #e4f0e1;
+      border-color: #2e7d32;
+      box-shadow: 0 0 0 1.5px #2e7d32;
+    }
+
+    /* Cover Wrapper & Mini Poster */
+    .cover-wrap-mini {
+      position: relative;
+      width: 44px;
+      height: 54px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .game-cover-mini {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--input-bg);
+      border: 1px solid var(--pixel-border);
+      border-radius: 2px;
+      display: block;
+      transition: filter 0.15s, border-color 0.15s;
+    }
+
+    .cover-wrap-mini:hover .game-cover-mini {
+      filter: brightness(1.15);
+      border-color: #72a37b;
+    }
+
+    .cover-quick-badge {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      background: rgba(18, 24, 20, 0.88);
+      color: #9fe2aa;
+      font-size: 9px;
+      padding: 1px 3px;
+      border-radius: 2px;
+      border: 1px solid var(--pixel-border);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* Hit Medal Badge */
+    .hit-medal-badge {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 1px 4px;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      border: 1px solid #fef3c7;
+      pointer-events: none;
+      letter-spacing: 0.02em;
+    }
+
+    .hit-medal-badge-large {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      background: linear-gradient(135deg, #f59e0b, #b45309);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 7px;
+      border-radius: 3px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      border: 1px solid #fef3c7;
+      pointer-events: none;
+      letter-spacing: 0.03em;
+    }
+
+    /* Wax Seal Badges */
+    .wax-seal-badge {
+      position: absolute;
+      bottom: -3px;
+      left: -3px;
+      background: #78211a;
+      color: #fef2f2;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 10px;
+      border: 1px solid #b91c1c;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    .game-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .game-title-text {
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .game-sub-text {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .stars-display {
+      color: var(--gold-star);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* Thin Progress bar in list row */
+    .row-progress-container {
+      width: 100%;
+      height: 5px;
+      background: rgba(80, 110, 90, 0.25);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 3px;
+    }
+
+    .row-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      border-radius: 3px;
+      transition: width 0.2s;
+    }
+
+    /* Status Tag (clickable to cycle!) */
+    .status-tag {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      border-width: 1px;
+      border-style: solid;
+      cursor: pointer;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .status-tag:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    .status-tag:active {
+      transform: scale(0.96);
+    }
+
+    .st-playing {
+      background: var(--st-playing-bg);
+      color: var(--st-playing-fg);
+      border-color: #2e7d32;
+    }
+    .st-planned {
+      background: var(--st-planned-bg);
+      color: var(--st-planned-fg);
+      border-color: #1976d2;
+    }
+    .st-completed {
+      background: var(--st-completed-bg);
+      color: var(--st-completed-fg);
+      border-color: #689f38;
+    }
+    .st-paused {
+      background: var(--st-paused-bg);
+      color: var(--st-paused-fg);
+      border-color: #f57c00;
+    }
+
+    /* Workspace / Game Details */
+    .workspace-wrap {
+      scroll-margin-top: 14px;
+      display: none;
+    }
+
+    .workspace-wrap.active {
+      display: block;
+    }
+
+    /* Overview Box */
+    .overview-box {
+      padding: 14px;
+      margin-bottom: 18px;
+    }
+
+    .overview-content {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* Big Overview Poster with Quick Upload Hint */
+    .overview-poster-wrap {
+      position: relative;
+      width: 110px;
+      height: 146px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .overview-poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--input-bg);
+      border: 2px solid var(--pixel-border);
+      border-radius: 3px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+      display: block;
+      transition: filter 0.15s, border-color 0.15s;
+    }
+
+    .overview-poster-wrap:hover .overview-poster-img {
+      filter: brightness(1.1);
+      border-color: #9fe2aa;
+    }
+
+    .overview-poster-hint {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      right: 3px;
+      background: rgba(16, 22, 18, 0.88);
+      color: #9fe2aa;
+      font-size: 10px;
+      text-align: center;
+      padding: 2px;
+      border-radius: 2px;
+      border: 1px solid var(--pixel-border);
+      pointer-events: none;
+      font-weight: 700;
+    }
+
+    .overview-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .overview-title-h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #9fe2aa;
+      line-height: 1.25;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 6px;
+    }
+    body.theme-light .overview-title-h2 {
+      color: #276735;
+    }
+
+    .overview-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .platform-pill {
+      background: var(--input-bg);
+      border: 1px solid var(--pixel-border);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .overview-text {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      max-height: 120px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+    }
+
+    /* Progress & Timer Bar in Overview */
+    .progress-timer-panel {
+      background: rgba(0,0,0,0.18);
+      border: 1px solid var(--pixel-border);
+      border-radius: 3px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .progress-slider {
+      flex: 1;
+      accent-color: #10b981;
+      cursor: pointer;
+    }
+
+    .progress-val-text {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #9fe2aa;
+      min-width: 44px;
+      text-align: right;
+    }
+    body.theme-light .progress-val-text {
+      color: #2e7d32;
+    }
+
+    .timer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .timer-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .timer-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-timer-sub {
+      padding: 4px 8px;
+      font-size: 0.75rem;
+    }
+
+    /* Wax Seals Row in Overview */
+    .seals-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .seal-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--pixel-border);
+      background: var(--input-bg);
+      color: var(--text-dim);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.1s;
+    }
+
+    .seal-pill:hover {
+      border-color: var(--pixel-border-bright);
+    }
+
+    .seal-pill.selected {
+      background: #78211a;
+      color: #fff;
+      border-color: #ef4444;
+      box-shadow: 0 0 5px rgba(239, 68, 68, 0.4);
+    }
+
+    .overview-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Ancient Book Field Notebook */
+    .ancient-book {
+      background: var(--book-leather);
+      border: 3px solid var(--book-edge);
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 0 12px rgba(22, 14, 9, 0.7);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .ancient-book::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px dashed rgba(220, 185, 120, 0.35);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* Book Titlebar (Collapsible trigger) */
+    .book-titlebar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+      background: linear-gradient(to bottom, #442f22, #38261b);
+      border-bottom: 2px solid #23160e;
+      transition: background 0.15s;
+    }
+
+    .book-titlebar:hover {
+      background: #4c3527;
+    }
+
+    .book-titlebar-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #e5cfac;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-shadow: 1px 1px 1px #000;
+    }
+
+    .book-toggle-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #c9b48e;
+      font-family: Georgia, serif;
+    }
+
+    .book-ribbon {
+      width: 14px;
+      height: 22px;
+      background: #8e2b20;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .book-ribbon::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 5px solid var(--book-leather);
+    }
+
+    /* Collapsible Body */
+    .book-body-wrapper {
+      padding: 14px;
+      display: block;
+    }
+
+    .book-body-wrapper.collapsed {
+      display: none;
+    }
+
+    .parchment-sheet {
+      background: var(--book-paper);
+      background-image: 
+        linear-gradient(90deg, transparent 44px, var(--book-margin-line) 45px, transparent 46px),
+        repeating-linear-gradient(transparent, transparent 27px, var(--book-lines) 28px);
+      border: 1px solid #c9bda3;
+      border-radius: 4px;
+      padding: 16px 14px 16px 54px;
+      box-shadow: inset 4px 0 10px rgba(0,0,0,0.18), inset -2px 0 6px rgba(0,0,0,0.06);
+      min-height: 260px;
+      position: relative;
+    }
+
+    .parchment-sheet::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 20px;
+      bottom: 20px;
+      width: 8px;
+      background: repeating-linear-gradient(to bottom, #7a5d46, #7a5d46 8px, transparent 8px, transparent 46px);
+      border-radius: 4px;
+      opacity: 0.4;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(110, 85, 60, 0.25);
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+
+    .sheet-game-name {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--book-ink);
+    }
+
+    .sheet-autosave-msg {
+      font-family: Georgia, serif;
+      font-size: 0.74rem;
+      font-style: italic;
+      color: var(--book-ink-muted);
+    }
+
+    /* Quests & Tasks Checklist Section inside Book */
+    .quests-section {
+      margin-bottom: 14px;
+      border-bottom: 1px dashed rgba(110, 85, 60, 0.3);
+      padding-bottom: 12px;
+    }
+
+    .quests-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Georgia, serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--book-ink);
+      margin-bottom: 8px;
+    }
+
+    .quest-input-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .quest-input {
+      flex: 1;
+      padding: 5px 8px;
+      font-family: Georgia, serif;
+      font-size: 0.85rem;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid #bda88a;
+      border-radius: 2px;
+      outline: none;
+      color: var(--book-ink);
+    }
+
+    .btn-add-quest {
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      background: #4a3424;
+      color: #f7eed9;
+      border: 1px solid #6e4e37;
+      border-radius: 2px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .quests-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .quest-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: Georgia, serif;
+      font-size: 0.88rem;
+      color: var(--book-ink);
+      padding: 3px 0;
+    }
+
+    .quest-item.done span {
+      text-decoration: line-through;
+      color: #8c7862;
+    }
+
+    .quest-item input[type="checkbox"] {
+      accent-color: #8e2b20;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .quest-del-btn {
+      background: transparent;
+      border: none;
+      color: #9c4538;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+
+    /* Template Insertion Bar */
+    .templates-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .btn-template {
+      background: #eee2c7;
+      border: 1px solid #bca889;
+      color: var(--book-ink);
+      font-family: Georgia, serif;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+
+    .btn-template:hover {
+      background: #e2d2b1;
+    }
+
+    .book-textarea {
+      width: 100%;
+      min-height: 150px;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: vertical;
+      font-family: Georgia, 'Palatino Linotype', serif;
+      font-size: 0.98rem;
+      line-height: 28px;
+      color: var(--book-ink);
+      margin-bottom: 14px;
+    }
+
+    .book-textarea::placeholder {
+      color: #9c8975;
+      font-style: italic;
+    }
+
+    /* Audio Voice Notes Section */
+    .voice-section {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(110, 85, 60, 0.3);
+    }
+
+    .voice-section-title {
+      font-family: Georgia, serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--book-ink);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .voice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .voice-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ede3cc;
+      border: 1px solid #cbbba0;
+      padding: 7px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    .voice-play-btn {
+      background: #384a3c;
+      color: #fff;
+      border: 1px solid #5a755f;
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .voice-play-btn:hover {
+      background: #465c4b;
+    }
+
+    .voice-date {
+      font-size: 0.76rem;
+      font-family: Georgia, serif;
+      color: var(--book-ink-muted);
+      flex: 1;
+      min-width: 90px;
+    }
+
+    .voice-del-btn {
+      background: rgba(150, 40, 30, 0.85);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 5px 8px;
+      font-size: 0.74rem;
+      cursor: pointer;
+    }
+
+    /* Gallery Pins */
+    .attached-maps-title {
+      font-family: Georgia, serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--book-ink);
+      margin-top: 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gallery-pins {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .pin-card {
+      position: relative;
+      background: #ffffff;
+      padding: 6px 6px 14px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.22);
+      border-radius: 2px;
+      transform: rotate(calc(-1.5deg + (3deg * var(--rand, 0.5))));
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .pin-card:hover {
+      transform: scale(1.04) rotate(0deg);
+      z-index: 5;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+
+    .pin-card::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 11px;
+      background: rgba(255, 255, 230, 0.7);
+      border: 1px solid rgba(210, 200, 170, 0.55);
+    }
+
+    .pin-card img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .pin-card-del {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: rgba(150, 40, 30, 0.9);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .notebook-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-top: 1px dashed rgba(110, 85, 60, 0.3);
+      padding-top: 12px;
+      align-items: center;
+    }
+
+    .btn-parchment {
+      background: #ede0c2;
+      border: 1px solid #b8a684;
+      color: var(--book-ink);
+      font-family: Georgia, serif;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-parchment:hover {
+      background: #e3d2ad;
+    }
+
+    /* Lightbox */
+    .image-viewer {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 16px;
+      cursor: zoom-out;
+    }
+    .image-viewer.open {
+      display: flex;
+    }
+    .image-viewer img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 2px solid #555;
+    }
+
+    /* Modal for Backup */
+    .modal-shade {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 800;
+      padding: 16px;
+    }
+    .modal-shade.open {
+      display: flex;
+    }
+    .modal-dialog {
+      background: var(--panel-bg);
+      border: 2px solid var(--pixel-border-bright);
+      padding: 18px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        padding: 8px 8px 50px;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .overview-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .overview-badges, .overview-buttons, .seals-bar {
+        justify-content: center;
+      }
+      .parchment-sheet {
+        padding: 14px 10px 14px 40px;
+        background-image: 
+          linear-gradient(90deg, transparent 32px, var(--book-margin-line) 33px, transparent 34px),
+          repeating-linear-gradient(transparent, transparent 27px, var(--book-lines) 28px);
+      }
+      .parchment-sheet::before {
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="retro-box">
+      <div class="brand-wrap">
+        <div class="retro-gamepad-icon">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAIOElEQVR4nO3cv4sVVxjG8dfgXyAGLAJpbGKRJULSpwiIxVaClWujWChBLEQsdLUQsQgipljcxrUSrCxCIEX6BDasxdqkEezyR5giOddx7vw4Z+acOe857/dT7szV4c7zzDvnzt09cuzE8Q8CGPVZ7gMAcqIAMI0CwDQKANMoAEw7mvsA+lx4eDn3ISCyF7ee5T6ENUe0fAxK4O3RUIisBSD0cHKVIUsBCD76LF2ERQsQGvyX9/cSHQmWdv7OVtD+SxVhkQL4BJ+w2+NTitRFSFoAgg8fOYuQrABD4Sf06DNUhhQlSFKAvvATfPjqK0LsEkQtAFd9xLTENIhWAK76SCXlNIjyXSDCj5T6chTjedLsAhB+LCFVCWYVgPBjSSlKEP3r0IQfKcXO1+QCdLWO8GMJXTmbOgUmFYDwI7dYJQguAOGHFjFKMHsNQPiR09z8BRWA7/GjBCE5nTUBuPpDgzk59C5Au1WEH5q08+g7BfizKDDNqwBc/VGCKVOACQDTRgvAJz8o2Vh+gycAtz/QLDSf3ALBtMECsPhFiUIWw0wAmEYBYBoFgGm9BeDjT9SkL8/eE4AFMErim1dugWAaBYBpFACmUQCYRgFgGgWAaRQAplEAmEYBYBoFgGkUAKZRAJhGAWAaBYBpFACmHc19AHPdfr6d+xDMe3BxO/chTFZcAQi8Pu1zUlIhiikAwS+HO1clFEF9AQh+uUoogupFMOGvg+bzqHIChLxhu3d30h0IvFy6d2V0H63TQF0BfMJP6HVpno+xMtx+vq2qBKoKMBZ+TcH/fuuH3IcQ7Pe935L/H+4cDRVBUwnUrAGGwr97d0dV+DFu7JxpWReoKMBY+FEu7SVQUYA+hL8Oms9j9gL0XQU0v2kI13c+c0+BrIvgksO/xIKyNrt3dzoXxzkXxdknQFsJ4cd02s5vtgLkHn3QJVceVE0AbVcHpKHpPGcpAFd/dMmRCzUTQNNVAelpOd9qCgDkoOq7QEt4+vRJ8GuuXfsxwZHodHBuc+1nG69eZziSZSw+Abru87SMQ8sOzm12hn9s2xxd533pdYC5CYB1zXC/OzxY2/7lqY3VfrVNA9YAxrnwvzs86Ax/e1uKSZATBTCsGX4fNZaAAsA0CmBU6NXfqW0KUACYRgFgGgWAadU8B5jyhDf2v23piXEtmABGuQda7iGXL7d/LQ/EKABMowCGhU6B2q7+IhWtAab6468/13723TffZjiSPDZevZaDc5urcA99F8jtXxPzBcDHEogMT4Pawi9CAapz9sZ6SH/5afyprQv33N8H2Hp8c+1ne9cfeb9+aRSgEl3Bb28LKUKoruC3t2ksAgWoQDP8+/v7a9tPnz692s+nBKGa4X9z+HZt+9envlrtp60EfApUOBf+/f39zvC3tw1Niilc+N8cvu0Mf3vb0KTIgQIUrBl+H7FL0Ay/D40lMH8LZOkjT6xjAhQq9OrvxJoCoVd/R9sUoAAwjQLAtGrWAL5fReYPY6GJCQDTKECh3AMt95DLl9t/7gMx90DLPeTy5fbX8kCMAsA0ClCw0CkQ6+rvhE4BbVd/kYoWwZr5LLy7Ftp+r9uUszder8I99F0gkXjhd/auP5KtxzdX4R76LpDbXxMKkJjvp05Pnz75pARhr9tcPdgamgYpvggn8rEEIsPTQFv4RShANVy4p/4+gHPw8xdrP9u4+n70dS7c/D4Aspp6le8KfntbSBFKQQHwSfj/+fvXte2fnzyz2s+nBCUxVwCe6n7Khb8r+I7b9vnJM9WVgI9BE/MtXHu/qa8L4RP+Jrff0O1SacxNgBymhpRplR4TwKjQq79T2xSgADCNAsA0CgDTKABMowBGuc/y3UMuX27/Wp4FLF6ABxe313526d6VpQ8DCnSd9658pMQEMCx0CtR29RehAOY1S9BXhOa2msIvouhJ8KV7V2T37k7uwzBp4+r71YOtoWkQM/xabnuzTICl7/MwbuPq+96AD22LKUcu1EwAEaaABksEXcvVXyTjGoApgKZceVC3CNZ0dUB82s5v1gL0tV7bm4Q4+s5rzruB7BOAEtigMfwiCgowhBLUQfN5VFGAoauA5jcP44bOX+6rv4iSAoiMl4AilGXsnGkIv4iiAoiMvykUQT+fc6Ql/CLKHoSJ/Pfm3H6+PbhP8w3mwVl+IRclTeEXUVgAkY9v0lgRRFgjlEJb8B1Vt0BtWt80hNF8HlVOgKaQaQBdNAffUV8AhyKUo4TgO8UUwGm/uRQiv5IC31ZcAdpKfvORn+pFMJAaBYBpFACmUQCYRgFgGgWAaRQAplEAmEYBYBoFgGkUAKZRAJhGAWAaBYBpFACmeRfg/J2tlMcBROWb194CvLj1LNrBALn15ZlbIJhGAWAaBYBpgwVo3zexEEYJ2jkdWs8yAWBacAGYAtAsNJ+jBeDjUJRsLL/cAsE0rwKwGEYJQha/DhMApnkXgCkAzaZc/UVmTgBKAA3m5DCoAHwihBKE5HT2GoApgJzm5i+4AF3togTIoSt3oXcpkyYAJUBuMcIvMuMWiBIgl1jhF0nwHIASIKXY+ZpVgL7WUQKk0JerOZ9Ozp4AlABLSBF+kUi3QJQAKaUKv4jIkWMnjn+Y/a/878LDy73bXt7fi/XfwIihC2ish7JRC+D0FYESwFfKq35TkgKIMA0wzRJX/aZkBRAZLoFDGeCzVkz1PbSkBXAoArrkDL6zSAEcnyI0UYp6hH4iuNQ3jxctgBNaBNix9FfusxTAoQhwcv2uSdYCNFEGezT8gpWaArRRiPpoCHyb2gIAS+DPosA0CgDTKABMowAw7V/tSSOUo8dXdQAAAABJRU5ErkJggg==" alt="Gamepad">
+        </div>
+        <div>
+          <span class="brand-title">Геймерский уголок</span>
+          <span class="version-tag">v1.02</span>
+        </div>
+      </div>
+      <div class="header-btns">
+        <button class="btn btn-dark btn-theme" id="btn-theme-toggle" type="button" title="Переключить день / ночь">
+          ☀️
+        </button>
+        <button class="btn btn-dark" id="btn-open-backup" type="button">
+          💾 База
+        </button>
+        <button class="btn btn-green" id="btn-toggle-add" type="button">
+          ➕ Добавить игру
+        </button>
+      </div>
+    </header>
+
+    <!-- INLINE ADD / EDIT PANEL (WITH INTERNET SEARCH & RATING & SEALS) -->
+    <section class="retro-box form-panel" id="game-form-panel">
+      <div class="section-headline">
+        <span id="panel-title" style="color:#9fe2aa;">➕ Новая запись игры</span>
+        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" id="btn-close-form" type="button">✕ Закрыть</button>
+      </div>
+
+      <form id="game-entry-form">
+        <input type="hidden" id="entry-id" value="">
+        <div class="form-grid">
+          <!-- Title with Internet Auto-Search Button -->
+          <div class="form-group-full">
+            <label class="form-label">Название игры *</label>
+            <div class="input-with-search">
+              <input type="text" id="entry-title" class="retro-input" required placeholder="Например: Fable, Witcher 3, Dying Light...">
+              <button type="button" class="btn-search-online" id="btn-search-online">
+                🔍 Найти в сети
+              </button>
+            </div>
+            <div class="search-status-msg" id="search-status-msg"></div>
+          </div>
+
+          <!-- Platform Dropdown -->
+          <div>
+            <label class="form-label">Платформа</label>
+            <select id="entry-platform" class="retro-input">
+              <option value="PC">PC</option>
+              <option value="Xbox Series X/S">Xbox Series X/S</option>
+              <option value="Xbox One">Xbox One</option>
+              <option value="Xbox 360">Xbox 360</option>
+              <option value="PlayStation 5">PlayStation 5</option>
+              <option value="PlayStation 4">PlayStation 4</option>
+              <option value="PlayStation Vita">PlayStation Vita</option>
+              <option value="Nintendo Switch">Nintendo Switch</option>
+              <option value="Ретро консоль / Эмулятор">Ретро консоль / Эмулятор</option>
+              <option value="Android / iOS">Android / iOS</option>
+              <option value="Другая">Другая</option>
+            </select>
+          </div>
+
+          <!-- Status -->
+          <div>
+            <label class="form-label">Статус</label>
+            <select id="entry-status" class="retro-input">
+              <option value="playing">Играю</option>
+              <option value="planned">В планах</option>
+              <option value="completed">Пройдено</option>
+              <option value="paused">На паузе</option>
+            </select>
+          </div>
+
+          <!-- Rating Selector -->
+          <div>
+            <label class="form-label">Рейтинг игры</label>
+            <select id="entry-rating" class="retro-input">
+              <option value="5">⭐⭐⭐⭐⭐ (5/5 — Золотой Хит! 🏅)</option>
+              <option value="4">⭐⭐⭐⭐ (4/5 — Отличная игра)</option>
+              <option value="3">⭐⭐⭐ (3/5 — Нормальная)</option>
+              <option value="2">⭐⭐ (2/5 — Средне)</option>
+              <option value="1">⭐ (1/5 — Слабо)</option>
+            </select>
+          </div>
+
+          <!-- Wax Seal Preset -->
+          <div>
+            <label class="form-label">Сургучная печать</label>
+            <select id="entry-seal" class="retro-input">
+              <option value="">Без печати</option>
+              <option value="🔥 Шедевр">🔥 Шедевр</option>
+              <option value="💀 Хардкор">💀 Хардкор</option>
+              <option value="👥 Кооператив">👥 Кооператив</option>
+              <option value="⏳ Ждёт DLC">⏳ Ждёт DLC</option>
+              <option value="🏆 Платина">🏆 Платина</option>
+            </select>
+          </div>
+
+          <!-- Cover URL -->
+          <div class="form-group-full">
+            <label class="form-label">Ссылка на обложку (URL)</label>
+            <input type="url" id="entry-cover" class="retro-input" placeholder="Заполнится автоматом или укажите URL">
+          </div>
+
+          <!-- Description -->
+          <div class="form-group-full">
+            <label class="form-label">Краткий синопсис / описание на русском</label>
+            <textarea id="entry-desc" class="retro-input" rows="3" placeholder="Подтянется автоматом из Википедии или введите свой текст..."></textarea>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn btn-dark" id="btn-cancel-form">Отмена</button>
+          <button type="submit" class="btn btn-green" id="btn-submit-form">✅ Сохранить в список</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- CONTROLS: SEARCH & FILTER CHIPS -->
+    <section class="retro-box controls-panel">
+      <div class="search-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search-box" class="retro-input" placeholder="Поиск по названию или платформе...">
+      </div>
+      <div class="filter-pills" id="filter-pills-wrap">
+        <button class="pill active" data-filter="all" type="button">Все (<span id="cnt-all">0</span>)</button>
+        <button class="pill" data-filter="playing" type="button">Играю (<span id="cnt-playing">0</span>)</button>
+        <button class="pill" data-filter="planned" type="button">В планах (<span id="cnt-planned">0</span>)</button>
+        <button class="pill" data-filter="completed" type="button">Пройдено (<span id="cnt-completed">0</span>)</button>
+        <button class="pill" data-filter="paused" type="button">На паузе (<span id="cnt-paused">0</span>)</button>
+      </div>
+    </section>
+
+    <!-- CONCISE GAME LIST -->
+    <div class="section-headline">
+      <span>Список игр (<span id="list-total-count">0</span>)</span>
+      <span style="font-size:0.75rem; text-transform:none; color:var(--text-dim);">Клик на постер = сменить фото 📷 | Статус ↻</span>
+    </div>
+
+    <div class="game-list-rows" id="games-container">
+      <!-- Populated via Javascript -->
+    </div>
+
+    <!-- WORKSPACE: GAME DETAILS & ANCIENT FIELD NOTEBOOK -->
+    <div class="workspace-wrap" id="game-workspace">
+
+      <!-- Top: Quick Overview -->
+      <div class="retro-box overview-box">
+        <div class="overview-content">
+          <div class="overview-poster-wrap" id="overview-poster-wrap" title="Нажмите, чтобы загрузить обложку из файлов">
+            <img src="" id="view-cover" class="overview-poster-img" alt="Обложка">
+            <span class="hit-medal-badge-large" id="view-medal-badge" style="display:none;">🏅 ХИТ</span>
+            <span class="wax-seal-badge" id="view-seal-badge" style="display:none;">🔥 Шедевр</span>
+            <div class="overview-poster-hint">📷 Сменить фото</div>
+          </div>
+          <div class="overview-info">
+            <h2 class="overview-title-h2" id="view-title">Название игры</h2>
+            <div class="overview-badges">
+              <span class="platform-pill" id="view-platform">PC</span>
+              <span class="status-tag" id="view-status-tag" title="Нажмите, чтобы переключить статус">Играю ↻</span>
+              <span class="stars-display" id="view-stars" title="Рейтинг игры">★★★★★</span>
+            </div>
+
+            <!-- Progress & Time Tracker Panel -->
+            <div class="progress-timer-panel">
+              <div class="progress-row">
+                <span style="font-size:0.78rem; font-weight:700; color:var(--text-dim);">Прогресс:</span>
+                <input type="range" class="progress-slider" id="progress-slider" min="0" max="100" value="0">
+                <span class="progress-val-text" id="progress-val-text">0%</span>
+              </div>
+              <div class="timer-row">
+                <div class="timer-display">
+                  <span>⏱️ Время:</span>
+                  <span id="hours-display">0 ч.</span>
+                </div>
+                <div class="timer-actions">
+                  <button class="btn btn-dark btn-timer-sub" id="btn-add-hour" type="button">+1 ч.</button>
+                  <button class="btn btn-dark btn-timer-sub" id="btn-set-hours" type="button">Задать ч.</button>
+                  <button class="btn btn-green btn-timer-sub" id="btn-toggle-session" type="button">▶ Старт сессии</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wax Seals Row -->
+            <div class="seals-bar" id="seals-selection-bar">
+              <span style="font-size:0.78rem; font-weight:700; color:var(--text-dim); margin-right:4px;">Печать:</span>
+              <span class="seal-pill" data-seal="🔥 Шедевр">🔥 Шедевр</span>
+              <span class="seal-pill" data-seal="💀 Хардкор">💀 Хардкор</span>
+              <span class="seal-pill" data-seal="👥 Кооператив">👥 Кооп</span>
+              <span class="seal-pill" data-seal="⏳ Ждёт DLC">⏳ Ждёт DLC</span>
+              <span class="seal-pill" data-seal="🏆 Платина">🏆 Платина</span>
+            </div>
+
+            <p class="overview-text" id="view-desc">Описание отсутствует.</p>
+            <div class="overview-buttons">
+              <button class="btn btn-dark" id="btn-edit-current" type="button">✏️ Редактировать</button>
+              <button class="btn btn-danger" id="btn-delete-current" type="button">🗑️ Удалить игру</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Ancient Book Field Journal (COLLAPSIBLE!) -->
+      <div class="ancient-book" id="ancient-book-container">
+
+        <!-- Book Header / Collapsible Trigger Bar -->
+        <div class="book-titlebar" id="book-titlebar-toggle" title="Нажмите, чтобы свернуть или развернуть дневник">
+          <div class="book-titlebar-title">
+            <span>📜 Полевой журнал следопыта</span>
+          </div>
+          <div class="book-toggle-hint">
+            <span id="book-collapse-label">Свернуть блокнот</span>
+            <span id="book-chevron-icon">▲</span>
+            <div class="book-ribbon" title="Шёлковая закладка"></div>
+          </div>
+        </div>
+
+        <!-- Book Body Wrapper (Collapsible) -->
+        <div class="book-body-wrapper" id="book-body-wrapper">
+          <div class="parchment-sheet">
+            <div class="sheet-header">
+              <div class="sheet-game-name" id="book-game-title">Заметки к игре</div>
+              <div class="sheet-autosave-msg" id="book-save-status">Запись сохранена</div>
+            </div>
+
+            <!-- Quests & Checklist Section -->
+            <div class="quests-section">
+              <div class="quests-section-header">
+                <span>⚔️ Квесты и задачи</span>
+                <span id="quests-counter" style="font-size:0.78rem; color:#856f57;">0/0</span>
+              </div>
+              <div class="quest-input-row">
+                <input type="text" class="quest-input" id="quest-new-input" placeholder="Новое задание, цель, тайник...">
+                <button class="btn-add-quest" id="btn-add-quest" type="button">➕ Добавить</button>
+              </div>
+              <div class="quests-list" id="quests-list">
+                <!-- Checkbox tasks will appear here -->
+              </div>
+            </div>
+
+            <!-- Quick Template Insert Buttons -->
+            <div class="templates-bar">
+              <span style="font-family: Georgia, serif; font-size: 0.76rem; font-weight:700; color:var(--book-ink-muted);">Шаблоны:</span>
+              <button class="btn-template" data-tpl="build" type="button">⚔️ Билд</button>
+              <button class="btn-template" data-tpl="codes" type="button">🔐 Коды/Сейфы</button>
+              <button class="btn-template" data-tpl="stash" type="button">💎 Тайники</button>
+              <button class="btn-template" data-tpl="craft" type="button">🧪 Крафт</button>
+            </div>
+
+            <!-- Notes Textarea -->
+            <textarea 
+              class="book-textarea" 
+              id="book-notes-input" 
+              placeholder="Ведите полевые заметки здесь: пароли от дверей, билды, рецепты, тайники, невыполненные квесты..."></textarea>
+
+            <!-- Voice Memos Section -->
+            <div class="voice-section">
+              <div class="voice-section-title">
+                <span>🎙️ Голосовые мысли и аудиозаметки</span>
+              </div>
+              <div class="voice-list" id="voice-notes-list">
+                <!-- Recorded audio notes will appear here -->
+              </div>
+            </div>
+
+            <!-- Attached Maps and Sketches -->
+            <div class="attached-maps-title">
+              <span>🗺️ Вклеенные зарисовки и карты местности</span>
+            </div>
+            <div class="gallery-pins" id="book-gallery-pins">
+              <!-- Pinned screenshots / sketches -->
+            </div>
+
+            <!-- Notebook Toolbar -->
+            <div class="notebook-tools">
+              <button class="btn btn-record" id="btn-toggle-voice" type="button">
+                🎙️ Записать мысль
+              </button>
+              <label class="btn-parchment">
+                <input type="file" id="file-image-picker" accept="image/*" style="display:none;">
+                📎 Вклеить снимок
+              </label>
+              <button class="btn-parchment" id="btn-add-img-url" type="button">
+                🔗 По ссылке
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; margin-top: 30px; font-size: 0.78rem; color: var(--text-dim); font-family: monospace;">
+      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 1.02 • QUEST &amp; EXPEDITION EDITION
+    </footer>
+
+  </div>
+
+  <!-- HIDDEN INPUT FOR QUICK COVER FILE UPLOAD -->
+  <input type="file" id="quick-cover-file-input" accept="image/*" style="display:none;">
+
+  <!-- LIGHTBOX IMAGE VIEWER -->
+  <div class="image-viewer" id="lightbox-viewer">
+    <img id="lightbox-viewer-img" src="" alt="Снимок">
+  </div>
+
+  <!-- BACKUP & RESTORE MODAL -->
+  <div class="modal-shade" id="modal-backup-shade">
+    <div class="modal-dialog">
+      <div class="section-headline" style="color:#9fe2aa; margin-bottom:12px;">
+        <span>Управление базой игр</span>
+        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" id="btn-close-backup" type="button">✕</button>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-dim); margin-bottom:14px;">
+        Все данные, заметки, карты, рейтинги и голосовые хранятся в памяти браузера. Вы можете сохранить базу в файл.
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-dark" style="justify-content:flex-start;" id="btn-export-file" type="button">
+          💾 Экспортировать базу в файл (.json)
+        </button>
+        <label class="btn btn-dark" style="justify-content:flex-start; cursor:pointer;">
+          <input type="file" id="file-import-json" accept=".json" style="display:none;">
+          📥 Импортировать базу из файла (.json)
+        </label>
+        <button class="btn btn-danger" style="justify-content:flex-start;" id="btn-reset-db" type="button">
+          🔄 Сбросить к исходным 4 играм
+        </button>
+      </div>
+      <div style="margin-top:14px; text-align:right;">
+        <button class="btn btn-green" id="btn-finish-backup" type="button">Готово</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- 1. DEFAULT DATA ---
+    const INITIAL_GAMES = [
+      {
+        id: "g_witcher3",
+        title: "Ведьмак 3: Дикая Охота",
+        platform: "PC",
+        status: "completed",
+        rating: 5,
+        seal: "🔥 Шедевр",
+        progress: 100,
+        hours: 120,
+        cover: "https://upload.wikimedia.org/wikipedia/ru/a/a2/The_Witcher_3-_Wild_Hunt_Cover.jpg",
+        desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
+        notes: "• Заказ на Лихо у колодца выполнен.\n• Сет школы Грифона собран на 1-й уровень.\n• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
+        quests: [
+          { id: "q1", text: "Собрать карты для колоды Севера", done: true },
+          { id: "q2", text: "Выковать мастерские мечи у Хаттори", done: true },
+          { id: "q3", text: "Пройти дополнение Каменные Сердца", done: false }
+        ],
+        images: [],
+        voices: []
+      },
+      {
+        id: "g_fable",
+        title: "Fable Anniversary",
+        platform: "PC / Xbox",
+        status: "playing",
+        rating: 5,
+        seal: "🔥 Шедевр",
+        progress: 45,
+        hours: 18,
+        cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/Fable_Anniversary_cover.jpg",
+        desc: "Ремастер классической ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
+        notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.\n• Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.\n• Прокачать заклинание 'Молния' для быстрого контроля толпы.",
+        quests: [
+          { id: "q4", text: "Открыть демоническую дверь в Дубовом Доле", done: true },
+          { id: "q5", text: "Собрать 15 серебряных ключей", done: false }
+        ],
+        images: [],
+        voices: []
+      },
+      {
+        id: "g_dying_light",
+        title: "Dying Light",
+        platform: "PC",
+        status: "playing",
+        rating: 4,
+        seal: "💀 Хардкор",
+        progress: 30,
+        hours: 14,
+        cover: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Dying_Light_cover.jpg",
+        desc: "Паркур в открытом мире среди заражённых Харрана. Днём исследуйте руины и собирайте припасы, а ночью прячьтесь от смертоносных Прыгунов.",
+        notes: "• Ночные вылазки дают удвоенный опыт выживания.\n• Чертёж 'Кореш Камикадзе' лежит на подвесном мосту.\n• Собрать больше марли и спирта для аптечек.",
+        quests: [
+          { id: "q6", text: "Активировать все безопасные зоны в Трущобах", done: false }
+        ],
+        images: [],
+        voices: []
+      },
+      {
+        id: "g_outer_worlds",
+        title: "The Outer Worlds",
+        platform: "PC / Xbox",
+        status: "planned",
+        rating: 4,
+        seal: "",
+        progress: 0,
+        hours: 0,
+        cover: "https://upload.wikimedia.org/wikipedia/ru/0/07/The_Outer_Worlds.jpg",
+        desc: "Сатирическая космическая RPG от Obsidian. Колония Алкион под пятой корпораций, чернушный юмор, компаньоны и вариативные задания.",
+        notes: "• Первое прохождение планирую через дипломатию и взлом.\n• Не забыть взять Парвати в команду на 'Первопроходце'.",
+        quests: [],
+        images: [],
+        voices: []
+      }
+    ];
+
+    const STATUS_MAP = {
+      playing: { label: "Играю", cls: "st-playing" },
+      planned: { label: "В планах", cls: "st-planned" },
+      completed: { label: "Пройдено", cls: "st-completed" },
+      paused: { label: "На паузе", cls: "st-paused" }
+    };
+    const STATUS_CYCLE = ["playing", "planned", "completed", "paused"];
+
+    const TEMPLATES_MAP = {
+      build: "\n\n=== ⚔️ БИЛД ПЕРСОНАЖА ===\n• Экипировка:\n• Главные навыки:\n• Очки характеристик:\n",
+      codes: "\n\n=== 🔐 ПАРОЛИ И КОДЫ ===\n• Локация / Сейф:\n• Код доступа:\n• Где была подсказка:\n",
+      stash: "\n\n=== 💎 ТАЙНИКИ И СУНДУКИ ===\n• Ориентир на карте:\n• Требуемый ключ:\n• Награда внутри:\n",
+      craft: "\n\n=== 🧪 РЕЦЕПТЫ КРАФТА ===\n• Создаваемый предмет:\n• Нужные ингредиенты:\n• Где добыть ресурсы:\n"
+    };
+
+    const STORAGE_KEY = "gamerbox_games_v102";
+    const OLD_STORAGE_KEYS = [
+      "gamerbox_games_v101",
+      "gamerbox_games_v10",
+      "gamerbox_games_v09",
+      "gamerbox_games_v08",
+      "gamerbox_games_v07",
+      "gamerbox_games",
+      "gamers_corner_games",
+      "gamerbox_data"
+    ];
+
+    let gamesList = [];
+    let currentFilter = "all";
+    let activeGameId = null;
+    let notesTimer = null;
+    let isBookOpen = true;
+
+    // Quick cover upload target ID
+    let targetCoverGameId = null;
+
+    // Audio recording state
+    let mediaRecorder = null;
+    let audioStream = null;
+    let audioChunks = [];
+    let recordSeconds = 0;
+    let recordInterval = null;
+    let activeAudioElement = null;
+
+    // Live session timer state
+    let sessionActive = false;
+    let sessionTimerId = null;
+
+    // --- 2. DAY / NIGHT THEME SYSTEM ---
+    let currentTheme = localStorage.getItem("gamerbox_theme") || "dark";
+
+    function applyTheme(theme) {
+      currentTheme = theme;
+      const themeBtn = document.getElementById("btn-theme-toggle");
+      if (theme === "light") {
+        document.body.classList.add("theme-light");
+        themeBtn.textContent = "🌙";
+        themeBtn.title = "Переключить на ночной режим (темный)";
+      } else {
+        document.body.classList.remove("theme-light");
+        themeBtn.textContent = "☀️";
+        themeBtn.title = "Переключить на дневной режим (светлый)";
+      }
+      localStorage.setItem("gamerbox_theme", theme);
+    }
+
+    document.getElementById("btn-theme-toggle").addEventListener("click", () => {
+      applyTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+
+    // --- 3. STORAGE SYSTEM WITH MIGRATION ---
+    function normalizeData(arr) {
+      if (!Array.isArray(arr)) return INITIAL_GAMES;
+      return arr.map((item, idx) => {
+        if (!item || typeof item !== 'object') {
+          return { id: "g_" + Date.now() + "_" + idx, title: "Игра", platform: "PC", status: "playing", rating: 5, seal: "", progress: 0, hours: 0, cover: "", desc: "", notes: "", quests: [], images: [], voices: [] };
+        }
+        let st = String(item.status || "playing").toLowerCase();
+        if (st.includes("игра") || st === "playing") st = "playing";
+        else if (st.includes("план") || st.includes("буду") || st === "planned") st = "planned";
+        else if (st.includes("пройд") || st === "completed") st = "completed";
+        else if (st.includes("пауз") || st === "paused") st = "paused";
+        else st = "playing";
+
+        let r = parseInt(item.rating, 10);
+        if (isNaN(r) || r < 1 || r > 5) r = 5;
+
+        let prog = parseInt(item.progress, 10);
+        if (isNaN(prog) || prog < 0) prog = 0;
+        if (prog > 100) prog = 100;
+
+        let hrs = parseFloat(item.hours);
+        if (isNaN(hrs) || hrs < 0) hrs = 0;
+
+        let qList = Array.isArray(item.quests) ? item.quests : [];
+
+        return {
+          id: item.id || ("game_" + Date.now() + "_" + idx),
+          title: item.title || "Без названия",
+          platform: item.platform || "PC",
+          status: st,
+          rating: r,
+          seal: item.seal || "",
+          progress: prog,
+          hours: hrs,
+          cover: item.cover || "",
+          desc: item.desc || item.description || "",
+          notes: item.notes || item.secrets || "",
+          quests: qList,
+          images: Array.isArray(item.images) ? item.images : [],
+          voices: Array.isArray(item.voices) ? item.voices : []
+        };
+      });
+    }
+
+    function loadSavedGames() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return normalizeData(parsed);
+        }
+      } catch (e) {}
+
+      for (const oldKey of OLD_STORAGE_KEYS) {
+        try {
+          const oldStored = localStorage.getItem(oldKey);
+          if (oldStored) {
+            const parsed = JSON.parse(oldStored);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              const normalized = normalizeData(parsed);
+              saveGames(normalized);
+              return normalized;
+            }
+          }
+        } catch (e) {}
+      }
+
+      return INITIAL_GAMES;
+    }
+
+    function saveGames(arr) {
+      gamesList = arr;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gamesList));
+      } catch (err) {
+        console.warn("Storage warning:", err);
+      }
+    }
+
+    // --- 4. STATUS CYCLING (ON CLICK ON STATUS BADGE) ---
+    function cycleStatusForGame(e, gameId) {
+      if (e) {
+        e.stopPropagation();
+      }
+      const game = gamesList.find(g => g.id === gameId);
+      if (!game) return;
+
+      const currIdx = STATUS_CYCLE.indexOf(game.status);
+      const nextStatus = STATUS_CYCLE[(currIdx + 1) % STATUS_CYCLE.length];
+      game.status = nextStatus;
+
+      saveGames(gamesList);
+      renderList();
+
+      if (activeGameId === gameId) {
+        const stInfo = STATUS_MAP[nextStatus] || STATUS_MAP.playing;
+        const statusTag = document.getElementById("view-status-tag");
+        statusTag.textContent = stInfo.label + " ↻";
+        statusTag.className = "status-tag " + stInfo.cls;
+      }
+    }
+
+    // --- 5. INTERNET AUTO-SEARCH VIA RUSSIAN WIKIPEDIA ---
+    const btnSearchOnline = document.getElementById("btn-search-online");
+    const searchStatusMsg = document.getElementById("search-status-msg");
+
+    btnSearchOnline.addEventListener("click", async function() {
+      const titleInput = document.getElementById("entry-title");
+      const q = titleInput.value.trim();
+      if (!q) {
+        searchStatusMsg.style.color = "#ef4444";
+        searchStatusMsg.textContent = "Сначала введите название игры!";
+        return;
+      }
+
+      btnSearchOnline.disabled = true;
+      btnSearchOnline.textContent = "⏳ Поиск...";
+      searchStatusMsg.style.color = "var(--text-dim)";
+      searchStatusMsg.textContent = "Опрашиваем русскую Википедию...";
+
+      try {
+        const searchApi1 = `https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q + ' компьютерная игра')}&utf8=&format=json&origin=*`;
+        let res = await fetch(searchApi1);
+        let data = await res.json();
+        let targetTitle = null;
+
+        if (data.query && data.query.search && data.query.search.length > 0) {
+          targetTitle = data.query.search[0].title;
+        } else {
+          const searchApi2 = `https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&utf8=&format=json&origin=*`;
+          let res2 = await fetch(searchApi2);
+          let data2 = await res2.json();
+          if (data2.query && data2.query.search && data2.query.search.length > 0) {
+            targetTitle = data2.query.search[0].title;
+          }
+        }
+
+        if (!targetTitle) {
+          searchStatusMsg.style.color = "#f59e0b";
+          searchStatusMsg.textContent = "Ничего не найдено. Можно ввести данные вручную.";
+          btnSearchOnline.disabled = false;
+          btnSearchOnline.textContent = "🔍 Найти в сети";
+          return;
+        }
+
+        const summaryApi = `https://ru.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(targetTitle)}`;
+        let sumRes = await fetch(summaryApi);
+        if (sumRes.ok) {
+          let sumData = await sumRes.json();
+          let extract = sumData.extract || "";
+          if (extract.length > 360) extract = extract.slice(0, 360) + "...";
+
+          let coverUrl = "";
+          if (sumData.thumbnail && sumData.thumbnail.source) {
+            coverUrl = sumData.thumbnail.source;
+          } else if (sumData.originalimage && sumData.originalimage.source) {
+            coverUrl = sumData.originalimage.source;
+          }
+
+          if (extract) {
+            document.getElementById("entry-desc").value = extract;
+          }
+          if (coverUrl) {
+            document.getElementById("entry-cover").value = coverUrl;
+          }
+
+          searchStatusMsg.style.color = "#10b981";
+          searchStatusMsg.textContent = `✓ Найдено: «${targetTitle}». Описание и постер заполнены!`;
+        } else {
+          searchStatusMsg.style.color = "#f59e0b";
+          searchStatusMsg.textContent = `Статья найдена (${targetTitle}), но описание не подтянулось.`;
+        }
+      } catch (err) {
+        searchStatusMsg.style.color = "#ef4444";
+        searchStatusMsg.textContent = "Ошибка сети при поиске: " + err.message;
+      } finally {
+        btnSearchOnline.disabled = false;
+        btnSearchOnline.textContent = "🔍 Найти в сети";
+      }
+    });
+
+    // --- 6. QUICK COVER UPLOAD (DIRECT FROM LIST & OVERVIEW) ---
+    function triggerCoverUpload(e, gameId) {
+      if (e) e.stopPropagation();
+      targetCoverGameId = gameId;
+      const fileInput = document.getElementById("quick-cover-file-input");
+      fileInput.value = "";
+      fileInput.click();
+    }
+
+    document.getElementById("quick-cover-file-input").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file || !targetCoverGameId) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        resizeImage(evt.target.result, 600, 800, function(resizedDataUrl) {
+          const game = gamesList.find(g => g.id === targetCoverGameId);
+          if (game) {
+            game.cover = resizedDataUrl;
+            saveGames(gamesList);
+            renderList();
+            if (activeGameId === targetCoverGameId) {
+              selectGame(activeGameId, false);
+            }
+          }
+        });
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById("overview-poster-wrap").addEventListener("click", function() {
+      if (activeGameId) {
+        triggerCoverUpload(null, activeGameId);
+      }
+    });
+
+    function resizeImage(dataUrl, maxW, maxH, callback) {
+      const img = new Image();
+      img.onload = function() {
+        let w = img.width;
+        let h = img.height;
+        if (w > maxW || h > maxH) {
+          if (w / h > maxW / maxH) {
+            h = Math.round((h * maxW) / w);
+            w = maxW;
+          } else {
+            w = Math.round((w * maxH) / h);
+            maxH = h;
+          }
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        callback(canvas.toDataURL("image/jpeg", 0.85));
+      };
+      img.onerror = function() {
+        callback(dataUrl);
+      };
+      img.src = dataUrl;
+    }
+
+    // --- 7. RENDERING ---
+    function updateCounters() {
+      const counts = { all: gamesList.length, playing: 0, planned: 0, completed: 0, paused: 0 };
+      gamesList.forEach(g => {
+        if (counts[g.status] !== undefined) counts[g.status]++;
+      });
+      document.getElementById("cnt-all").textContent = counts.all;
+      document.getElementById("cnt-playing").textContent = counts.playing;
+      document.getElementById("cnt-planned").textContent = counts.planned;
+      document.getElementById("cnt-completed").textContent = counts.completed;
+      document.getElementById("cnt-paused").textContent = counts.paused;
+      document.getElementById("list-total-count").textContent = counts.all;
+    }
+
+    function renderList() {
+      updateCounters();
+      const container = document.getElementById("games-container");
+      const searchVal = document.getElementById("search-box").value.trim().toLowerCase();
+
+      const filtered = gamesList.filter(g => {
+        const matchesFilter = (currentFilter === "all") || (g.status === currentFilter);
+        const matchesSearch = !searchVal || 
+          g.title.toLowerCase().includes(searchVal) || 
+          (g.platform && g.platform.toLowerCase().includes(searchVal)) ||
+          (g.seal && g.seal.toLowerCase().includes(searchVal));
+        return matchesFilter && matchesSearch;
+      });
+
+      container.innerHTML = "";
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:24px; color:var(--text-dim); border:1px dashed var(--pixel-border); border-radius:3px;">
+            В этом разделе нет игр. Нажмите «➕ Добавить игру» сверху!
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(game => {
+        const stInfo = STATUS_MAP[game.status] || STATUS_MAP.playing;
+        const isSelected = game.id === activeGameId;
+
+        const row = document.createElement("div");
+        row.className = "game-row" + (isSelected ? " active" : "");
+        row.dataset.id = game.id;
+
+        const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 50' fill='%2319241c'%3E%3Crect width='40' height='50'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
+        const hasCustomCover = Boolean(game.cover && game.cover.trim());
+        const coverSrc = hasCustomCover ? game.cover : fallbackSvg;
+
+        const isHit = (game.rating === 5);
+        const starsText = "★".repeat(game.rating || 5);
+        const hasSeal = Boolean(game.seal && game.seal.trim());
+
+        row.innerHTML = `
+          <div class="cover-wrap-mini" title="Нажмите, чтобы загрузить обложку с устройства">
+            <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+            ${isHit ? '<span class="hit-medal-badge" title="Золотой Хит! 5/5">🏅 ХИТ</span>' : ''}
+            ${hasSeal ? `<span class="wax-seal-badge">${safeHtml(game.seal)}</span>` : ''}
+            <span class="cover-quick-badge">📷</span>
+          </div>
+          <div class="game-meta">
+            <div class="game-title-text">${safeHtml(game.title)}</div>
+            <div class="game-sub-text">
+              <span>${safeHtml(game.platform || "Любая")}</span>
+              <span class="stars-display" title="Рейтинг: ${game.rating || 5}/5">${starsText}</span>
+              ${game.hours ? `<span>• ${game.hours}ч.</span>` : ''}
+              ${game.progress ? `<span>• ${game.progress}%</span>` : ''}
+            </div>
+            <div class="row-progress-container">
+              <div class="row-progress-fill" style="width: ${game.progress || 0}%;"></div>
+            </div>
+          </div>
+          <span class="status-tag ${stInfo.cls}" title="Нажмите для быстрой смены статуса">
+            ${stInfo.label} ↻
+          </span>
+        `;
+
+        row.addEventListener("click", () => {
+          selectGame(game.id, true);
+        });
+
+        const coverWrap = row.querySelector(".cover-wrap-mini");
+        coverWrap.addEventListener("click", (evt) => {
+          triggerCoverUpload(evt, game.id);
+        });
+
+        const badgeEl = row.querySelector(".status-tag");
+        badgeEl.addEventListener("click", (evt) => {
+          cycleStatusForGame(evt, game.id);
+        });
+
+        container.appendChild(row);
+      });
+    }
+
+    function selectGame(gameId, doScroll) {
+      activeGameId = gameId;
+      const game = gamesList.find(g => g.id === gameId);
+      const ws = document.getElementById("game-workspace");
+
+      if (!game) {
+        ws.classList.remove("active");
+        return;
+      }
+
+      if (sessionActive) {
+        toggleSessionTimer();
+      }
+
+      document.querySelectorAll(".game-row").forEach(el => {
+        el.classList.toggle("active", el.dataset.id === gameId);
+      });
+
+      document.getElementById("view-title").textContent = game.title;
+      document.getElementById("view-platform").textContent = game.platform || "Платформа не указана";
+
+      const stInfo = STATUS_MAP[game.status] || STATUS_MAP.playing;
+      const statusTag = document.getElementById("view-status-tag");
+      statusTag.textContent = stInfo.label + " ↻";
+      statusTag.className = "status-tag " + stInfo.cls;
+
+      const r = game.rating || 5;
+      document.getElementById("view-stars").textContent = "★".repeat(r) + " (" + r + "/5)";
+
+      const medalBadge = document.getElementById("view-medal-badge");
+      medalBadge.style.display = (r === 5) ? "block" : "none";
+
+      const sealBadge = document.getElementById("view-seal-badge");
+      if (game.seal && game.seal.trim()) {
+        sealBadge.textContent = game.seal;
+        sealBadge.style.display = "inline-flex";
+      } else {
+        sealBadge.style.display = "none";
+      }
+
+      // Progress & Hours
+      const progressSlider = document.getElementById("progress-slider");
+      const progressValText = document.getElementById("progress-val-text");
+      progressSlider.value = game.progress || 0;
+      progressValText.textContent = (game.progress || 0) + "%";
+
+      document.getElementById("hours-display").textContent = (game.hours || 0) + " ч.";
+
+      // Wax seals highlight in overview bar
+      document.querySelectorAll(".seal-pill").forEach(p => {
+        p.classList.toggle("selected", p.dataset.seal === game.seal);
+      });
+
+      document.getElementById("view-desc").textContent = game.desc || "Описание отсутствует. Нажмите 'Редактировать', чтобы добавить.";
+
+      const fallbackSvgLarge = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' fill='%2319241c'%3E%3Crect width='100' height='130'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='26' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
+      const viewCover = document.getElementById("view-cover");
+      viewCover.src = game.cover && game.cover.trim() ? game.cover : fallbackSvgLarge;
+      viewCover.onerror = function() { this.onerror = null; this.src = fallbackSvgLarge; };
+
+      // Fill ancient notebook
+      document.getElementById("book-game-title").textContent = `Заметки: ${game.title}`;
+      document.getElementById("book-notes-input").value = game.notes || "";
+      document.getElementById("book-save-status").textContent = "Запись сохранена";
+
+      renderQuests(game.quests || []);
+      renderNotebookGallery(game.images || []);
+      renderVoiceNotes(game.voices || []);
+
+      ws.classList.add("active");
+
+      if (doScroll) {
+        try {
+          ws.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch (e) {
+          ws.scrollIntoView(true);
+        }
+      }
+    }
+
+    document.getElementById("view-status-tag").addEventListener("click", function(e) {
+      if (activeGameId) {
+        cycleStatusForGame(e, activeGameId);
+      }
+    });
+
+    // --- 8. PROGRESS SLIDER & TIMER CONTROLS ---
+    const progressSlider = document.getElementById("progress-slider");
+    progressSlider.addEventListener("input", function() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      game.progress = parseInt(this.value, 10);
+      document.getElementById("progress-val-text").textContent = game.progress + "%";
+      saveGames(gamesList);
+      renderList();
+    });
+
+    document.getElementById("btn-add-hour").addEventListener("click", function() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      game.hours = (game.hours || 0) + 1;
+      document.getElementById("hours-display").textContent = game.hours + " ч.";
+      saveGames(gamesList);
+      renderList();
+    });
+
+    document.getElementById("btn-set-hours").addEventListener("click", function() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      const val = prompt("Укажите наигранные часы (например, 25):", game.hours || 0);
+      if (val !== null) {
+        const parsed = parseFloat(val.replace(',', '.'));
+        if (!isNaN(parsed) && parsed >= 0) {
+          game.hours = parsed;
+          document.getElementById("hours-display").textContent = game.hours + " ч.";
+          saveGames(gamesList);
+          renderList();
+        }
+      }
+    });
+
+    // Live session timer button
+    const btnToggleSession = document.getElementById("btn-toggle-session");
+    btnToggleSession.addEventListener("click", toggleSessionTimer);
+
+    function toggleSessionTimer() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+
+      if (!sessionActive) {
+        sessionActive = true;
+        btnToggleSession.textContent = "⏹️ Завершить (0м)";
+        btnToggleSession.classList.remove("btn-green");
+        btnToggleSession.classList.add("btn-danger");
+
+        let sessionMinutes = 0;
+        sessionTimerId = setInterval(() => {
+          sessionMinutes++;
+          btnToggleSession.textContent = `⏹️ Завершить (${sessionMinutes}м)`;
+          if (sessionMinutes % 6 === 0) {
+            game.hours = parseFloat(((game.hours || 0) + 0.1).toFixed(1));
+            document.getElementById("hours-display").textContent = game.hours + " ч.";
+            saveGames(gamesList);
+            renderList();
+          }
+        }, 60000);
+      } else {
+        sessionActive = false;
+        clearInterval(sessionTimerId);
+        btnToggleSession.textContent = "▶ Старт сессии";
+        btnToggleSession.classList.remove("btn-danger");
+        btnToggleSession.classList.add("btn-green");
+      }
+    }
+
+    // Wax seal pills in overview
+    document.querySelectorAll(".seal-pill").forEach(pill => {
+      pill.addEventListener("click", function() {
+        const game = gamesList.find(g => g.id === activeGameId);
+        if (!game) return;
+        const sealVal = this.dataset.seal;
+        if (game.seal === sealVal) {
+          game.seal = "";
+        } else {
+          game.seal = sealVal;
+        }
+        saveGames(gamesList);
+        renderList();
+        selectGame(activeGameId, false);
+      });
+    });
+
+    // --- 9. QUESTS & CHECKLIST IN NOTEBOOK ---
+    function renderQuests(quests) {
+      const listEl = document.getElementById("quests-list");
+      listEl.innerHTML = "";
+
+      const total = quests.length;
+      const doneCount = quests.filter(q => q.done).length;
+      document.getElementById("quests-counter").textContent = `${doneCount}/${total}`;
+
+      if (quests.length === 0) {
+        listEl.innerHTML = `<span style="font-size:0.8rem; color:#856f57; font-style:italic;">Задач пока нет. Добавьте первую цель выше!</span>`;
+        return;
+      }
+
+      quests.forEach((q, idx) => {
+        const row = document.createElement("div");
+        row.className = "quest-item" + (q.done ? " done" : "");
+        row.innerHTML = `
+          <input type="checkbox" ${q.done ? "checked" : ""}>
+          <span style="flex:1;">${safeHtml(q.text)}</span>
+          <button class="quest-del-btn" title="Удалить цель" type="button">✕</button>
+        `;
+
+        row.querySelector("input").addEventListener("change", function() {
+          q.done = this.checked;
+          const game = gamesList.find(g => g.id === activeGameId);
+          if (game) {
+            saveGames(gamesList);
+            renderQuests(game.quests);
+          }
+        });
+
+        row.querySelector(".quest-del-btn").addEventListener("click", function() {
+          const game = gamesList.find(g => g.id === activeGameId);
+          if (game) {
+            game.quests.splice(idx, 1);
+            saveGames(gamesList);
+            renderQuests(game.quests);
+          }
+        });
+
+        listEl.appendChild(row);
+      });
+    }
+
+    document.getElementById("btn-add-quest").addEventListener("click", addQuestTask);
+    document.getElementById("quest-new-input").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        addQuestTask();
+      }
+    });
+
+    function addQuestTask() {
+      const input = document.getElementById("quest-new-input");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      if (!game.quests) game.quests = [];
+
+      game.quests.push({
+        id: "q_" + Date.now(),
+        text: text,
+        done: false
+      });
+
+      saveGames(gamesList);
+      input.value = "";
+      renderQuests(game.quests);
+    }
+
+    // --- 10. NOTE TEMPLATES INSERTION ---
+    document.querySelectorAll(".btn-template").forEach(btn => {
+      btn.addEventListener("click", function() {
+        const tplKey = this.dataset.tpl;
+        const snippet = TEMPLATES_MAP[tplKey];
+        if (!snippet) return;
+
+        const textarea = document.getElementById("book-notes-input");
+        const currentVal = textarea.value;
+        textarea.value = currentVal ? (currentVal + snippet) : snippet.trim();
+        textarea.focus();
+
+        const game = gamesList.find(g => g.id === activeGameId);
+        if (game) {
+          game.notes = textarea.value;
+          saveGames(gamesList);
+          document.getElementById("book-save-status").textContent = "✓ Запись сохранена";
+        }
+      });
+    });
+
+    // --- 11. COLLAPSIBLE FIELD NOTEBOOK ---
+    function toggleBookCollapse() {
+      isBookOpen = !isBookOpen;
+      const bodyWrapper = document.getElementById("book-body-wrapper");
+      const label = document.getElementById("book-collapse-label");
+      const chevron = document.getElementById("book-chevron-icon");
+
+      if (isBookOpen) {
+        bodyWrapper.classList.remove("collapsed");
+        label.textContent = "Свернуть блокнот";
+        chevron.textContent = "▲";
+      } else {
+        bodyWrapper.classList.add("collapsed");
+        label.textContent = "Развернуть блокнот";
+        chevron.textContent = "▼";
+      }
+    }
+
+    document.getElementById("book-titlebar-toggle").addEventListener("click", toggleBookCollapse);
+
+    // --- 12. VOICE AUDIO RECORDING & ROCK-SOLID PLAYBACK ---
+    function getBestSupportedAudioMime() {
+      const candidates = [
+        "audio/webm;codecs=opus",
+        "audio/webm",
+        "audio/mp4",
+        "audio/aac",
+        "audio/ogg;codecs=opus",
+        "audio/wav"
+      ];
+      if (typeof MediaRecorder === "undefined" || !MediaRecorder.isTypeSupported) {
+        return "";
+      }
+      for (const mime of candidates) {
+        if (MediaRecorder.isTypeSupported(mime)) return mime;
+      }
+      return "";
+    }
+
+    function dataUrlToBlobUrl(dataUrl) {
+      try {
+        const arr = dataUrl.split(",");
+        const mimeMatch = arr[0].match(/:(.*?);/);
+        const mime = mimeMatch ? mimeMatch[1] : "audio/webm";
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        const blob = new Blob([u8arr], { type: mime });
+        return URL.createObjectURL(blob);
+      } catch (err) {
+        return dataUrl;
+      }
+    }
+
+    const btnToggleVoice = document.getElementById("btn-toggle-voice");
+
+    btnToggleVoice.addEventListener("click", async function() {
+      if (mediaRecorder && mediaRecorder.state === "recording") {
+        mediaRecorder.stop();
+        return;
+      }
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Запись звука не поддерживается в этом браузере или на незащищённом соединении.");
+        return;
+      }
+
+      try {
+        const mime = getBestSupportedAudioMime();
+        audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+        const options = mime ? { mimeType: mime } : {};
+        mediaRecorder = new MediaRecorder(audioStream, options);
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = function(e) {
+          if (e.data && e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = function() {
+          if (audioStream) {
+            audioStream.getTracks().forEach(track => track.stop());
+            audioStream = null;
+          }
+          clearInterval(recordInterval);
+          btnToggleVoice.classList.remove("recording");
+          btnToggleVoice.textContent = "🎙️ Записать мысль";
+
+          const finalMime = mediaRecorder.mimeType || mime || "audio/mp4";
+          const audioBlob = new Blob(audioChunks, { type: finalMime });
+
+          const reader = new FileReader();
+          reader.onloadend = function() {
+            saveVoiceNoteToActiveGame(reader.result);
+          };
+          reader.readAsDataURL(audioBlob);
+        };
+
+        mediaRecorder.start();
+        recordSeconds = 0;
+        btnToggleVoice.classList.add("recording");
+        btnToggleVoice.textContent = "⏹️ Стоп (00:00)";
+
+        recordInterval = setInterval(() => {
+          recordSeconds++;
+          const mins = String(Math.floor(recordSeconds / 60)).padStart(2, '0');
+          const secs = String(recordSeconds % 60).padStart(2, '0');
+          btnToggleVoice.textContent = `⏹️ Стоп (${mins}:${secs})`;
+        }, 1000);
+
+      } catch (err) {
+        alert("Не удалось запустить микрофон: " + (err.message || "Доступ запрещён пользователем"));
+        btnToggleVoice.classList.remove("recording");
+        btnToggleVoice.textContent = "🎙️ Записать мысль";
+      }
+    });
+
+    function saveVoiceNoteToActiveGame(audioDataUrl) {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      if (!game.voices) game.voices = [];
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("ru-RU", { day: "2-digit", month: "2-digit" }) + " " + now.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+
+      game.voices.push({
+        id: "v_" + Date.now(),
+        date: dateStr,
+        src: audioDataUrl
+      });
+
+      saveGames(gamesList);
+      renderVoiceNotes(game.voices);
+    }
+
+    function renderVoiceNotes(voices) {
+      const listEl = document.getElementById("voice-notes-list");
+      listEl.innerHTML = "";
+
+      if (!voices || voices.length === 0) {
+        listEl.innerHTML = `<span style="font-size:0.8rem; color:#85725d; font-style:italic;">Голосовых заметок пока нет. Нажмите «🎙️ Записать мысль» ниже!</span>`;
+        return;
+      }
+
+      voices.forEach((v, idx) => {
+        const item = document.createElement("div");
+        item.className = "voice-item";
+
+        const playableUrl = dataUrlToBlobUrl(v.src);
+
+        item.innerHTML = `
+          <button class="voice-play-btn" type="button">▶ Слушать</button>
+          <span class="voice-date">📻 ${safeHtml(v.date || "Заметка " + (idx + 1))}</span>
+          <button class="voice-del-btn" title="Удалить аудиозапись" type="button">🗑️</button>
+        `;
+
+        const playBtn = item.querySelector(".voice-play-btn");
+        const audio = new Audio(playableUrl);
+
+        audio.onended = () => {
+          playBtn.textContent = "▶ Слушать";
+        };
+        audio.onpause = () => {
+          playBtn.textContent = "▶ Слушать";
+        };
+        audio.onerror = () => {
+          playBtn.textContent = "⚠️ Сбой формата";
+        };
+
+        playBtn.addEventListener("click", () => {
+          if (!audio.paused) {
+            audio.pause();
+            playBtn.textContent = "▶ Слушать";
+          } else {
+            if (activeAudioElement && activeAudioElement !== audio) {
+              activeAudioElement.pause();
+            }
+            activeAudioElement = audio;
+            audio.play().then(() => {
+              playBtn.textContent = "⏸ Пауза";
+            }).catch(e => {
+              alert("Ошибка воспроизведения звука: " + e.message);
+              playBtn.textContent = "▶ Слушать";
+            });
+          }
+        });
+
+        item.querySelector(".voice-del-btn").addEventListener("click", () => {
+          if (confirm("Удалить эту голосовую заметку?")) {
+            audio.pause();
+            deleteVoiceNote(idx);
+          }
+        });
+
+        listEl.appendChild(item);
+      });
+    }
+
+    function deleteVoiceNote(index) {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game || !game.voices) return;
+      game.voices.splice(index, 1);
+      saveGames(gamesList);
+      renderVoiceNotes(game.voices);
+    }
+
+    // --- 13. IMAGE ATTACHMENTS & GALLERY ---
+    function renderNotebookGallery(images) {
+      const gallery = document.getElementById("book-gallery-pins");
+      gallery.innerHTML = "";
+
+      if (!images || images.length === 0) {
+        gallery.innerHTML = `<span style="font-size:0.8rem; color:#85725d; font-style:italic;">Пока нет прикреплённых карт или зарисовок.</span>`;
+        return;
+      }
+
+      images.forEach((imgSrc, idx) => {
+        const card = document.createElement("div");
+        card.className = "pin-card";
+        card.style.setProperty("--rand", (idx % 2 === 0 ? "0.8" : "0.2"));
+
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="Зарисовка">
+          <button class="pin-card-del" title="Удалить" type="button">&times;</button>
+        `;
+
+        card.querySelector("img").onclick = () => {
+          document.getElementById("lightbox-viewer-img").src = imgSrc;
+          document.getElementById("lightbox-viewer").classList.add("open");
+        };
+
+        card.querySelector(".pin-card-del").onclick = (e) => {
+          e.stopPropagation();
+          deleteGalleryImage(idx);
+        };
+
+        gallery.appendChild(card);
+      });
+    }
+
+    function deleteGalleryImage(index) {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game || !game.images) return;
+      if (confirm("Удалить этот снимок из полевого журнала?")) {
+        game.images.splice(index, 1);
+        saveGames(gamesList);
+        renderNotebookGallery(game.images);
+      }
+    }
+
+    document.getElementById("file-image-picker").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        resizeImage(evt.target.result, 900, 900, function(resized) {
+          attachImageToGame(resized);
+        });
+      };
+      reader.readAsDataURL(file);
+      e.target.value = "";
+    });
+
+    document.getElementById("btn-add-img-url").addEventListener("click", function() {
+      const url = prompt("Введите ссылку (URL) на изображение карты или скриншота:");
+      if (url && url.trim()) {
+        attachImageToGame(url.trim());
+      }
+    });
+
+    function attachImageToGame(src) {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      if (!game.images) game.images = [];
+      game.images.push(src);
+      saveGames(gamesList);
+      renderNotebookGallery(game.images);
+    }
+
+    // --- 14. NOTEBOOK TEXT AUTOSAVE ---
+    document.getElementById("book-notes-input").addEventListener("input", function() {
+      const statusLabel = document.getElementById("book-save-status");
+      statusLabel.textContent = "Сохраняем...";
+      clearTimeout(notesTimer);
+      notesTimer = setTimeout(() => {
+        const game = gamesList.find(g => g.id === activeGameId);
+        if (game) {
+          game.notes = document.getElementById("book-notes-input").value;
+          saveGames(gamesList);
+          statusLabel.textContent = "✓ Запись сохранена";
+        }
+      }, 350);
+    });
+
+    // --- 15. ADD / EDIT PANEL (WITH SELECT PLATFORM, RATING & SEAL) ---
+    function openAddPanel() {
+      const panel = document.getElementById("game-form-panel");
+      document.getElementById("panel-title").textContent = "➕ Новая запись игры";
+      document.getElementById("btn-submit-form").textContent = "✅ Сохранить в список";
+      document.getElementById("entry-id").value = "";
+      document.getElementById("game-entry-form").reset();
+      document.getElementById("entry-platform").value = "PC";
+      document.getElementById("entry-rating").value = "5";
+      document.getElementById("entry-seal").value = "";
+      document.getElementById("search-status-msg").textContent = "";
+      panel.classList.add("active");
+      try {
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (e) {
+        panel.scrollIntoView(true);
+      }
+      setTimeout(() => document.getElementById("entry-title").focus(), 150);
+    }
+
+    function openEditPanel() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+
+      const panel = document.getElementById("game-form-panel");
+      document.getElementById("panel-title").textContent = `✏️ Редактирование: ${game.title}`;
+      document.getElementById("btn-submit-form").textContent = "✅ Обновить данные";
+      document.getElementById("entry-id").value = game.id;
+      document.getElementById("entry-title").value = game.title;
+      document.getElementById("search-status-msg").textContent = "";
+
+      const platformSelect = document.getElementById("entry-platform");
+      let foundOption = false;
+      for (let i = 0; i < platformSelect.options.length; i++) {
+        if (platformSelect.options[i].value.toLowerCase() === (game.platform || "").toLowerCase()) {
+          platformSelect.selectedIndex = i;
+          foundOption = true;
+          break;
+        }
+      }
+      if (!foundOption && game.platform) {
+        const opt = document.createElement("option");
+        opt.value = game.platform;
+        opt.textContent = game.platform;
+        platformSelect.appendChild(opt);
+        platformSelect.value = game.platform;
+      }
+
+      document.getElementById("entry-status").value = game.status;
+      document.getElementById("entry-rating").value = String(game.rating || 5);
+      document.getElementById("entry-seal").value = game.seal || "";
+      document.getElementById("entry-cover").value = game.cover || "";
+      document.getElementById("entry-desc").value = game.desc || "";
+
+      panel.classList.add("active");
+      try {
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (e) {
+        panel.scrollIntoView(true);
+      }
+    }
+
+    function closeFormPanel() {
+      document.getElementById("game-form-panel").classList.remove("active");
+    }
+
+    document.getElementById("btn-toggle-add").addEventListener("click", openAddPanel);
+    document.getElementById("btn-close-form").addEventListener("click", closeFormPanel);
+    document.getElementById("btn-cancel-form").addEventListener("click", closeFormPanel);
+    document.getElementById("btn-edit-current").addEventListener("click", openEditPanel);
+
+    document.getElementById("game-entry-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const id = document.getElementById("entry-id").value;
+      const title = document.getElementById("entry-title").value.trim();
+      const platform = document.getElementById("entry-platform").value;
+      const status = document.getElementById("entry-status").value;
+      const rating = parseInt(document.getElementById("entry-rating").value, 10) || 5;
+      const seal = document.getElementById("entry-seal").value;
+      const cover = document.getElementById("entry-cover").value.trim();
+      const desc = document.getElementById("entry-desc").value.trim();
+
+      if (!title) {
+        alert("Пожалуйста, введите название игры!");
+        return;
+      }
+
+      if (id) {
+        const game = gamesList.find(g => g.id === id);
+        if (game) {
+          game.title = title;
+          game.platform = platform;
+          game.status = status;
+          game.rating = rating;
+          game.seal = seal;
+          game.cover = cover;
+          game.desc = desc;
+        }
+      } else {
+        const newGame = {
+          id: "g_" + Date.now(),
+          title: title,
+          platform: platform,
+          status: status,
+          rating: rating,
+          seal: seal,
+          progress: 0,
+          hours: 0,
+          cover: cover,
+          desc: desc,
+          notes: "",
+          quests: [],
+          images: [],
+          voices: []
+        };
+        gamesList.unshift(newGame);
+        activeGameId = newGame.id;
+      }
+
+      saveGames(gamesList);
+      closeFormPanel();
+      renderList();
+      selectGame(activeGameId || id, true);
+    });
+
+    document.getElementById("btn-delete-current").addEventListener("click", function() {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+
+      if (confirm(`Точно удалить «${game.title}» и все полевые заметки по ней?`)) {
+        gamesList = gamesList.filter(g => g.id !== activeGameId);
+        saveGames(gamesList);
+        activeGameId = gamesList.length > 0 ? gamesList[0].id : null;
+        renderList();
+        if (activeGameId) {
+          selectGame(activeGameId, false);
+        } else {
+          document.getElementById("game-workspace").classList.remove("active");
+        }
+      }
+    });
+
+    // --- 16. FILTER & SEARCH ---
+    document.querySelectorAll(".pill").forEach(pill => {
+      pill.addEventListener("click", function() {
+        document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+        this.classList.add("active");
+        currentFilter = this.dataset.filter;
+        renderList();
+      });
+    });
+
+    document.getElementById("search-box").addEventListener("input", function() {
+      renderList();
+    });
+
+    // --- 17. BACKUP & RESTORE MODAL ---
+    const backupShade = document.getElementById("modal-backup-shade");
+
+    document.getElementById("btn-open-backup").addEventListener("click", function() {
+      backupShade.classList.add("open");
+    });
+    document.getElementById("btn-close-backup").addEventListener("click", function() {
+      backupShade.classList.remove("open");
+    });
+    document.getElementById("btn-finish-backup").addEventListener("click", function() {
+      backupShade.classList.remove("open");
+    });
+
+    document.getElementById("btn-export-file").addEventListener("click", function() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gamesList, null, 2));
+      const a = document.createElement("a");
+      a.href = dataStr;
+      a.download = `gamerbox_v102_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    document.getElementById("file-import-json").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const imported = JSON.parse(evt.target.result);
+          if (Array.isArray(imported)) {
+            gamesList = normalizeData(imported);
+            saveGames(gamesList);
+            renderList();
+            if (gamesList.length > 0) selectGame(gamesList[0].id, false);
+            alert("База успешно импортирована!");
+            backupShade.classList.remove("open");
+          } else {
+            alert("Неверный формат базы!");
+          }
+        } catch (err) {
+          alert("Ошибка чтения файла: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    });
+
+    document.getElementById("btn-reset-db").addEventListener("click", function() {
+      if (confirm("Сбросить текущие игры и вернуть стартовые 4 игры?")) {
+        gamesList = normalizeData(INITIAL_GAMES);
+        saveGames(gamesList);
+        renderList();
+        selectGame(gamesList[0].id, false);
+        backupShade.classList.remove("open");
+      }
+    });
+
+    document.getElementById("lightbox-viewer").addEventListener("click", function() {
+      this.classList.remove("open");
+    });
+
+    function safeHtml(str) {
+      if (!str) return "";
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // --- 18. STARTUP ---
+    try {
+      applyTheme(currentTheme);
+      gamesList = loadSavedGames();
+      renderList();
+      if (gamesList.length > 0) {
+        selectGame(gamesList[0].id, false);
+      }
+    } catch (err) {
+      console.error("Critical error:", err);
+      gamesList = INITIAL_GAMES;
+      renderList();
+      selectGame(gamesList[0].id, false);
+    }
+  </script>
+</body>
+</html>
