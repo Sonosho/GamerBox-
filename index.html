@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Геймерский уголок v0.8</title>
+  <title>Геймерский уголок v0.9</title>
   <meta name="theme-color" content="#121814">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23121814'/%3E%3Crect x='4' y='8' width='24' height='16' rx='3' fill='%23384a3c' stroke='%23709477' stroke-width='2'/%3E%3Crect x='8' y='14' width='6' height='2' fill='%23c2d6c6'/%3E%3Crect x='10' y='12' width='2' height='6' fill='%23c2d6c6'/%3E%3Crect x='20' y='13' width='3' height='3' fill='%23e06c53'/%3E%3Crect x='23' y='16' width='3' height='3' fill='%235ea881'/%3E%3C/svg%3E">
@@ -21,6 +21,7 @@
       --text-dim: #92a898;
       --btn-green: #2e7d32;
       --btn-green-hover: #388e3c;
+      --btn-red: #c62828;
 
       /* Ancient Notebook Theme */
       --book-leather: #38261b;
@@ -189,6 +190,25 @@
     }
     .btn-danger:hover {
       background: #802727;
+    }
+
+    .btn-record {
+      background: #78281f;
+      color: #ffdede;
+      border: 2px solid #b73e32;
+      box-shadow: 2px 2px 0px #380d0d;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+    }
+    .btn-record.recording {
+      background: #b71c1c;
+      color: #ffffff;
+      animation: pulseRecord 1s infinite alternate;
+      border-color: #ff5252;
+    }
+    @keyframes pulseRecord {
+      from { box-shadow: 0 0 4px #ff5252; }
+      to { box-shadow: 0 0 14px #ff1744; }
     }
 
     /* Inline Add / Edit Panel */
@@ -373,17 +393,33 @@
       color: var(--text-dim);
     }
 
+    /* Status Tag (clickable to cycle!) */
     .status-tag {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 2px;
+      padding: 4px 9px;
+      border-radius: 3px;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       white-space: nowrap;
       flex-shrink: 0;
       border-width: 1px;
       border-style: solid;
+      cursor: pointer;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .status-tag:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 6px rgba(0,0,0,0.5);
+    }
+
+    .status-tag:active {
+      transform: scale(0.96);
     }
 
     .st-playing {
@@ -467,7 +503,7 @@
       color: #a4b8a8;
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 2px;
     }
 
@@ -491,9 +527,10 @@
       background: var(--book-leather);
       border: 3px solid var(--book-edge);
       border-radius: 6px;
-      padding: 14px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 0 12px rgba(22, 14, 9, 0.7);
       position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
     }
 
     .ancient-book::after {
@@ -508,23 +545,41 @@
       pointer-events: none;
     }
 
+    /* Book Titlebar (Collapsible trigger) */
     .book-titlebar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
-      padding: 0 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+      background: linear-gradient(to bottom, #442f22, #38261b);
+      border-bottom: 2px solid #23160e;
+      transition: background 0.15s;
+    }
+
+    .book-titlebar:hover {
+      background: #4c3527;
     }
 
     .book-titlebar-title {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-style: italic;
       color: #e5cfac;
       display: flex;
       align-items: center;
       gap: 8px;
       text-shadow: 1px 1px 1px #000;
+    }
+
+    .book-toggle-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #c9b48e;
+      font-family: Georgia, serif;
     }
 
     .book-ribbon {
@@ -544,6 +599,16 @@
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
       border-bottom: 5px solid var(--book-leather);
+    }
+
+    /* Collapsible Body */
+    .book-body-wrapper {
+      padding: 14px;
+      display: block;
+    }
+
+    .book-body-wrapper.collapsed {
+      display: none;
     }
 
     .parchment-sheet {
@@ -596,7 +661,7 @@
 
     .book-textarea {
       width: 100%;
-      min-height: 160px;
+      min-height: 150px;
       background: transparent;
       border: none;
       outline: none;
@@ -613,12 +678,77 @@
       font-style: italic;
     }
 
-    .attached-maps-title {
+    /* Audio Voice Notes Section */
+    .voice-section {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(110, 85, 60, 0.3);
+    }
+
+    .voice-section-title {
       font-family: Georgia, serif;
-      font-size: 0.82rem;
+      font-size: 0.86rem;
       font-weight: 700;
       color: var(--book-ink);
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .voice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .voice-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ede3cc;
+      border: 1px solid #cbbba0;
+      padding: 6px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .voice-item audio {
+      height: 32px;
+      flex: 1;
+      min-width: 0;
+      outline: none;
+    }
+
+    .voice-date {
+      font-size: 0.72rem;
+      font-family: Georgia, serif;
+      color: var(--book-ink-muted);
+      white-space: nowrap;
+    }
+
+    .voice-del-btn {
+      background: rgba(150, 40, 30, 0.85);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 8px;
+      font-size: 0.72rem;
+      cursor: pointer;
+    }
+
+    /* Gallery Pins */
+    .attached-maps-title {
+      font-family: Georgia, serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--book-ink);
+      margin-top: 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .gallery-pins {
@@ -686,7 +816,8 @@
       flex-wrap: wrap;
       gap: 8px;
       border-top: 1px dashed rgba(110, 85, 60, 0.3);
-      padding-top: 10px;
+      padding-top: 12px;
+      align-items: center;
     }
 
     .btn-parchment {
@@ -794,7 +925,7 @@
         </div>
         <div>
           <span class="brand-title">Геймерский уголок</span>
-          <span class="version-tag">v0.8</span>
+          <span class="version-tag">v0.9</span>
         </div>
       </div>
       <div class="header-btns">
@@ -807,7 +938,7 @@
       </div>
     </header>
 
-    <!-- INLINE ADD / EDIT PANEL (NO HIDDEN POPUPS, 100% RELIABLE) -->
+    <!-- INLINE ADD / EDIT PANEL (WITH DROPDOWN PLATFORM SELECTOR) -->
     <section class="retro-box form-panel" id="game-form-panel">
       <div class="section-headline">
         <span id="panel-title" style="color:#9fe2aa;">➕ Новая запись игры</span>
@@ -822,8 +953,20 @@
             <input type="text" id="entry-title" class="retro-input" required placeholder="Например: Fable, Witcher 3...">
           </div>
           <div>
-            <label class="form-label">Платформа</label>
-            <input type="text" id="entry-platform" class="retro-input" placeholder="PC, Xbox, Vita, Switch...">
+            <label class="form-label">Платформа (выбор из списка)</label>
+            <select id="entry-platform" class="retro-input">
+              <option value="PC">PC</option>
+              <option value="Xbox Series X/S">Xbox Series X/S</option>
+              <option value="Xbox One">Xbox One</option>
+              <option value="Xbox 360">Xbox 360</option>
+              <option value="PlayStation 5">PlayStation 5</option>
+              <option value="PlayStation 4">PlayStation 4</option>
+              <option value="PlayStation Vita">PlayStation Vita</option>
+              <option value="Nintendo Switch">Nintendo Switch</option>
+              <option value="Ретро консоль / Эмулятор">Ретро консоль / Эмулятор</option>
+              <option value="Android / iOS">Android / iOS</option>
+              <option value="Другая">Другая</option>
+            </select>
           </div>
           <div>
             <label class="form-label">Статус</label>
@@ -871,7 +1014,7 @@
     <!-- CONCISE GAME LIST -->
     <div class="section-headline">
       <span>Список игр (<span id="list-total-count">0</span>)</span>
-      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Нажмите на игру, чтобы открыть дневник</span>
+      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Клик на статус переключает его сразу ↻</span>
     </div>
 
     <div class="game-list-rows" id="games-container">
@@ -889,7 +1032,7 @@
             <h2 class="overview-title-h2" id="view-title">Название игры</h2>
             <div class="overview-badges">
               <span class="platform-pill" id="view-platform">PC</span>
-              <span class="status-tag" id="view-status-tag">Играю</span>
+              <span class="status-tag" id="view-status-tag" title="Нажмите, чтобы переключить статус">Играю ↻</span>
             </div>
             <p class="overview-text" id="view-desc">Описание отсутствует.</p>
             <div class="overview-buttons">
@@ -900,48 +1043,76 @@
         </div>
       </div>
 
-      <!-- Bottom: Ancient Book Field Journal -->
-      <div class="ancient-book">
-        <div class="book-titlebar">
+      <!-- Bottom: Ancient Book Field Journal (COLLAPSIBLE!) -->
+      <div class="ancient-book" id="ancient-book-container">
+
+        <!-- Book Header / Collapsible Trigger Bar -->
+        <div class="book-titlebar" id="book-titlebar-toggle" title="Нажмите, чтобы свернуть или развернуть дневник">
           <div class="book-titlebar-title">
             <span>📜 Полевой журнал следопыта</span>
           </div>
-          <div class="book-ribbon" title="Шёлковая закладка"></div>
-        </div>
-
-        <div class="parchment-sheet">
-          <div class="sheet-header">
-            <div class="sheet-game-name" id="book-game-title">Заметки к игре</div>
-            <div class="sheet-autosave-msg" id="book-save-status">Запись сохранена</div>
-          </div>
-
-          <textarea 
-            class="book-textarea" 
-            id="book-notes-input" 
-            placeholder="Ведите полевые заметки здесь: пароли от дверей, билды, рецепты, тайники, невыполненные квесты..."></textarea>
-
-          <div class="attached-maps-title">Вклеенные зарисовки и карты местности</div>
-          <div class="gallery-pins" id="book-gallery-pins">
-            <!-- Pinned screenshots / sketches -->
-          </div>
-
-          <div class="notebook-tools">
-            <label class="btn-parchment">
-              <input type="file" id="file-image-picker" accept="image/*" style="display:none;">
-              📎 Вклеить снимок с устройства
-            </label>
-            <button class="btn-parchment" id="btn-add-img-url" type="button">
-              🔗 Вклеить по ссылке (URL)
-            </button>
+          <div class="book-toggle-hint">
+            <span id="book-collapse-label">Свернуть блокнот</span>
+            <span id="book-chevron-icon">▲</span>
+            <div class="book-ribbon" title="Шёлковая закладка"></div>
           </div>
         </div>
+
+        <!-- Book Body Wrapper (Collapsible) -->
+        <div class="book-body-wrapper" id="book-body-wrapper">
+          <div class="parchment-sheet">
+            <div class="sheet-header">
+              <div class="sheet-game-name" id="book-game-title">Заметки к игре</div>
+              <div class="sheet-autosave-msg" id="book-save-status">Запись сохранена</div>
+            </div>
+
+            <!-- Notes Textarea -->
+            <textarea 
+              class="book-textarea" 
+              id="book-notes-input" 
+              placeholder="Ведите полевые заметки здесь: пароли от дверей, билды, рецепты, тайники, невыполненные квесты..."></textarea>
+
+            <!-- Voice Memos Section -->
+            <div class="voice-section">
+              <div class="voice-section-title">
+                <span>🎙️ Голосовые мысли и аудиозаметки</span>
+              </div>
+              <div class="voice-list" id="voice-notes-list">
+                <!-- Recorded audio notes will appear here -->
+              </div>
+            </div>
+
+            <!-- Attached Maps and Sketches -->
+            <div class="attached-maps-title">
+              <span>🗺️ Вклеенные зарисовки и карты местности</span>
+            </div>
+            <div class="gallery-pins" id="book-gallery-pins">
+              <!-- Pinned screenshots / sketches -->
+            </div>
+
+            <!-- Notebook Toolbar -->
+            <div class="notebook-tools">
+              <button class="btn btn-record" id="btn-toggle-voice" type="button">
+                🎙️ Записать мысль
+              </button>
+              <label class="btn-parchment">
+                <input type="file" id="file-image-picker" accept="image/*" style="display:none;">
+                📎 Вклеить снимок
+              </label>
+              <button class="btn-parchment" id="btn-add-img-url" type="button">
+                🔗 По ссылке
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
 
     <!-- FOOTER -->
     <footer style="text-align: center; margin-top: 30px; font-size: 0.78rem; color: #627c69; font-family: monospace;">
-      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 0.8 • RETRO EDITION
+      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 0.9 • RETRO & VOICE EDITION
     </footer>
 
   </div>
@@ -959,15 +1130,15 @@
         <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" id="btn-close-backup" type="button">✕</button>
       </div>
       <p style="font-size:0.84rem; color:var(--text-dim); margin-bottom:14px;">
-        Все данные надёжно сохраняются в памяти браузера. Вы можете сохранить файл базы на диск или восстановить его.
+        Все данные, заметки, карты и голосовые надёжно хранятся в памяти браузера. Вы можете экспортировать резервную копию в файл.
       </p>
       <div style="display:flex; flex-direction:column; gap:8px;">
         <button class="btn btn-dark" style="justify-content:flex-start;" id="btn-export-file" type="button">
-          💾 Экспортировать в файл (.json)
+          💾 Экспортировать базу в файл (.json)
         </button>
         <label class="btn btn-dark" style="justify-content:flex-start; cursor:pointer;">
           <input type="file" id="file-import-json" accept=".json" style="display:none;">
-          📥 Импортировать из файла (.json)
+          📥 Импортировать базу из файла (.json)
         </label>
         <button class="btn btn-danger" style="justify-content:flex-start;" id="btn-reset-db" type="button">
           🔄 Сбросить к исходным 4 играм
@@ -990,7 +1161,8 @@
         cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/Fable_Anniversary_cover.jpg",
         desc: "Ремастер классической ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
         notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.\n• Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.\n• Прокачать заклинание 'Молния' для быстрого контроля толпы.",
-        images: []
+        images: [],
+        voices: []
       },
       {
         id: "g_dying_light",
@@ -1000,7 +1172,8 @@
         cover: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Dying_Light_cover.jpg",
         desc: "Паркур в открытом мире среди заражённых Харрана. Днём исследуйте руины и собирайте припасы, а ночью прячьтесь от смертоносных Прыгунов.",
         notes: "• Ночные вылазки дают удвоенный опыт выживания.\n• Чертёж 'Кореш Камикадзе' лежит на подвесном мосту.\n• Собрать больше марли и спирта для аптечек.",
-        images: []
+        images: [],
+        voices: []
       },
       {
         id: "g_witcher3",
@@ -1010,7 +1183,8 @@
         cover: "https://upload.wikimedia.org/wikipedia/ru/a/a2/The_Witcher_3-_Wild_Hunt_Cover.jpg",
         desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
         notes: "• Заказ на Лихо у колодца выполнен.\n• Сет школы Грифона собран на 1-й уровень.\n• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
-        images: []
+        images: [],
+        voices: []
       },
       {
         id: "g_outer_worlds",
@@ -1020,7 +1194,8 @@
         cover: "https://upload.wikimedia.org/wikipedia/ru/0/07/The_Outer_Worlds.jpg",
         desc: "Сатирическая космическая RPG от Obsidian. Колония Алкион под пятой корпораций, чернушный юмор, компаньоны и вариативные задания.",
         notes: "• Первое прохождение планирую через дипломатию и взлом.\n• Не забыть взять Парвати в команду на 'Первопроходце'.",
-        images: []
+        images: [],
+        voices: []
       }
     ];
 
@@ -1030,9 +1205,11 @@
       completed: { label: "Пройдено", cls: "st-completed" },
       paused: { label: "На паузе", cls: "st-paused" }
     };
+    const STATUS_CYCLE = ["playing", "planned", "completed", "paused"];
 
-    const STORAGE_KEY = "gamerbox_games_v08";
+    const STORAGE_KEY = "gamerbox_games_v09";
     const OLD_STORAGE_KEYS = [
+      "gamerbox_games_v08",
       "gamerbox_games_v07",
       "gamerbox_games",
       "gamers_corner_games",
@@ -1043,13 +1220,21 @@
     let currentFilter = "all";
     let activeGameId = null;
     let notesTimer = null;
+    let isBookOpen = true;
+
+    // Audio recording state
+    let mediaRecorder = null;
+    let audioStream = null;
+    let audioChunks = [];
+    let recordSeconds = 0;
+    let recordInterval = null;
 
     // --- 2. STORAGE SYSTEM WITH MIGRATION ---
     function normalizeData(arr) {
       if (!Array.isArray(arr)) return INITIAL_GAMES;
       return arr.map((item, idx) => {
         if (!item || typeof item !== 'object') {
-          return { id: "g_" + Date.now() + "_" + idx, title: "Игра", platform: "PC", status: "playing", cover: "", desc: "", notes: "", images: [] };
+          return { id: "g_" + Date.now() + "_" + idx, title: "Игра", platform: "PC", status: "playing", cover: "", desc: "", notes: "", images: [], voices: [] };
         }
         let st = String(item.status || "playing").toLowerCase();
         if (st.includes("игра") || st === "playing") st = "playing";
@@ -1066,7 +1251,8 @@
           cover: item.cover || "",
           desc: item.desc || item.description || "",
           notes: item.notes || item.secrets || "",
-          images: Array.isArray(item.images) ? item.images : []
+          images: Array.isArray(item.images) ? item.images : [],
+          voices: Array.isArray(item.voices) ? item.voices : []
         };
       });
     }
@@ -1101,10 +1287,35 @@
       gamesList = arr;
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gamesList));
-      } catch (err) {}
+      } catch (err) {
+        console.warn("Storage full / error", err);
+      }
     }
 
-    // --- 3. RENDERING ---
+    // --- 3. STATUS CYCLING (ON CLICK ON STATUS BADGE) ---
+    function cycleStatusForGame(e, gameId) {
+      if (e) {
+        e.stopPropagation();
+      }
+      const game = gamesList.find(g => g.id === gameId);
+      if (!game) return;
+
+      const currIdx = STATUS_CYCLE.indexOf(game.status);
+      const nextStatus = STATUS_CYCLE[(currIdx + 1) % STATUS_CYCLE.length];
+      game.status = nextStatus;
+
+      saveGames(gamesList);
+      renderList();
+
+      if (activeGameId === gameId) {
+        const stInfo = STATUS_MAP[nextStatus] || STATUS_MAP.playing;
+        const statusTag = document.getElementById("view-status-tag");
+        statusTag.textContent = stInfo.label + " ↻";
+        statusTag.className = "status-tag " + stInfo.cls;
+      }
+    }
+
+    // --- 4. RENDERING ---
     function updateCounters() {
       const counts = { all: gamesList.length, playing: 0, planned: 0, completed: 0, paused: 0 };
       gamesList.forEach(g => {
@@ -1159,11 +1370,20 @@
             <div class="game-title-text">${safeHtml(game.title)}</div>
             <div class="game-sub-text">${safeHtml(game.platform || "Любая")}</div>
           </div>
-          <span class="status-tag ${stInfo.cls}">${stInfo.label}</span>
+          <span class="status-tag ${stInfo.cls}" title="Нажмите для быстрой смены статуса">
+            ${stInfo.label} ↻
+          </span>
         `;
 
+        // Row click opens the workspace
         row.addEventListener("click", () => {
           selectGame(game.id, true);
+        });
+
+        // Status badge click ONLY changes status without opening/scrolling!
+        const badgeEl = row.querySelector(".status-tag");
+        badgeEl.addEventListener("click", (evt) => {
+          cycleStatusForGame(evt, game.id);
         });
 
         container.appendChild(row);
@@ -1180,7 +1400,7 @@
         return;
       }
 
-      // Update selection styling in list
+      // Update active highlight in list
       document.querySelectorAll(".game-row").forEach(el => {
         el.classList.toggle("active", el.dataset.id === gameId);
       });
@@ -1191,7 +1411,7 @@
 
       const stInfo = STATUS_MAP[game.status] || STATUS_MAP.playing;
       const statusTag = document.getElementById("view-status-tag");
-      statusTag.textContent = stInfo.label;
+      statusTag.textContent = stInfo.label + " ↻";
       statusTag.className = "status-tag " + stInfo.cls;
 
       document.getElementById("view-desc").textContent = game.desc || "Описание отсутствует. Нажмите 'Редактировать', чтобы добавить.";
@@ -1207,6 +1427,7 @@
       document.getElementById("book-save-status").textContent = "Запись сохранена";
 
       renderNotebookGallery(game.images || []);
+      renderVoiceNotes(game.voices || []);
 
       ws.classList.add("active");
 
@@ -1219,6 +1440,149 @@
       }
     }
 
+    // Workspace badge click also cycles status!
+    document.getElementById("view-status-tag").addEventListener("click", function(e) {
+      if (activeGameId) {
+        cycleStatusForGame(e, activeGameId);
+      }
+    });
+
+    // --- 5. COLLAPSIBLE FIELD NOTEBOOK (ПОКА НЕ СВЕРНЁШЬ — ОТКРЫТ) ---
+    function toggleBookCollapse() {
+      isBookOpen = !isBookOpen;
+      const bodyWrapper = document.getElementById("book-body-wrapper");
+      const label = document.getElementById("book-collapse-label");
+      const chevron = document.getElementById("book-chevron-icon");
+
+      if (isBookOpen) {
+        bodyWrapper.classList.remove("collapsed");
+        label.textContent = "Свернуть блокнот";
+        chevron.textContent = "▲";
+      } else {
+        bodyWrapper.classList.add("collapsed");
+        label.textContent = "Развернуть блокнот";
+        chevron.textContent = "▼";
+      }
+    }
+
+    document.getElementById("book-titlebar-toggle").addEventListener("click", toggleBookCollapse);
+
+    // --- 6. VOICE AUDIO RECORDING (EXPERIMENTAL) ---
+    const btnToggleVoice = document.getElementById("btn-toggle-voice");
+
+    btnToggleVoice.addEventListener("click", async function() {
+      if (mediaRecorder && mediaRecorder.state === "recording") {
+        // Stop recording
+        mediaRecorder.stop();
+        return;
+      }
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Запись звука не поддерживается в этом браузере или на незащищённом соединении.");
+        return;
+      }
+
+      try {
+        audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(audioStream);
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = function(e) {
+          if (e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = function() {
+          if (audioStream) {
+            audioStream.getTracks().forEach(track => track.stop());
+            audioStream = null;
+          }
+          clearInterval(recordInterval);
+          btnToggleVoice.classList.remove("recording");
+          btnToggleVoice.textContent = "🎙️ Записать мысль";
+
+          const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+          const reader = new FileReader();
+          reader.onloadend = function() {
+            saveVoiceNoteToActiveGame(reader.result);
+          };
+          reader.readAsDataURL(audioBlob);
+        };
+
+        mediaRecorder.start();
+        recordSeconds = 0;
+        btnToggleVoice.classList.add("recording");
+        btnToggleVoice.textContent = "⏹️ Стоп (00:00)";
+
+        recordInterval = setInterval(() => {
+          recordSeconds++;
+          const mins = String(Math.floor(recordSeconds / 60)).padStart(2, '0');
+          const secs = String(recordSeconds % 60).padStart(2, '0');
+          btnToggleVoice.textContent = `⏹️ Стоп (${mins}:${secs})`;
+        }, 1000);
+
+      } catch (err) {
+        alert("Не удалось запустить микрофон: " + (err.message || "Доступ запрещён пользователем"));
+        btnToggleVoice.classList.remove("recording");
+        btnToggleVoice.textContent = "🎙️ Записать мысль";
+      }
+    });
+
+    function saveVoiceNoteToActiveGame(audioDataUrl) {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game) return;
+      if (!game.voices) game.voices = [];
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("ru-RU", { day: "2-digit", month: "2-digit" }) + " " + now.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+
+      game.voices.push({
+        id: "v_" + Date.now(),
+        date: dateStr,
+        src: audioDataUrl
+      });
+
+      saveGames(gamesList);
+      renderVoiceNotes(game.voices);
+    }
+
+    function renderVoiceNotes(voices) {
+      const listEl = document.getElementById("voice-notes-list");
+      listEl.innerHTML = "";
+
+      if (!voices || voices.length === 0) {
+        listEl.innerHTML = `<span style="font-size:0.8rem; color:#85725d; font-style:italic;">Голосовых заметок пока нет. Нажмите «🎙️ Записать мысль» ниже!</span>`;
+        return;
+      }
+
+      voices.forEach((v, idx) => {
+        const item = document.createElement("div");
+        item.className = "voice-item";
+        item.innerHTML = `
+          <span style="font-size:0.9rem;">📻</span>
+          <span class="voice-date">${safeHtml(v.date || "Запись")}</span>
+          <audio controls src="${v.src}" preload="metadata"></audio>
+          <button class="voice-del-btn" title="Удалить аудиозапись" type="button">🗑️</button>
+        `;
+
+        item.querySelector(".voice-del-btn").addEventListener("click", () => {
+          if (confirm("Удалить эту голосовую заметку?")) {
+            deleteVoiceNote(idx);
+          }
+        });
+
+        listEl.appendChild(item);
+      });
+    }
+
+    function deleteVoiceNote(index) {
+      const game = gamesList.find(g => g.id === activeGameId);
+      if (!game || !game.voices) return;
+      game.voices.splice(index, 1);
+      saveGames(gamesList);
+      renderVoiceNotes(game.voices);
+    }
+
+    // --- 7. IMAGE ATTACHMENTS & GALLERY ---
     function renderNotebookGallery(images) {
       const gallery = document.getElementById("book-gallery-pins");
       gallery.innerHTML = "";
@@ -1262,22 +1626,6 @@
       }
     }
 
-    // --- 4. NOTEBOOK AUTOSAVE ---
-    document.getElementById("book-notes-input").addEventListener("input", function() {
-      const statusLabel = document.getElementById("book-save-status");
-      statusLabel.textContent = "Сохраняем...";
-      clearTimeout(notesTimer);
-      notesTimer = setTimeout(() => {
-        const game = gamesList.find(g => g.id === activeGameId);
-        if (game) {
-          game.notes = document.getElementById("book-notes-input").value;
-          saveGames(gamesList);
-          statusLabel.textContent = "✓ Запись сохранена";
-        }
-      }, 350);
-    });
-
-    // --- 5. IMAGE ATTACHMENT ---
     document.getElementById("file-image-picker").addEventListener("change", function(e) {
       const file = e.target.files[0];
       if (!file) return;
@@ -1306,13 +1654,29 @@
       renderNotebookGallery(game.images);
     }
 
-    // --- 6. ADD / EDIT PANEL (DIRECT & GUARANTEED) ---
+    // --- 8. NOTEBOOK TEXT AUTOSAVE ---
+    document.getElementById("book-notes-input").addEventListener("input", function() {
+      const statusLabel = document.getElementById("book-save-status");
+      statusLabel.textContent = "Сохраняем...";
+      clearTimeout(notesTimer);
+      notesTimer = setTimeout(() => {
+        const game = gamesList.find(g => g.id === activeGameId);
+        if (game) {
+          game.notes = document.getElementById("book-notes-input").value;
+          saveGames(gamesList);
+          statusLabel.textContent = "✓ Запись сохранена";
+        }
+      }, 350);
+    });
+
+    // --- 9. ADD / EDIT PANEL (WITH SELECT PLATFORM) ---
     function openAddPanel() {
       const panel = document.getElementById("game-form-panel");
       document.getElementById("panel-title").textContent = "➕ Новая запись игры";
       document.getElementById("btn-submit-form").textContent = "✅ Сохранить в список";
       document.getElementById("entry-id").value = "";
       document.getElementById("game-entry-form").reset();
+      document.getElementById("entry-platform").value = "PC";
       panel.classList.add("active");
       try {
         panel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1331,7 +1695,25 @@
       document.getElementById("btn-submit-form").textContent = "✅ Обновить данные";
       document.getElementById("entry-id").value = game.id;
       document.getElementById("entry-title").value = game.title;
-      document.getElementById("entry-platform").value = game.platform || "";
+
+      // Select platform in dropdown if present, or add custom option
+      const platformSelect = document.getElementById("entry-platform");
+      let foundOption = false;
+      for (let i = 0; i < platformSelect.options.length; i++) {
+        if (platformSelect.options[i].value.toLowerCase() === (game.platform || "").toLowerCase()) {
+          platformSelect.selectedIndex = i;
+          foundOption = true;
+          break;
+        }
+      }
+      if (!foundOption && game.platform) {
+        const opt = document.createElement("option");
+        opt.value = game.platform;
+        opt.textContent = game.platform;
+        platformSelect.appendChild(opt);
+        platformSelect.value = game.platform;
+      }
+
       document.getElementById("entry-status").value = game.status;
       document.getElementById("entry-cover").value = game.cover || "";
       document.getElementById("entry-desc").value = game.desc || "";
@@ -1357,7 +1739,7 @@
       e.preventDefault();
       const id = document.getElementById("entry-id").value;
       const title = document.getElementById("entry-title").value.trim();
-      const platform = document.getElementById("entry-platform").value.trim();
+      const platform = document.getElementById("entry-platform").value;
       const status = document.getElementById("entry-status").value;
       const cover = document.getElementById("entry-cover").value.trim();
       const desc = document.getElementById("entry-desc").value.trim();
@@ -1385,7 +1767,8 @@
           cover: cover,
           desc: desc,
           notes: "",
-          images: []
+          images: [],
+          voices: []
         };
         gamesList.unshift(newGame);
         activeGameId = newGame.id;
@@ -1414,7 +1797,7 @@
       }
     });
 
-    // --- 7. FILTER & SEARCH ---
+    // --- 10. FILTER & SEARCH ---
     document.querySelectorAll(".pill").forEach(pill => {
       pill.addEventListener("click", function() {
         document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
@@ -1428,7 +1811,7 @@
       renderList();
     });
 
-    // --- 8. BACKUP & RESTORE MODAL ---
+    // --- 11. BACKUP & RESTORE MODAL ---
     const backupShade = document.getElementById("modal-backup-shade");
 
     document.getElementById("btn-open-backup").addEventListener("click", function() {
@@ -1445,7 +1828,7 @@
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gamesList, null, 2));
       const a = document.createElement("a");
       a.href = dataStr;
-      a.download = `gamerbox_v08_${new Date().toISOString().slice(0,10)}.json`;
+      a.download = `gamerbox_v09_${new Date().toISOString().slice(0,10)}.json`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1496,7 +1879,7 @@
       return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
-    // --- 9. STARTUP ---
+    // --- 12. STARTUP ---
     try {
       gamesList = loadSavedGames();
       renderList();
