@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Геймерский уголок v1.0</title>
+  <title>Геймерский уголок v1.01</title>
   <meta name="theme-color" content="#121814">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23121814'/%3E%3Crect x='4' y='8' width='24' height='16' rx='3' fill='%23384a3c' stroke='%23709477' stroke-width='2'/%3E%3Crect x='8' y='14' width='6' height='2' fill='%23c2d6c6'/%3E%3Crect x='10' y='12' width='2' height='6' fill='%23c2d6c6'/%3E%3Crect x='20' y='13' width='3' height='3' fill='%23e06c53'/%3E%3Crect x='23' y='16' width='3' height='3' fill='%235ea881'/%3E%3C/svg%3E">
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='24' fill='%23121814'/%3E%3Crect x='25' y='45' width='130' height='90' rx='18' fill='%23384a3c' stroke='%23709477' stroke-width='8'/%3E%3Crect x='45' y='80' width='32' height='12' fill='%23c2d6c6'/%3E%3Crect x='55' y='70' width='12' height='32' fill='%23c2d6c6'/%3E%3Crect x='115' y='75' width='16' height='16' rx='2' fill='%23e06c53'/%3E%3Crect x='132' y='92' width='16' height='16' rx='2' fill='%235ea881'/%3E%3C/svg%3E">
 
   <style>
+    /* --- CSS THEMES: DARK (DEFAULT) & LIGHT (DAY) --- */
     :root {
       --bg-dark: #121814;
       --panel-bg: #1a241d;
@@ -22,8 +23,9 @@
       --btn-green: #2e7d32;
       --btn-green-hover: #388e3c;
       --btn-red: #c62828;
+      --input-bg: #141c16;
 
-      /* Ancient Notebook Theme */
+      /* Ancient Notebook Theme (always authentic warm paper) */
       --book-leather: #38261b;
       --book-edge: #23160e;
       --book-paper: #f7f2e2;
@@ -41,6 +43,32 @@
       --st-completed-fg: #cddc39;
       --st-paused-bg: #3d2315;
       --st-paused-fg: #ffb74d;
+
+      /* Rating star gold */
+      --gold-star: #f59e0b;
+      --medal-bg: #b45309;
+      --medal-gold: #fbbf24;
+    }
+
+    body.theme-light {
+      --bg-dark: #e8eee5;
+      --panel-bg: #f5faf3;
+      --card-bg: #ffffff;
+      --card-hover: #edf5eb;
+      --pixel-border: #b3c7b7;
+      --pixel-border-bright: #4e8059;
+      --text-main: #18241b;
+      --text-dim: #4d6652;
+      --input-bg: #ffffff;
+
+      --st-playing-bg: #e8f5e9;
+      --st-playing-fg: #2e7d32;
+      --st-planned-bg: #e1f5fe;
+      --st-planned-fg: #0277bd;
+      --st-completed-bg: #f1f8e9;
+      --st-completed-fg: #556b2f;
+      --st-paused-bg: #fff7ed;
+      --st-paused-fg: #c2410c;
     }
 
     * {
@@ -51,19 +79,27 @@
       touch-action: manipulation;
     }
 
-    /* Pixel art retro background */
+    /* Seamless Pixel Art Grid Background */
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(rgba(110, 150, 120, 0.14) 1px, transparent 1px),
-        linear-gradient(to right, rgba(28, 38, 30, 0.8) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(28, 38, 30, 0.8) 1px, transparent 1px);
+        radial-gradient(rgba(110, 150, 120, 0.15) 1px, transparent 1px),
+        linear-gradient(to right, rgba(28, 38, 30, 0.7) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 38, 30, 0.7) 1px, transparent 1px);
       background-size: 16px 16px, 16px 16px, 16px 16px;
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace;
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.45;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    body.theme-light {
+      background-image: 
+        radial-gradient(rgba(60, 100, 70, 0.12) 1px, transparent 1px),
+        linear-gradient(to right, rgba(200, 215, 198, 0.6) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 215, 198, 0.6) 1px, transparent 1px);
     }
 
     .container {
@@ -76,7 +112,7 @@
     .retro-box {
       background: var(--panel-bg);
       border: 2px solid var(--pixel-border);
-      box-shadow: 2px 2px 0px #090e0b, -1px -1px 0px #2f3e33 inset;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3), -1px -1px 0px rgba(255,255,255,0.05) inset;
       border-radius: 4px;
     }
 
@@ -100,13 +136,13 @@
     .retro-gamepad-icon {
       width: 34px;
       height: 34px;
-      background: #121814;
+      background: var(--input-bg);
       border: 2px solid var(--pixel-border-bright);
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 1px 1px 0 #000;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.4);
       flex-shrink: 0;
     }
 
@@ -117,7 +153,11 @@
       color: #9fe2aa;
       text-transform: uppercase;
       font-family: 'Courier New', Courier, monospace;
-      text-shadow: 1px 1px 0 #0d1a10;
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    }
+    body.theme-light .brand-title {
+      color: #276735;
+      text-shadow: none;
     }
 
     .version-tag {
@@ -130,6 +170,10 @@
       font-family: monospace;
       vertical-align: middle;
       margin-left: 6px;
+    }
+    body.theme-light .version-tag {
+      background: #d4e5d6;
+      color: #1b4d26;
     }
 
     .header-btns {
@@ -146,7 +190,7 @@
       gap: 6px;
       font-size: 0.88rem;
       font-weight: 700;
-      padding: 8px 14px;
+      padding: 8px 13px;
       cursor: pointer;
       border-radius: 3px;
       text-transform: uppercase;
@@ -165,7 +209,7 @@
       background: var(--btn-green);
       color: #ffffff;
       border: 2px solid #5cae63;
-      box-shadow: 2px 2px 0px #133a18;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
     }
     .btn-green:hover {
       background: var(--btn-green-hover);
@@ -175,18 +219,31 @@
       background: #25332a;
       color: #c9ded0;
       border: 2px solid var(--pixel-border);
-      box-shadow: 2px 2px 0px #0e1611;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    }
+    body.theme-light .btn-dark {
+      background: #e2ede0;
+      color: #1f3323;
     }
     .btn-dark:hover {
       background: #2f4035;
       color: #ffffff;
+    }
+    body.theme-light .btn-dark:hover {
+      background: #d4e5d1;
+      color: #122116;
+    }
+
+    .btn-theme {
+      font-size: 1.15rem;
+      padding: 6px 10px;
     }
 
     .btn-danger {
       background: #6b2020;
       color: #ffc4c4;
       border: 2px solid #993b3b;
-      box-shadow: 2px 2px 0px #380d0d;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
     }
     .btn-danger:hover {
       background: #802727;
@@ -196,7 +253,7 @@
       background: #78281f;
       color: #ffdede;
       border: 2px solid #b73e32;
-      box-shadow: 2px 2px 0px #380d0d;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
       font-size: 0.82rem;
       padding: 6px 12px;
     }
@@ -246,9 +303,9 @@
 
     .retro-input {
       width: 100%;
-      background: #141c16;
+      background: var(--input-bg);
       border: 1px solid var(--pixel-border);
-      color: #f0f7f2;
+      color: var(--text-main);
       padding: 8px 10px;
       font-size: 0.92rem;
       border-radius: 2px;
@@ -257,9 +314,43 @@
     }
 
     .retro-input:focus {
-      border-color: #698b71;
-      background: #19241c;
-      box-shadow: 0 0 0 1px #698b71;
+      border-color: var(--pixel-border-bright);
+      box-shadow: 0 0 0 1px var(--pixel-border-bright);
+    }
+
+    /* Auto-search Online Row */
+    .input-with-search {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-search-online {
+      background: #1b4d2e;
+      color: #bbf7d0;
+      border: 1px solid #38a169;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.1s;
+    }
+    body.theme-light .btn-search-online {
+      background: #2e7d32;
+      color: #ffffff;
+    }
+    .btn-search-online:hover {
+      background: #276749;
+    }
+
+    .search-status-msg {
+      font-size: 0.78rem;
+      margin-top: 4px;
+      min-height: 18px;
     }
 
     /* Controls Panel */
@@ -301,7 +392,7 @@
       font-size: 0.78rem;
       padding: 5px 11px;
       border: 1px solid var(--pixel-border);
-      background: #151d17;
+      background: var(--input-bg);
       color: var(--text-dim);
       cursor: pointer;
       border-radius: 2px;
@@ -316,6 +407,11 @@
       color: #9fe2aa;
       border-color: #698b71;
       box-shadow: inset 0 0 0 1px #698b71;
+    }
+    body.theme-light .pill.active {
+      background: #2e7d32;
+      color: #ffffff;
+      border-color: #2e7d32;
     }
 
     /* Section Headline */
@@ -349,7 +445,7 @@
       border-radius: 3px;
       cursor: pointer;
       transition: all 0.1s ease;
-      box-shadow: 1px 1px 0 #0b110d;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
     }
 
     .game-row:hover {
@@ -360,7 +456,12 @@
     .game-row.active {
       background: #26382b;
       border-color: #72a37b;
-      box-shadow: 0 0 0 1.5px #72a37b, 2px 2px 0 #000;
+      box-shadow: 0 0 0 1.5px #72a37b, 2px 2px 0 rgba(0,0,0,0.3);
+    }
+    body.theme-light .game-row.active {
+      background: #e4f0e1;
+      border-color: #2e7d32;
+      box-shadow: 0 0 0 1.5px #2e7d32;
     }
 
     /* Cover Wrapper & Mini Poster */
@@ -376,8 +477,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: #17211a;
-      border: 1px solid #3d4f41;
+      background: var(--input-bg);
+      border: 1px solid var(--pixel-border);
       border-radius: 2px;
       display: block;
       transition: filter 0.15s, border-color 0.15s;
@@ -397,9 +498,42 @@
       font-size: 9px;
       padding: 1px 3px;
       border-radius: 2px;
-      border: 1px solid #445949;
+      border: 1px solid var(--pixel-border);
       pointer-events: none;
       line-height: 1;
+    }
+
+    /* Hit Medal Badge */
+    .hit-medal-badge {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 1px 4px;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      border: 1px solid #fef3c7;
+      pointer-events: none;
+      letter-spacing: 0.02em;
+    }
+
+    .hit-medal-badge-large {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      background: linear-gradient(135deg, #f59e0b, #b45309);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 7px;
+      border-radius: 3px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      border: 1px solid #fef3c7;
+      pointer-events: none;
+      letter-spacing: 0.03em;
     }
 
     .game-meta {
@@ -410,7 +544,7 @@
     .game-title-text {
       font-weight: 700;
       font-size: 0.96rem;
-      color: #f1f8f3;
+      color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -420,6 +554,16 @@
     .game-sub-text {
       font-size: 0.78rem;
       color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .stars-display {
+      color: var(--gold-star);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
     }
 
     /* Status Tag (clickable to cycle!) */
@@ -444,7 +588,7 @@
 
     .status-tag:hover {
       transform: scale(1.04);
-      box-shadow: 0 0 6px rgba(0,0,0,0.5);
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
     }
 
     .status-tag:active {
@@ -506,10 +650,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: #141c16;
+      background: var(--input-bg);
       border: 2px solid var(--pixel-border);
       border-radius: 3px;
-      box-shadow: 2px 2px 0 #000;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
       display: block;
       transition: filter 0.15s, border-color 0.15s;
     }
@@ -530,7 +674,7 @@
       text-align: center;
       padding: 2px;
       border-radius: 2px;
-      border: 1px solid #445949;
+      border: 1px solid var(--pixel-border);
       pointer-events: none;
       font-weight: 700;
     }
@@ -548,6 +692,9 @@
       font-family: 'Courier New', monospace;
       margin-bottom: 6px;
     }
+    body.theme-light .overview-title-h2 {
+      color: #276735;
+    }
 
     .overview-badges {
       display: flex;
@@ -558,9 +705,9 @@
     }
 
     .platform-pill {
-      background: #141d16;
+      background: var(--input-bg);
       border: 1px solid var(--pixel-border);
-      color: #a4b8a8;
+      color: var(--text-dim);
       font-size: 0.75rem;
       font-weight: 700;
       padding: 3px 8px;
@@ -569,7 +716,7 @@
 
     .overview-text {
       font-size: 0.88rem;
-      color: #ccd9cf;
+      color: var(--text-main);
       line-height: 1.5;
       max-height: 120px;
       overflow-y: auto;
@@ -953,7 +1100,7 @@
       padding: 18px;
       max-width: 460px;
       width: 100%;
-      box-shadow: 4px 4px 0 #000;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
     }
 
     @media (max-width: 620px) {
@@ -998,10 +1145,14 @@
         </div>
         <div>
           <span class="brand-title">Геймерский уголок</span>
-          <span class="version-tag">v1.0</span>
+          <span class="version-tag">v1.01</span>
         </div>
       </div>
       <div class="header-btns">
+        <!-- DAY / NIGHT TOGGLE -->
+        <button class="btn btn-dark btn-theme" id="btn-theme-toggle" type="button" title="Переключить день / ночь">
+          ☀️
+        </button>
         <button class="btn btn-dark" id="btn-open-backup" type="button">
           💾 База
         </button>
@@ -1011,7 +1162,7 @@
       </div>
     </header>
 
-    <!-- INLINE ADD / EDIT PANEL (WITH DROPDOWN PLATFORM SELECTOR) -->
+    <!-- INLINE ADD / EDIT PANEL (WITH INTERNET SEARCH & RATING) -->
     <section class="retro-box form-panel" id="game-form-panel">
       <div class="section-headline">
         <span id="panel-title" style="color:#9fe2aa;">➕ Новая запись игры</span>
@@ -1021,12 +1172,21 @@
       <form id="game-entry-form">
         <input type="hidden" id="entry-id" value="">
         <div class="form-grid">
-          <div>
+          <!-- Title with Internet Auto-Search Button -->
+          <div class="form-group-full">
             <label class="form-label">Название игры *</label>
-            <input type="text" id="entry-title" class="retro-input" required placeholder="Например: Fable, Witcher 3...">
+            <div class="input-with-search">
+              <input type="text" id="entry-title" class="retro-input" required placeholder="Например: Fable, Witcher 3, Dying Light...">
+              <button type="button" class="btn-search-online" id="btn-search-online">
+                🔍 Найти в сети
+              </button>
+            </div>
+            <div class="search-status-msg" id="search-status-msg"></div>
           </div>
+
+          <!-- Platform Dropdown -->
           <div>
-            <label class="form-label">Платформа (выбор из списка)</label>
+            <label class="form-label">Платформа</label>
             <select id="entry-platform" class="retro-input">
               <option value="PC">PC</option>
               <option value="Xbox Series X/S">Xbox Series X/S</option>
@@ -1041,6 +1201,8 @@
               <option value="Другая">Другая</option>
             </select>
           </div>
+
+          <!-- Status -->
           <div>
             <label class="form-label">Статус</label>
             <select id="entry-status" class="retro-input">
@@ -1050,13 +1212,29 @@
               <option value="paused">На паузе</option>
             </select>
           </div>
+
+          <!-- Rating Selector -->
+          <div>
+            <label class="form-label">Рейтинг игры</label>
+            <select id="entry-rating" class="retro-input">
+              <option value="5">⭐⭐⭐⭐⭐ (5/5 — Золотой Хит! 🏅)</option>
+              <option value="4">⭐⭐⭐⭐ (4/5 — Отличная игра)</option>
+              <option value="3">⭐⭐⭐ (3/5 — Нормальная)</option>
+              <option value="2">⭐⭐ (2/5 — Средне)</option>
+              <option value="1">⭐ (1/5 — Слабо)</option>
+            </select>
+          </div>
+
+          <!-- Cover URL -->
           <div>
             <label class="form-label">Ссылка на обложку (URL)</label>
-            <input type="url" id="entry-cover" class="retro-input" placeholder="https://... (или нажмите на постер)">
+            <input type="url" id="entry-cover" class="retro-input" placeholder="Заполнится автоматом или укажите URL">
           </div>
+
+          <!-- Description -->
           <div class="form-group-full">
-            <label class="form-label">Краткий синопсис / описание</label>
-            <textarea id="entry-desc" class="retro-input" rows="2" placeholder="О чем игра, пара фраз о сюжете..."></textarea>
+            <label class="form-label">Краткий синопсис / описание на русском</label>
+            <textarea id="entry-desc" class="retro-input" rows="3" placeholder="Подтянется автоматом из Википедии или введите свой текст..."></textarea>
           </div>
         </div>
         <div style="display:flex; justify-content:flex-end; gap:8px;">
@@ -1087,7 +1265,7 @@
     <!-- CONCISE GAME LIST -->
     <div class="section-headline">
       <span>Список игр (<span id="list-total-count">0</span>)</span>
-      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Клик на постер = сменить обложку 📷 | Статус ↻</span>
+      <span style="font-size:0.75rem; text-transform:none; color:var(--text-dim);">Клик на постер = сменить фото 📷 | Статус ↻</span>
     </div>
 
     <div class="game-list-rows" id="games-container">
@@ -1102,6 +1280,7 @@
         <div class="overview-content">
           <div class="overview-poster-wrap" id="overview-poster-wrap" title="Нажмите, чтобы загрузить обложку из файлов">
             <img src="" id="view-cover" class="overview-poster-img" alt="Обложка">
+            <span class="hit-medal-badge-large" id="view-medal-badge" style="display:none;">🏅 ХИТ</span>
             <div class="overview-poster-hint">📷 Сменить фото</div>
           </div>
           <div class="overview-info">
@@ -1109,6 +1288,7 @@
             <div class="overview-badges">
               <span class="platform-pill" id="view-platform">PC</span>
               <span class="status-tag" id="view-status-tag" title="Нажмите, чтобы переключить статус">Играю ↻</span>
+              <span class="stars-display" id="view-stars" title="Рейтинг игры">★★★★★</span>
             </div>
             <p class="overview-text" id="view-desc">Описание отсутствует.</p>
             <div class="overview-buttons">
@@ -1187,8 +1367,8 @@
     </div>
 
     <!-- FOOTER -->
-    <footer style="text-align: center; margin-top: 30px; font-size: 0.78rem; color: #627c69; font-family: monospace;">
-      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 1.0 • RELEASE EDITION
+    <footer style="text-align: center; margin-top: 30px; font-size: 0.78rem; color: var(--text-dim); font-family: monospace;">
+      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 1.01 • DAY &amp; NIGHT EDITION
     </footer>
 
   </div>
@@ -1209,7 +1389,7 @@
         <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" id="btn-close-backup" type="button">✕</button>
       </div>
       <p style="font-size:0.84rem; color:var(--text-dim); margin-bottom:14px;">
-        Все данные, заметки, карты и голосовые надёжно хранятся в памяти браузера. Вы можете экспортировать резервную копию в файл.
+        Все данные, заметки, карты, рейтинги и голосовые хранятся в памяти браузера. Вы можете сохранить базу в файл.
       </p>
       <div style="display:flex; flex-direction:column; gap:8px;">
         <button class="btn btn-dark" style="justify-content:flex-start;" id="btn-export-file" type="button">
@@ -1233,10 +1413,23 @@
     // --- 1. DEFAULT DATA ---
     const INITIAL_GAMES = [
       {
+        id: "g_witcher3",
+        title: "Ведьмак 3: Дикая Охота",
+        platform: "PC",
+        status: "completed",
+        rating: 5,
+        cover: "https://upload.wikimedia.org/wikipedia/ru/a/a2/The_Witcher_3-_Wild_Hunt_Cover.jpg",
+        desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
+        notes: "• Заказ на Лихо у колодца выполнен.\n• Сет школы Грифона собран на 1-й уровень.\n• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
+        images: [],
+        voices: []
+      },
+      {
         id: "g_fable",
         title: "Fable Anniversary",
         platform: "PC / Xbox",
         status: "playing",
+        rating: 5,
         cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/Fable_Anniversary_cover.jpg",
         desc: "Ремастер классической ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
         notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.\n• Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.\n• Прокачать заклинание 'Молния' для быстрого контроля толпы.",
@@ -1248,20 +1441,10 @@
         title: "Dying Light",
         platform: "PC",
         status: "playing",
+        rating: 4,
         cover: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Dying_Light_cover.jpg",
         desc: "Паркур в открытом мире среди заражённых Харрана. Днём исследуйте руины и собирайте припасы, а ночью прячьтесь от смертоносных Прыгунов.",
         notes: "• Ночные вылазки дают удвоенный опыт выживания.\n• Чертёж 'Кореш Камикадзе' лежит на подвесном мосту.\n• Собрать больше марли и спирта для аптечек.",
-        images: [],
-        voices: []
-      },
-      {
-        id: "g_witcher3",
-        title: "Ведьмак 3: Дикая Охота",
-        platform: "PC",
-        status: "completed",
-        cover: "https://upload.wikimedia.org/wikipedia/ru/a/a2/The_Witcher_3-_Wild_Hunt_Cover.jpg",
-        desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
-        notes: "• Заказ на Лихо у колодца выполнен.\n• Сет школы Грифона собран на 1-й уровень.\n• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
         images: [],
         voices: []
       },
@@ -1270,6 +1453,7 @@
         title: "The Outer Worlds",
         platform: "PC / Xbox",
         status: "planned",
+        rating: 4,
         cover: "https://upload.wikimedia.org/wikipedia/ru/0/07/The_Outer_Worlds.jpg",
         desc: "Сатирическая космическая RPG от Obsidian. Колония Алкион под пятой корпораций, чернушный юмор, компаньоны и вариативные задания.",
         notes: "• Первое прохождение планирую через дипломатию и взлом.\n• Не забыть взять Парвати в команду на 'Первопроходце'.",
@@ -1286,8 +1470,9 @@
     };
     const STATUS_CYCLE = ["playing", "planned", "completed", "paused"];
 
-    const STORAGE_KEY = "gamerbox_games_v10";
+    const STORAGE_KEY = "gamerbox_games_v101";
     const OLD_STORAGE_KEYS = [
+      "gamerbox_games_v10",
       "gamerbox_games_v09",
       "gamerbox_games_v08",
       "gamerbox_games_v07",
@@ -1311,14 +1496,36 @@
     let audioChunks = [];
     let recordSeconds = 0;
     let recordInterval = null;
-    let activeAudioElement = null; // currently playing audio
+    let activeAudioElement = null;
 
-    // --- 2. STORAGE SYSTEM WITH MIGRATION ---
+    // --- 2. DAY / NIGHT THEME SYSTEM ---
+    let currentTheme = localStorage.getItem("gamerbox_theme") || "dark";
+
+    function applyTheme(theme) {
+      currentTheme = theme;
+      const themeBtn = document.getElementById("btn-theme-toggle");
+      if (theme === "light") {
+        document.body.classList.add("theme-light");
+        themeBtn.textContent = "🌙";
+        themeBtn.title = "Переключить на ночной режим (темный)";
+      } else {
+        document.body.classList.remove("theme-light");
+        themeBtn.textContent = "☀️";
+        themeBtn.title = "Переключить на дневной режим (светлый)";
+      }
+      localStorage.setItem("gamerbox_theme", theme);
+    }
+
+    document.getElementById("btn-theme-toggle").addEventListener("click", () => {
+      applyTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+
+    // --- 3. STORAGE SYSTEM WITH MIGRATION ---
     function normalizeData(arr) {
       if (!Array.isArray(arr)) return INITIAL_GAMES;
       return arr.map((item, idx) => {
         if (!item || typeof item !== 'object') {
-          return { id: "g_" + Date.now() + "_" + idx, title: "Игра", platform: "PC", status: "playing", cover: "", desc: "", notes: "", images: [], voices: [] };
+          return { id: "g_" + Date.now() + "_" + idx, title: "Игра", platform: "PC", status: "playing", rating: 5, cover: "", desc: "", notes: "", images: [], voices: [] };
         }
         let st = String(item.status || "playing").toLowerCase();
         if (st.includes("игра") || st === "playing") st = "playing";
@@ -1327,11 +1534,15 @@
         else if (st.includes("пауз") || st === "paused") st = "paused";
         else st = "playing";
 
+        let r = parseInt(item.rating, 10);
+        if (isNaN(r) || r < 1 || r > 5) r = 5;
+
         return {
           id: item.id || ("game_" + Date.now() + "_" + idx),
           title: item.title || "Без названия",
           platform: item.platform || "PC",
           status: st,
+          rating: r,
           cover: item.cover || "",
           desc: item.desc || item.description || "",
           notes: item.notes || item.secrets || "",
@@ -1372,11 +1583,11 @@
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gamesList));
       } catch (err) {
-        console.warn("Storage full / error", err);
+        console.warn("Storage warning:", err);
       }
     }
 
-    // --- 3. STATUS CYCLING (ON CLICK ON STATUS BADGE) ---
+    // --- 4. STATUS CYCLING (ON CLICK ON STATUS BADGE) ---
     function cycleStatusForGame(e, gameId) {
       if (e) {
         e.stopPropagation();
@@ -1399,7 +1610,89 @@
       }
     }
 
-    // --- 4. QUICK COVER UPLOAD (DIRECT FROM LIST & OVERVIEW) ---
+    // --- 5. INTERNET AUTO-SEARCH VIA RUSSIAN WIKIPEDIA ---
+    const btnSearchOnline = document.getElementById("btn-search-online");
+    const searchStatusMsg = document.getElementById("search-status-msg");
+
+    btnSearchOnline.addEventListener("click", async function() {
+      const titleInput = document.getElementById("entry-title");
+      const q = titleInput.value.trim();
+      if (!q) {
+        searchStatusMsg.style.color = "#ef4444";
+        searchStatusMsg.textContent = "Сначала введите название игры!";
+        return;
+      }
+
+      btnSearchOnline.disabled = true;
+      btnSearchOnline.textContent = "⏳ Поиск...";
+      searchStatusMsg.style.color = "var(--text-dim)";
+      searchStatusMsg.textContent = "Опрашиваем русскую Википедию...";
+
+      try {
+        // Try searching with 'компьютерная игра' for precision
+        const searchApi1 = `https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q + ' компьютерная игра')}&utf8=&format=json&origin=*`;
+        let res = await fetch(searchApi1);
+        let data = await res.json();
+        let targetTitle = null;
+
+        if (data.query && data.query.search && data.query.search.length > 0) {
+          targetTitle = data.query.search[0].title;
+        } else {
+          // fallback without extra keyword
+          const searchApi2 = `https://ru.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&utf8=&format=json&origin=*`;
+          let res2 = await fetch(searchApi2);
+          let data2 = await res2.json();
+          if (data2.query && data2.query.search && data2.query.search.length > 0) {
+            targetTitle = data2.query.search[0].title;
+          }
+        }
+
+        if (!targetTitle) {
+          searchStatusMsg.style.color = "#f59e0b";
+          searchStatusMsg.textContent = "Ничего не найдено. Можно ввести данные вручную.";
+          btnSearchOnline.disabled = false;
+          btnSearchOnline.textContent = "🔍 Найти в сети";
+          return;
+        }
+
+        // Fetch page summary
+        const summaryApi = `https://ru.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(targetTitle)}`;
+        let sumRes = await fetch(summaryApi);
+        if (sumRes.ok) {
+          let sumData = await sumRes.json();
+          let extract = sumData.extract || "";
+          if (extract.length > 360) extract = extract.slice(0, 360) + "...";
+
+          let coverUrl = "";
+          if (sumData.thumbnail && sumData.thumbnail.source) {
+            coverUrl = sumData.thumbnail.source;
+          } else if (sumData.originalimage && sumData.originalimage.source) {
+            coverUrl = sumData.originalimage.source;
+          }
+
+          if (extract) {
+            document.getElementById("entry-desc").value = extract;
+          }
+          if (coverUrl) {
+            document.getElementById("entry-cover").value = coverUrl;
+          }
+
+          searchStatusMsg.style.color = "#10b981";
+          searchStatusMsg.textContent = `✓ Найдено: «${targetTitle}». Описание и постер заполнены!`;
+        } else {
+          searchStatusMsg.style.color = "#f59e0b";
+          searchStatusMsg.textContent = `Статья найдена (${targetTitle}), но описание не подтянулось.`;
+        }
+      } catch (err) {
+        searchStatusMsg.style.color = "#ef4444";
+        searchStatusMsg.textContent = "Ошибка сети при поиске: " + err.message;
+      } finally {
+        btnSearchOnline.disabled = false;
+        btnSearchOnline.textContent = "🔍 Найти в сети";
+      }
+    });
+
+    // --- 6. QUICK COVER UPLOAD (DIRECT FROM LIST & OVERVIEW) ---
     function triggerCoverUpload(e, gameId) {
       if (e) e.stopPropagation();
       targetCoverGameId = gameId;
@@ -1414,7 +1707,6 @@
 
       const reader = new FileReader();
       reader.onload = function(evt) {
-        // Optimize image size using canvas so localStorage never fills up
         resizeImage(evt.target.result, 600, 800, function(resizedDataUrl) {
           const game = gamesList.find(g => g.id === targetCoverGameId);
           if (game) {
@@ -1458,12 +1750,12 @@
         callback(canvas.toDataURL("image/jpeg", 0.85));
       };
       img.onerror = function() {
-        callback(dataUrl); // fallback to original
+        callback(dataUrl);
       };
       img.src = dataUrl;
     }
 
-    // --- 5. RENDERING ---
+    // --- 7. RENDERING ---
     function updateCounters() {
       const counts = { all: gamesList.length, playing: 0, planned: 0, completed: 0, paused: 0 };
       gamesList.forEach(g => {
@@ -1494,7 +1786,7 @@
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div style="text-align:center; padding:24px; color:#859e8c; border:1px dashed #3a4c3e; border-radius:3px;">
+          <div style="text-align:center; padding:24px; color:var(--text-dim); border:1px dashed var(--pixel-border); border-radius:3px;">
             В этом разделе нет игр. Нажмите «➕ Добавить игру» сверху!
           </div>
         `;
@@ -1513,14 +1805,21 @@
         const hasCustomCover = Boolean(game.cover && game.cover.trim());
         const coverSrc = hasCustomCover ? game.cover : fallbackSvg;
 
+        const isHit = (game.rating === 5);
+        const starsText = "★".repeat(game.rating || 5);
+
         row.innerHTML = `
           <div class="cover-wrap-mini" title="Нажмите, чтобы загрузить обложку с устройства">
             <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+            ${isHit ? '<span class="hit-medal-badge" title="Золотой Хит! 5/5">🏅 ХИТ</span>' : ''}
             <span class="cover-quick-badge">📷</span>
           </div>
           <div class="game-meta">
             <div class="game-title-text">${safeHtml(game.title)}</div>
-            <div class="game-sub-text">${safeHtml(game.platform || "Любая")}</div>
+            <div class="game-sub-text">
+              <span>${safeHtml(game.platform || "Любая")}</span>
+              <span class="stars-display" title="Рейтинг: ${game.rating || 5}/5">${starsText}</span>
+            </div>
           </div>
           <span class="status-tag ${stInfo.cls}" title="Нажмите для быстрой смены статуса">
             ${stInfo.label} ↻
@@ -1572,6 +1871,16 @@
       statusTag.textContent = stInfo.label + " ↻";
       statusTag.className = "status-tag " + stInfo.cls;
 
+      const r = game.rating || 5;
+      document.getElementById("view-stars").textContent = "★".repeat(r) + " (" + r + "/5)";
+
+      const medalBadge = document.getElementById("view-medal-badge");
+      if (r === 5) {
+        medalBadge.style.display = "block";
+      } else {
+        medalBadge.style.display = "none";
+      }
+
       document.getElementById("view-desc").textContent = game.desc || "Описание отсутствует. Нажмите 'Редактировать', чтобы добавить.";
 
       const fallbackSvgLarge = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' fill='%2319241c'%3E%3Crect width='100' height='130'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='26' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
@@ -1605,7 +1914,7 @@
       }
     });
 
-    // --- 6. COLLAPSIBLE FIELD NOTEBOOK ---
+    // --- 8. COLLAPSIBLE FIELD NOTEBOOK ---
     function toggleBookCollapse() {
       isBookOpen = !isBookOpen;
       const bodyWrapper = document.getElementById("book-body-wrapper");
@@ -1625,7 +1934,7 @@
 
     document.getElementById("book-titlebar-toggle").addEventListener("click", toggleBookCollapse);
 
-    // --- 7. VOICE AUDIO RECORDING & ROCK-SOLID PLAYBACK ---
+    // --- 9. VOICE AUDIO RECORDING & ROCK-SOLID PLAYBACK ---
     function getBestSupportedAudioMime() {
       const candidates = [
         "audio/webm;codecs=opus",
@@ -1644,7 +1953,6 @@
       return "";
     }
 
-    // Convert Base64 audio to Blob URL for 100% reliable Safari/Chrome playback
     function dataUrlToBlobUrl(dataUrl) {
       try {
         const arr = dataUrl.split(",");
@@ -1659,7 +1967,7 @@
         const blob = new Blob([u8arr], { type: mime });
         return URL.createObjectURL(blob);
       } catch (err) {
-        return dataUrl; // fallback
+        return dataUrl;
       }
     }
 
@@ -1757,7 +2065,6 @@
         const item = document.createElement("div");
         item.className = "voice-item";
 
-        // Convert to Blob URL for glitch-free playback
         const playableUrl = dataUrlToBlobUrl(v.src);
 
         item.innerHTML = `
@@ -1784,7 +2091,6 @@
             audio.pause();
             playBtn.textContent = "▶ Слушать";
           } else {
-            // Stop any other playing audio
             if (activeAudioElement && activeAudioElement !== audio) {
               activeAudioElement.pause();
             }
@@ -1817,7 +2123,7 @@
       renderVoiceNotes(game.voices);
     }
 
-    // --- 8. IMAGE ATTACHMENTS & GALLERY ---
+    // --- 10. IMAGE ATTACHMENTS & GALLERY ---
     function renderNotebookGallery(images) {
       const gallery = document.getElementById("book-gallery-pins");
       gallery.innerHTML = "";
@@ -1891,7 +2197,7 @@
       renderNotebookGallery(game.images);
     }
 
-    // --- 9. NOTEBOOK TEXT AUTOSAVE ---
+    // --- 11. NOTEBOOK TEXT AUTOSAVE ---
     document.getElementById("book-notes-input").addEventListener("input", function() {
       const statusLabel = document.getElementById("book-save-status");
       statusLabel.textContent = "Сохраняем...";
@@ -1906,7 +2212,7 @@
       }, 350);
     });
 
-    // --- 10. ADD / EDIT PANEL (WITH SELECT PLATFORM) ---
+    // --- 12. ADD / EDIT PANEL (WITH SELECT PLATFORM & RATING) ---
     function openAddPanel() {
       const panel = document.getElementById("game-form-panel");
       document.getElementById("panel-title").textContent = "➕ Новая запись игры";
@@ -1914,6 +2220,8 @@
       document.getElementById("entry-id").value = "";
       document.getElementById("game-entry-form").reset();
       document.getElementById("entry-platform").value = "PC";
+      document.getElementById("entry-rating").value = "5";
+      document.getElementById("search-status-msg").textContent = "";
       panel.classList.add("active");
       try {
         panel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1932,6 +2240,7 @@
       document.getElementById("btn-submit-form").textContent = "✅ Обновить данные";
       document.getElementById("entry-id").value = game.id;
       document.getElementById("entry-title").value = game.title;
+      document.getElementById("search-status-msg").textContent = "";
 
       const platformSelect = document.getElementById("entry-platform");
       let foundOption = false;
@@ -1951,6 +2260,7 @@
       }
 
       document.getElementById("entry-status").value = game.status;
+      document.getElementById("entry-rating").value = String(game.rating || 5);
       document.getElementById("entry-cover").value = game.cover || "";
       document.getElementById("entry-desc").value = game.desc || "";
 
@@ -1977,6 +2287,7 @@
       const title = document.getElementById("entry-title").value.trim();
       const platform = document.getElementById("entry-platform").value;
       const status = document.getElementById("entry-status").value;
+      const rating = parseInt(document.getElementById("entry-rating").value, 10) || 5;
       const cover = document.getElementById("entry-cover").value.trim();
       const desc = document.getElementById("entry-desc").value.trim();
 
@@ -1991,6 +2302,7 @@
           game.title = title;
           game.platform = platform;
           game.status = status;
+          game.rating = rating;
           game.cover = cover;
           game.desc = desc;
         }
@@ -2000,6 +2312,7 @@
           title: title,
           platform: platform,
           status: status,
+          rating: rating,
           cover: cover,
           desc: desc,
           notes: "",
@@ -2033,7 +2346,7 @@
       }
     });
 
-    // --- 11. FILTER & SEARCH ---
+    // --- 13. FILTER & SEARCH ---
     document.querySelectorAll(".pill").forEach(pill => {
       pill.addEventListener("click", function() {
         document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
@@ -2047,7 +2360,7 @@
       renderList();
     });
 
-    // --- 12. BACKUP & RESTORE MODAL ---
+    // --- 14. BACKUP & RESTORE MODAL ---
     const backupShade = document.getElementById("modal-backup-shade");
 
     document.getElementById("btn-open-backup").addEventListener("click", function() {
@@ -2064,7 +2377,7 @@
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gamesList, null, 2));
       const a = document.createElement("a");
       a.href = dataStr;
-      a.download = `gamerbox_v10_${new Date().toISOString().slice(0,10)}.json`;
+      a.download = `gamerbox_v101_${new Date().toISOString().slice(0,10)}.json`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -2115,8 +2428,9 @@
       return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
-    // --- 13. STARTUP ---
+    // --- 15. STARTUP ---
     try {
+      applyTheme(currentTheme);
       gamesList = loadSavedGames();
       renderList();
       if (gamesList.length > 0) {
