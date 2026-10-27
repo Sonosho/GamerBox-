@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Геймерский уголок v0.9</title>
+  <title>Геймерский уголок v1.0</title>
   <meta name="theme-color" content="#121814">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23121814'/%3E%3Crect x='4' y='8' width='24' height='16' rx='3' fill='%23384a3c' stroke='%23709477' stroke-width='2'/%3E%3Crect x='8' y='14' width='6' height='2' fill='%23c2d6c6'/%3E%3Crect x='10' y='12' width='2' height='6' fill='%23c2d6c6'/%3E%3Crect x='20' y='13' width='3' height='3' fill='%23e06c53'/%3E%3Crect x='23' y='16' width='3' height='3' fill='%235ea881'/%3E%3C/svg%3E">
@@ -363,14 +363,43 @@
       box-shadow: 0 0 0 1.5px #72a37b, 2px 2px 0 #000;
     }
 
-    .game-cover-mini {
+    /* Cover Wrapper & Mini Poster */
+    .cover-wrap-mini {
+      position: relative;
       width: 44px;
-      height: 52px;
+      height: 54px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .game-cover-mini {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       background: #17211a;
       border: 1px solid #3d4f41;
       border-radius: 2px;
-      flex-shrink: 0;
+      display: block;
+      transition: filter 0.15s, border-color 0.15s;
+    }
+
+    .cover-wrap-mini:hover .game-cover-mini {
+      filter: brightness(1.15);
+      border-color: #72a37b;
+    }
+
+    .cover-quick-badge {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      background: rgba(18, 24, 20, 0.88);
+      color: #9fe2aa;
+      font-size: 9px;
+      padding: 1px 3px;
+      border-radius: 2px;
+      border: 1px solid #445949;
+      pointer-events: none;
+      line-height: 1;
     }
 
     .game-meta {
@@ -464,15 +493,46 @@
       gap: 16px;
     }
 
-    .overview-poster-img {
+    /* Big Overview Poster with Quick Upload Hint */
+    .overview-poster-wrap {
+      position: relative;
       width: 110px;
       height: 146px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .overview-poster-img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       background: #141c16;
       border: 2px solid var(--pixel-border);
       border-radius: 3px;
-      flex-shrink: 0;
       box-shadow: 2px 2px 0 #000;
+      display: block;
+      transition: filter 0.15s, border-color 0.15s;
+    }
+
+    .overview-poster-wrap:hover .overview-poster-img {
+      filter: brightness(1.1);
+      border-color: #9fe2aa;
+    }
+
+    .overview-poster-hint {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      right: 3px;
+      background: rgba(16, 22, 18, 0.88);
+      color: #9fe2aa;
+      font-size: 10px;
+      text-align: center;
+      padding: 2px;
+      border-radius: 2px;
+      border: 1px solid #445949;
+      pointer-events: none;
+      font-weight: 700;
     }
 
     .overview-info {
@@ -706,26 +766,39 @@
     .voice-item {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: #ede3cc;
       border: 1px solid #cbbba0;
-      padding: 6px 10px;
+      padding: 7px 10px;
       border-radius: 4px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
     }
 
-    .voice-item audio {
-      height: 32px;
-      flex: 1;
-      min-width: 0;
-      outline: none;
+    .voice-play-btn {
+      background: #384a3c;
+      color: #fff;
+      border: 1px solid #5a755f;
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .voice-play-btn:hover {
+      background: #465c4b;
     }
 
     .voice-date {
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-family: Georgia, serif;
       color: var(--book-ink-muted);
-      white-space: nowrap;
+      flex: 1;
+      min-width: 90px;
     }
 
     .voice-del-btn {
@@ -733,8 +806,8 @@
       color: #fff;
       border: none;
       border-radius: 3px;
-      padding: 4px 8px;
-      font-size: 0.72rem;
+      padding: 5px 8px;
+      font-size: 0.74rem;
       cursor: pointer;
     }
 
@@ -925,7 +998,7 @@
         </div>
         <div>
           <span class="brand-title">Геймерский уголок</span>
-          <span class="version-tag">v0.9</span>
+          <span class="version-tag">v1.0</span>
         </div>
       </div>
       <div class="header-btns">
@@ -979,7 +1052,7 @@
           </div>
           <div>
             <label class="form-label">Ссылка на обложку (URL)</label>
-            <input type="url" id="entry-cover" class="retro-input" placeholder="https://... (необязательно)">
+            <input type="url" id="entry-cover" class="retro-input" placeholder="https://... (или нажмите на постер)">
           </div>
           <div class="form-group-full">
             <label class="form-label">Краткий синопсис / описание</label>
@@ -1014,7 +1087,7 @@
     <!-- CONCISE GAME LIST -->
     <div class="section-headline">
       <span>Список игр (<span id="list-total-count">0</span>)</span>
-      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Клик на статус переключает его сразу ↻</span>
+      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Клик на постер = сменить обложку 📷 | Статус ↻</span>
     </div>
 
     <div class="game-list-rows" id="games-container">
@@ -1027,7 +1100,10 @@
       <!-- Top: Quick Overview -->
       <div class="retro-box overview-box">
         <div class="overview-content">
-          <img src="" id="view-cover" class="overview-poster-img" alt="Обложка">
+          <div class="overview-poster-wrap" id="overview-poster-wrap" title="Нажмите, чтобы загрузить обложку из файлов">
+            <img src="" id="view-cover" class="overview-poster-img" alt="Обложка">
+            <div class="overview-poster-hint">📷 Сменить фото</div>
+          </div>
           <div class="overview-info">
             <h2 class="overview-title-h2" id="view-title">Название игры</h2>
             <div class="overview-badges">
@@ -1112,10 +1188,13 @@
 
     <!-- FOOTER -->
     <footer style="text-align: center; margin-top: 30px; font-size: 0.78rem; color: #627c69; font-family: monospace;">
-      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 0.9 • RETRO & VOICE EDITION
+      ГЕЙМЕРСКИЙ УГОЛОК • ВЕРСИЯ 1.0 • RELEASE EDITION
     </footer>
 
   </div>
+
+  <!-- HIDDEN INPUT FOR QUICK COVER FILE UPLOAD -->
+  <input type="file" id="quick-cover-file-input" accept="image/*" style="display:none;">
 
   <!-- LIGHTBOX IMAGE VIEWER -->
   <div class="image-viewer" id="lightbox-viewer">
@@ -1207,8 +1286,9 @@
     };
     const STATUS_CYCLE = ["playing", "planned", "completed", "paused"];
 
-    const STORAGE_KEY = "gamerbox_games_v09";
+    const STORAGE_KEY = "gamerbox_games_v10";
     const OLD_STORAGE_KEYS = [
+      "gamerbox_games_v09",
       "gamerbox_games_v08",
       "gamerbox_games_v07",
       "gamerbox_games",
@@ -1222,12 +1302,16 @@
     let notesTimer = null;
     let isBookOpen = true;
 
+    // Quick cover upload target ID
+    let targetCoverGameId = null;
+
     // Audio recording state
     let mediaRecorder = null;
     let audioStream = null;
     let audioChunks = [];
     let recordSeconds = 0;
     let recordInterval = null;
+    let activeAudioElement = null; // currently playing audio
 
     // --- 2. STORAGE SYSTEM WITH MIGRATION ---
     function normalizeData(arr) {
@@ -1315,7 +1399,71 @@
       }
     }
 
-    // --- 4. RENDERING ---
+    // --- 4. QUICK COVER UPLOAD (DIRECT FROM LIST & OVERVIEW) ---
+    function triggerCoverUpload(e, gameId) {
+      if (e) e.stopPropagation();
+      targetCoverGameId = gameId;
+      const fileInput = document.getElementById("quick-cover-file-input");
+      fileInput.value = "";
+      fileInput.click();
+    }
+
+    document.getElementById("quick-cover-file-input").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file || !targetCoverGameId) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        // Optimize image size using canvas so localStorage never fills up
+        resizeImage(evt.target.result, 600, 800, function(resizedDataUrl) {
+          const game = gamesList.find(g => g.id === targetCoverGameId);
+          if (game) {
+            game.cover = resizedDataUrl;
+            saveGames(gamesList);
+            renderList();
+            if (activeGameId === targetCoverGameId) {
+              selectGame(activeGameId, false);
+            }
+          }
+        });
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById("overview-poster-wrap").addEventListener("click", function() {
+      if (activeGameId) {
+        triggerCoverUpload(null, activeGameId);
+      }
+    });
+
+    function resizeImage(dataUrl, maxW, maxH, callback) {
+      const img = new Image();
+      img.onload = function() {
+        let w = img.width;
+        let h = img.height;
+        if (w > maxW || h > maxH) {
+          if (w / h > maxW / maxH) {
+            h = Math.round((h * maxW) / w);
+            w = maxW;
+          } else {
+            w = Math.round((w * maxH) / h);
+            maxH = h;
+          }
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        callback(canvas.toDataURL("image/jpeg", 0.85));
+      };
+      img.onerror = function() {
+        callback(dataUrl); // fallback to original
+      };
+      img.src = dataUrl;
+    }
+
+    // --- 5. RENDERING ---
     function updateCounters() {
       const counts = { all: gamesList.length, playing: 0, planned: 0, completed: 0, paused: 0 };
       gamesList.forEach(g => {
@@ -1362,10 +1510,14 @@
         row.dataset.id = game.id;
 
         const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 50' fill='%2319241c'%3E%3Crect width='40' height='50'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
-        const coverSrc = game.cover && game.cover.trim() ? game.cover : fallbackSvg;
+        const hasCustomCover = Boolean(game.cover && game.cover.trim());
+        const coverSrc = hasCustomCover ? game.cover : fallbackSvg;
 
         row.innerHTML = `
-          <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+          <div class="cover-wrap-mini" title="Нажмите, чтобы загрузить обложку с устройства">
+            <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+            <span class="cover-quick-badge">📷</span>
+          </div>
           <div class="game-meta">
             <div class="game-title-text">${safeHtml(game.title)}</div>
             <div class="game-sub-text">${safeHtml(game.platform || "Любая")}</div>
@@ -1380,7 +1532,13 @@
           selectGame(game.id, true);
         });
 
-        // Status badge click ONLY changes status without opening/scrolling!
+        // Cover click triggers quick cover upload from files
+        const coverWrap = row.querySelector(".cover-wrap-mini");
+        coverWrap.addEventListener("click", (evt) => {
+          triggerCoverUpload(evt, game.id);
+        });
+
+        // Status badge click ONLY changes status without opening/scrolling
         const badgeEl = row.querySelector(".status-tag");
         badgeEl.addEventListener("click", (evt) => {
           cycleStatusForGame(evt, game.id);
@@ -1440,14 +1598,14 @@
       }
     }
 
-    // Workspace badge click also cycles status!
+    // Workspace badge click also cycles status
     document.getElementById("view-status-tag").addEventListener("click", function(e) {
       if (activeGameId) {
         cycleStatusForGame(e, activeGameId);
       }
     });
 
-    // --- 5. COLLAPSIBLE FIELD NOTEBOOK (ПОКА НЕ СВЕРНЁШЬ — ОТКРЫТ) ---
+    // --- 6. COLLAPSIBLE FIELD NOTEBOOK ---
     function toggleBookCollapse() {
       isBookOpen = !isBookOpen;
       const bodyWrapper = document.getElementById("book-body-wrapper");
@@ -1467,12 +1625,48 @@
 
     document.getElementById("book-titlebar-toggle").addEventListener("click", toggleBookCollapse);
 
-    // --- 6. VOICE AUDIO RECORDING (EXPERIMENTAL) ---
+    // --- 7. VOICE AUDIO RECORDING & ROCK-SOLID PLAYBACK ---
+    function getBestSupportedAudioMime() {
+      const candidates = [
+        "audio/webm;codecs=opus",
+        "audio/webm",
+        "audio/mp4",
+        "audio/aac",
+        "audio/ogg;codecs=opus",
+        "audio/wav"
+      ];
+      if (typeof MediaRecorder === "undefined" || !MediaRecorder.isTypeSupported) {
+        return "";
+      }
+      for (const mime of candidates) {
+        if (MediaRecorder.isTypeSupported(mime)) return mime;
+      }
+      return "";
+    }
+
+    // Convert Base64 audio to Blob URL for 100% reliable Safari/Chrome playback
+    function dataUrlToBlobUrl(dataUrl) {
+      try {
+        const arr = dataUrl.split(",");
+        const mimeMatch = arr[0].match(/:(.*?);/);
+        const mime = mimeMatch ? mimeMatch[1] : "audio/webm";
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        const blob = new Blob([u8arr], { type: mime });
+        return URL.createObjectURL(blob);
+      } catch (err) {
+        return dataUrl; // fallback
+      }
+    }
+
     const btnToggleVoice = document.getElementById("btn-toggle-voice");
 
     btnToggleVoice.addEventListener("click", async function() {
       if (mediaRecorder && mediaRecorder.state === "recording") {
-        // Stop recording
         mediaRecorder.stop();
         return;
       }
@@ -1483,12 +1677,15 @@
       }
 
       try {
+        const mime = getBestSupportedAudioMime();
         audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(audioStream);
+
+        const options = mime ? { mimeType: mime } : {};
+        mediaRecorder = new MediaRecorder(audioStream, options);
         audioChunks = [];
 
         mediaRecorder.ondataavailable = function(e) {
-          if (e.data.size > 0) audioChunks.push(e.data);
+          if (e.data && e.data.size > 0) audioChunks.push(e.data);
         };
 
         mediaRecorder.onstop = function() {
@@ -1500,7 +1697,9 @@
           btnToggleVoice.classList.remove("recording");
           btnToggleVoice.textContent = "🎙️ Записать мысль";
 
-          const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+          const finalMime = mediaRecorder.mimeType || mime || "audio/mp4";
+          const audioBlob = new Blob(audioChunks, { type: finalMime });
+
           const reader = new FileReader();
           reader.onloadend = function() {
             saveVoiceNoteToActiveGame(reader.result);
@@ -1557,15 +1756,51 @@
       voices.forEach((v, idx) => {
         const item = document.createElement("div");
         item.className = "voice-item";
+
+        // Convert to Blob URL for glitch-free playback
+        const playableUrl = dataUrlToBlobUrl(v.src);
+
         item.innerHTML = `
-          <span style="font-size:0.9rem;">📻</span>
-          <span class="voice-date">${safeHtml(v.date || "Запись")}</span>
-          <audio controls src="${v.src}" preload="metadata"></audio>
+          <button class="voice-play-btn" type="button">▶ Слушать</button>
+          <span class="voice-date">📻 ${safeHtml(v.date || "Заметка " + (idx + 1))}</span>
           <button class="voice-del-btn" title="Удалить аудиозапись" type="button">🗑️</button>
         `;
 
+        const playBtn = item.querySelector(".voice-play-btn");
+        const audio = new Audio(playableUrl);
+
+        audio.onended = () => {
+          playBtn.textContent = "▶ Слушать";
+        };
+        audio.onpause = () => {
+          playBtn.textContent = "▶ Слушать";
+        };
+        audio.onerror = () => {
+          playBtn.textContent = "⚠️ Сбой формата";
+        };
+
+        playBtn.addEventListener("click", () => {
+          if (!audio.paused) {
+            audio.pause();
+            playBtn.textContent = "▶ Слушать";
+          } else {
+            // Stop any other playing audio
+            if (activeAudioElement && activeAudioElement !== audio) {
+              activeAudioElement.pause();
+            }
+            activeAudioElement = audio;
+            audio.play().then(() => {
+              playBtn.textContent = "⏸ Пауза";
+            }).catch(e => {
+              alert("Ошибка воспроизведения звука: " + e.message);
+              playBtn.textContent = "▶ Слушать";
+            });
+          }
+        });
+
         item.querySelector(".voice-del-btn").addEventListener("click", () => {
           if (confirm("Удалить эту голосовую заметку?")) {
+            audio.pause();
             deleteVoiceNote(idx);
           }
         });
@@ -1582,7 +1817,7 @@
       renderVoiceNotes(game.voices);
     }
 
-    // --- 7. IMAGE ATTACHMENTS & GALLERY ---
+    // --- 8. IMAGE ATTACHMENTS & GALLERY ---
     function renderNotebookGallery(images) {
       const gallery = document.getElementById("book-gallery-pins");
       gallery.innerHTML = "";
@@ -1632,7 +1867,9 @@
 
       const reader = new FileReader();
       reader.onload = function(evt) {
-        attachImageToGame(evt.target.result);
+        resizeImage(evt.target.result, 900, 900, function(resized) {
+          attachImageToGame(resized);
+        });
       };
       reader.readAsDataURL(file);
       e.target.value = "";
@@ -1654,7 +1891,7 @@
       renderNotebookGallery(game.images);
     }
 
-    // --- 8. NOTEBOOK TEXT AUTOSAVE ---
+    // --- 9. NOTEBOOK TEXT AUTOSAVE ---
     document.getElementById("book-notes-input").addEventListener("input", function() {
       const statusLabel = document.getElementById("book-save-status");
       statusLabel.textContent = "Сохраняем...";
@@ -1669,7 +1906,7 @@
       }, 350);
     });
 
-    // --- 9. ADD / EDIT PANEL (WITH SELECT PLATFORM) ---
+    // --- 10. ADD / EDIT PANEL (WITH SELECT PLATFORM) ---
     function openAddPanel() {
       const panel = document.getElementById("game-form-panel");
       document.getElementById("panel-title").textContent = "➕ Новая запись игры";
@@ -1696,7 +1933,6 @@
       document.getElementById("entry-id").value = game.id;
       document.getElementById("entry-title").value = game.title;
 
-      // Select platform in dropdown if present, or add custom option
       const platformSelect = document.getElementById("entry-platform");
       let foundOption = false;
       for (let i = 0; i < platformSelect.options.length; i++) {
@@ -1797,7 +2033,7 @@
       }
     });
 
-    // --- 10. FILTER & SEARCH ---
+    // --- 11. FILTER & SEARCH ---
     document.querySelectorAll(".pill").forEach(pill => {
       pill.addEventListener("click", function() {
         document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
@@ -1811,7 +2047,7 @@
       renderList();
     });
 
-    // --- 11. BACKUP & RESTORE MODAL ---
+    // --- 12. BACKUP & RESTORE MODAL ---
     const backupShade = document.getElementById("modal-backup-shade");
 
     document.getElementById("btn-open-backup").addEventListener("click", function() {
@@ -1828,7 +2064,7 @@
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gamesList, null, 2));
       const a = document.createElement("a");
       a.href = dataStr;
-      a.download = `gamerbox_v09_${new Date().toISOString().slice(0,10)}.json`;
+      a.download = `gamerbox_v10_${new Date().toISOString().slice(0,10)}.json`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1879,7 +2115,7 @@
       return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
-    // --- 12. STARTUP ---
+    // --- 13. STARTUP ---
     try {
       gamesList = loadSavedGames();
       renderList();
