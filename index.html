@@ -4,51 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Геймерский уголок v0.8</title>
-  <meta name="theme-color" content="#18201a">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2318201a'/%3E%3Crect x='4' y='8' width='24' height='16' rx='3' fill='%23384a3c' stroke='%23709477' stroke-width='2'/%3E%3Crect x='8' y='14' width='6' height='2' fill='%23c2d6c6'/%3E%3Crect x='10' y='12' width='2' height='6' fill='%23c2d6c6'/%3E%3Crect x='20' y='13' width='3' height='3' fill='%23e06c53'/%3E%3Crect x='23' y='16' width='3' height='3' fill='%235ea881'/%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='24' fill='%2318201a'/%3E%3Crect x='25' y='45' width='130' height='90' rx='18' fill='%23384a3c' stroke='%23709477' stroke-width='8'/%3E%3Crect x='45' y='80' width='32' height='12' fill='%23c2d6c6'/%3E%3Crect x='55' y='70' width='12' height='32' fill='%23c2d6c6'/%3E%3Crect x='115' y='75' width='16' height='16' rx='2' fill='%23e06c53'/%3E%3Crect x='132' y='92' width='16' height='16' rx='2' fill='%235ea881'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#121814">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23121814'/%3E%3Crect x='4' y='8' width='24' height='16' rx='3' fill='%23384a3c' stroke='%23709477' stroke-width='2'/%3E%3Crect x='8' y='14' width='6' height='2' fill='%23c2d6c6'/%3E%3Crect x='10' y='12' width='2' height='6' fill='%23c2d6c6'/%3E%3Crect x='20' y='13' width='3' height='3' fill='%23e06c53'/%3E%3Crect x='23' y='16' width='3' height='3' fill='%235ea881'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='24' fill='%23121814'/%3E%3Crect x='25' y='45' width='130' height='90' rx='18' fill='%23384a3c' stroke='%23709477' stroke-width='8'/%3E%3Crect x='45' y='80' width='32' height='12' fill='%23c2d6c6'/%3E%3Crect x='55' y='70' width='12' height='32' fill='%23c2d6c6'/%3E%3Crect x='115' y='75' width='16' height='16' rx='2' fill='%23e06c53'/%3E%3Crect x='132' y='92' width='16' height='16' rx='2' fill='%235ea881'/%3E%3C/svg%3E">
 
   <style>
-    /* --- RETRO PIXEL VARIABLES & THEME --- */
     :root {
       --bg-dark: #121814;
-      --panel-bg: #1c251f;
-      --card-bg: #222d25;
-      --card-hover: #29362d;
+      --panel-bg: #1a241d;
+      --card-bg: #212d24;
+      --card-hover: #29382d;
       --pixel-border: #445949;
-      --pixel-border-bright: #698b71;
-      --text-main: #e2ebe4;
-      --text-dim: #92a897;
-      --accent-retro: #eab308;
+      --pixel-border-bright: #6fa079;
+      --text-main: #e4eee6;
+      --text-dim: #92a898;
       --btn-green: #2e7d32;
       --btn-green-hover: #388e3c;
 
       /* Ancient Notebook Theme */
-      --book-leather: #38261c;
-      --book-edge: #23160f;
-      --book-paper: #f8f3e3;
-      --book-paper-shade: #eee4cb;
-      --book-lines: rgba(110, 85, 60, 0.14);
+      --book-leather: #38261b;
+      --book-edge: #23160e;
+      --book-paper: #f7f2e2;
+      --book-lines: rgba(110, 85, 60, 0.15);
       --book-margin-line: rgba(185, 75, 60, 0.35);
-      --book-ink: #2b2015;
-      --book-ink-muted: #6f5c49;
+      --book-ink: #2b2014;
+      --book-ink-muted: #735f4b;
 
-      /* Retro status tags */
-      --tag-play-bg: #17381b;
-      --tag-play-fg: #6ee787;
-      --tag-play-border: #2e7d32;
-
-      --tag-plan-bg: #132e42;
-      --tag-plan-fg: #64b5f6;
-      --tag-plan-border: #1976d2;
-
-      --tag-comp-bg: #2f3818;
-      --tag-comp-fg: #cddc39;
-      --tag-comp-border: #689f38;
-
-      --tag-pause-bg: #3d2315;
-      --tag-pause-fg: #ffb74d;
-      --tag-pause-border: #f57c00;
+      /* Status colors */
+      --st-playing-bg: #17381b;
+      --st-playing-fg: #6ee787;
+      --st-planned-bg: #132e42;
+      --st-planned-fg: #64b5f6;
+      --st-completed-bg: #2f3818;
+      --st-completed-fg: #cddc39;
+      --st-paused-bg: #3d2315;
+      --st-paused-fg: #ffb74d;
     }
 
     * {
@@ -56,15 +47,16 @@
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
-    /* Seamless Pixel Grid Pattern */
+    /* Pixel art retro background */
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(rgba(110, 148, 119, 0.12) 1px, transparent 1px),
-        linear-gradient(to right, rgba(25, 35, 28, 0.7) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(25, 35, 28, 0.7) 1px, transparent 1px);
+        radial-gradient(rgba(110, 150, 120, 0.14) 1px, transparent 1px),
+        linear-gradient(to right, rgba(28, 38, 30, 0.8) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 38, 30, 0.8) 1px, transparent 1px);
       background-size: 16px 16px, 16px 16px, 16px 16px;
       color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace;
@@ -73,13 +65,13 @@
       line-height: 1.45;
     }
 
-    .app-container {
-      max-width: 940px;
+    .container {
+      max-width: 920px;
       margin: 0 auto;
-      padding: 14px 12px 60px;
+      padding: 12px 10px 60px;
     }
 
-    /* Pixel Art Bevel Box Style */
+    /* Retro Box */
     .retro-box {
       background: var(--panel-bg);
       border: 2px solid var(--pixel-border);
@@ -93,7 +85,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
       gap: 10px;
     }
@@ -153,7 +145,7 @@
       gap: 6px;
       font-size: 0.88rem;
       font-weight: 700;
-      padding: 7px 12px;
+      padding: 8px 14px;
       cursor: pointer;
       border-radius: 3px;
       text-transform: uppercase;
@@ -199,29 +191,23 @@
       background: #802727;
     }
 
-    /* Add/Edit Game Form Box (Inline, collapsible) */
-    .form-drawer {
+    /* Inline Add / Edit Panel */
+    .form-panel {
       padding: 14px;
       margin-bottom: 14px;
       display: none;
       border-left: 4px solid #5cae63;
     }
 
-    .form-drawer.open {
+    .form-panel.active {
       display: block;
-      animation: retroSlide 0.15s ease-out;
-    }
-
-    @keyframes retroSlide {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .form-group-full {
@@ -244,7 +230,7 @@
       border: 1px solid var(--pixel-border);
       color: #f0f7f2;
       padding: 8px 10px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       border-radius: 2px;
       outline: none;
       font-family: inherit;
@@ -293,7 +279,7 @@
 
     .pill {
       font-size: 0.78rem;
-      padding: 4px 10px;
+      padding: 5px 11px;
       border: 1px solid var(--pixel-border);
       background: #151d17;
       color: var(--text-dim);
@@ -312,7 +298,7 @@
       box-shadow: inset 0 0 0 1px #698b71;
     }
 
-    /* Concise Game List */
+    /* Section Headline */
     .section-headline {
       font-size: 0.82rem;
       font-weight: 700;
@@ -325,6 +311,7 @@
       align-items: center;
     }
 
+    /* Game List Rows */
     .game-list-rows {
       display: flex;
       flex-direction: column;
@@ -336,7 +323,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 9px 12px;
+      padding: 10px 12px;
       background: var(--card-bg);
       border: 1px solid var(--pixel-border);
       border-radius: 3px;
@@ -348,18 +335,17 @@
     .game-row:hover {
       background: var(--card-hover);
       border-color: var(--pixel-border-bright);
-      transform: translateX(2px);
     }
 
     .game-row.active {
       background: #26382b;
       border-color: #72a37b;
-      box-shadow: 0 0 0 1px #72a37b, 2px 2px 0 #000;
+      box-shadow: 0 0 0 1.5px #72a37b, 2px 2px 0 #000;
     }
 
     .game-cover-mini {
-      width: 42px;
-      height: 50px;
+      width: 44px;
+      height: 52px;
       object-fit: cover;
       background: #17211a;
       border: 1px solid #3d4f41;
@@ -374,7 +360,7 @@
 
     .game-title-text {
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: #f1f8f3;
       white-space: nowrap;
       overflow: hidden;
@@ -383,7 +369,7 @@
     }
 
     .game-sub-text {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       color: var(--text-dim);
     }
 
@@ -401,27 +387,27 @@
     }
 
     .st-playing {
-      background: var(--tag-play-bg);
-      color: var(--tag-play-fg);
-      border-color: var(--tag-play-border);
+      background: var(--st-playing-bg);
+      color: var(--st-playing-fg);
+      border-color: #2e7d32;
     }
     .st-planned {
-      background: var(--tag-plan-bg);
-      color: var(--tag-plan-fg);
-      border-color: var(--tag-plan-border);
+      background: var(--st-planned-bg);
+      color: var(--st-planned-fg);
+      border-color: #1976d2;
     }
     .st-completed {
-      background: var(--tag-comp-bg);
-      color: var(--tag-comp-fg);
-      border-color: var(--tag-comp-border);
+      background: var(--st-completed-bg);
+      color: var(--st-completed-fg);
+      border-color: #689f38;
     }
     .st-paused {
-      background: var(--tag-pause-bg);
-      color: var(--tag-pause-fg);
-      border-color: var(--tag-pause-border);
+      background: var(--st-paused-bg);
+      color: var(--st-paused-fg);
+      border-color: #f57c00;
     }
 
-    /* Workspace / Game Details (Smooth Scroll Target) */
+    /* Workspace / Game Details */
     .workspace-wrap {
       scroll-margin-top: 14px;
       display: none;
@@ -431,7 +417,7 @@
       display: block;
     }
 
-    /* Top: Game Overview */
+    /* Overview Box */
     .overview-box {
       padding: 14px;
       margin-bottom: 18px;
@@ -458,20 +444,13 @@
       min-width: 0;
     }
 
-    .overview-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
     .overview-title-h2 {
       font-size: 1.25rem;
       font-weight: 700;
       color: #9fe2aa;
       line-height: 1.25;
       font-family: 'Courier New', monospace;
+      margin-bottom: 6px;
     }
 
     .overview-badges {
@@ -507,7 +486,7 @@
       flex-wrap: wrap;
     }
 
-    /* BOTTOM: ANCIENT BOOK FIELD NOTEBOOK */
+    /* Ancient Book Field Notebook */
     .ancient-book {
       background: var(--book-leather);
       border: 3px solid var(--book-edge);
@@ -517,7 +496,6 @@
       position: relative;
     }
 
-    /* Stitched book border */
     .ancient-book::after {
       content: '';
       position: absolute;
@@ -581,7 +559,6 @@
       position: relative;
     }
 
-    /* Left punch holes */
     .parchment-sheet::before {
       content: '';
       position: absolute;
@@ -667,7 +644,6 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.3);
     }
 
-    /* Tape strip on photo */
     .pin-card::before {
       content: '';
       position: absolute;
@@ -776,9 +752,8 @@
       box-shadow: 4px 4px 0 #000;
     }
 
-    /* Responsive */
     @media (max-width: 620px) {
-      .app-container {
+      .container {
         padding: 8px 8px 50px;
       }
       .form-grid {
@@ -806,7 +781,7 @@
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="container">
 
     <!-- HEADER -->
     <header class="retro-box">
@@ -823,36 +798,36 @@
         </div>
       </div>
       <div class="header-btns">
-        <button class="btn btn-dark" onclick="toggleBackupModal(true)" title="Резервные копии">
+        <button class="btn btn-dark" id="btn-open-backup" type="button">
           💾 База
         </button>
-        <button class="btn btn-green" id="btn-toggle-add" onclick="toggleAddDrawer()">
+        <button class="btn btn-green" id="btn-toggle-add" type="button">
           ➕ Добавить игру
         </button>
       </div>
     </header>
 
-    <!-- INLINE ADD / EDIT GAME DRAWER (Direct & 100% Reliable) -->
-    <section class="retro-box form-drawer" id="game-drawer">
+    <!-- INLINE ADD / EDIT PANEL (NO HIDDEN POPUPS, 100% RELIABLE) -->
+    <section class="retro-box form-panel" id="game-form-panel">
       <div class="section-headline">
-        <span id="drawer-title" style="color:#9fe2aa;">➕ Новая запись игры</span>
-        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" onclick="toggleAddDrawer(false)">✕ Закрыть</button>
+        <span id="panel-title" style="color:#9fe2aa;">➕ Новая запись игры</span>
+        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" id="btn-close-form" type="button">✕ Закрыть</button>
       </div>
 
-      <form id="drawer-form" onsubmit="handleFormSubmit(event)">
-        <input type="hidden" id="input-game-id" value="">
+      <form id="game-entry-form">
+        <input type="hidden" id="entry-id" value="">
         <div class="form-grid">
           <div>
             <label class="form-label">Название игры *</label>
-            <input type="text" id="input-title" class="retro-input" required placeholder="Например: Fable, Witcher 3...">
+            <input type="text" id="entry-title" class="retro-input" required placeholder="Например: Fable, Witcher 3...">
           </div>
           <div>
             <label class="form-label">Платформа</label>
-            <input type="text" id="input-platform" class="retro-input" placeholder="PC, Xbox, Vita, Switch...">
+            <input type="text" id="entry-platform" class="retro-input" placeholder="PC, Xbox, Vita, Switch...">
           </div>
           <div>
             <label class="form-label">Статус</label>
-            <select id="input-status" class="retro-input">
+            <select id="entry-status" class="retro-input">
               <option value="playing">Играю</option>
               <option value="planned">В планах</option>
               <option value="completed">Пройдено</option>
@@ -861,16 +836,16 @@
           </div>
           <div>
             <label class="form-label">Ссылка на обложку (URL)</label>
-            <input type="url" id="input-cover" class="retro-input" placeholder="https://... (необязательно)">
+            <input type="url" id="entry-cover" class="retro-input" placeholder="https://... (необязательно)">
           </div>
           <div class="form-group-full">
             <label class="form-label">Краткий синопсис / описание</label>
-            <textarea id="input-desc" class="retro-input" rows="2" placeholder="О чем игра, пара фраз о сеттинге..."></textarea>
+            <textarea id="entry-desc" class="retro-input" rows="2" placeholder="О чем игра, пара фраз о сюжете..."></textarea>
           </div>
         </div>
         <div style="display:flex; justify-content:flex-end; gap:8px;">
-          <button type="button" class="btn btn-dark" onclick="toggleAddDrawer(false)">Отмена</button>
-          <button type="submit" class="btn btn-green" id="btn-drawer-submit">✅ Сохранить в список</button>
+          <button type="button" class="btn btn-dark" id="btn-cancel-form">Отмена</button>
+          <button type="submit" class="btn btn-green" id="btn-submit-form">✅ Сохранить в список</button>
         </div>
       </form>
     </section>
@@ -882,21 +857,21 @@
           <circle cx="11" cy="11" r="8"/>
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" id="search-box" class="retro-input" placeholder="Быстрый поиск по названию или платформе..." oninput="handleSearch(this.value)">
+        <input type="text" id="search-box" class="retro-input" placeholder="Поиск по названию или платформе...">
       </div>
-      <div class="filter-pills">
-        <button class="pill active" data-filter="all" onclick="setFilter('all', this)">Все (<span id="cnt-all">0</span>)</button>
-        <button class="pill" data-filter="playing" onclick="setFilter('playing', this)">Играю (<span id="cnt-playing">0</span>)</button>
-        <button class="pill" data-filter="planned" onclick="setFilter('planned', this)">В планах (<span id="cnt-planned">0</span>)</button>
-        <button class="pill" data-filter="completed" onclick="setFilter('completed', this)">Пройдено (<span id="cnt-completed">0</span>)</button>
-        <button class="pill" data-filter="paused" onclick="setFilter('paused', this)">На паузе (<span id="cnt-paused">0</span>)</button>
+      <div class="filter-pills" id="filter-pills-wrap">
+        <button class="pill active" data-filter="all" type="button">Все (<span id="cnt-all">0</span>)</button>
+        <button class="pill" data-filter="playing" type="button">Играю (<span id="cnt-playing">0</span>)</button>
+        <button class="pill" data-filter="planned" type="button">В планах (<span id="cnt-planned">0</span>)</button>
+        <button class="pill" data-filter="completed" type="button">Пройдено (<span id="cnt-completed">0</span>)</button>
+        <button class="pill" data-filter="paused" type="button">На паузе (<span id="cnt-paused">0</span>)</button>
       </div>
     </section>
 
     <!-- CONCISE GAME LIST -->
     <div class="section-headline">
       <span>Список игр (<span id="list-total-count">0</span>)</span>
-      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Нажмите на игру для перехода</span>
+      <span style="font-size:0.75rem; text-transform:none; color:#78927e;">Нажмите на игру, чтобы открыть дневник</span>
     </div>
 
     <div class="game-list-rows" id="games-container">
@@ -911,17 +886,15 @@
         <div class="overview-content">
           <img src="" id="view-cover" class="overview-poster-img" alt="Обложка">
           <div class="overview-info">
-            <div class="overview-head">
-              <h2 class="overview-title-h2" id="view-title">Название игры</h2>
-            </div>
+            <h2 class="overview-title-h2" id="view-title">Название игры</h2>
             <div class="overview-badges">
               <span class="platform-pill" id="view-platform">PC</span>
               <span class="status-tag" id="view-status-tag">Играю</span>
             </div>
             <p class="overview-text" id="view-desc">Описание отсутствует.</p>
             <div class="overview-buttons">
-              <button class="btn btn-dark" onclick="startEditCurrentGame()">✏️ Редактировать</button>
-              <button class="btn btn-danger" onclick="deleteCurrentGame()">🗑️ Удалить игру</button>
+              <button class="btn btn-dark" id="btn-edit-current" type="button">✏️ Редактировать</button>
+              <button class="btn btn-danger" id="btn-delete-current" type="button">🗑️ Удалить игру</button>
             </div>
           </div>
         </div>
@@ -945,8 +918,7 @@
           <textarea 
             class="book-textarea" 
             id="book-notes-input" 
-            placeholder="Ведите полевые заметки здесь: пароли от дверей, билды, рецепты, тайники, невыполненные квесты..."
-            oninput="handleNotesInput()"></textarea>
+            placeholder="Ведите полевые заметки здесь: пароли от дверей, билды, рецепты, тайники, невыполненные квесты..."></textarea>
 
           <div class="attached-maps-title">Вклеенные зарисовки и карты местности</div>
           <div class="gallery-pins" id="book-gallery-pins">
@@ -955,10 +927,10 @@
 
           <div class="notebook-tools">
             <label class="btn-parchment">
-              <input type="file" id="file-image-picker" accept="image/*" style="display:none;" onchange="handleImageFileUpload(event)">
+              <input type="file" id="file-image-picker" accept="image/*" style="display:none;">
               📎 Вклеить снимок с устройства
             </label>
-            <button class="btn-parchment" onclick="promptAddImageUrl()">
+            <button class="btn-parchment" id="btn-add-img-url" type="button">
               🔗 Вклеить по ссылке (URL)
             </button>
           </div>
@@ -975,7 +947,7 @@
   </div>
 
   <!-- LIGHTBOX IMAGE VIEWER -->
-  <div class="image-viewer" id="lightbox-viewer" onclick="this.classList.remove('open')">
+  <div class="image-viewer" id="lightbox-viewer">
     <img id="lightbox-viewer-img" src="" alt="Снимок">
   </div>
 
@@ -984,25 +956,25 @@
     <div class="modal-dialog">
       <div class="section-headline" style="color:#9fe2aa; margin-bottom:12px;">
         <span>Управление базой игр</span>
-        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" onclick="toggleBackupModal(false)">✕</button>
+        <button class="btn btn-dark" style="padding:2px 8px; font-size:0.75rem;" id="btn-close-backup" type="button">✕</button>
       </div>
       <p style="font-size:0.84rem; color:var(--text-dim); margin-bottom:14px;">
-        Все данные надёжно сохраняются в памяти браузера. Вы можете сохранить файл базы на диск или восстановить его на любом устройстве.
+        Все данные надёжно сохраняются в памяти браузера. Вы можете сохранить файл базы на диск или восстановить его.
       </p>
       <div style="display:flex; flex-direction:column; gap:8px;">
-        <button class="btn btn-dark" style="justify-content:flex-start;" onclick="exportDatabaseFile()">
+        <button class="btn btn-dark" style="justify-content:flex-start;" id="btn-export-file" type="button">
           💾 Экспортировать в файл (.json)
         </button>
         <label class="btn btn-dark" style="justify-content:flex-start; cursor:pointer;">
-          <input type="file" id="file-import-json" accept=".json" style="display:none;" onchange="importDatabaseFile(event)">
+          <input type="file" id="file-import-json" accept=".json" style="display:none;">
           📥 Импортировать из файла (.json)
         </label>
-        <button class="btn btn-danger" style="justify-content:flex-start;" onclick="resetToInitialDefaults()">
+        <button class="btn btn-danger" style="justify-content:flex-start;" id="btn-reset-db" type="button">
           🔄 Сбросить к исходным 4 играм
         </button>
       </div>
       <div style="margin-top:14px; text-align:right;">
-        <button class="btn btn-green" onclick="toggleBackupModal(false)">Готово</button>
+        <button class="btn btn-green" id="btn-finish-backup" type="button">Готово</button>
       </div>
     </div>
   </div>
@@ -1017,9 +989,7 @@
         status: "playing",
         cover: "https://upload.wikimedia.org/wikipedia/ru/8/87/Fable_Anniversary_cover.jpg",
         desc: "Ремастер классической ролевой сказки от Питера Молинье. Станьте благородным героем Альбиона или грозным злодеем, меняя мир вокруг своими поступками.",
-        notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.
-• Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.
-• Прокачать заклинание 'Молния' для быстрого контроля толпы.",
+        notes: "• Локация Дубовый Дзен: в сундуке лежит серебряный ключ.\n• Проверить лавку торговца в Бауэрстоуне перед походом в лагерь разбойников.\n• Прокачать заклинание 'Молния' для быстрого контроля толпы.",
         images: []
       },
       {
@@ -1029,9 +999,7 @@
         status: "playing",
         cover: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Dying_Light_cover.jpg",
         desc: "Паркур в открытом мире среди заражённых Харрана. Днём исследуйте руины и собирайте припасы, а ночью прячьтесь от смертоносных Прыгунов.",
-        notes: "• Ночные вылазки дают удвоенный опыт выживания.
-• Чертёж 'Кореш Камикадзе' лежит на подвесном мосту.
-• Собрать больше марли и спирта для аптечек.",
+        notes: "• Ночные вылазки дают удвоенный опыт выживания.\n• Чертёж 'Кореш Камикадзе' лежит на подвесном мосту.\n• Собрать больше марли и спирта для аптечек.",
         images: []
       },
       {
@@ -1041,9 +1009,7 @@
         status: "completed",
         cover: "https://upload.wikimedia.org/wikipedia/ru/a/a2/The_Witcher_3-_Wild_Hunt_Cover.jpg",
         desc: "Масштабная ролевая сага о ведьмаке Геральте из Ривии в поисках Дитя Предназначения в разорённом войной фэнтезийном мире.",
-        notes: "• Заказ на Лихо у колодца выполнен.
-• Сет школы Грифона собран на 1-й уровень.
-• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
+        notes: "• Заказ на Лихо у колодца выполнен.\n• Сет школы Грифона собран на 1-й уровень.\n• В Новиграде заглянуть к Пассифлоре на турнир по Гвинту.",
         images: []
       },
       {
@@ -1053,13 +1019,11 @@
         status: "planned",
         cover: "https://upload.wikimedia.org/wikipedia/ru/0/07/The_Outer_Worlds.jpg",
         desc: "Сатирическая космическая RPG от Obsidian. Колония Алкион под пятой корпораций, чернушный юмор, компаньоны и вариативные задания.",
-        notes: "• Первое прохождение планирую через дипломатию и взлом.
-• Не забыть взять Парвати в команду на 'Первопроходце'.",
+        notes: "• Первое прохождение планирую через дипломатию и взлом.\n• Не забыть взять Парвати в команду на 'Первопроходце'.",
         images: []
       }
     ];
 
-    // Status map
     const STATUS_MAP = {
       playing: { label: "Играю", cls: "st-playing" },
       planned: { label: "В планах", cls: "st-planned" },
@@ -1067,7 +1031,6 @@
       paused: { label: "На паузе", cls: "st-paused" }
     };
 
-    // State
     const STORAGE_KEY = "gamerbox_games_v08";
     const OLD_STORAGE_KEYS = [
       "gamerbox_games_v07",
@@ -1082,42 +1045,13 @@
     let notesTimer = null;
 
     // --- 2. STORAGE SYSTEM WITH MIGRATION ---
-    function loadSavedGames() {
-      // Try v0.8
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (Array.isArray(parsed) && parsed.length > 0) return normalizeData(parsed);
-        }
-      } catch (e) {
-        console.warn("Storage v0.8 load error", e);
-      }
-
-      // Try older versions
-      for (const oldKey of OLD_STORAGE_KEYS) {
-        try {
-          const oldStored = localStorage.getItem(oldKey);
-          if (oldStored) {
-            const parsed = JSON.parse(oldStored);
-            if (Array.isArray(parsed) && parsed.length > 0) {
-              console.log("Migrated from", oldKey);
-              const normalized = normalizeData(parsed);
-              saveGames(normalized);
-              return normalized;
-            }
-          }
-        } catch (e) {}
-      }
-
-      // Default seed
-      return INITIAL_GAMES;
-    }
-
     function normalizeData(arr) {
+      if (!Array.isArray(arr)) return INITIAL_GAMES;
       return arr.map((item, idx) => {
-        // Status normalization
-        let st = (item.status || "playing").toLowerCase();
+        if (!item || typeof item !== 'object') {
+          return { id: "g_" + Date.now() + "_" + idx, title: "Игра", platform: "PC", status: "playing", cover: "", desc: "", notes: "", images: [] };
+        }
+        let st = String(item.status || "playing").toLowerCase();
         if (st.includes("игра") || st === "playing") st = "playing";
         else if (st.includes("план") || st.includes("буду") || st === "planned") st = "planned";
         else if (st.includes("пройд") || st === "completed") st = "completed";
@@ -1137,13 +1071,37 @@
       });
     }
 
+    function loadSavedGames() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return normalizeData(parsed);
+        }
+      } catch (e) {}
+
+      for (const oldKey of OLD_STORAGE_KEYS) {
+        try {
+          const oldStored = localStorage.getItem(oldKey);
+          if (oldStored) {
+            const parsed = JSON.parse(oldStored);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              const normalized = normalizeData(parsed);
+              saveGames(normalized);
+              return normalized;
+            }
+          }
+        } catch (e) {}
+      }
+
+      return INITIAL_GAMES;
+    }
+
     function saveGames(arr) {
       gamesList = arr;
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gamesList));
-      } catch (err) {
-        console.error("Local storage error:", err);
-      }
+      } catch (err) {}
     }
 
     // --- 3. RENDERING ---
@@ -1190,13 +1148,13 @@
 
         const row = document.createElement("div");
         row.className = "game-row" + (isSelected ? " active" : "");
-        row.onclick = () => selectGame(game.id, true);
+        row.dataset.id = game.id;
 
         const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 50' fill='%2319241c'%3E%3Crect width='40' height='50'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
         const coverSrc = game.cover && game.cover.trim() ? game.cover : fallbackSvg;
 
         row.innerHTML = `
-          <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.src='${fallbackSvg}'">
+          <img src="${coverSrc}" class="game-cover-mini" alt="" onerror="this.onerror=null; this.src='${fallbackSvg}';">
           <div class="game-meta">
             <div class="game-title-text">${safeHtml(game.title)}</div>
             <div class="game-sub-text">${safeHtml(game.platform || "Любая")}</div>
@@ -1204,11 +1162,15 @@
           <span class="status-tag ${stInfo.cls}">${stInfo.label}</span>
         `;
 
+        row.addEventListener("click", () => {
+          selectGame(game.id, true);
+        });
+
         container.appendChild(row);
       });
     }
 
-    function selectGame(gameId, smoothScroll = false) {
+    function selectGame(gameId, doScroll) {
       activeGameId = gameId;
       const game = gamesList.find(g => g.id === gameId);
       const ws = document.getElementById("game-workspace");
@@ -1220,7 +1182,7 @@
 
       // Update selection styling in list
       document.querySelectorAll(".game-row").forEach(el => {
-        el.classList.toggle("active", el.innerText.includes(game.title));
+        el.classList.toggle("active", el.dataset.id === gameId);
       });
 
       // Fill overview
@@ -1237,7 +1199,7 @@
       const fallbackSvgLarge = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' fill='%2319241c'%3E%3Crect width='100' height='130'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='26' fill='%2354735c'%3E🎮%3C/text%3E%3C/svg%3E";
       const viewCover = document.getElementById("view-cover");
       viewCover.src = game.cover && game.cover.trim() ? game.cover : fallbackSvgLarge;
-      viewCover.onerror = () => { viewCover.src = fallbackSvgLarge; };
+      viewCover.onerror = function() { this.onerror = null; this.src = fallbackSvgLarge; };
 
       // Fill ancient notebook
       document.getElementById("book-game-title").textContent = `Заметки: ${game.title}`;
@@ -1248,10 +1210,12 @@
 
       ws.classList.add("active");
 
-      if (smoothScroll) {
-        setTimeout(() => {
+      if (doScroll) {
+        try {
           ws.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 40);
+        } catch (e) {
+          ws.scrollIntoView(true);
+        }
       }
     }
 
@@ -1271,7 +1235,7 @@
 
         card.innerHTML = `
           <img src="${imgSrc}" alt="Зарисовка">
-          <button class="pin-card-del" title="Удалить" onclick="deleteGalleryImage(event, ${idx})">&times;</button>
+          <button class="pin-card-del" title="Удалить" type="button">&times;</button>
         `;
 
         card.querySelector("img").onclick = () => {
@@ -1279,12 +1243,16 @@
           document.getElementById("lightbox-viewer").classList.add("open");
         };
 
+        card.querySelector(".pin-card-del").onclick = (e) => {
+          e.stopPropagation();
+          deleteGalleryImage(idx);
+        };
+
         gallery.appendChild(card);
       });
     }
 
-    function deleteGalleryImage(e, index) {
-      e.stopPropagation();
+    function deleteGalleryImage(index) {
       const game = gamesList.find(g => g.id === activeGameId);
       if (!game || !game.images) return;
       if (confirm("Удалить этот снимок из полевого журнала?")) {
@@ -1295,22 +1263,22 @@
     }
 
     // --- 4. NOTEBOOK AUTOSAVE ---
-    function handleNotesInput() {
+    document.getElementById("book-notes-input").addEventListener("input", function() {
       const statusLabel = document.getElementById("book-save-status");
-      statusLabel.textContent = "Печатаем...";
+      statusLabel.textContent = "Сохраняем...";
       clearTimeout(notesTimer);
       notesTimer = setTimeout(() => {
         const game = gamesList.find(g => g.id === activeGameId);
         if (game) {
           game.notes = document.getElementById("book-notes-input").value;
           saveGames(gamesList);
-          statusLabel.textContent = "Запись сохранена";
+          statusLabel.textContent = "✓ Запись сохранена";
         }
-      }, 400);
-    }
+      }, 350);
+    });
 
     // --- 5. IMAGE ATTACHMENT ---
-    function handleImageFileUpload(e) {
+    document.getElementById("file-image-picker").addEventListener("change", function(e) {
       const file = e.target.files[0];
       if (!file) return;
 
@@ -1320,14 +1288,14 @@
       };
       reader.readAsDataURL(file);
       e.target.value = "";
-    }
+    });
 
-    function promptAddImageUrl() {
+    document.getElementById("btn-add-img-url").addEventListener("click", function() {
       const url = prompt("Введите ссылку (URL) на изображение карты или скриншота:");
       if (url && url.trim()) {
         attachImageToGame(url.trim());
       }
-    }
+    });
 
     function attachImageToGame(src) {
       const game = gamesList.find(g => g.id === activeGameId);
@@ -1338,52 +1306,61 @@
       renderNotebookGallery(game.images);
     }
 
-    // --- 6. ADD / EDIT DRAWER (DIRECT & FOOLPROOF) ---
-    function toggleAddDrawer(forceOpen) {
-      const drawer = document.getElementById("game-drawer");
-      const isCurrentlyOpen = drawer.classList.contains("open");
-      const nextOpen = forceOpen !== undefined ? forceOpen : !isCurrentlyOpen;
-
-      if (nextOpen) {
-        // Reset form for fresh addition
-        document.getElementById("drawer-title").textContent = "➕ Новая запись игры";
-        document.getElementById("btn-drawer-submit").textContent = "✅ Сохранить в список";
-        document.getElementById("input-game-id").value = "";
-        document.getElementById("drawer-form").reset();
-        drawer.classList.add("open");
-        drawer.scrollIntoView({ behavior: "smooth", block: "start" });
-        setTimeout(() => document.getElementById("input-title").focus(), 150);
-      } else {
-        drawer.classList.remove("open");
+    // --- 6. ADD / EDIT PANEL (DIRECT & GUARANTEED) ---
+    function openAddPanel() {
+      const panel = document.getElementById("game-form-panel");
+      document.getElementById("panel-title").textContent = "➕ Новая запись игры";
+      document.getElementById("btn-submit-form").textContent = "✅ Сохранить в список";
+      document.getElementById("entry-id").value = "";
+      document.getElementById("game-entry-form").reset();
+      panel.classList.add("active");
+      try {
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (e) {
+        panel.scrollIntoView(true);
       }
+      setTimeout(() => document.getElementById("entry-title").focus(), 150);
     }
 
-    function startEditCurrentGame() {
+    function openEditPanel() {
       const game = gamesList.find(g => g.id === activeGameId);
       if (!game) return;
 
-      const drawer = document.getElementById("game-drawer");
-      document.getElementById("drawer-title").textContent = `✏️ Редактирование: ${game.title}`;
-      document.getElementById("btn-drawer-submit").textContent = "✅ Обновить данные";
-      document.getElementById("input-game-id").value = game.id;
-      document.getElementById("input-title").value = game.title;
-      document.getElementById("input-platform").value = game.platform || "";
-      document.getElementById("input-status").value = game.status;
-      document.getElementById("input-cover").value = game.cover || "";
-      document.getElementById("input-desc").value = game.desc || "";
+      const panel = document.getElementById("game-form-panel");
+      document.getElementById("panel-title").textContent = `✏️ Редактирование: ${game.title}`;
+      document.getElementById("btn-submit-form").textContent = "✅ Обновить данные";
+      document.getElementById("entry-id").value = game.id;
+      document.getElementById("entry-title").value = game.title;
+      document.getElementById("entry-platform").value = game.platform || "";
+      document.getElementById("entry-status").value = game.status;
+      document.getElementById("entry-cover").value = game.cover || "";
+      document.getElementById("entry-desc").value = game.desc || "";
 
-      drawer.classList.add("open");
-      drawer.scrollIntoView({ behavior: "smooth", block: "start" });
+      panel.classList.add("active");
+      try {
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (e) {
+        panel.scrollIntoView(true);
+      }
     }
 
-    function handleFormSubmit(e) {
+    function closeFormPanel() {
+      document.getElementById("game-form-panel").classList.remove("active");
+    }
+
+    document.getElementById("btn-toggle-add").addEventListener("click", openAddPanel);
+    document.getElementById("btn-close-form").addEventListener("click", closeFormPanel);
+    document.getElementById("btn-cancel-form").addEventListener("click", closeFormPanel);
+    document.getElementById("btn-edit-current").addEventListener("click", openEditPanel);
+
+    document.getElementById("game-entry-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      const id = document.getElementById("input-game-id").value;
-      const title = document.getElementById("input-title").value.trim();
-      const platform = document.getElementById("input-platform").value.trim();
-      const status = document.getElementById("input-status").value;
-      const cover = document.getElementById("input-cover").value.trim();
-      const desc = document.getElementById("input-desc").value.trim();
+      const id = document.getElementById("entry-id").value;
+      const title = document.getElementById("entry-title").value.trim();
+      const platform = document.getElementById("entry-platform").value.trim();
+      const status = document.getElementById("entry-status").value;
+      const cover = document.getElementById("entry-cover").value.trim();
+      const desc = document.getElementById("entry-desc").value.trim();
 
       if (!title) {
         alert("Пожалуйста, введите название игры!");
@@ -1391,7 +1368,6 @@
       }
 
       if (id) {
-        // Edit existing
         const game = gamesList.find(g => g.id === id);
         if (game) {
           game.title = title;
@@ -1401,14 +1377,13 @@
           game.desc = desc;
         }
       } else {
-        // Add new
         const newGame = {
           id: "g_" + Date.now(),
-          title,
-          platform,
-          status,
-          cover,
-          desc,
+          title: title,
+          platform: platform,
+          status: status,
+          cover: cover,
+          desc: desc,
           notes: "",
           images: []
         };
@@ -1417,12 +1392,12 @@
       }
 
       saveGames(gamesList);
-      toggleAddDrawer(false);
+      closeFormPanel();
       renderList();
       selectGame(activeGameId || id, true);
-    }
+    });
 
-    function deleteCurrentGame() {
+    document.getElementById("btn-delete-current").addEventListener("click", function() {
       const game = gamesList.find(g => g.id === activeGameId);
       if (!game) return;
 
@@ -1437,27 +1412,36 @@
           document.getElementById("game-workspace").classList.remove("active");
         }
       }
-    }
+    });
 
     // --- 7. FILTER & SEARCH ---
-    function setFilter(filterKey, btnEl) {
-      currentFilter = filterKey;
-      document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
-      btnEl.classList.add("active");
-      renderList();
-    }
+    document.querySelectorAll(".pill").forEach(pill => {
+      pill.addEventListener("click", function() {
+        document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+        this.classList.add("active");
+        currentFilter = this.dataset.filter;
+        renderList();
+      });
+    });
 
-    function handleSearch(val) {
+    document.getElementById("search-box").addEventListener("input", function() {
       renderList();
-    }
+    });
 
     // --- 8. BACKUP & RESTORE MODAL ---
-    function toggleBackupModal(show) {
-      const modal = document.getElementById("modal-backup-shade");
-      modal.classList.toggle("open", show);
-    }
+    const backupShade = document.getElementById("modal-backup-shade");
 
-    function exportDatabaseFile() {
+    document.getElementById("btn-open-backup").addEventListener("click", function() {
+      backupShade.classList.add("open");
+    });
+    document.getElementById("btn-close-backup").addEventListener("click", function() {
+      backupShade.classList.remove("open");
+    });
+    document.getElementById("btn-finish-backup").addEventListener("click", function() {
+      backupShade.classList.remove("open");
+    });
+
+    document.getElementById("btn-export-file").addEventListener("click", function() {
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gamesList, null, 2));
       const a = document.createElement("a");
       a.href = dataStr;
@@ -1465,9 +1449,9 @@
       document.body.appendChild(a);
       a.click();
       a.remove();
-    }
+    });
 
-    function importDatabaseFile(e) {
+    document.getElementById("file-import-json").addEventListener("change", function(e) {
       const file = e.target.files[0];
       if (!file) return;
 
@@ -1481,7 +1465,7 @@
             renderList();
             if (gamesList.length > 0) selectGame(gamesList[0].id, false);
             alert("База успешно импортирована!");
-            toggleBackupModal(false);
+            backupShade.classList.remove("open");
           } else {
             alert("Неверный формат базы!");
           }
@@ -1491,21 +1475,25 @@
       };
       reader.readAsText(file);
       e.target.value = "";
-    }
+    });
 
-    function resetToInitialDefaults() {
+    document.getElementById("btn-reset-db").addEventListener("click", function() {
       if (confirm("Сбросить текущие игры и вернуть стартовые 4 игры?")) {
         gamesList = normalizeData(INITIAL_GAMES);
         saveGames(gamesList);
         renderList();
         selectGame(gamesList[0].id, false);
-        toggleBackupModal(false);
+        backupShade.classList.remove("open");
       }
-    }
+    });
+
+    document.getElementById("lightbox-viewer").addEventListener("click", function() {
+      this.classList.remove("open");
+    });
 
     function safeHtml(str) {
       if (!str) return "";
-      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
     // --- 9. STARTUP ---
@@ -1516,7 +1504,7 @@
         selectGame(gamesList[0].id, false);
       }
     } catch (err) {
-      console.error("Critical startup error:", err);
+      console.error("Critical error:", err);
       gamesList = INITIAL_GAMES;
       renderList();
       selectGame(gamesList[0].id, false);
